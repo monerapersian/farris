@@ -1,0 +1,9 @@
+asgiref==3.10.0
+Django==5.2.7
+django-jalali-date==2.0.0
+jalali_core==1.0.0
+jdatetime==5.2.0
+pillow==12.0.0
+setuptools==80.9.0
+sqlparse==0.5.3
+tzdata==2025.2
