@@ -1,0 +1,139 @@
+{% extends 'master.html' %}
+{% load static %}
+{% block title %}مقالات  | {% endblock %}
+{% load jalali_tags %}
+
+
+	{% block content %}
+		<!-- MainContent -->
+			<div class="container mx-auto p-4 ">
+				<!-- blogSlider -->
+					<div class="container mx-auto max-w-7xl my-12 px-4 border border-gray-300 rounded-lg p-4 shadow-sm">
+					  <!-- عنوان -->
+					  <p class="text-2xl md:text-2xl font-bold text-center mb-6 flex" style="text-align: center; color: #124e6e;">
+					  	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M14 4.4375C15.3462 4.4375 16.4375 3.34619 16.4375 2H17.5625C17.5625 3.34619 18.6538 4.4375 20 4.4375V5.5625C18.6538 5.5625 17.5625 6.65381 17.5625 8H16.4375C16.4375 6.65381 15.3462 5.5625 14 5.5625V4.4375ZM1 11C4.31371 11 7 8.31371 7 5H9C9 8.31371 11.6863 11 15 11V13C11.6863 13 9 15.6863 9 19H7C7 15.6863 4.31371 13 1 13V11ZM4.87601 12C6.18717 12.7276 7.27243 13.8128 8 15.124 8.72757 13.8128 9.81283 12.7276 11.124 12 9.81283 11.2724 8.72757 10.1872 8 8.87601 7.27243 10.1872 6.18717 11.2724 4.87601 12ZM17.25 14C17.25 15.7949 15.7949 17.25 14 17.25V18.75C15.7949 18.75 17.25 20.2051 17.25 22H18.75C18.75 20.2051 20.2051 18.75 22 18.75V17.25C20.2051 17.25 18.75 15.7949 18.75 14H17.25Z"></path></svg>
+					  	بلاگ های محبوب
+
+					  </p>
+
+					  <!-- اسلایدر -->
+					  <div class="swiper mySwiper-efe rounded-lg bg-white p-6">
+					    <div class="swiper-wrapper">
+							{% for article in special_articles %}
+								<div class="px-4 py-1 overflow-hidden swiper-slide flex justify-center items-center h-full" style="display: flex;">
+									<div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 group">
+									  <div class="overflow-hidden p-5 pb-2">
+									    <img src="{{ article.image.url }}" alt="{{ article.title }}" class="w-full h-48 object-cover rounded-xl transform group-hover:scale-105 transition-transform duration-500">
+									  </div>
+									  <div class="p-2">
+									    <h3 class="text-lg font-semibold text-gray-800 mb-2 pr-5">{{ article.title }}</h3>
+									    <a href="{% url 'article_detail' article.slug %}" class="w-full text-center py-2 px-4 btn-outline rounded-lg btn flex items-center gap-2" style="text-align: center;">
+									      ادامه مطلب
+									    	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M4.83582 12L11.0429 18.2071L12.4571 16.7929L7.66424 12L12.4571 7.20712L11.0429 5.79291L4.83582 12ZM10.4857 12L16.6928 18.2071L18.107 16.7929L13.3141 12L18.107 7.20712L16.6928 5.79291L10.4857 12Z"></path></svg>
+									    </a>
+									  </div>
+									</div>
+								</div>
+							{% endfor %}
+
+						</div>
+
+					    <!-- دکمه‌های قبلی و بعدی -->
+					    <div class="btn btn-circle absolute text-gray-800 hover:text-gray-600 z-10 next-btn-brands">>></div>
+					    <div class="btn btn-circle absolute text-gray-800 hover:text-gray-600 z-10 prev-btn-brands"><<</div>
+					  </div>
+					</div>
+
+					<script>
+					  const swiper = new Swiper(".mySwiper-efe", {
+					    slidesPerView: 4,
+					    spaceBetween: 10,
+					    loop: true,
+					    navigation: {
+					      nextEl: ".next-btn-brands",
+					      prevEl: ".prev-btn-brands",
+					    },
+					    breakpoints: {
+					      0: { slidesPerView: 1 },
+					      640: { slidesPerView: 2 },
+					      768: { slidesPerView: 3 },
+					      1024: { slidesPerView: 4 },
+					    },
+					  });
+					</script>
+				<!-- /blogSlider -->
+				<!-- mainBlogs -->
+					<div class="container mx-auto max-w-7xl my-12 px-4 border border-gray-300 rounded-lg p-4 shadow-sm">
+						
+
+					  <section class="px-4  py-5">
+						  <!-- نوار بالا -->
+						  <div class="flex justify-between items-center">
+						    <!-- عنوان -->
+							  <p class="text-2xl md:text-2xl font-bold text-center mb-6 flex" style="text-align: center; color: #124e6e;">
+							  	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M20.0833 15.1999L21.2854 15.9212C21.5221 16.0633 21.5989 16.3704 21.4569 16.6072C21.4146 16.6776 21.3557 16.7365 21.2854 16.7787L12.5144 22.0412C12.1977 22.2313 11.8021 22.2313 11.4854 22.0412L2.71451 16.7787C2.47772 16.6366 2.40093 16.3295 2.54301 16.0927C2.58523 16.0223 2.64413 15.9634 2.71451 15.9212L3.9166 15.1999L11.9999 20.0499L20.0833 15.1999ZM20.0833 10.4999L21.2854 11.2212C21.5221 11.3633 21.5989 11.6704 21.4569 11.9072C21.4146 11.9776 21.3557 12.0365 21.2854 12.0787L11.9999 17.6499L2.71451 12.0787C2.47772 11.9366 2.40093 11.6295 2.54301 11.3927C2.58523 11.3223 2.64413 11.2634 2.71451 11.2212L3.9166 10.4999L11.9999 15.3499L20.0833 10.4999ZM12.5144 1.30864L21.2854 6.5712C21.5221 6.71327 21.5989 7.0204 21.4569 7.25719C21.4146 7.32757 21.3557 7.38647 21.2854 7.42869L11.9999 12.9999L2.71451 7.42869C2.47772 7.28662 2.40093 6.97949 2.54301 6.7427C2.58523 6.67232 2.64413 6.61343 2.71451 6.5712L11.4854 1.30864C11.8021 1.11864 12.1977 1.11864 12.5144 1.30864ZM11.9999 3.33233L5.88723 6.99995L11.9999 10.6676L18.1126 6.99995L11.9999 3.33233Z"></path></svg>
+							  	 آخرین بلاگ ها
+
+							  </p>
+						  </div>
+
+						  <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-2">
+						    
+						    <!-- کارت بلاگ -->
+						    {% for blog in page_obj %}
+								<div class="bg-white rounded-2xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 group border border-gray-300">
+							      <div class="overflow-hidden">
+							        <img src="{{ blog.image.url }}" alt="{{ blog.title }}" class="w-full h-48 object-cover transition-transform duration-300 ease-in-out group-hover:rotate-3 group-hover:scale-110">
+							      </div>
+							      <div class="p-2">
+							        <h3 class="text-lg font-semibold text-gray-800 mb-2">{{ blog.title }}</h3>
+							        <p class="text-gray-600 line-clamp-2 mb-4">
+							          {{ blog.content }}
+							        </p>
+							        <a href="{% url 'article_detail' blog.slug %}" class="w-full text-center py-2 px-4 btn-outline btn-info rounded-lg btn flex items-center gap-2" style="text-align: center;">
+							          ادامه مطلب
+							        	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M4.83582 12L11.0429 18.2071L12.4571 16.7929L7.66424 12L12.4571 7.20712L11.0429 5.79291L4.83582 12ZM10.4857 12L16.6928 18.2071L18.107 16.7929L13.3141 12L18.107 7.20712L16.6928 5.79291L10.4857 12Z"></path></svg>
+							        </a>
+							      </div>
+							    </div>
+							{% endfor %}
+
+						  </div>
+						  <!-- pagination -->
+					    	<div class="w-full bg-base-200 py-4 mt-10 rounded-2xl">
+								  <div class="flex justify-center">
+								    <div class="join">
+								    	{% if page_obj.has_previous %}
+									      	<a href="?page={{ page_obj.previous_page_number }}" class="join-item btn hover-pagination"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M10.0858 12L5.29289 16.7929L6.70711 18.2071L12.9142 12L6.70711 5.79291L5.29289 7.20712L10.0858 12ZM17 6.00002L17 18H15L15 6.00002L17 6.00002Z"></path></svg>قبلی</a>
+									    {% endif %}
+									    
+								    	{% for num in page_obj.paginator.page_range %}
+									      {% if num == page_obj.number %}
+									      	<a class="join-item btn hover-pagination active-pagination">{{ num }}</a>
+									      {% else %}
+									        <a href="?page={{ num }}" class="join-item btn hover-pagination">{{ num }}</a>
+									      {% endif %}
+									      <button class="join-item btn btn-disabled">...</button>
+									    {% endfor %}
+								      	
+								      
+								      <!-- <button class="join-item btn hover-pagination">3</button>
+								      
+								      <button class="join-item btn hover-pagination">9</button>
+								      <button class="join-item btn hover-pagination">10</button> -->
+								    	{% if page_obj.has_next %}
+									      <a href="?page={{ page_obj.next_page_number }}" class="join-item btn hover-pagination">بعدی<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M13.9142 12L18.7071 7.20712L17.2929 5.79291L11.0858 12L17.2929 18.2071L18.7071 16.7929L13.9142 12ZM7 18V6.00001H9V18H7Z"></path></svg></a>
+									    {% endif %}
+								      <button class="join-item btn hover-pagination">بعدی<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M13.9142 12L18.7071 7.20712L17.2929 5.79291L11.0858 12L17.2929 18.2071L18.7071 16.7929L13.9142 12ZM7 18V6.00001H9V18H7Z"></path></svg></button>
+								    </div>
+								  </div>
+								</div>
+					    <!-- /pagination -->
+						</section>
+
+
+					</div>
+				<!-- /mainBlogs -->
+			</div>
+		<!-- /MainContent -->
+	{% endblock %}

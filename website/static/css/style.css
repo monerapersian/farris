@@ -1,0 +1,171 @@
+@font-face {
+  font-family: 'farris';
+  src: url('../font/Monera.woff');
+}
+
+body {
+  font-family: 'farris';
+}
+/* rtl.css */
+html {
+    direction: rtl;
+    unicode-bidi: embed;
+}
+
+
+body * {
+    text-align: right;
+}
+
+
+.dock {
+    flex-direction: row-reverse;
+}
+
+input::placeholder {
+  line-height: 2.5rem;
+  padding-bottom: 0.25rem;
+}
+
+.prev-btn-brands{
+    top: 50%;
+    transform: translateY(-50%);
+    right: 8px;
+    height: 40px;
+    opacity: 60%;
+    transition: none;
+}
+
+.next-btn-brands{
+    top: 50%;
+    transform: translateY(-50%);
+    left: 8px;
+    height: 40px;
+    opacity: 60%;
+    transition: none;
+}
+
+/* ===== WebKit: Chrome, Edge, Safari ===== */
+:root::-webkit-scrollbar {
+  width: 10px;
+}
+:root::-webkit-scrollbar-track {
+  background: #4e7f9a;
+  border-radius: 10px;
+}
+:root::-webkit-scrollbar-thumb {
+  background: #4e7f9a;
+  border-radius: 10px;
+  border: 2px solid #f0f0f0;
+}
+:root::-webkit-scrollbar-thumb:hover {
+  background: #4e7f9a;
+}
+
+/* ===== Firefox ===== */
+:root {
+  scrollbar-width: thin;            /* ضخامت */
+  scrollbar-color: #1d5675 #4e7f9a ;; /* thumb track */
+}
+
+.nav-logo-img:hover{
+    background: none !important;
+}
+
+swiper-container {
+  width: 100%;
+  height: 100%;
+}
+
+swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #444;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.autoplay-progress {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  z-index: 10;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: var(--swiper-theme-color);
+}
+
+.autoplay-progress svg {
+  --progress: 0;
+  position: absolute;
+  left: 0;
+  top: 0px;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  stroke-width: 4px;
+  stroke: var(--swiper-theme-color);
+  fill: none;
+  stroke-dashoffset: calc(125.6px * (1 - var(--progress)));
+  stroke-dasharray: 125.6;
+  transform: rotate(-90deg);
+}
+
+.active-pagination{
+    background: #f87915 !important;
+}
+
+.hover-pagination:hover{
+    background: #f879158f;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+@apply w-8 h-8 bg-white/70 rounded-full shadow flex items-center justify-center text-gray-700;
+background: #0000005c;
+color: white;
+border-radius: 5px;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+font-size: 16px !important; /* کوچیک‌تر شدن آیکن فلش */
+font-weight: bold;
+color: white;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+@apply bg-white text-black;
+}
+
+
+.ir-map{
+  background-image: url('../img/ir-02.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 100%;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+.marquee {
+  display: inline-block;
+  padding-right: 40%;
+  animation: marquee 20s linear infinite;
+}

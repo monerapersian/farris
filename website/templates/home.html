@@ -1,0 +1,212 @@
+{% extends 'master.html' %}
+{% load static %}
+{% block title %}صفحه اصلی | {% endblock %}
+{% load jalali_tags %}
+	
+	{% block content %}
+		<!-- HeroSection -->
+			<section class="relative hero min-h-screen bg-[#1d5675] text-white overflow-hidden ir-map">
+			  <div class="hero-content text-center">
+			    <div class="max-w-2xl">
+				    <!-- تیتر اصلی -->
+					<div class="flex flex-col items-center">
+					  <h1 class="text-4xl md:text-6xl font-bold mb-6 animate__animated animate__lightSpeedInLeft">
+					    به <span class="text-[#e66700]">فریس</span> خوش اومدی
+					  </h1>
+					</div>
+
+				    <!-- توضیح کوتاه -->
+				    <p class="mb-6 text-lg md:text-l leading-relaxed animate__animated animate__lightSpeedInLeft animate__delay-1s justify-center">
+				    	برای اخذ نمایندگی در سراسر ایران تماس بگیرید ------- 02133900705
+				    </p>
+				    <p class="mb-6 text-lg md:text-l leading-relaxed animate__animated animate__lightSpeedInLeft animate__delay-1s justify-center">
+				    	مشاوره، فروش و عرضه پلوس و سرپلوس تمامی خوردروها در ایران
+				    </p>
+
+					<!-- دکمه‌های CTA -->
+					<div class="flex gap-4 justify-center animate__animated animate__lightSpeedInLeft animate__delay-2s">
+						<a href="/products" class="btn border-0 bg-[#e66700] text-white hover:bg-[#b25204]">
+							اخذ نمایندگی
+						</a>
+						<a href="tel:02133900705" class="btn btn-outline border-white text-white hover:bg-white hover:text-[#116c56]">
+							مشاوره تلفنی
+						</a>
+					</div>
+					<!-- دکمه اسکرول پایین -->
+					<div class="flex justify-center mt-20 animate__animated animate__fadeIn animate__delay-3s">
+					  <a href="#pop-products" class="animate__animated animate__bounce animate__infinite">
+					    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+					      <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+					    </svg>
+					  </a>
+					</div>
+			    </div>
+			  </div>
+			  <div class="absolute bottom-0 w-full overflow-hidden bg-black/50 py-2">
+			    <div class="marquee whitespace-nowrap animate-marquee text-white text-sm">
+			      🚗 تهران بازار چراغ برق خیابان امیرکبیر خیابان ملت پاساژ شیرین طبقه دوم پلاک 114 فروشگاه فریس  ---- 02133900705🚗
+			    </div>
+			  </div>
+			</section>
+		<!-- /HeroSection -->
+
+		<!-- PopularProduct -->
+			<section id="pop-products" class="bg-blue-50 py-8 pt-3 relative mt-7">
+			  <!-- لینک مشاهده بیشتر -->
+			  <a href="#" class="flex absolute top-10 left-3 text-[#1d5675] text-sm hover:underline">
+			    مشاهده محصولات بیشتر
+			    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M4.83582 12L11.0429 18.2071L12.4571 16.7929L7.66424 12L12.4571 7.20712L11.0429 5.79291L4.83582 12ZM10.4857 12L16.6928 18.2071L18.107 16.7929L13.3141 12L18.107 7.20712L16.6928 5.79291L10.4857 12Z"></path></svg>
+			  </a>
+
+			  <!-- تیتر تصویری -->
+			  <div class="mb-6 text-center">
+			    <img src="{% static 'img/top-sell.png' %}" alt="محصولات پر فروش"
+			         class="mx-auto w-48">
+			  </div>
+
+			  <!-- اسلایدر -->
+			  <div class="swiper mySwiper px-6">
+			    <div class="swiper-wrapper">
+			      
+			    <!-- کارت محصول -->
+			    	{% for product in special_products %}
+					    <img src="" alt="">
+					
+						<div class="swiper-slide card w-60 bg-white shadow-md rounded-xl p-3">
+						  <figure>
+						    <img src="{{ product.image.url }}" alt="{{ product.title }}"
+						         class="w-full h-60 object-contain rounded-lg" />
+						  </figure>
+						  <div class="card-body p-2 text-center">
+						    <h2 class="card-title text-base font-semibold">{{ product.title }}</h2>
+						    <p class="text-orange-600 font-bold text-lg">{{ product.price }} تومان</p>
+						    <div class="card-actions justify-center mt-2">
+						      <a href="{% url 'product_detail' product.slug %}" class="w-full btn border-0 bg-[#e66700] text-white hover:bg-[#b25204]">
+						      	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M6.00488 9H19.9433L20.4433 7H8.00488V5H21.7241C22.2764 5 22.7241 5.44772 22.7241 6C22.7241 6.08176 22.7141 6.16322 22.6942 6.24254L20.1942 16.2425C20.083 16.6877 19.683 17 19.2241 17H5.00488C4.4526 17 4.00488 16.5523 4.00488 16V4H2.00488V2H5.00488C5.55717 2 6.00488 2.44772 6.00488 3V9ZM6.00488 23C4.90031 23 4.00488 22.1046 4.00488 21C4.00488 19.8954 4.90031 19 6.00488 19C7.10945 19 8.00488 19.8954 8.00488 21C8.00488 22.1046 7.10945 23 6.00488 23ZM18.0049 23C16.9003 23 16.0049 22.1046 16.0049 21C16.0049 19.8954 16.9003 19 18.0049 19C19.1095 19 20.0049 19.8954 20.0049 21C20.0049 22.1046 19.1095 23 18.0049 23Z"></path></svg>
+						      	ثبت سفارش
+						     </a>
+						    </div>
+						  </div>
+						</div>
+					{% endfor %}
+			    <!-- کارت‌های بیشتر... -->
+
+			    </div>
+			  </div>
+			  <script>
+			  	const swiper = new Swiper(".mySwiper", {
+					  slidesPerView: 2.2,   // تعداد کارت‌ها که همزمان نشون داده میشه
+					  spaceBetween: 8,     // فاصله بین کارت‌ها
+					  grabCursor: true,     // موس حالت دست میشه
+					  breakpoints: {
+					    640: { slidesPerView: 2.1 },
+					    1024: { slidesPerView: 4.2 }
+					  }
+					});
+			  </script>
+			</section>
+		<!-- /PopularProduct -->
+
+		<!-- efe -->
+			<div class="flex justify-around items-center flex-wrap grid grid-cols-2 md:grid-cols-4 gap-4 py-8 px-4 mt-7 mb-7 bg-gray-50">
+			  <!-- ویژگی ۱: ارسال سریع -->
+			  <div class="flex flex-col items-center text-gray-400 hover:text-gray-600 transition-colors">
+					<img src="{% static 'img/delivery.png' %}" class="h-12 w-12 mb-2">
+				  <span class="font-semibold text-center">ارسال سریع</span>
+				</div>
+
+			  <!-- ویژگی ۲: کیفیت عالی -->
+			  <div class="flex flex-col items-center text-gray-400 hover:text-gray-600 transition-colors">
+			    <img src="{% static 'img/quality.png' %}" class="h-12 w-12 mb-2">
+			    <span class="font-semibold text-center">کیفیت عالی</span>
+			  </div>
+
+			  <!-- ویژگی ۳: قیمت مناسب -->
+			  <div class="flex flex-col items-center text-gray-400 hover:text-gray-600 transition-colors">
+			    <img src="{% static 'img/money.png' %}" class="h-12 w-12 mb-2">
+			    <span class="font-semibold text-center">قیمت مناسب</span>
+			  </div>
+
+			  <!-- ویژگی ۴: خدمات پس از فروش -->
+			  <div class="flex flex-col items-center text-gray-400 hover:text-gray-600 transition-colors">
+			    <img src="{% static 'img/services.png' %}" class="h-12 w-12 mb-2">
+			    <span class="font-semibold text-center">خدمات پس از فروش</span>
+			  </div>
+			</div>
+		<!-- /efe -->
+
+		<!-- Learning -->
+			<section class="px-4 py-8 bg-blue-50">
+			  <!-- عنوان بخش -->
+			  <div class="flex justify-between items-center mb-6">
+			    <h2 class="flex text-xl font-bold text-[#1d5675]">
+			    	<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mb-1" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M5.00488 9.00268C5.55717 9.00268 6.00488 9.45039 6.00488 10.0027C7.63965 10.0027 9.14352 10.5631 10.3349 11.5022L12.5049 11.5027C13.837 11.5027 15.0339 12.0815 15.8579 13.0014L19.0049 13.0027C20.9972 13.0027 22.7173 14.1679 23.521 15.8541C21.1562 18.9747 17.3268 21.0027 13.0049 21.0027C10.2142 21.0027 7.85466 20.3994 5.944 19.3447C5.80557 19.7283 5.43727 20.0027 5.00488 20.0027H2.00488C1.4526 20.0027 1.00488 19.555 1.00488 19.0027V10.0027C1.00488 9.45039 1.4526 9.00268 2.00488 9.00268H5.00488ZM6.00589 12.0027L6.00488 17.0238L6.05024 17.0572C7.84406 18.3176 10.183 19.0027 13.0049 19.0027C16.0089 19.0027 18.8035 17.847 20.84 15.8732L20.9729 15.7397L20.8537 15.6393C20.3897 15.2763 19.8205 15.051 19.2099 15.0096L19.0049 15.0027L16.8932 15.0017C16.9663 15.3236 17.0049 15.6586 17.0049 16.0027V17.0027H8.00488V15.0027L14.7949 15.0017L14.7605 14.9232C14.38 14.1296 13.593 13.568 12.6693 13.508L12.5049 13.5027L9.57547 13.5025C8.66823 12.5772 7.40412 12.003 6.00589 12.0027ZM4.00488 11.0027H3.00488V18.0027H4.00488V11.0027ZM13.6513 3.57806L14.0046 3.93183L14.3584 3.57806C15.3347 2.60175 16.9177 2.60175 17.894 3.57806C18.8703 4.55437 18.8703 6.13728 17.894 7.11359L14.0049 11.0027L10.1158 7.11359C9.13948 6.13728 9.13948 4.55437 10.1158 3.57806C11.0921 2.60175 12.675 2.60175 13.6513 3.57806ZM11.53 4.99227C11.3564 5.16584 11.3372 5.43526 11.4714 5.62938L11.5289 5.69831L14.0039 8.17368L16.4798 5.69938C16.6533 5.52581 16.6726 5.25639 16.5376 5.06152L16.4798 4.99227C16.3062 4.81871 16.0368 4.79942 15.8417 4.93457L15.7724 4.99249L14.0033 6.76111L12.236 4.9912L12.1679 4.93442C11.973 4.79942 11.7036 4.81871 11.53 4.99227Z"></path></svg>
+				    آموزش‌ها
+				  </h2>
+			    <a href="#" class="flex text-sm text-[#1d5675] hover:underline">مشاهده آموزش‌های بیشتر
+			    	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M4.83582 12L11.0429 18.2071L12.4571 16.7929L7.66424 12L12.4571 7.20712L11.0429 5.79291L4.83582 12ZM10.4857 12L16.6928 18.2071L18.107 16.7929L13.3141 12L18.107 7.20712L16.6928 5.79291L10.4857 12Z"></path></svg>
+			    </a>
+			  </div>
+
+			  <!-- ویدئوها -->
+			  <div class="grid grid-cols-2 md:grid-cols-6 gap-6">
+			    
+			    <!-- کارت آموزش ۱ -->
+			    {% for course in special_courses %}
+				    <div class="bg-white shadow rounded-lg overflow-hidden">
+				      <div class="relative w-full pt-[177.77%]"> <!-- نسبت 9:16 -->
+				        <video controls class="absolute top-0 left-0 w-full h-full object-cover rounded-lg">
+				          <source src="{{ course.video.url }}" type="video/mp4">
+				          مرورگر شما از ویدئو پشتیبانی نمی‌کند.
+				        </video>
+				      </div>
+				      <div class="p-3">
+				        <h3 class="text-base font-semibold text-gray-800">{{ course.title }}</h3>
+				      </div>
+				    </div>
+				{% endfor %}
+
+
+
+			  </div>
+			</section>
+		<!-- /Learning -->
+
+		<!-- blog -->
+			<section class="my-16 px-4 bg-gray-50 py-5">
+			  <!-- نوار بالا -->
+			  <div class="flex justify-between items-center mb-8">
+			    <h2 class="flex text-xl font-bold text-[#1d5675]">
+			    	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M2 4C2 3.44772 2.44772 3 3 3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4ZM4 5V19H20V5H4ZM6 7H12V13H6V7ZM8 9V11H10V9H8ZM14 9H18V7H14V9ZM18 13H14V11H18V13ZM6 15V17L18 17V15L6 15Z"></path></svg> 
+			     بلاگ‌های پر بازدید
+			  	</h2>
+			    <a href="/blog" class="flex text-[#1d5675] hover:underline text-sm">بلاگ‌های بیشتر
+			    	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M4.83582 12L11.0429 18.2071L12.4571 16.7929L7.66424 12L12.4571 7.20712L11.0429 5.79291L4.83582 12ZM10.4857 12L16.6928 18.2071L18.107 16.7929L13.3141 12L18.107 7.20712L16.6928 5.79291L10.4857 12Z"></path></svg>
+			    </a>
+			  </div>
+
+			  <!-- کارت‌ها -->
+			  <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-2">
+			    
+			    <!-- کارت بلاگ -->
+			    {% for blog in special_articles %}
+				    <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-shadow duration-300 group">
+				      <div class="overflow-hidden">
+				        <img src="{{ blog.image.url }}" alt="{{ blog.title }}" class="w-full h-60 object-contain transform group-hover:scale-105 transition-transform duration-500">
+				      </div>
+				      <div class="p-2">
+				        <h3 class="text-lg font-semibold text-gray-800 mb-2">{{ blog.title }}</h3>
+				        <p class="text-gray-600 line-clamp-2 mb-4">
+				        	{{ blog.content }}
+				        </p>
+				        <a href="{% url 'article_detail' blog.slug %}" class="inline-block w-full text-center py-2 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-300" style="text-align: center;">
+				          ادامه مطلب
+				        </a>
+				      </div>
+				    </div>
+				{% endfor %}
+
+			  </div>
+			</section>
+		<!-- /blog -->
+	{% endblock %}

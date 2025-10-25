@@ -1,0 +1,64 @@
+{% extends 'master.html' %}
+{% load static %}
+{% block title %} {{ article.title }} | {% endblock %}
+{% load jalali_tags %}
+	
+	{% block content %}
+		<!-- MainContent -->
+			<div class="container mx-auto px-4 py-6">
+			  <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+			    
+			    <!-- بخش اصلی: جزئیات بلاگ (۲ ستون) -->
+			    <div class="lg:col-span-3 space-y-4 border border-gray-300 rounded-lg p-5">
+			    	<!-- عکس بلاگ -->
+			    	<img src="{{ article.image.url }}" alt="{{ article.title }}" class="max-h-[500px] rounded-lg shadow-md m-auto">
+
+			    	<div class="px-5">
+			    		<!-- نویسنده و تاریخ -->
+				      <div class="flex p-2 gap-5">
+				      	<p class="text-gray-500 text-sm flex gap-1">
+				      		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M6.41421 15.89L16.5563 5.74785L15.1421 4.33363L5 14.4758V15.89H6.41421ZM7.24264 17.89H3V13.6473L14.435 2.21231C14.8256 1.82179 15.4587 1.82179 15.8492 2.21231L18.6777 5.04074C19.0682 5.43126 19.0682 6.06443 18.6777 6.45495L7.24264 17.89ZM3 19.89H21V21.89H3V19.89Z"></path></svg>
+				      		نویسنده: تیم تولید محتوای فریس
+				    	</p>
+				      	<p class="text-gray-500 text-sm flex gap-1">
+				      		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM13 12H17V14H11V7H13V12Z"></path></svg>
+				      	 تاریخ انتشار: {{ article.created_at|to_jalali:'%Y/%m/%d' }}
+				      	</p>
+				      </div>
+
+				      <!-- تیتر بلاگ -->
+				      <h1 class="text-2xl font-bold text-gray-900">
+				      	{{ article.title }}
+				      </h1>
+
+					    <!-- متن بلاگ -->
+					    <p class="text-gray-700 leading-relaxed mt-2">
+					    	{{ article.content|linebreaks }}
+					    </p>
+			    	</div>
+				  
+			    </div>
+
+			    <!-- سایدبار: بلاگ‌های مشابه -->
+			    <div class="space-y-4">
+			      <h2 class="text-lg font-bold border-b border-gray-300 pb-2">بلاگ‌های مشابه</h2>
+
+			    	{% for related in related_articles %}
+					    <div class="card bg-base-100 shadow-md">
+					        <figure><img src="{{ related.image.url }}" alt="{{ related.title }}" /></figure>
+					        <div class="card-body">
+					          <h3 class="card-title text-base">{{ related.title }}</h3>
+					          <div class="card-actions justify-end">
+					            <a href="{% url 'article_detail' related.slug %}" class="w-full text-center py-2 px-4 btn-outline rounded-lg btn flex items-center gap-1">ادامه مطلب
+					            	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M4.83582 12L11.0429 18.2071L12.4571 16.7929L7.66424 12L12.4571 7.20712L11.0429 5.79291L4.83582 12ZM10.4857 12L16.6928 18.2071L18.107 16.7929L13.3141 12L18.107 7.20712L16.6928 5.79291L10.4857 12Z"></path></svg>
+					            </a>
+					          </div>
+					        </div>
+					    </div>
+					{% endfor %}
+			    </div>
+
+			  </div>
+			</div>
+		<!-- /MainContent -->
+	{% endblock %}
