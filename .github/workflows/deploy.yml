@@ -25,7 +25,7 @@ jobs:
           script: |
             echo "🟢 شروع Deploy..."
             cd /home/farrisir1/farris_ir   # مسیر پروژه
-            git fetch origin main
+            git pull origin main
             git merge origin/main --ff-only
             source /home/farrisir1/virtualenv/farris_ir/3.12/bin/activate
             pip install -r requirements.txt
