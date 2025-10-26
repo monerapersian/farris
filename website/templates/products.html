@@ -82,7 +82,7 @@
 				      	</div>
 				      	<ul tabindex="-1" class="dropdown-content menu bg-base-100 rounded-box z-1 w-40 p-2 shadow-sm grid grid-cols-2">
 						    {% for cat in categories %}
-								<li style="text-align: center;"><a href="{% url 'category_product' cat.slug %}">{{ cat.name }}</a></li>
+								<li><a href="{% url 'category_product' cat.slug %}" style="text-align: center;">{{ cat.name }}</a></li>
 							{% endfor %}
 						</ul>
 				      	<!-- <ul class="menu space-y-2 bg-base-200 text-base-content btn btn-md btn-outline w-full mt-6">
@@ -115,7 +115,7 @@
 						        	<p class="text-lg text-neutral font-semibold flex">تومان  {{ product.price }}</p>
 						        </div>
 						        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 card-actions justify-center mt-2">
-						          <a href="{% url 'product_detail' product.slug %}" class="btn btn-md btn-warning bg-[#e66700] text-[#fff]">نمایش محصول</a>
+						          <a href="{% url 'product_detail' product.slug %}" class="btn btn-md btn-warning bg-[#e66700] text-[#542600]">نمایش محصول</a>
 						          <a href="" class="btn btn-md btn-success">خرید</a>
 						        </div>
 						      </div>
