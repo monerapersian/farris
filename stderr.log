@@ -1,0 +1,1817 @@
+Traceback (most recent call last):
+  File "/home/farrisir1/farris_ir/passenger_wsgi.py", line 4, in <module>
+    import farris.wsgi as wsgi
+ModuleNotFoundError: No module named 'farris'
+Traceback (most recent call last):
+  File "/home/farrisir1/farris_ir/passenger_wsgi.py", line 4, in <module>
+    import farris.wsgi as wsgi
+ModuleNotFoundError: No module named 'farris'
+[UID:1172][2099067] Child process with pid: 2099073 was killed by signal: 15, core dumped: no
+Traceback (most recent call last):
+  File "/home/farrisir1/farris_ir/passenger_wsgi.py", line 4, in <module>
+    import farris.wsgi as wsgi
+ModuleNotFoundError: No module named 'farris'
+[UID:1172][2099067] Child process with pid: 2099074 was killed by signal: 15, core dumped: no
+Traceback (most recent call last):
+  File "/home/farrisir1/farris_ir/passenger_wsgi.py", line 4, in <module>
+    import farris.wsgi as wsgi
+ModuleNotFoundError: No module named 'farris'
+[UID:1172][2099067] Child process with pid: 2099118 was killed by signal: 15, core dumped: no
+Traceback (most recent call last):
+  File "/home/farrisir1/farris_ir/passenger_wsgi.py", line 4, in <module>
+    import farris.wsgi as wsgi
+ModuleNotFoundError: No module named 'farris'
+[UID:1172][2099067] Child process with pid: 2099124 was killed by signal: 15, core dumped: no
+Traceback (most recent call last):
+  File "/home/farrisir1/farris_ir/passenger_wsgi.py", line 4, in <module>
+    import farris.wsgi as wsgi
+ModuleNotFoundError: No module named 'farris'
+Traceback (most recent call last):
+  File "/home/farrisir1/farris_ir/passenger_wsgi.py", line 4, in <module>
+    import farris.wsgi as wsgi
+ModuleNotFoundError: No module named 'farris'
+[UID:1172][2099373] Child process with pid: 2099378 was killed by signal: 15, core dumped: no
+Traceback (most recent call last):
+  File "/home/farrisir1/farris_ir/passenger_wsgi.py", line 4, in <module>
+    import farris.wsgi as wsgi
+ModuleNotFoundError: No module named 'farris'
+[UID:1172][2099373] Child process with pid: 2099379 was killed by signal: 15, core dumped: no
+Traceback (most recent call last):
+  File "/home/farrisir1/farris_ir/passenger_wsgi.py", line 4, in <module>
+    import farris.wsgi as wsgi
+ModuleNotFoundError: No module named 'farris'
+[UID:1172][2099373] Child process with pid: 2099384 was killed by signal: 15, core dumped: no
+Traceback (most recent call last):
+  File "/home/farrisir1/farris_ir/passenger_wsgi.py", line 4, in <module>
+    import farris.wsgi as wsgi
+ModuleNotFoundError: No module named 'farris'
+[UID:1172][2099373] Child process with pid: 2099385 was killed by signal: 15, core dumped: no
+Traceback (most recent call last):
+  File "/home/farrisir1/farris_ir/passenger_wsgi.py", line 4, in <module>
+    import farris.wsgi as wsgi
+ModuleNotFoundError: No module named 'farris'
+[UID:1172][2099373] Child process with pid: 2099402 was killed by signal: 15, core dumped: no
+Traceback (most recent call last):
+  File "/home/farrisir1/farris_ir/passenger_wsgi.py", line 4, in <module>
+    import farris.wsgi as wsgi
+ModuleNotFoundError: No module named 'farris'
+[UID:1172][2099373] Child process with pid: 2099432 was killed by signal: 15, core dumped: no
+Traceback (most recent call last):
+  File "/home/farrisir1/farris_ir/passenger_wsgi.py", line 4, in <module>
+    import farris.wsgi as wsgi
+ModuleNotFoundError: No module named 'farris'
+[UID:1172][2099373] Child process with pid: 2099434 was killed by signal: 15, core dumped: no
+Traceback (most recent call last):
+  File "/home/farrisir1/farris_ir/passenger_wsgi.py", line 4, in <module>
+    import farris.wsgi as wsgi
+ModuleNotFoundError: No module named 'farris'
+[UID:1172][2099373] Child process with pid: 2099438 was killed by signal: 15, core dumped: no
+Traceback (most recent call last):
+  File "/home/farrisir1/farris_ir/passenger_wsgi.py", line 4, in <module>
+    import farris.wsgi as wsgi
+ModuleNotFoundError: No module named 'farris'
+[UID:1172][2099373] Child process with pid: 2099448 was killed by signal: 15, core dumped: no
+Traceback (most recent call last):
+  File "/home/farrisir1/farris_ir/passenger_wsgi.py", line 4, in <module>
+    import farris.wsgi as wsgi
+ModuleNotFoundError: No module named 'farris'
+[UID:1172][2099373] Child process with pid: 2099470 was killed by signal: 15, core dumped: no
+[UID:1172][2104655] Child process with pid: 2104713 was killed by signal: 15, core dumped: no
+Not Found: /sm/d2e9bde7154d3a44a16abf7e11aa4ccb9cd5d03748f2002b872e3cee9155a673.map
+Not Found: /img/enamad-placeholder.png
+Not Found: /img/enamad-placeholder.png
+Not Found: /img/enamad-placeholder.png
+Not Found: /img/enamad-placeholder.png
+Not Found: /img/enamad-placeholder.png
+Not Found: /articles/aamr-los/img/enamad-placeholder.png
+Not Found: /img/enamad-placeholder.png
+Not Found: /img/enamad-placeholder.png
+Not Found: /img/enamad-placeholder.png
+Not Found: /img/enamad-placeholder.png
+Not Found: /img/enamad-placeholder.png
+Not Found: /img/enamad-placeholder.png
+Not Found: /img/enamad-placeholder.png
+Not Found: /articles/aamr-los/img/enamad-placeholder.png
+Not Found: /img/enamad-placeholder.png
+Not Found: /products/mshaal-los-oth-o/img/enamad-placeholder.png
+Not Found: /img/enamad-placeholder.png
+Not Found: /products/mshaal-los-oth-o/img/enamad-placeholder.png
+Not Found: /img/enamad-placeholder.png
+Not Found: /img/enamad-placeholder.png
+Not Found: /admin
+Not Found: /favicon.ico
+Not Found: /img/enamad-placeholder.png
+Not Found: /robots.txt
+Not Found: /img/enamad-placeholder.png
+Not Found: /img/enamad-placeholder.png
+Not Found: /.well-known/traffic-advice
+Not Found: /products/
+Not Found: /products/
+Not Found: /wp-admin/setup-config.php
+Not Found: /wp-admin/setup-config.php
+Not Found: /wordpress/wp-admin/setup-config.php
+Not Found: /wordpress/wp-admin/setup-config.php
+Not Found: /robots.txt
+Not Found: /products/17
+Not Found: /robots.txt
+Not Found: /robots.txt
+Not Found: /call_us
+Not Found: /tutorials/
+Not Found: /blogs/5
+Not Found: /products/14
+Not Found: /blogs/7
+Not Found: /products/13
+Not Found: /call_us/
+Not Found: /farris.ir
+Not Found: /tutorials/
+Not Found: /products/products/10
+Not Found: /products/14
+Not Found: /products/products/15
+Not Found: /products/16
+Not Found: /products/products/16
+Not Found: /products/15
+Not Found: /blogs/farris.ir
+Not Found: /products/products/10
+Not Found: /products/farris.ir
+Not Found: /products/products/13
+Not Found: /blogs/farris.ir
+Not Found: /products/farris.ir
+Not Found: /sitemap.xml
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/farrisir1/virtualenv/farris_ir/3.12/lib/python3.12/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.farris.ir'. You may need to add 'mail.farris.ir' to ALLOWED_HOSTS.
+Not Found: /sitemap.xml
+Not Found: /wp-content/plugins/hellopress/wp_filemanager.php
+Not Found: /error.php
+Not Found: /wpo.php
+Not Found: /shellalfa.php
+Not Found: /owl.php
+Not Found: /wp-admin/maint/index.php
+Not Found: /n.php
+Not Found: /s.php
+Not Found: /cong.php
+Not Found: /wp-includes/fonts/about.php
+Not Found: /css.php
+Not Found: /lv.php
+Not Found: /ee.php
+Not Found: /6.php
+Not Found: /system_log.php
+Not Found: /ab.php
+Not Found: /lock360.php
+Not Found: /about.php
+Not Found: /222.php
+Not Found: /abcd.php
+Not Found: /gifclass.php
+Not Found: /enclas.php
+Not Found: /alfa.php
+Not Found: /we.php
+Not Found: /fe5.php
+Not Found: /tgrs.php
+Not Found: /ut.php
+Not Found: /a3.php
+Not Found: /aa.php
+Not Found: /3.php
+Not Found: /f6.php
+Not Found: /fm.php
+Not Found: /rrr.php
+Not Found: /usep.php
+Not Found: /fm.php
+Not Found: /0x.php
+Not Found: /goat.php
+Not Found: /123.php
+Not Found: /ioxi-o.php
+Not Found: /taktak.php
+Not Found: /tgrs.php
+Not Found: /gt.php
+Not Found: /aghbvr.php
+Not Found: /miso.php
+Not Found: /naxc.php
+Not Found: /fex.php
+Not Found: /taff.php
+Not Found: /bless11.php
+Not Found: /aj.php
+Not Found: /opts.php
+Not Found: /wpo.php
+Not Found: /filer.php
+Not Found: /enclas.php
+Not Found: /en0.php
+Not Found: /kaza.php
+Not Found: /wsd.php
+Not Found: /gifclass4.php
+Not Found: /info.php
+Not Found: /333.php
+Not Found: /cfile.php
+Not Found: /bless3.php
+Not Found: /bless.php
+Not Found: /doti.php
+Not Found: /031.php
+Not Found: /wfile.php
+Not Found: /lala.php
+Not Found: /gmo.php
+Not Found: /he.php
+Not Found: /plss3.php
+Not Found: /ton.php
+Not Found: /nfile.php
+Not Found: /ffile.php
+Not Found: /file18.php
+Not Found: /file21.php
+Not Found: /yellow.php
+Not Found: /file1.php
+Not Found: /geck.php
+Not Found: /file4.php
+Not Found: /file88.php
+Not Found: /111.php
+Not Found: /size.php
+Not Found: /bolt.php
+Not Found: /file8.php
+Not Found: /file2.php
+Not Found: /vee.php
+Not Found: /a2.php
+Not Found: /mlex.php
+Not Found: /030.php
+Not Found: /haa.php
+Not Found: /xsox.php
+Not Found: /classgoto24.php
+Not Found: /inde.php
+Not Found: /akk.php
+Not Found: /alpa.php
+Not Found: /finny.php
+Not Found: /file15.php
+Not Found: /0x0x.php
+Not Found: /2clas.php
+Not Found: /file9.php
+Not Found: /aaa.php
+Not Found: /ilex.php
+Not Found: /tor.php
+Not Found: /klex.php
+Not Found: /shell1.php
+Not Found: /sec.php
+Not Found: /filesss.php
+Not Found: /ea.php
+Not Found: /gi.php
+Not Found: /10.php
+Not Found: /11.php
+Not Found: /12.php
+Not Found: /13.php
+Not Found: /hi.php
+Not Found: /v.php
+Not Found: /ar.php
+Not Found: /chosen.php
+Not Found: /article.php
+Not Found: /install.php
+Not Found: /1.php
+Not Found: /bak.php
+Not Found: /ini.php
+Not Found: /mail.php
+Not Found: /dlu.php
+Not Found: /zde.php
+Not Found: /ifm.php
+Not Found: /redi.php
+Not Found: /fns.php
+Not Found: /pent.php
+Not Found: /wsx.php
+Not Found: /r79.php
+Not Found: /mpxct.php
+Not Found: /x3.php
+Not Found: /wan.php
+Not Found: /iov.php
+Not Found: /ouh.php
+Not Found: /133.php
+Not Found: /x0.php
+Not Found: /wsr2.php
+Not Found: /wolv.php
+Not Found: /av.php.php
+Not Found: /pn.php
+Not Found: /wp-content/plugins/hellopress/wp_filemanager.php
+Not Found: /wp-content/plugins/hellopress/wp_filemanager.php
+Not Found: /atomlib.php
+Not Found: /a.php
+Not Found: /v.php
+Not Found: /d2.php
+Not Found: /xc.php
+Not Found: /g.php
+Not Found: /gmo.php
+Not Found: /11.php
+Not Found: /20.php
+Not Found: /f35.php
+Not Found: /1.php
+Not Found: /c.php
+Not Found: /build.php
+Not Found: /bless.php
+Not Found: /lock360.php
+Not Found: /4.php
+Not Found: /about.php
+Not Found: /r.php
+Not Found: /v4.php
+Not Found: /wp-22.php
+Not Found: /makeasmtp.php
+Not Found: /system_log.php
+Not Found: /NewFile.php
+Not Found: /t.php
+Not Found: /ee.php
+Not Found: /2.php
+Not Found: /gmo.php//gmo.php
+Not Found: /6.php
+Not Found: /12.php
+Not Found: /0.php
+Not Found: /wp-admin/css/wp-conflg.php
+Not Found: /wp-includes/js/codemirror/index.php
+Not Found: /02.php
+Not Found: /w.php
+Not Found: /go.php
+Not Found: /public_html
+Not Found: /r.php
+Not Found: /ee.php
+Not Found: /an.php
+Not Found: /wp.php
+Not Found: /wp-content/plugins/TOPXOH/wDR.php
+Not Found: /admin.php
+Not Found: /admin.php
+Not Found: /wp-includes/Text/Diff/Engine/about.php
+Not Found: /index/function.php
+Not Found: /wp-includes/ID3/rk2.php
+Not Found: /license.php
+Not Found: /radio.php
+Not Found: /info.php
+Not Found: /alfanew.php
+Not Found: /inputs.php
+Not Found: /wp-includes/assets/index.php
+Not Found: /wp-admin/images/index.php
+Not Found: /default.php
+Not Found: /lv.php
+Not Found: /wp-content/themes/wp-pridmag/init.php
+Not Found: /marijuana.php
+Not Found: /wp-includes/autoload_classmap.php
+Not Found: /wp-content/403.php
+Not Found: /css/colors/coffee/index.php
+Not Found: /css.php
+Not Found: /wp-admin/user/about.php
+Not Found: /about.php
+Not Found: /1.php
+Not Found: /marijuana.php
+Not Found: /about/function.php
+Not Found: /simple.php
+Not Found: /goat1.php
+Not Found: /chosen.php
+Not Found: /wp-cron.php
+Not Found: /yanz.php
+Not Found: /config.php
+Not Found: /network.php
+Not Found: /wp-2019.php
+Not Found: /bypass.php
+Not Found: /wp-includes/IXR/admin.php
+Not Found: /wp-includes/theme-compat/wp-login.php
+Not Found: /tiny.php
+Not Found: /lock.php
+Not Found: /mail.php
+Not Found: /wp-includes/system_log.php
+Not Found: /file.php
+Not Found: /as.php
+Not Found: /wsgi.handler
+Not Found: /wp-content/themes/wp-pridmag/init.php
+Not Found: /manager.php
+Not Found: /plugins/pwnd/as.php
+Not Found: /wp-configs.php
+Not Found: /wp-includes/html-api/wp-conflg.php
+Not Found: /wp-includes/js/crop/zmFM.php
+Not Found: /wp-includes/rest-api/fields/index.php
+Not Found: /upload/wp-info.php
+Not Found: /post.php
+Not Found: /wsgi.handler
+[UID:1172][2302073] Reached max children process limit: 6, extra: 2, current: 8, busy: 7, please increase LSAPI_CHILDREN.
+[UID:1172][2302073] Reached max children process limit: 6, extra: 2, current: 8, busy: 7, please increase LSAPI_CHILDREN.
+[UID:1172][2302073] Reached max children process limit: 6, extra: 2, current: 8, busy: 7, please increase LSAPI_CHILDREN.
+Not Found: /products/17
+Not Found: /.__info.php
+Not Found: /0.php
+Not Found: /07.php
+Not Found: /1.php
+Not Found: /123.php
+Not Found: /aa.php
+Not Found: /abcd.php
+Not Found: /about.php
+Not Found: /admin.php
+Not Found: /adminfuns.php
+Not Found: /akc.php
+Not Found: /akcc.php
+Not Found: /asasx.php
+Not Found: /asd.php
+Not Found: /atomlib.php
+Not Found: /autoload_classmap.php
+Not Found: /axx.php
+Not Found: /berax.php
+Not Found: /build.php
+Not Found: /buy.php
+Not Found: /checkbox.php
+Not Found: /chosen.php
+Not Found: /classwithtostring.php
+Not Found: /cong.php
+Not Found: /css.php
+Not Found: /default.php
+Not Found: /dropdown.php
+Not Found: /ds.php
+Not Found: /edit.php
+Not Found: /f5.php
+Not Found: /file.php
+Not Found: /file2.php
+Not Found: /file4.php
+Not Found: /filemanager.php
+Not Found: /flower.php
+Not Found: /form.php
+Not Found: /gecko.php
+Not Found: /god4m.php
+Not Found: /info.php
+Not Found: /kyami.php
+Not Found: /makeasmtp.php
+Not Found: /manager.php
+Not Found: /mari.php
+Not Found: /moon.php
+Not Found: /nc4.php
+Not Found: /new.php
+Not Found: /sallu.php
+Not Found: /test1.php
+Not Found: /wp-activate.php
+Not Found: /wp-admin.php
+Not Found: /wp-good.php
+Not Found: /wp-trackback.php
+Not Found: /xmlrpc.php
+Not Found: /xmrlpc.php
+Not Found: /.well-known/traffic-advice
+Not Found: /robots.txt
+Not Found: /robots.txt
+Not Found: /robots.txt
+Not Found: /farris.ir
+Not Found: /products/17
+Not Found: /wordpress/wp-admin/setup-config.php
+Not Found: /wp-admin/setup-config.php
+Not Found: /robots.txt
+Not Found: /blogs/7
+Not Found: /sm/d2e9bde7154d3a44a16abf7e11aa4ccb9cd5d03748f2002b872e3cee9155a673.map
+Not Found: /wsgi.handler
+Not Found: /wsgi.handler
+[UID:1172][2611922] Child process with pid: 2617410 was killed by signal: 15, core dumped: no
+Not Found: /sm/d2e9bde7154d3a44a16abf7e11aa4ccb9cd5d03748f2002b872e3cee9155a673.map
+Not Found: /sm/d2e9bde7154d3a44a16abf7e11aa4ccb9cd5d03748f2002b872e3cee9155a673.map
+Not Found: /favicon.ico
+Not Found: /wp-admin/setup-config.php
+Not Found: /wordpress/wp-admin/setup-config.php
+Not Found: /wordpress/wp-admin/setup-config.php
+Not Found: /sm/d2e9bde7154d3a44a16abf7e11aa4ccb9cd5d03748f2002b872e3cee9155a673.map
+Not Found: /wp-admin/setup-config.php
+Not Found: /robots.txt
+Not Found: /robots.txt

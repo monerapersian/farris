@@ -1,0 +1,11 @@
+# Serve static files
+Alias /static /home/farrisir1/farris_ir/staticfiles
+<Directory /home/farrisir1/farris_ir/staticfiles>
+    Require all granted
+</Directory>
+
+# Serve media files (اختیاری)
+Alias /media /home/farrisir1/farris_ir/media
+<Directory /home/farrisir1/farris_ir/media>
+    Require all granted
+</Directory>

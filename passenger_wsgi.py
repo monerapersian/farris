@@ -1,7 +1,7 @@
 import os
 import sys 
 sys.path.insert(0, os.path.dirname(__file__))
-import farris.wsgi as wsgi
+import farris_ir.wsgi as wsgi
 
 
 application = wsgi.application
