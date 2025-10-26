@@ -1,0 +1,38 @@
+name: Deploy Django Project to Server
+
+on:
+  push:
+    branches:
+      - main  # وقتی push روی main انجام شد
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # مرحله ۱: دریافت آخرین نسخه ریپو
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # مرحله ۲: اتصال SSH به سرور و اجرای دستورات
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v0.1.9
+        with:
+          host: 188.253.2.95                # IP سرور
+          username: farrisir1               # نام کاربری SSH
+          key: ${{ secrets.DEPLOY_KEY }}   # کلید خصوصی SSH که تو GitHub Secrets ذخیره کردی
+          port: 22
+          script: |
+            echo "🟢 شروع Deploy..."
+            cd /home/farrisir1/farris_ir   # مسیر پروژه
+            git fetch origin main
+            git merge origin/main --ff-only
+            source /home/farrisir1/virtualenv/farris_ir/3.12/bin/activate
+            pip install -r requirements.txt
+            python manage.py migrate
+            python manage.py collectstatic --noinput
+            # ریستارت اپ (Passenger / cPanel)
+            if [ -d tmp ]; then
+              touch tmp/restart.txt
+            fi
+            echo "✅ Deploy کامل شد!"
