@@ -102,4 +102,4 @@ def article_detail(request, slug):
 
 
 def call_us(request):
-    return render(request, 'call_us.html', context)
+    return render(request, 'call_us.html')
