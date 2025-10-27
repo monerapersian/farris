@@ -99,3 +99,7 @@ def article_detail(request, slug):
     }
 
     return render(request, 'single_article.html', context)
+
+
+def call_us(request):
+    return render(request, 'call_us.html', context)
