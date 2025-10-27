@@ -103,7 +103,7 @@ def article_detail(request, slug):
 
 def tutorial(request):
     tutorials = Course.objects.all().order_by('-created_at')
-    special_tutorials = Course.objects.filter(special=True).order_by('-created_at')[:7]
+    special_articles = Article.objects.filter(special=True).order_by('-created_at')[:4]
     categories = Category.objects.all()
 
     paginator = Paginator(tutorials, 6)
@@ -112,7 +112,7 @@ def tutorial(request):
 
     context = {
         'tutorials': tutorials,
-        'special_tutorials': special_tutorials,
+        'special_articles': special_articles,
         'page_obj': page_obj,
     }
     return render(request, 'tutorial.html', context)
