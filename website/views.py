@@ -101,6 +101,23 @@ def article_detail(request, slug):
     return render(request, 'single_article.html', context)
 
 
+def tutorial(request):
+    tutorials = Course.objects.all().order_by('-created_at')
+    special_tutorials = Course.objects.filter(special=True).order_by('-created_at')[:7]
+    categories = Category.objects.all()
+
+    paginator = Paginator(tutorials, 6)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    context = {
+        'tutorials': tutorials,
+        'special_tutorials': special_tutorials,
+        'page_obj': page_obj,
+    }
+    return render(request, 'tutorial.html', context)
+
+
 def call_us(request):
     categories = Category.objects.all()
 
