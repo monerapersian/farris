@@ -154,4 +154,4 @@ def add_to_cart(request, product_id):
 def cart_page(request):
     cart = request.session.get('cart', {})
     total = sum(item['price'] * item['quantity'] for item in cart.values())
-    return render(request, 'cart.html', {'cart': cart, 'total': total})
+    return render(request, 'shopping_cart.html', {'cart': cart, 'total': total})
