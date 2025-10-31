@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.views.decorators.http import require_POST
 from .models import Category, Product, Article, Course
 from django.core.paginator import Paginator
 
@@ -155,3 +156,12 @@ def cart_page(request):
     cart = request.session.get('cart', {})
     total = sum(item['price'] * item['quantity'] for item in cart.values())
     return render(request, 'shopping_cart.html', {'cart': cart, 'total': total})
+
+@require_POST
+def remove_from_cart(request, product_id):
+    cart = request.session.get('cart', {})
+    if str(product_id) in cart:
+        del cart[str(product_id)]
+        request.session['cart'] = cart
+        request.session.modified = True
+    return redirect('cart_page')
