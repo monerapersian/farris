@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Category, Product, Article, Course
 from django.core.paginator import Paginator
 
@@ -125,3 +125,33 @@ def call_us(request):
         'categories': categories,
     }
     return render(request, 'call_us.html' , context)
+
+
+def add_to_cart(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+
+    # اگر هنوز سبد خرید وجود نداره، بسازش
+    cart = request.session.get('cart', {})
+
+    # اگر محصول قبلاً اضافه شده، تعدادش رو زیاد کن
+    if str(product_id) in cart:
+        cart[str(product_id)]['quantity'] += 1
+    else:
+        cart[str(product_id)] = {
+            'title': product.title,
+            'price': float(product.price),
+            'image': product.image.url if product.image else '',
+            'quantity': 1,
+        }
+
+    # ذخیره در سشن
+    request.session['cart'] = cart
+    request.session.modified = True
+
+    return redirect('cart_page')
+
+
+def cart_page(request):
+    cart = request.session.get('cart', {})
+    total = sum(item['price'] * item['quantity'] for item in cart.values())
+    return render(request, 'cart.html', {'cart': cart, 'total': total})
