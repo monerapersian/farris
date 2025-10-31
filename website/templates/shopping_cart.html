@@ -39,9 +39,16 @@
 
 								      <!-- تعداد -->
 								      <div class="flex items-center gap-2">
-								        <button class="btn btn-sm">−</button>
+								      	<form action="{% url 'decrease_quantity' product_id %}" method="post">
+										    {% csrf_token %}
+								        	<button class="btn btn-sm">−</button>
+								        </form>
 								        <span class="font-semibold w-6 text-center">{{ item.quantity }}</span>
-								        <button class="btn btn-sm">+</button>
+								        <form action="{% url 'increase_quantity' product_id %}" method="post">
+										    {% csrf_token %}
+										    <button class="btn btn-sm">+</button>
+										</form>
+								        
 								      </div>
 								    </div>
 								  </div>

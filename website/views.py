@@ -165,3 +165,25 @@ def remove_from_cart(request, product_id):
         request.session['cart'] = cart
         request.session.modified = True
     return redirect('cart_page')
+
+
+def increase_quantity(request, product_id):
+    cart = request.session.get('cart', {})
+    if str(product_id) in cart:
+        cart[str(product_id)]['quantity'] += 1
+        request.session['cart'] = cart
+        request.session.modified = True
+    return redirect('cart_page')
+
+
+def decrease_quantity(request, product_id):
+    cart = request.session.get('cart', {})
+    if str(product_id) in cart:
+        if cart[str(product_id)]['quantity'] > 1:
+            cart[str(product_id)]['quantity'] -= 1
+        else:
+            # اگر به صفر رسید، حذف کن
+            del cart[str(product_id)]
+        request.session['cart'] = cart
+        request.session.modified = True
+    return redirect('cart_page')
