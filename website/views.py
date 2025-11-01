@@ -188,3 +188,13 @@ def decrease_quantity(request, product_id):
         request.session['cart'] = cart
         request.session.modified = True
     return redirect('cart_page')
+
+
+def checkout_page(request):
+    cart = request.session.get('cart', {})
+    total = sum(item['price'] * item['quantity'] for item in cart.values())
+
+    return render(request, 'checkout.html', {
+        'cart': cart,
+        'total': total,
+    })
