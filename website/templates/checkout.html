@@ -71,6 +71,7 @@
 							</div>
 
 				        </label>
+				        <p id="termsError" class="text-red-500 text-sm mt-1 hidden">لطفاً قوانین را بپذیرید.</p>
 				      </div>
 
 				      <!-- خلاصه سفارش -->
@@ -78,7 +79,7 @@
 				      <div class="bg-base-200 rounded-xl p-4">
 				        <div class="flex justify-between mb-2">
 				          <span>جمع کل محصولات</span>
-				          <span class="font-semibold text-primary">۴۵۰,۰۰۰ تومان</span>
+				          <span class="font-semibold text-primary">{{ total }} تومان</span>
 				        </div>
 				        <div class="flex justify-between mb-2">
 				          <span>هزینه ارسال</span>
@@ -102,40 +103,49 @@
 				document.addEventListener("DOMContentLoaded", function() {
 				  const nameInput = document.getElementById("full_name");
 				  const phoneInput = document.getElementById("phone");
+				  const termsCheckbox = document.getElementById("terms");
+				  const termsError = document.getElementById("termsError");
 
-				  // ✅ فقط حروف مجاز برای نام و نام خانوادگی (فارسی و انگلیسی)
+				  // فقط حروف مجاز برای نام و نام خانوادگی
 				  nameInput.addEventListener("input", function() {
-				    this.value = this.value.replace(/[^آ-یa-zA-Z\s]/g, ""); // هر چی غیر از حروفه حذف میشه
+				    this.value = this.value.replace(/[^آ-یa-zA-Z\s]/g, "");
 				  });
 
-				  // ✅ فقط عدد مجاز برای شماره تماس
+				  // فقط عدد مجاز برای شماره تماس
 				  phoneInput.addEventListener("input", function() {
-				    this.value = this.value.replace(/[^0-9]/g, ""); // فقط عدد
-				  });
-
-				  // ✅ محدود کردن به ۱۱ رقم
-				  phoneInput.addEventListener("input", function() {
+				    this.value = this.value.replace(/[^0-9]/g, "");
 				    if (this.value.length > 11) {
-				      this.value = this.value.slice(0, 11); // بیشتر از ۱۱ رقم نباشه
+				      this.value = this.value.slice(0, 11);
 				    }
 				  });
 
-				  // ✅ اعتبارسنجی نهایی موقع ارسال فرم
+				  // اعتبارسنجی نهایی
 				  document.getElementById("checkoutForm").addEventListener("submit", function(e) {
+				    let valid = true;
 				    const nameValue = nameInput.value.trim();
 				    const phoneValue = phoneInput.value.trim();
 
+				    // چک کردن نام
 				    if (nameValue.length < 3) {
 				      alert("نام و نام خانوادگی باید حداقل ۳ حرف باشد.");
-				      e.preventDefault();
-				      return;
+				      valid = false;
 				    }
 
+				    // چک کردن شماره تماس
 				    if (!/^0\d{10}$/.test(phoneValue)) {
 				      alert("شماره تلفن باید ۱۱ رقم و با ۰ شروع شود.");
-				      e.preventDefault();
-				      return;
+				      valid = false;
 				    }
+
+				    // چک کردن تیک قوانین
+				    if (!termsCheckbox.checked) {
+				      termsError.classList.remove("hidden");
+				      valid = false;
+				    } else {
+				      termsError.classList.add("hidden");
+				    }
+
+				    if (!valid) e.preventDefault();
 				  });
 				});
 			</script>
