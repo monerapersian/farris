@@ -140,7 +140,7 @@ def add_to_cart(request, product_id):
     else:
         cart[str(product_id)] = {
             'title': product.title,
-            'category': product.category,
+            'category': str(product.category),
             'price': product.price,
             'image': product.image.url if product.image else '',
             'quantity': 1,
