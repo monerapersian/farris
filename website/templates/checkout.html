@@ -10,133 +10,98 @@
 		            تکمیل اطلاعات سفارش
 		        </h2>
 
-		        <!-- فرم اطلاعات و پرداخت -->
 		        <form id="checkoutForm" method="post" novalidate>
-		            {% csrf_token %}
-		            
-		            <!-- نام و نام خانوادگی -->
-		            <div class="form-control">
-		                <label class="label">
-		                    <span class="label-text font-semibold mb-1">نام و نام خانوادگی</span>
-		                </label>
-		                <input id="full_name" type="text" name="full_name" title="فقط حروف مجاز هستند." pattern="^[آ-یa-zA-Z\s]+$" placeholder="مثلاً: علی رضایی" class="input input-bordered w-full input-primary border-gray-300" required />
-		            </div>
+				    {% csrf_token %}
+				    
+				    <!-- نام و نام خانوادگی -->
+				    <div class="form-control mb-3">
+				        <label class="label">
+				            <span class="label-text font-semibold mb-1">نام و نام خانوادگی</span>
+				        </label>
+				        <input id="full_name" type="text" name="full_name" placeholder="مثلاً: علی رضایی"
+				               class="input input-bordered w-full input-primary border-gray-300" required />
+				        <p id="nameError" class="text-error text-sm mt-1 hidden">نام و نام خانوادگی باید حداقل ۳ حرف باشد.</p>
+				    </div>
 
-		            <!-- شماره تلفن -->
-		            <div class="form-control">
-		                <label class="label">
-		                    <span class="label-text font-semibold mb-1">شماره تلفن</span>
-		                </label>
-		                <input id="phone" type="tel" name="phone" placeholder="مثلاً: 09123456789" required pattern="^0\d{10}$" title="شماره باید ۱۱ رقم و با ۰ شروع شود." class="input input-bordered w-full input-primary border-gray-300" />
-		            </div>
+				    <!-- شماره تلفن -->
+				    <div class="form-control mb-3">
+				        <label class="label">
+				            <span class="label-text font-semibold mb-1">شماره تلفن</span>
+				        </label>
+				        <input id="phone" type="tel" name="phone" placeholder="مثلاً: 09123456789"
+				               class="input input-bordered w-full input-primary border-gray-300" required />
+				        <p id="phoneError" class="text-error text-sm mt-1 hidden">شماره تلفن باید ۱۱ رقم و با ۰ شروع شود.</p>
+				    </div>
 
-		            <!-- آدرس -->
-		            <div class="form-control">
-		                <label class="label">
-		                    <span class="label-text font-semibold mb-1">آدرس کامل</span>
-		                </label>
-		                <textarea name="address" class="textarea textarea-bordered w-full h-24 textarea-primary border-gray-300" placeholder="استان، شهر، خیابان، پلاک..." required rows="3"></textarea>
-		            </div>
+				    <!-- آدرس -->
+				    <div class="form-control mb-3">
+				        <label class="label">
+				            <span class="label-text font-semibold mb-1">آدرس کامل</span>
+				        </label>
+				        <textarea name="address" id="address" class="textarea textarea-bordered w-full h-24 textarea-primary border-gray-300"
+				                  placeholder="استان، شهر، خیابان، پلاک..." required></textarea>
+				        <p id="addressError" class="text-error text-sm mt-1 hidden">لطفاً آدرس کامل خود را وارد کنید.</p>
+				    </div>
 
-		            <!-- تیک قوانین -->
-		            <div class="form-control mt-1">
-		                <label class="cursor-pointer flex items-center gap-1">
-		                    <input id="terms" type="checkbox" name="accept_terms" class="checkbox checkbox-primary text-[#e66700]" required />
-		                    <span class="label-text text-sm">شرایط و قوانین خرید از سایت را می‌پذیرم.</span>
+				    <!-- تیک قوانین -->
+				    <div class="form-control mt-1">
+				        <label class="cursor-pointer flex items-center gap-1">
+				            <input id="terms" type="checkbox" name="accept_terms" class="checkbox checkbox-primary text-[#e66700]" />
+				            <span class="label-text text-sm">شرایط و قوانین خرید از سایت را می‌پذیرم.</span>
+				        </label>
+				        <p id="termsError" class="text-error text-sm mt-1 hidden">لطفاً قوانین را بپذیرید.</p>
+				    </div>
 
-		                    <label for="my_modal" class="cursor-pointer text-sm text-[#e66700] hover:underline">(مطالعه قوانین)</label>
+				    <button type="submit" class="btn btn-primary w-full text-lg mt-4">پرداخت آنلاین 💳</button>
+				</form>
 
-		                    <!-- Modal -->
-		                    <input type="checkbox" id="my_modal" class="modal-toggle" />
-		                    <div class="modal" role="dialog">
-		                        <div class="modal-box">
-		                            <h3 class="font-bold text-lg text-[#e66700]"> شرایط و قوانین </h3>
-		                            <p class="py-4">
-		                                - لطفا در وارد کردن مقادیر خواسته شده اعم از نام و نام خانوادگی و شماره تلفن دقت لازم را داشته باشید.
-		                                <br/>
-		                                - برای وارد کردن آدرس ابتدا از نام استان و شهر استفاده کرده و سپس آدرس کامل را وارد کنید.
-		                                <br/>
-		                                - نام و نام خانوادگی وارد شده باید با نام صاحب کارت پرداخت کننده و شماره سیم کارت مطابقت داشته باشد.
-		                                <br/>
-		                                - بعد از پرداخت موفق، کد پیگیری سفارش برای شما نمایش داده می‌شود.
-		                            </p>
-		                            <div class="modal-action">
-		                                <label for="my_modal" class="btn">بستن</label>
-		                            </div>
-		                        </div>
-		                    </div>
-		                </label>
-		                <p id="termsError" class="text-red-500 text-sm mt-1 hidden">لطفاً قوانین را بپذیرید.</p>
-		            </div>
+				<script>
+				document.addEventListener("DOMContentLoaded", function() {
+				    const nameInput = document.getElementById("full_name");
+				    const phoneInput = document.getElementById("phone");
+				    const addressInput = document.getElementById("address");
+				    const termsCheckbox = document.getElementById("terms");
 
-		            <!-- خلاصه سفارش -->
-		            <div class="divider my-6">خلاصه سفارش</div>
-		            <div class="bg-base-200 rounded-xl p-4">
-		                <div class="flex justify-between mb-2">
-		                    <span>جمع کل محصولات</span>
-		                    <span class="font-semibold text-primary">{{ total }} تومان</span>
-		                </div>
-		                <div class="flex justify-between mb-2">
-		                    <span>هزینه ارسال</span>
-		                    <span class="font-semibold">رایگان</span>
-		                </div>
-		                <div class="flex justify-between font-bold text-lg mt-2 border-t pt-3">
-		                    <span>مبلغ قابل پرداخت</span>
-		                    <span class="text-success">{{ total }} تومان</span>
-		                </div>
-		            </div>
+				    const nameError = document.getElementById("nameError");
+				    const phoneError = document.getElementById("phoneError");
+				    const addressError = document.getElementById("addressError");
+				    const termsError = document.getElementById("termsError");
 
-		            <!-- دکمه پرداخت -->
-		            <button type="submit" class="btn btn-primary w-full text-lg mt-4">پرداخت آنلاین 💳</button>
-		        </form>
-		    </div>
-		</div>
+				    nameInput.addEventListener("input", function() {
+				        this.value = this.value.replace(/[^آ-یa-zA-Z\s]/g, "");
+				        nameError.classList.add("hidden");
+				    });
 
-		<script>
-			document.addEventListener("DOMContentLoaded", function() {
-			    const nameInput = document.getElementById("full_name");
-			    const phoneInput = document.getElementById("phone");
-			    const termsCheckbox = document.getElementById("terms");
-			    const termsError = document.getElementById("termsError");
+				    phoneInput.addEventListener("input", function() {
+				        this.value = this.value.replace(/[^0-9]/g, "");
+				        if (this.value.length > 11) this.value = this.value.slice(0, 11);
+				        phoneError.classList.add("hidden");
+				    });
 
-			    // فقط حروف مجاز برای نام و نام خانوادگی
-			    nameInput.addEventListener("input", function() {
-			        this.value = this.value.replace(/[^آ-یa-zA-Z\s]/g, "");
-			    });
+				    addressInput.addEventListener("input", () => addressError.classList.add("hidden"));
 
-			    // فقط عدد مجاز برای شماره تماس
-			    phoneInput.addEventListener("input", function() {
-			        this.value = this.value.replace(/[^0-9]/g, "");
-			        if (this.value.length > 11) {
-			            this.value = this.value.slice(0, 11);
-			        }
-			    });
+				    document.getElementById("checkoutForm").addEventListener("submit", function(e) {
+				        let valid = true;
 
-			    // اعتبارسنجی نهایی
-			    document.getElementById("checkoutForm").addEventListener("submit", function(e) {
-			        let valid = true;
-			        const nameValue = nameInput.value.trim();
-			        const phoneValue = phoneInput.value.trim();
+				        if (nameInput.value.trim().length < 3) {
+				            nameError.classList.remove("hidden");
+				            valid = false;
+				        }
+				        if (!/^0\d{10}$/.test(phoneInput.value.trim())) {
+				            phoneError.classList.remove("hidden");
+				            valid = false;
+				        }
+				        if (addressInput.value.trim().length < 5) {
+				            addressError.classList.remove("hidden");
+				            valid = false;
+				        }
+				        if (!termsCheckbox.checked) {
+				            termsError.classList.remove("hidden");
+				            valid = false;
+				        }
 
-			        if (nameValue.length < 3) {
-			            alert("نام و نام خانوادگی باید حداقل ۳ حرف باشد.");
-			            valid = false;
-			        }
-
-			        if (!/^0\d{10}$/.test(phoneValue)) {
-			            alert("شماره تلفن باید ۱۱ رقم و با ۰ شروع شود.");
-			            valid = false;
-			        }
-
-			        if (!termsCheckbox.checked) {
-			            termsError.classList.remove("hidden");
-			            valid = false;
-			        } else {
-			            termsError.classList.add("hidden");
-			        }
-
-			        if (!valid) e.preventDefault();
-			    });
-			});
-		</script>
+				        if (!valid) e.preventDefault();
+				    });
+				});
+				</script>
 	{% endblock %}
