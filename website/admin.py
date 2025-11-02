@@ -54,4 +54,4 @@ class OrderAdmin(admin.ModelAdmin):
     list_display = ("order", "product_title", "quantity", "price")
     list_filter = ("order",)
     search_fields = ("order",)
-    ordering = ("-created_at",)
+    ordering = ("-order",)
