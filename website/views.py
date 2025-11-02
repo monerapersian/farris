@@ -238,12 +238,12 @@ def checkout_view(request):
 
 def order_success(request, tracking_code):
     order = get_object_or_404(Order, tracking_code=tracking_code)
-    return render(request, 'order_success.html', {'order': order})
-
-
-def payment_success(request, tracking_code):
-    order = Order.objects.filter(tracking_code=tracking_code).first()
     return render(request, 'payment_success.html', {'order': order})
+
+
+# def payment_success(request, tracking_code):
+#     order = Order.objects.filter(tracking_code=tracking_code).first()
+#     return render(request, 'payment_success.html', {'order': order})
 
 
 def payment_failed(request, tracking_code=None):
@@ -262,7 +262,8 @@ def zarinpal_payment(request, order_id):
         "amount": int(order.total_price),  # مبلغ به تومان
         "callback_url": callback_url,
         "description": f"خرید از فریس - سفارش {order.tracking_code}",
-        "metadata": {"mobile": order.phone}
+        "metadata": {"mobile": order.phone},
+        "currency": "IRT"
     }
 
     try:
