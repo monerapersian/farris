@@ -39,7 +39,7 @@ def category_product(request, slug):
         'category': category,
         'products': products,
     }
-    return render(request, 'master.html', context)
+    return render(request, 'category_product.html', context)
 
 
 def products_list(request):
@@ -117,7 +117,7 @@ def article_detail(request, slug):
 def tutorial(request):
     tutorials = Course.objects.all().order_by('-created_at')
     special_articles = Article.objects.filter(special=True).order_by('-created_at')[:4]
-
+    
     paginator = Paginator(tutorials, 6)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
