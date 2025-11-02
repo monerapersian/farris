@@ -11,7 +11,7 @@
 		        </h2>
 
 		        <!-- فرم اطلاعات و پرداخت -->
-		        <form id="checkoutForm" method="post">
+		        <form id="checkoutForm" method="post" novalidate>
 		            {% csrf_token %}
 		            
 		            <!-- نام و نام خانوادگی -->
@@ -39,7 +39,7 @@
 		            </div>
 
 		            <!-- تیک قوانین -->
-		            <div class="form-control">
+		            <div class="form-control mt-1">
 		                <label class="cursor-pointer flex items-center gap-1">
 		                    <input id="terms" type="checkbox" name="accept_terms" class="checkbox checkbox-primary text-[#e66700]" required />
 		                    <span class="label-text text-sm">شرایط و قوانین خرید از سایت را می‌پذیرم.</span>
