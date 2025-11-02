@@ -71,6 +71,22 @@
 				    	<p id="termsError" class="text-red-500 text-sm mt-1 hidden">لطفاً قوانین را بپذیرید.</p>
 				    </div>
 
+				    <!-- خلاصه سفارش -->
+				    <div class="divider my-6">خلاصه سفارش</div>
+				    <div class="bg-base-200 rounded-xl p-4">
+				    	<div class="flex justify-between mb-2">
+				    		<span>جمع کل محصولات</span>
+				    		<span class="font-semibold text-primary">{{ total }} تومان</span>
+				    	</div>
+				    	<div class="flex justify-between mb-2">
+				    		<span>هزینه ارسال</span>
+				    		<span class="font-semibold">رایگان</span>
+				    	</div>
+				    	<div class="flex justify-between font-bold text-lg mt-2 border-t pt-3">
+				    		<span>مبلغ قابل پرداخت</span> <span class="text-success">{{ total }} تومان</span>
+				    	</div>
+				    </div>
+
 				    <button type="submit" class="btn btn-primary w-full text-lg mt-4">پرداخت آنلاین 💳</button>
 				</form>
 			</div>
