@@ -82,10 +82,7 @@ class Course(models.Model):
     def __str__(self):
         return self.title
 
-
-from django.db import models
-
-
+        
 class Order(models.Model):
     full_name = models.CharField(max_length=100, verbose_name="نام و نام خانوادگی")
     phone = models.CharField(max_length=11, verbose_name="شماره تماس")
@@ -112,9 +109,9 @@ class Order(models.Model):
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name="items", verbose_name="سفارش")
     product_title = models.CharField(max_length=200, verbose_name="نام محصول")
+    category = models.CharField(max_length=100, verbose_name="دسته‌بندی")
     price = models.DecimalField(max_digits=12, decimal_places=0, verbose_name="قیمت واحد")
     quantity = models.PositiveIntegerField(default=1, verbose_name="تعداد")
-    image = models.URLField(blank=True, null=True, verbose_name="تصویر محصول")
-
+    
     def __str__(self):
         return f"{self.product_title} (x{self.quantity})"

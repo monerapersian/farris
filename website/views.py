@@ -200,6 +200,42 @@ def decrease_quantity(request, product_id):
     return redirect('cart_page')
 
 
+# def checkout_view(request):
+#     cart = request.session.get('cart', {})
+#     if not cart:
+#         messages.warning(request, "سبد خرید شما خالی است!")
+#         return redirect('cart_page')
+
+#     total_price = sum(Decimal(item['price']) * item['quantity'] for item in cart.values())
+
+#     if request.method == 'POST':
+#         full_name = request.POST.get('full_name')
+#         phone = request.POST.get('phone')
+#         address = request.POST.get('address')
+#         accept_terms = request.POST.get('accept_terms')
+
+#         if not full_name or not phone or not address:
+#             messages.error(request, "لطفاً تمام فیلدها را پر کنید.")
+#             return redirect('checkout')
+
+#         if accept_terms != 'on':
+#             messages.error(request, "برای ادامه باید قوانین را بپذیرید.")
+#             return redirect('checkout')
+
+#         # ایجاد سفارش با وضعیت پرداخت نشده
+#         order = Order.objects.create(
+#             full_name=full_name,
+#             phone=phone,
+#             address=address,
+#             total_price=total_price,
+#         )
+
+#         # حالا مستقیم ریدایرکت به زarinpal_payment
+#         return redirect('zarinpal_payment', order_id=order.id)
+
+#     return render(request, 'checkout.html', {'cart': cart, 'total': total_price})
+
+
 def checkout_view(request):
     cart = request.session.get('cart', {})
     if not cart:
@@ -228,9 +264,20 @@ def checkout_view(request):
             phone=phone,
             address=address,
             total_price=total_price,
+            is_paid=False  # ← اگر فیلد مدل داری
         )
 
-        # حالا مستقیم ریدایرکت به زarinpal_payment
+        # ثبت محصولات در OrderItem
+        for item in cart.values():
+            OrderItem.objects.create(
+                order=order,
+                product_title=item['title'],
+                category=item.get('category', ''),  # ← اگر دسته‌بندی داری
+                price=Decimal(item['price']),
+                quantity=item['quantity']
+            )
+
+        # هدایت مستقیم به صفحه پرداخت
         return redirect('zarinpal_payment', order_id=order.id)
 
     return render(request, 'checkout.html', {'cart': cart, 'total': total_price})
