@@ -45,11 +45,30 @@
 
 				    <!-- تیک قوانین -->
 				    <div class="form-control mt-1">
-				        <label class="cursor-pointer flex items-center gap-1">
-				            <input id="terms" type="checkbox" name="accept_terms" class="checkbox checkbox-primary text-[#e66700]" />
-				            <span class="label-text text-sm">شرایط و قوانین خرید از سایت را می‌پذیرم.</span>
-				        </label>
-				        <p id="termsError" class="text-error text-sm mt-1 hidden">لطفاً قوانین را بپذیرید.</p>
+				    	<label class="cursor-pointer flex items-center gap-1">
+				    		<input id="terms" type="checkbox" name="accept_terms" class="checkbox checkbox-primary text-[#e66700]" required />
+				    		<span class="label-text text-sm">شرایط و قوانین خرید از سایت را می‌پذیرم.</span>
+				    		<label for="my_modal" class="cursor-pointer text-sm text-[#e66700] hover:underline">(مطالعه قوانین)</label>
+				    		<!-- Modal -->
+				    		<input type="checkbox" id="my_modal" class="modal-toggle" />
+				    		<div class="modal" role="dialog">
+				    			<div class="modal-box">
+					    			<h3 class="font-bold text-lg text-[#e66700]"> شرایط و قوانین </h3>
+					    			<p class="py-4"> - لطفا در وارد کردن مقادیر خواسته شده اعم از نام و نام خانوادگی و شماره تلفن دقت لازم را داشته باشید. 
+					    				<br/>
+					    				 - برای وارد کردن آدرس ابتدا از نام استان و شهر استفاده کرده و سپس آدرس کامل را وارد کنید. 
+					    				 <br/>
+					    				  - نام و نام خانوادگی وارد شده باید با نام صاحب کارت پرداخت کننده و شماره سیم کارت مطابقت داشته باشد. 
+					    				  <br/>
+					    				   - بعد از پرداخت موفق، کد پیگیری سفارش برای شما نمایش داده می‌شود. 
+					    			</p>
+					    			<div class="modal-action">
+					    				<label for="my_modal" class="btn">بستن</label>
+					    			</div>
+				    			</div>
+				    		</div>
+				    	</label>
+				    	<p id="termsError" class="text-red-500 text-sm mt-1 hidden">لطفاً قوانین را بپذیرید.</p>
 				    </div>
 
 				    <button type="submit" class="btn btn-primary w-full text-lg mt-4">پرداخت آنلاین 💳</button>
