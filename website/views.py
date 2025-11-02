@@ -201,7 +201,6 @@ def decrease_quantity(request, product_id):
 
 def checkout_view(request):
     cart = request.session.get('cart', {})
-    
     if not cart:
         messages.warning(request, "سبد خرید شما خالی است!")
         return redirect('cart_page')
@@ -214,7 +213,6 @@ def checkout_view(request):
         address = request.POST.get('address')
         accept_terms = request.POST.get('accept_terms')
 
-        # اعتبارسنجی فرم
         if not full_name or not phone or not address:
             messages.error(request, "لطفاً تمام فیلدها را پر کنید.")
             return redirect('checkout')
@@ -223,7 +221,7 @@ def checkout_view(request):
             messages.error(request, "برای ادامه باید قوانین را بپذیرید.")
             return redirect('checkout')
 
-        # ساخت سفارش در دیتابیس
+        # ایجاد سفارش با وضعیت پرداخت نشده
         order = Order.objects.create(
             full_name=full_name,
             phone=phone,
@@ -231,23 +229,10 @@ def checkout_view(request):
             total_price=total_price,
         )
 
-        # ثبت محصولات سفارش
-        for item in cart.values():
-            OrderItem.objects.create(
-                order=order,
-                product_title=item['title'],
-                price=item['price'],
-                quantity=item['quantity'],
-                image=item.get('image', '')
-            )
-
-        # ریدایرکت مستقیم به پرداخت زرین‌پال
+        # حالا مستقیم ریدایرکت به زarinpal_payment
         return redirect('zarinpal_payment', order_id=order.id)
 
-    return render(request, 'checkout.html', {
-        'cart': cart,
-        'total': total_price,
-    })
+    return render(request, 'checkout.html', {'cart': cart, 'total': total_price})
 
 
 def order_success(request, tracking_code):
