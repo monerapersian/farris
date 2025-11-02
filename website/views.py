@@ -201,7 +201,7 @@ def decrease_quantity(request, product_id):
 
 def checkout_view(request):
     cart = request.session.get('cart', {})
-
+    
     if not cart:
         messages.warning(request, "سبد خرید شما خالی است!")
         return redirect('cart_page')
@@ -212,9 +212,9 @@ def checkout_view(request):
         full_name = request.POST.get('full_name')
         phone = request.POST.get('phone')
         address = request.POST.get('address')
-        accept_terms = request.POST.get('accept_terms')  # تیک قبول قوانین
+        accept_terms = request.POST.get('accept_terms')
 
-        # اعتبارسنجی ساده
+        # اعتبارسنجی فرم
         if not full_name or not phone or not address:
             messages.error(request, "لطفاً تمام فیلدها را پر کنید.")
             return redirect('checkout')
@@ -223,45 +223,30 @@ def checkout_view(request):
             messages.error(request, "برای ادامه باید قوانین را بپذیرید.")
             return redirect('checkout')
 
-        # ایجاد یا بروزرسانی Order (در صورت وجود order_id)
-        order_id = request.POST.get('order_id')
-        if order_id:
-            order = get_object_or_404(Order, id=order_id)
-            order.full_name = full_name
-            order.phone = phone
-            order.address = address
-            order.total_price = total_price
-            order.is_paid = False
-            order.save()
-        else:
-            order = Order.objects.create(
-                full_name=full_name,
-                phone=phone,
-                address=address,
-                total_price=total_price,
-                is_paid=False
+        # ساخت سفارش در دیتابیس
+        order = Order.objects.create(
+            full_name=full_name,
+            phone=phone,
+            address=address,
+            total_price=total_price,
+        )
+
+        # ثبت محصولات سفارش
+        for item in cart.values():
+            OrderItem.objects.create(
+                order=order,
+                product_title=item['title'],
+                price=item['price'],
+                quantity=item['quantity'],
+                image=item.get('image', '')
             )
 
-        # بعد از ثبت اطلاعات، قالب Checkout را با order باز می‌کنیم
-        return render(request, 'checkout.html', {
-            'cart': cart,
-            'total': total_price,
-            'order': order,
-        })
-
-    # اگر GET بود، یک Order موقت بساز تا order.id همیشه موجود باشد
-    order = Order.objects.create(
-        full_name='',
-        phone='',
-        address='',
-        total_price=total_price,
-        is_paid=False
-    )
+        # ریدایرکت مستقیم به پرداخت زرین‌پال
+        return redirect('zarinpal_payment', order_id=order.id)
 
     return render(request, 'checkout.html', {
         'cart': cart,
         'total': total_price,
-        'order': order,
     })
 
 

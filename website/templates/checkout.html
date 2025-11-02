@@ -3,156 +3,140 @@
 {% block title %} فرم خرید | {% endblock %}
 {% load jalali_tags %}
 
-
 	{% block content %}
-		<!-- MainContent -->
-			<div class="bg-base-200 min-h-screen flex items-center justify-center py-10">
-				<div class="card w-full max-w-3xl bg-base-100 shadow-2xl p-6">
-				    <h2 class="flex text-2xl font-bold text-center mb-6 text-[#e66700]">
-				    	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M5 18.89H6.41421L15.7279 9.57627L14.3137 8.16206L5 17.4758V18.89ZM21 20.89H3V16.6473L16.435 3.21231C16.8256 2.82179 17.4587 2.82179 17.8492 3.21231L20.6777 6.04074C21.0682 6.43126 21.0682 7.06443 20.6777 7.45495L9.24264 18.89H21V20.89ZM15.7279 6.74785L17.1421 8.16206L18.5563 6.74785L17.1421 5.33363L15.7279 6.74785Z"></path></svg>
-				    تکمیل اطلاعات سفارش 
-					</h2>
+		<div class="bg-base-200 min-h-screen flex items-center justify-center py-10">
+		    <div class="card w-full max-w-3xl bg-base-100 shadow-2xl p-6">
+		        <h2 class="flex text-2xl font-bold text-center mb-6 text-[#e66700]">
+		            تکمیل اطلاعات سفارش
+		        </h2>
 
-				    <!-- فرم اطلاعات -->
-				    <form id="checkoutForm" class="space-y-4">
-				    	{% csrf_token %}
-					    <!-- hidden order_id -->
-					    <input type="hidden" name="order_id" value="{{ order.id }}">
-				      <!-- نام و نام خانوادگی -->
-				      <div class="form-control">
-				        <label class="label">
-				          <span class="label-text font-semibold mb-1">نام و نام خانوادگی</span>
-				        </label>
-				        <input id="full_name" type="text" name="full_name" title="فقط حروف مجاز هستند." pattern="^[آ-یa-zA-Z\s]+$" placeholder="مثلاً: علی رضایی" class="input input-bordered w-full input-primary border-gray-300" />
-				      </div>
+		        <!-- فرم اطلاعات و پرداخت -->
+		        <form id="checkoutForm" method="post">
+		            {% csrf_token %}
+		            
+		            <!-- نام و نام خانوادگی -->
+		            <div class="form-control">
+		                <label class="label">
+		                    <span class="label-text font-semibold mb-1">نام و نام خانوادگی</span>
+		                </label>
+		                <input id="full_name" type="text" name="full_name" title="فقط حروف مجاز هستند." pattern="^[آ-یa-zA-Z\s]+$" placeholder="مثلاً: علی رضایی" class="input input-bordered w-full input-primary border-gray-300" required />
+		            </div>
 
-				      <!-- شماره تلفن -->
-				      <div class="form-control">
-				        <label class="label">
-				          <span class="label-text font-semibold mb-1">شماره تلفن</span>
-				        </label>
-				        <input id="phone" type="tel" name="phone" placeholder="مثلاً: 09123456789" required pattern="^0\d{10}$" title="شماره باید ۱۱ رقم و با ۰ شروع شود." class="input input-bordered w-full input-primary border-gray-300" />
-				      </div>
+		            <!-- شماره تلفن -->
+		            <div class="form-control">
+		                <label class="label">
+		                    <span class="label-text font-semibold mb-1">شماره تلفن</span>
+		                </label>
+		                <input id="phone" type="tel" name="phone" placeholder="مثلاً: 09123456789" required pattern="^0\d{10}$" title="شماره باید ۱۱ رقم و با ۰ شروع شود." class="input input-bordered w-full input-primary border-gray-300" />
+		            </div>
 
-				      <!-- آدرس -->
-				      <div class="form-control">
-				        <label class="label">
-				          <span class="label-text font-semibold mb-1">آدرس کامل</span>
-				        </label>
-				        <textarea name="address" class="textarea textarea-bordered w-full h-24 textarea-primary border-gray-300" placeholder="استان، شهر، خیابان، پلاک..." required rows="3"></textarea>
-				      </div>
+		            <!-- آدرس -->
+		            <div class="form-control">
+		                <label class="label">
+		                    <span class="label-text font-semibold mb-1">آدرس کامل</span>
+		                </label>
+		                <textarea name="address" class="textarea textarea-bordered w-full h-24 textarea-primary border-gray-300" placeholder="استان، شهر، خیابان، پلاک..." required rows="3"></textarea>
+		            </div>
 
-				      <!-- تیک قوانین -->
-				      <div class="form-control">
-				        <label class="cursor-pointer flex items-center gap-1">
-				          <input id="terms" type="checkbox" class="checkbox checkbox-primary text-[#e66700]" />
-				          <span class="label-text text-sm">شرایط و قوانین خرید از سایت را می‌پذیرم.</span>
+		            <!-- تیک قوانین -->
+		            <div class="form-control">
+		                <label class="cursor-pointer flex items-center gap-1">
+		                    <input id="terms" type="checkbox" name="accept_terms" class="checkbox checkbox-primary text-[#e66700]" required />
+		                    <span class="label-text text-sm">شرایط و قوانین خرید از سایت را می‌پذیرم.</span>
 
-				        	<!-- متن یا دکمه‌ای که Modal رو باز می‌کنه -->
-							<label for="my_modal" class="cursor-pointer text-sm text-[#e66700] hover:underline">
-								(مطالعه قوانین)
-							</label>
+		                    <label for="my_modal" class="cursor-pointer text-sm text-[#e66700] hover:underline">(مطالعه قوانین)</label>
 
-							<!-- Modal -->
-							<input type="checkbox" id="my_modal" class="modal-toggle" />
-							<div class="modal" role="dialog">
-							  <div class="modal-box">
-							    <h3 class="font-bold text-lg text-[#e66700]"> شرایط و قوانین </h3>
-							    <p class="py-4">
-							    	- لطفا در وارد کردن مقادیر خواسته شده اعم از نام و نام خانوادگی و شماره تلفن دقت لازم را داشته باشید.
-									<br/>
-									- برای وارد کردن آدرس به یاد داشته باشید در ابتدا از نام استان و شهر خود استفاده کرده و سپس آدرس کامل را وارد کنید.
-									<br/>
-									- در نظر داشته باشید نام و نام خانوادگی وارد شده باید با نام صاحب کارت پرداخت کننده و شماره سیم کارت وارد شده مطابقت داشته باشد.
-									<br/>
-									- بعد از مرحله نهایی و پرداخت موفق کد پیگیری سفارش برای شما نمایش داده میشود که میتوانید با استفاده از آن  در بخش مربوطه در سایت و یا با تماس با کارشناسان فریس از وضعیت سفارش خود آگاه شوید.
-							    </p>
-							    <div class="modal-action">
-							      <label for="my_modal" class="btn">بستن</label>
-							    </div>
-							  </div>
-							</div>
+		                    <!-- Modal -->
+		                    <input type="checkbox" id="my_modal" class="modal-toggle" />
+		                    <div class="modal" role="dialog">
+		                        <div class="modal-box">
+		                            <h3 class="font-bold text-lg text-[#e66700]"> شرایط و قوانین </h3>
+		                            <p class="py-4">
+		                                - لطفا در وارد کردن مقادیر خواسته شده اعم از نام و نام خانوادگی و شماره تلفن دقت لازم را داشته باشید.
+		                                <br/>
+		                                - برای وارد کردن آدرس ابتدا از نام استان و شهر استفاده کرده و سپس آدرس کامل را وارد کنید.
+		                                <br/>
+		                                - نام و نام خانوادگی وارد شده باید با نام صاحب کارت پرداخت کننده و شماره سیم کارت مطابقت داشته باشد.
+		                                <br/>
+		                                - بعد از پرداخت موفق، کد پیگیری سفارش برای شما نمایش داده می‌شود.
+		                            </p>
+		                            <div class="modal-action">
+		                                <label for="my_modal" class="btn">بستن</label>
+		                            </div>
+		                        </div>
+		                    </div>
+		                </label>
+		                <p id="termsError" class="text-red-500 text-sm mt-1 hidden">لطفاً قوانین را بپذیرید.</p>
+		            </div>
 
-				        </label>
-				        <p id="termsError" class="text-red-500 text-sm mt-1 hidden">لطفاً قوانین را بپذیرید.</p>
-				      </div>
+		            <!-- خلاصه سفارش -->
+		            <div class="divider my-6">خلاصه سفارش</div>
+		            <div class="bg-base-200 rounded-xl p-4">
+		                <div class="flex justify-between mb-2">
+		                    <span>جمع کل محصولات</span>
+		                    <span class="font-semibold text-primary">{{ total }} تومان</span>
+		                </div>
+		                <div class="flex justify-between mb-2">
+		                    <span>هزینه ارسال</span>
+		                    <span class="font-semibold">رایگان</span>
+		                </div>
+		                <div class="flex justify-between font-bold text-lg mt-2 border-t pt-3">
+		                    <span>مبلغ قابل پرداخت</span>
+		                    <span class="text-success">{{ total }} تومان</span>
+		                </div>
+		            </div>
 
-				      <!-- خلاصه سفارش -->
-				      <div class="divider my-6">خلاصه سفارش</div>
-				      <div class="bg-base-200 rounded-xl p-4">
-				        <div class="flex justify-between mb-2">
-				          <span>جمع کل محصولات</span>
-				          <span class="font-semibold text-primary">{{ total }} تومان</span>
-				        </div>
-				        <div class="flex justify-between mb-2">
-				          <span>هزینه ارسال</span>
-				          <span class="font-semibold">رایگان</span>
-				        </div>
-				        <div class="flex justify-between font-bold text-lg mt-2 border-t pt-3">
-				          <span>مبلغ قابل پرداخت</span>
-				          <span class="text-success">{{ total }} تومان</span>
-				        </div>
-				      </div>
+		            <!-- دکمه پرداخت -->
+		            <button type="submit" class="btn btn-primary w-full text-lg mt-4">پرداخت آنلاین 💳</button>
+		        </form>
+		    </div>
+		</div>
 
-				    	<!-- دکمه پرداخت -->
-					    <form action="{% url 'zarinpal_payment' order_id=order.id %}" method="get" class="mt-6">
-						    <button type="submit" class="btn btn-primary w-full text-lg mt-4">
-						        پرداخت آنلاین 💳
-						    </button>
-						</form>
-				    </form>
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+			    const nameInput = document.getElementById("full_name");
+			    const phoneInput = document.getElementById("phone");
+			    const termsCheckbox = document.getElementById("terms");
+			    const termsError = document.getElementById("termsError");
 
-				</div>
-			</div>
-			<script>
-				document.addEventListener("DOMContentLoaded", function() {
-				  const nameInput = document.getElementById("full_name");
-				  const phoneInput = document.getElementById("phone");
-				  const termsCheckbox = document.getElementById("terms");
-				  const termsError = document.getElementById("termsError");
+			    // فقط حروف مجاز برای نام و نام خانوادگی
+			    nameInput.addEventListener("input", function() {
+			        this.value = this.value.replace(/[^آ-یa-zA-Z\s]/g, "");
+			    });
 
-				  // فقط حروف مجاز برای نام و نام خانوادگی
-				  nameInput.addEventListener("input", function() {
-				    this.value = this.value.replace(/[^آ-یa-zA-Z\s]/g, "");
-				  });
+			    // فقط عدد مجاز برای شماره تماس
+			    phoneInput.addEventListener("input", function() {
+			        this.value = this.value.replace(/[^0-9]/g, "");
+			        if (this.value.length > 11) {
+			            this.value = this.value.slice(0, 11);
+			        }
+			    });
 
-				  // فقط عدد مجاز برای شماره تماس
-				  phoneInput.addEventListener("input", function() {
-				    this.value = this.value.replace(/[^0-9]/g, "");
-				    if (this.value.length > 11) {
-				      this.value = this.value.slice(0, 11);
-				    }
-				  });
+			    // اعتبارسنجی نهایی
+			    document.getElementById("checkoutForm").addEventListener("submit", function(e) {
+			        let valid = true;
+			        const nameValue = nameInput.value.trim();
+			        const phoneValue = phoneInput.value.trim();
 
-				  // اعتبارسنجی نهایی
-				  document.getElementById("checkoutForm").addEventListener("submit", function(e) {
-				    let valid = true;
-				    const nameValue = nameInput.value.trim();
-				    const phoneValue = phoneInput.value.trim();
+			        if (nameValue.length < 3) {
+			            alert("نام و نام خانوادگی باید حداقل ۳ حرف باشد.");
+			            valid = false;
+			        }
 
-				    // چک کردن نام
-				    if (nameValue.length < 3) {
-				      alert("نام و نام خانوادگی باید حداقل ۳ حرف باشد.");
-				      valid = false;
-				    }
+			        if (!/^0\d{10}$/.test(phoneValue)) {
+			            alert("شماره تلفن باید ۱۱ رقم و با ۰ شروع شود.");
+			            valid = false;
+			        }
 
-				    // چک کردن شماره تماس
-				    if (!/^0\d{10}$/.test(phoneValue)) {
-				      alert("شماره تلفن باید ۱۱ رقم و با ۰ شروع شود.");
-				      valid = false;
-				    }
+			        if (!termsCheckbox.checked) {
+			            termsError.classList.remove("hidden");
+			            valid = false;
+			        } else {
+			            termsError.classList.add("hidden");
+			        }
 
-				    // چک کردن تیک قوانین
-				    if (!termsCheckbox.checked) {
-				      termsError.classList.remove("hidden");
-				      valid = false;
-				    } else {
-				      termsError.classList.add("hidden");
-				    }
-
-				    if (!valid) e.preventDefault();
-				  });
-				});
-			</script>
-		<!-- /MainContent -->
+			        if (!valid) e.preventDefault();
+			    });
+			});
+		</script>
 	{% endblock %}
