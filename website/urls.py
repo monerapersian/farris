@@ -19,4 +19,5 @@ urlpatterns = [
     path('order-success/<str:tracking_code>/', views.order_success, name='order_success'),
     path('payment/<int:order_id>/', views.zarinpal_payment, name='zarinpal_payment'),
     path('payment/verify/<int:order_id>/', views.zarinpal_verify, name='zarinpal_verify'),
+    path('search/', views.search_view, name='search'),
 ]

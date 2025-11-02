@@ -1,0 +1,44 @@
+{% extends 'master.html' %}
+{% load static %}
+{% block title %}محصولات | {% endblock %}
+{% load jalali_tags %}
+
+
+	{% block content %}
+		<!-- MainContent -->
+			<div class="container mx-auto p-4 md:flex gap-6">	
+				<main class="w-full md:w-3/4">
+				    <!-- نوار مرتب سازی -->
+				    <div class="flex flex-wrap justify-between items-center mb-4 bg-white p-2 rounded shadow">
+				      <h2 class="text-xl font-bold flex"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22" width="22" height="22" fill="currentColor"><path d="M10 18H14V16H10V18ZM3 6V8H21V6H3ZM6 13H18V11H6V13Z"></path></svg> نتایج جستجو برای "{{ query }}"</h2>
+				    </div>
+
+				    <!-- محصولات -->
+				    {% if products %}
+				    	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+							{% for product in products %}
+						      	<div class="card bg-base-100 shadow-md p-1 rounded">
+							      <figure>
+							        <img src="{{ product.image.url }}" alt="{{ product.title }}" class="rounded">
+							      </figure>
+							      <div class="card-body text-center p-1">
+							        <h3 class="card-title">{{ product.title }}</h3>
+							        <div class="flex gap-1 mt-2">
+							        	<p class="text-lg text-neutral font-semibold flex">تومان  {{ product.price }}</p>
+							        </div>
+							        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 card-actions justify-center mt-2">
+							          <a href="{% url 'product_detail' product.slug %}" class="btn btn-md btn-warning border-[#e66700] bg-[#e66700] text-[#542600]">نمایش محصول</a>
+							          <a href="" class="btn btn-md btn-success">خرید</a>
+							        </div>
+							      </div>
+							    </div>
+						    {% endfor %}
+						</div>
+					{% else %}
+						<p class="text-gray-500 mt-10">هیچ محصولی با این عبارت پیدا نشد 😕</p>
+					{% endif %}
+
+				</main>
+			</div>
+		<!-- /MainContent -->
+	{% endblock %}

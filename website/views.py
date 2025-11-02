@@ -1,3 +1,4 @@
+from django.db.models import Q
 import requests
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_POST
@@ -117,7 +118,7 @@ def article_detail(request, slug):
 def tutorial(request):
     tutorials = Course.objects.all().order_by('-created_at')
     special_articles = Article.objects.filter(special=True).order_by('-created_at')[:4]
-    
+
     paginator = Paginator(tutorials, 6)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
@@ -137,6 +138,22 @@ def call_us(request):
         'categories': categories,
     }
     return render(request, 'call_us.html' , context)
+
+
+def search_view(request):
+    query = request.GET.get('q')  # q اسم input جستجو
+    products = []
+
+    if query:
+        products = Product.objects.filter(
+            Q(title__icontains=query) | Q(description__icontains=query)
+        ).order_by('-created_at')
+
+    context = {
+        'query': query,
+        'products': products,
+    }
+    return render(request, 'search_results.html', context)
 
 
 def add_to_cart(request, product_id):
