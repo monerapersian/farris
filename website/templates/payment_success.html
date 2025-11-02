@@ -1,0 +1,37 @@
+{% extends 'master.html' %}
+{% load static %}
+{% block title %} پرداخت موفق | {% endblock %}
+{% load jalali_tags %}
+
+
+	{% block content %}
+		<!-- MainContent -->
+			<main class="flex items-center justify-center min-h-[70vh] px-4">
+			  <div class="card bg-base-100 shadow-2xl p-8 max-w-md text-center animate-fadeIn">
+			    <div class="text-green-500 text-6xl mb-4">
+			      ✅
+			    </div>
+
+			    <h1 class="text-2xl font-bold mb-2 text-green-600">پرداخت با موفقیت انجام شد!</h1>
+			    <p class="text-gray-600 mb-4">سفارش شما با موفقیت ثبت شد. کارشناسان ما به‌زودی با شما تماس خواهند گرفت.</p>
+
+			    <div class="bg-green-100 text-green-800 p-3 rounded-xl font-semibold mb-6">
+			      کد پیگیری شما:
+			      <span class="ltr text-green-700">{{ order.tracking_code }}</span>
+			    </div>
+
+			    <div class="flex justify-between text-sm text-gray-700 mb-4">
+			      <span>نام:</span>
+			      <span>{{ order.full_name }}</span>
+			    </div>
+
+			    <div class="flex justify-between text-sm text-gray-700 mb-4">
+			      <span>مبلغ کل:</span>
+			      <span>{{ order.total_price }} تومان</span>
+			    </div>
+
+			    <a href="/" class="btn bg-[#e66700] border-none text-white hover:bg-[#cc5800] w-full">بازگشت به صفحه اصلی</a>
+			  </div>
+			</main>
+		<!-- /MainContent -->
+	{% endblock %}

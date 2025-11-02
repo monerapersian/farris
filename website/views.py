@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_POST
-from .models import Category, Product, Article, Course
+from .models import Category, Product, Article, Course, Order, OrderItem
 from django.core.paginator import Paginator
 
 
@@ -190,11 +190,65 @@ def decrease_quantity(request, product_id):
     return redirect('cart_page')
 
 
-def checkout_page(request):
+def checkout_view(request):
     cart = request.session.get('cart', {})
     total = sum(item['price'] * item['quantity'] for item in cart.values())
+
+    if not cart:
+        messages.warning(request, "سبد خرید شما خالی است!")
+        return redirect('cart_page')
+
+    if request.method == 'POST':
+        full_name = request.POST.get('full_name')
+        phone = request.POST.get('phone')
+        address = request.POST.get('address')
+
+        if not full_name or not phone or not address:
+            messages.error(request, "لطفاً تمام فیلدها را پر کنید.")
+            return redirect('checkout')
+
+        total_price = sum(item['price'] * item['quantity'] for item in cart.values())
+
+        order = Order.objects.create(
+            full_name=full_name,
+            phone=phone,
+            address=address,
+            total_price=total_price,
+        )
+
+        for item in cart.values():
+            OrderItem.objects.create(
+                order=order,
+                product_title=item['title'],
+                price=item['price'],
+                quantity=item['quantity'],
+                image=item.get('image', '')
+            )
+
+        request.session['cart'] = {}
+        request.session.modified = True
+
+        messages.success(request, f"سفارش شما با موفقیت ثبت شد. کد پیگیری: {order.tracking_code}")
+        return redirect('order_success', tracking_code=order.tracking_code)
 
     return render(request, 'checkout.html', {
         'cart': cart,
         'total': total,
     })
+
+
+def order_success(request, tracking_code):
+    order = get_object_or_404(Order, tracking_code=tracking_code)
+    return render(request, 'order_success.html', {'order': order})
+
+
+def payment_success(request, tracking_code):
+    order = Order.objects.filter(tracking_code=tracking_code).first()
+    return render(request, 'payment_success.html', {'order': order})
+
+
+def payment_failed(request, tracking_code=None):
+    order = None
+    if tracking_code:
+        order = Order.objects.filter(tracking_code=tracking_code).first()
+    return render(request, 'payment_failed.html', {'order': order})

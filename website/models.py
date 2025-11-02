@@ -1,4 +1,5 @@
 from django.db import models
+import uuid
 
 
 # --------------------
@@ -80,3 +81,40 @@ class Course(models.Model):
 
     def __str__(self):
         return self.title
+
+
+from django.db import models
+
+
+class Order(models.Model):
+    full_name = models.CharField(max_length=100, verbose_name="نام و نام خانوادگی")
+    phone = models.CharField(max_length=11, verbose_name="شماره تماس")
+    address = models.TextField(verbose_name="آدرس")
+    total_price = models.DecimalField(max_digits=12, decimal_places=0, verbose_name="جمع فاکتور")
+    tracking_code = models.CharField(
+        max_length=12,
+        unique=True,
+        editable=False,
+        verbose_name="کد پیگیری"
+    )
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="تاریخ ثبت سفارش")
+
+    def save(self, *args, **kwargs):
+        # ساخت کد پیگیری به‌صورت خودکار (در اولین ذخیره)
+        if not self.tracking_code:
+            self.tracking_code = str(uuid.uuid4().hex[:12]).upper()
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f"سفارش {self.full_name} ({self.tracking_code})"
+
+
+class OrderItem(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name="items", verbose_name="سفارش")
+    product_title = models.CharField(max_length=200, verbose_name="نام محصول")
+    price = models.DecimalField(max_digits=12, decimal_places=0, verbose_name="قیمت واحد")
+    quantity = models.PositiveIntegerField(default=1, verbose_name="تعداد")
+    image = models.URLField(blank=True, null=True, verbose_name="تصویر محصول")
+
+    def __str__(self):
+        return f"{self.product_title} (x{self.quantity})"
