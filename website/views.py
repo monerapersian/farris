@@ -6,12 +6,14 @@ from decimal import Decimal
 from .models import Category, Product, Article, Course, Order, OrderItem
 from django.core.paginator import Paginator
 
-
-# MERCHANT_ID = "8192cbc6-b8c0-4e14-acbf-474e7d9b1dcb"
-MERCHANT_ID = "34e4ca8c-11fe-4bb5-a897-9f73d78f4dac"
-ZARINPAL_REQUEST_URL = "https://sandbox.zarinpal.com/pg/v4/payment/request.json"
-ZARINPAL_START_URL = "https://sandbox.zarinpal.com/pg/StartPay/"
-ZARINPAL_VERIFY_URL = "https://sandbox.zarinpal.com/pg/v4/payment/verify.json"
+# MERCHANT_ID = "34e4ca8c-11fe-4bb5-a897-9f73d78f4dac"
+# ZARINPAL_REQUEST_URL = "https://sandbox.zarinpal.com/pg/v4/payment/request.json"
+# ZARINPAL_START_URL = "https://sandbox.zarinpal.com/pg/StartPay/"
+# ZARINPAL_VERIFY_URL = "https://sandbox.zarinpal.com/pg/v4/payment/verify.json"
+MERCHANT_ID = "8192cbc6-b8c0-4e14-acbf-474e7d9b1dcb"
+ZARINPAL_REQUEST_URL = "https://api.zarinpal.com/pg/v4/payment/request.json"
+ZARINPAL_START_URL = "https://www.zarinpal.com/pg/StartPay/"
+ZARINPAL_VERIFY_URL = "https://api.zarinpal.com/pg/v4/payment/verify.json"
 
 
 def home(request):
