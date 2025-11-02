@@ -97,10 +97,10 @@ class Order(models.Model):
         editable=False,
         verbose_name="کد پیگیری"
     )
+    is_paid = models.BooleanField(default=False, verbose_name="پرداخت شده")  # ← اضافه کن
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="تاریخ ثبت سفارش")
 
     def save(self, *args, **kwargs):
-        # ساخت کد پیگیری به‌صورت خودکار (در اولین ذخیره)
         if not self.tracking_code:
             self.tracking_code = str(uuid.uuid4().hex[:12]).upper()
         super().save(*args, **kwargs)
