@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Product, Article, Course
+from .models import Category, Product, Article, Course, Order, OrderItem
 
 
 # --------------------
@@ -38,4 +38,20 @@ class CourseAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
     list_filter = ("special",)
     search_fields = ("title",)
+    ordering = ("-created_at",)
+
+
+@admin.register(Order)
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ("full_name", "phone", "total_price", "created_at")
+    list_filter = ("full_name",)
+    search_fields = ("full_name",)
+    ordering = ("-created_at",)
+
+
+@admin.register(OrderItem)
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ("order", "product_title", "quantity", "price")
+    list_filter = ("order",)
+    search_fields = ("order",)
     ordering = ("-created_at",)
