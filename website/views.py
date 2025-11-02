@@ -202,12 +202,10 @@ def decrease_quantity(request, product_id):
 def checkout_view(request):
     cart = request.session.get('cart', {})
 
-    # اگر سبد خرید خالی بود، کاربر رو برگردون به سبد خرید
     if not cart:
         messages.warning(request, "سبد خرید شما خالی است!")
         return redirect('cart_page')
 
-    # محاسبه مجموع فاکتور
     total_price = sum(Decimal(item['price']) * item['quantity'] for item in cart.values())
 
     if request.method == 'POST':
@@ -225,26 +223,45 @@ def checkout_view(request):
             messages.error(request, "برای ادامه باید قوانین را بپذیرید.")
             return redirect('checkout')
 
-        # ایجاد سفارش موقت با وضعیت پرداخت نشده
-        order = Order.objects.create(
-            full_name=full_name,
-            phone=phone,
-            address=address,
-            total_price=total_price,
-            is_paid=False
-        )
+        # ایجاد یا بروزرسانی Order (در صورت وجود order_id)
+        order_id = request.POST.get('order_id')
+        if order_id:
+            order = get_object_or_404(Order, id=order_id)
+            order.full_name = full_name
+            order.phone = phone
+            order.address = address
+            order.total_price = total_price
+            order.is_paid = False
+            order.save()
+        else:
+            order = Order.objects.create(
+                full_name=full_name,
+                phone=phone,
+                address=address,
+                total_price=total_price,
+                is_paid=False
+            )
 
-        # ذخیره order_id برای ارسال به قالب یا پرداخت
+        # بعد از ثبت اطلاعات، قالب Checkout را با order باز می‌کنیم
         return render(request, 'checkout.html', {
             'cart': cart,
             'total': total_price,
             'order': order,
         })
 
-    # اگر GET بود فقط صفحه فرم رو نمایش بده
+    # اگر GET بود، یک Order موقت بساز تا order.id همیشه موجود باشد
+    order = Order.objects.create(
+        full_name='',
+        phone='',
+        address='',
+        total_price=total_price,
+        is_paid=False
+    )
+
     return render(request, 'checkout.html', {
         'cart': cart,
         'total': total_price,
+        'order': order,
     })
 
 

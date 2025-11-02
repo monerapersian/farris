@@ -15,6 +15,9 @@
 
 				    <!-- فرم اطلاعات -->
 				    <form id="checkoutForm" class="space-y-4">
+				    	{% csrf_token %}
+					    <!-- hidden order_id -->
+					    <input type="hidden" name="order_id" value="{{ order.id }}">
 				      <!-- نام و نام خانوادگی -->
 				      <div class="form-control">
 				        <label class="label">
@@ -92,7 +95,7 @@
 				      </div>
 
 				    	<!-- دکمه پرداخت -->
-				    	<form action="{% url 'zarinpal_payment' order_id=order.id %}" method="get" class="mt-6">
+					    <form action="{% url 'zarinpal_payment' order_id=order.id %}" method="get" class="mt-6">
 						    <button type="submit" class="btn btn-primary w-full text-lg mt-4">
 						        پرداخت آنلاین 💳
 						    </button>
