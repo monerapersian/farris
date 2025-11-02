@@ -41,17 +41,30 @@ class CourseAdmin(admin.ModelAdmin):
     ordering = ("-created_at",)
 
 
+# @admin.register(Order)
+# class OrderAdmin(admin.ModelAdmin):
+#     list_display = ("full_name", "phone", "total_price", "created_at")
+#     list_filter = ("full_name",)
+#     search_fields = ("full_name",)
+#     ordering = ("-created_at",)
+
+
+# @admin.register(OrderItem)
+# class OrderAdmin(admin.ModelAdmin):
+#     list_display = ("order", "product_title", "quantity", "price")
+#     list_filter = ("order",)
+#     search_fields = ("order",)
+#     ordering = ("-order",)
+
+
+# تعریف Inline برای نمایش محصولات هر سفارش
+class OrderItemInline(admin.TabularInline):
+    model = OrderItem
+    extra = 0  # هیچ ردیف اضافی ایجاد نشه
+    readonly_fields = ('product_title', 'quantity', 'price')  # فقط نمایش داده بشه
+
+# ثبت مدل Order و اتصال Inline
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ("full_name", "phone", "total_price", "created_at")
-    list_filter = ("full_name",)
-    search_fields = ("full_name",)
-    ordering = ("-created_at",)
-
-
-@admin.register(OrderItem)
-class OrderAdmin(admin.ModelAdmin):
-    list_display = ("order", "product_title", "quantity", "price")
-    list_filter = ("order",)
-    search_fields = ("order",)
-    ordering = ("-order",)
+    list_display = ('full_name', 'tracking_code', 'total_price', 'created_at', 'phone')
+    inlines = [OrderItemInline]
