@@ -1,7 +1,16 @@
+import requests
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_POST
+from django.contrib import messages
+from decimal import Decimal
 from .models import Category, Product, Article, Course, Order, OrderItem
 from django.core.paginator import Paginator
+
+
+MERCHANT_ID = "8192cbc6-b8c0-4e14-acbf-474e7d9b1dcb"
+ZARINPAL_REQUEST_URL = "https://sandbox.zarinpal.com/pg/v4/payment/request.json"
+ZARINPAL_START_URL = "https://www.zarinpal.com/pg/StartPay/"
+ZARINPAL_VERIFY_URL = "https://sandbox.zarinpal.com/pg/v4/payment/verify.json"
 
 
 def home(request):
@@ -192,48 +201,50 @@ def decrease_quantity(request, product_id):
 
 def checkout_view(request):
     cart = request.session.get('cart', {})
-    total = sum(item['price'] * item['quantity'] for item in cart.values())
 
+    # اگر سبد خرید خالی بود، کاربر رو برگردون به سبد خرید
     if not cart:
         messages.warning(request, "سبد خرید شما خالی است!")
         return redirect('cart_page')
+
+    # محاسبه مجموع فاکتور
+    total_price = sum(Decimal(item['price']) * item['quantity'] for item in cart.values())
 
     if request.method == 'POST':
         full_name = request.POST.get('full_name')
         phone = request.POST.get('phone')
         address = request.POST.get('address')
+        accept_terms = request.POST.get('accept_terms')  # تیک قبول قوانین
 
+        # اعتبارسنجی ساده
         if not full_name or not phone or not address:
             messages.error(request, "لطفاً تمام فیلدها را پر کنید.")
             return redirect('checkout')
 
-        total_price = sum(item['price'] * item['quantity'] for item in cart.values())
+        if accept_terms != 'on':
+            messages.error(request, "برای ادامه باید قوانین را بپذیرید.")
+            return redirect('checkout')
 
+        # ایجاد سفارش موقت با وضعیت پرداخت نشده
         order = Order.objects.create(
             full_name=full_name,
             phone=phone,
             address=address,
             total_price=total_price,
+            is_paid=False
         )
 
-        for item in cart.values():
-            OrderItem.objects.create(
-                order=order,
-                product_title=item['title'],
-                price=item['price'],
-                quantity=item['quantity'],
-                image=item.get('image', '')
-            )
+        # ذخیره order_id برای ارسال به قالب یا پرداخت
+        return render(request, 'checkout.html', {
+            'cart': cart,
+            'total': total_price,
+            'order': order,
+        })
 
-        request.session['cart'] = {}
-        request.session.modified = True
-
-        messages.success(request, f"سفارش شما با موفقیت ثبت شد. کد پیگیری: {order.tracking_code}")
-        return redirect('order_success', tracking_code=order.tracking_code)
-
+    # اگر GET بود فقط صفحه فرم رو نمایش بده
     return render(request, 'checkout.html', {
         'cart': cart,
-        'total': total,
+        'total': total_price,
     })
 
 
@@ -252,3 +263,63 @@ def payment_failed(request, tracking_code=None):
     if tracking_code:
         order = Order.objects.filter(tracking_code=tracking_code).first()
     return render(request, 'payment_failed.html', {'order': order})
+
+
+def zarinpal_payment(request, order_id):
+    order = Order.objects.get(id=order_id)
+    callback_url = request.build_absolute_uri(f"/payment/verify/{order.id}/")
+
+    data = {
+        "merchant_id": MERCHANT_ID,
+        "amount": int(order.total_price),  # مبلغ به تومان
+        "callback_url": callback_url,
+        "description": f"خرید از فریس - سفارش {order.tracking_code}",
+        "metadata": {"mobile": order.phone}
+    }
+
+    try:
+        response = requests.post(ZARINPAL_REQUEST_URL, json=data, timeout=10)
+        result = response.json()
+        if result['data']['code'] == 100:
+            authority = result['data']['authority']
+            return redirect(f"{ZARINPAL_START_URL}{authority}")
+        else:
+            messages.error(request, "خطا در ایجاد تراکنش، لطفاً دوباره تلاش کنید.")
+            return redirect('checkout')
+    except Exception as e:
+        messages.error(request, f"خطای ارتباط با زرین‌پال: {str(e)}")
+        return redirect('checkout')
+
+
+def zarinpal_verify(request, order_id):
+    order = Order.objects.get(id=order_id)
+    status = request.GET.get('Status')
+    authority = request.GET.get('Authority')
+
+    if status != 'OK':
+        messages.error(request, "پرداخت شما ناموفق بود.")
+        return redirect('checkout')
+
+    data = {
+        "merchant_id": MERCHANT_ID,
+        "amount": int(order.total_price),
+        "authority": authority
+    }
+
+    try:
+        response = requests.post(ZARINPAL_VERIFY_URL, json=data, timeout=10)
+        result = response.json()
+        if result['data']['code'] == 100:
+            # پرداخت موفق
+            order.is_paid = True
+            order.save()
+            # پاک کردن سبد خرید
+            request.session['cart'] = {}
+            request.session.modified = True
+            return redirect('order_success', tracking_code=order.tracking_code)
+        else:
+            messages.error(request, "پرداخت شما ناموفق بود.")
+            return redirect('checkout')
+    except Exception as e:
+        messages.error(request, f"خطا در تایید پرداخت: {str(e)}")
+        return redirect('checkout')
