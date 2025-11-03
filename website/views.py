@@ -380,22 +380,20 @@ def zarinpal_verify(request, order_id):
 
 
 def agency_request_view(request):
-    if request.method == "POST":
-        full_name = request.POST.get('full_name')
-        phone = request.POST.get('phone')
-        city = request.POST.get('city')
+    if request.method == "POST" and request.headers.get('x-requested-with') == 'XMLHttpRequest':
+        name = request.POST.get("full_name", "").strip()
+        phone = request.POST.get("phone", "").strip()
+        city = request.POST.get("city", "").strip()
 
-        # اعتبارسنجی ساده
-        if not full_name or not phone or not city:
-            messages.error(request, "لطفاً همه‌ی فیلدها را پر کنید.")
-            return redirect(request.META.get('HTTP_REFERER', '/'))
+        # اعتبارسنجی ساده سرور
+        if not all([name, phone, city]):
+            return JsonResponse({"success": False})
 
         AgencyRequest.objects.create(
-            full_name=full_name,
+            full_name=name,
             phone=phone,
-            city=city,
+            city=city
         )
-        messages.success(request, "درخواست شما با موفقیت ثبت شد. در اسرع وقت با شما تماس خواهیم گرفت.")
-        return redirect(request.META.get('HTTP_REFERER', '/'))
+        return JsonResponse({"success": True})
 
-    return redirect('/')
+    return JsonResponse({"success": False})

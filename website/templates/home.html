@@ -56,7 +56,7 @@
 			</section>
 		<!-- /HeroSection -->
 
-		<!-- مودال -->
+		<!-- مودال درخواست نمایندگی -->
 		<input type="checkbox" id="agency_modal" class="modal-toggle" />
 		<div class="modal fixed inset-0 z-[9999] flex items-center justify-center bg-black/50 backdrop-blur-sm">
 		  <div class="modal-box max-w-md w-[90%]">
@@ -64,28 +64,25 @@
 
 		    <form id="agencyForm" method="post" action="{% url 'agency_request' %}" novalidate>
 		      {% csrf_token %}
-		      
+
 		      <!-- نام -->
 		      <div class="form-control mb-3">
 		        <input id="full_name" name="full_name" type="text" maxlength="100"
-		               placeholder="نام و نام خانوادگی" class="input input-bordered w-full"
-		               required pattern="^[آ-یa-zA-Z\s]+$">
+		               placeholder="نام و نام خانوادگی" class="input input-bordered w-full" required pattern="^[آ-یa-zA-Z\s]+$">
 		        <p id="nameError" class="text-red-500 text-sm mt-1 hidden"></p>
 		      </div>
 
 		      <!-- شماره تماس -->
 		      <div class="form-control mb-3">
 		        <input id="phone" name="phone" type="tel" maxlength="11"
-		               placeholder="شماره تماس" class="input input-bordered w-full"
-		               required pattern="^0\d{10}$">
+		               placeholder="شماره تماس" class="input input-bordered w-full" required pattern="^0\d{10}$">
 		        <p id="phoneError" class="text-red-500 text-sm mt-1 hidden"></p>
 		      </div>
 
 		      <!-- شهر -->
 		      <div class="form-control mb-3">
 		        <input id="city" name="city" type="text" maxlength="100"
-		               placeholder="شهر" class="input input-bordered w-full"
-		               required pattern="^[آ-یa-zA-Z\s]+$">
+		               placeholder="شهر" class="input input-bordered w-full" required pattern="^[آ-یa-zA-Z\s]+$">
 		        <p id="cityError" class="text-red-500 text-sm mt-1 hidden"></p>
 		      </div>
 
@@ -98,14 +95,16 @@
 		  </div>
 		</div>
 
-		<!-- پیغام موفقیت -->
-		{% if messages %}
-		  <div class="toast toast-top toast-center z-[10000]">
-		    {% for message in messages %}
-		      <div class="alert alert-success text-center font-bold">{{ message }}</div>
-		    {% endfor %}
+		<!-- پیغام موفقیت Toast DaisyUI -->
+		<div id="agencyToast" class="toast toast-top toast-center hidden z-[10000]">
+		  <div class="alert alert-success shadow-lg text-center">
+		    <span class="font-bold text-lg">
+		      درخواست نمایندگی شما ثبت شد.<br>
+		      کارشناسان فریس به‌زودی با شما تماس خواهند گرفت.
+		    </span>
 		  </div>
-		{% endif %}
+		</div>
+
 		<script>
 			document.getElementById("agencyForm").addEventListener("submit", function(e) {
 			  e.preventDefault(); // جلوگیری از submit پیش‌فرض
@@ -163,41 +162,27 @@
 
 			  if (!valid) return; // اگر خطا داشتیم، ارسال متوقف میشه
 
-			  // ✅ ارسال فرم با AJAX
+			  // ارسال فرم با AJAX
 			  const formData = new FormData(this);
 
 			  fetch(this.action, {
 			    method: "POST",
 			    body: formData,
+			    headers: {
+			      "X-Requested-With": "XMLHttpRequest"
+			    },
 			  })
 			  .then(res => res.json())
 			  .then(data => {
 			    if (data.success) {
 			      // بستن مودال
-			      document.getElementById("agencyModalCheckbox").checked = false;
+			      document.getElementById("agency_modal").checked = false;
 			      this.reset();
 
 			      // نمایش toast
-			      const toast = document.createElement("div");
-			      toast.className = `
-			        fixed inset-0 flex items-center justify-center z-[9999]
-			        transition-opacity duration-500
-			      `;
-			      toast.innerHTML = `
-			        <div class="alert alert-success shadow-lg max-w-md text-center animate-fade-in">
-			          <span class="font-bold text-lg">
-			            درخواست نمایندگی شما ثبت شد.<br>
-			            کارشناسان فریس به‌زودی با شما تماس خواهند گرفت.
-			          </span>
-			        </div>
-			      `;
-			      document.body.appendChild(toast);
-
-			      // fade-out بعد از ۴ ثانیه
-			      setTimeout(() => {
-			        toast.style.opacity = "0";
-			        setTimeout(() => toast.remove(), 500);
-			      }, 4000);
+			      const toast = document.getElementById("agencyToast");
+			      toast.classList.remove("hidden");
+			      setTimeout(() => toast.classList.add("hidden"), 4000);
 			    } else {
 			      alert("خطایی رخ داده است. لطفاً دوباره تلاش کنید.");
 			    }
