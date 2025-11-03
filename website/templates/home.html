@@ -108,6 +108,7 @@
 		{% endif %}
 		<script>
 			document.getElementById("agencyForm").addEventListener("submit", function(e) {
+			  e.preventDefault(); // جلوگیری از submit پیش‌فرض
 			  let valid = true;
 
 			  const name = document.getElementById("full_name");
@@ -118,11 +119,12 @@
 			  const phoneError = document.getElementById("phoneError");
 			  const cityError = document.getElementById("cityError");
 
+			  // پاک کردن خطاهای قبلی
 			  nameError.classList.add("hidden");
 			  phoneError.classList.add("hidden");
 			  cityError.classList.add("hidden");
 
-			  // نام و نام خانوادگی
+			  // اعتبارسنجی نام
 			  if (name.value.trim() === "") {
 			    nameError.textContent = "لطفاً نام خود را وارد کنید.";
 			    nameError.classList.remove("hidden");
@@ -159,7 +161,51 @@
 			    valid = false;
 			  }
 
-			  if (!valid) e.preventDefault();
+			  if (!valid) return; // اگر خطا داشتیم، ارسال متوقف میشه
+
+			  // ✅ ارسال فرم با AJAX
+			  const formData = new FormData(this);
+
+			  fetch(this.action, {
+			    method: "POST",
+			    body: formData,
+			  })
+			  .then(res => res.json())
+			  .then(data => {
+			    if (data.success) {
+			      // بستن مودال
+			      document.getElementById("agencyModalCheckbox").checked = false;
+			      this.reset();
+
+			      // نمایش toast
+			      const toast = document.createElement("div");
+			      toast.className = `
+			        fixed inset-0 flex items-center justify-center z-[9999]
+			        transition-opacity duration-500
+			      `;
+			      toast.innerHTML = `
+			        <div class="alert alert-success shadow-lg max-w-md text-center animate-fade-in">
+			          <span class="font-bold text-lg">
+			            درخواست نمایندگی شما ثبت شد.<br>
+			            کارشناسان فریس به‌زودی با شما تماس خواهند گرفت.
+			          </span>
+			        </div>
+			      `;
+			      document.body.appendChild(toast);
+
+			      // fade-out بعد از ۴ ثانیه
+			      setTimeout(() => {
+			        toast.style.opacity = "0";
+			        setTimeout(() => toast.remove(), 500);
+			      }, 4000);
+			    } else {
+			      alert("خطایی رخ داده است. لطفاً دوباره تلاش کنید.");
+			    }
+			  })
+			  .catch(err => {
+			    console.error(err);
+			    alert("ارتباط با سرور برقرار نشد.");
+			  });
 			});
 		</script>
 
