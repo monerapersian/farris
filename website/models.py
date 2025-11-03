@@ -126,3 +126,43 @@ class AgencyRequest(models.Model):
 
     def __str__(self):
         return f"{self.full_name} - {self.city}"
+
+
+def agency_request_view(request):
+    if request.method == 'POST':
+        full_name = request.POST.get('full_name', '').strip()
+        phone = request.POST.get('phone', '').strip()
+        city = request.POST.get('city', '').strip()
+
+        errors = {}
+
+        # اعتبارسنجی سمت سرور
+        if not full_name:
+            errors['full_name'] = "نام و نام خانوادگی الزامی است."
+        elif not all(ch.isalpha() or ch.isspace() for ch in full_name):
+            errors['full_name'] = "فقط حروف مجاز هستند."
+        elif len(full_name) > 100:
+            errors['full_name'] = "حداکثر طول نام ۱۰۰ کاراکتر است."
+
+        if not phone:
+            errors['phone'] = "شماره تماس الزامی است."
+        elif not phone.isdigit() or not phone.startswith("0") or len(phone) != 11:
+            errors['phone'] = "شماره تماس باید با ۰ شروع شود و ۱۱ رقم باشد."
+
+        if not city:
+            errors['city'] = "نام شهر الزامی است."
+        elif not all(ch.isalpha() or ch.isspace() for ch in city):
+            errors['city'] = "فقط حروف مجاز هستند."
+        elif len(city) > 100:
+            errors['city'] = "حداکثر طول نام شهر ۱۰۰ کاراکتر است."
+
+        # اگر خطا داشتیم، برگرد با پیغام‌ها
+        if errors:
+            return render(request, 'includes/agency_modal.html', {'errors': errors, 'full_name': full_name, 'phone': phone, 'city': city})
+
+        # در غیر این صورت، ثبت در دیتابیس
+        AgencyRequest.objects.create(full_name=full_name, phone=phone, city=city)
+        messages.success(request, "درخواست نمایندگی شما ثبت شد. کارشناسان فریس به زودی با شما تماس خواهند گرفت.")
+        return redirect(request.META.get('HTTP_REFERER', '/'))
+
+    return redirect('/')
