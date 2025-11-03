@@ -34,36 +34,6 @@
 
 						<label for="agency_modal" class="btn border-0 bg-[#e66700] text-white hover:bg-[#b25204]">اخذ نمایندگی</label>
 
-						<!-- Modal -->
-						<input type="checkbox" id="agency_modal" class="modal-toggle" />
-						<div class="modal" role="dialog">
-						  <div class="modal-box">
-						    <h3 class="font-bold text-lg text-[#e66700] mb-4">درخواست اخذ نمایندگی</h3>
-
-						    <form method="post" action="{% url 'agency_request' %}" class="flex flex-col gap-3">
-						      {% csrf_token %}
-						      <input name="full_name" type="text" placeholder="نام و نام خانوادگی" class="input input-bordered w-full" required>
-						      <input name="phone" type="tel" placeholder="شماره تماس" class="input input-bordered w-full" pattern="^0\d{10}$" title="شماره باید با ۰ شروع شود و ۱۱ رقم باشد" required>
-						      <input name="city" type="text" placeholder="شهر" class="input input-bordered w-full" required>
-
-						      <button type="submit" class="btn btn-primary mt-2">ارسال درخواست</button>
-						    </form>
-
-						    <div class="modal-action">
-						      <label for="agency_modal" class="btn">بستن</label>
-						    </div>
-						  </div>
-						</div>
-						{% if messages %}
-						  <div class="fixed top-4 right-4 z-50 flex flex-col gap-2">
-						    {% for message in messages %}
-						      <div class="alert {{ message.tags }} shadow-lg bg-base-100 border border-gray-300 text-sm">
-						        <span>{{ message }}</span>
-						      </div>
-						    {% endfor %}
-						  </div>
-						{% endif %}
-
 						<a href="tel:02133900705" class="btn btn-outline border-white text-white hover:bg-white hover:text-[#116c56]">
 							مشاوره تلفنی
 						</a>
@@ -85,6 +55,26 @@
 			  </div>
 			</section>
 		<!-- /HeroSection -->
+
+		<!-- 👇 این مودال رو بعد از hero بذار -->
+		<input type="checkbox" id="agency_modal" class="modal-toggle" />
+		<div class="modal z-[9999] fixed inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+		  <div class="modal-box max-w-md w-[90%]">
+		    <h3 class="font-bold text-lg text-[#e66700] mb-4">درخواست اخذ نمایندگی</h3>
+
+		    <form method="post" action="{% url 'agency_request' %}" class="flex flex-col gap-3">
+		      {% csrf_token %}
+		      <input name="full_name" type="text" placeholder="نام و نام خانوادگی" class="input input-bordered w-full" required>
+		      <input name="phone" type="tel" placeholder="شماره تماس" class="input input-bordered w-full" pattern="^0\d{10}$" title="شماره باید با ۰ شروع شود و ۱۱ رقم باشد" required>
+		      <input name="city" type="text" placeholder="شهر" class="input input-bordered w-full" required>
+		      <button type="submit" class="btn btn-primary mt-2">ارسال درخواست</button>
+		    </form>
+
+		    <div class="modal-action">
+		      <label for="agency_modal" class="btn">بستن</label>
+		    </div>
+		  </div>
+		</div>
 
 		<!-- PopularProduct -->
 			<section id="pop-products" class="bg-blue-50 py-8 pt-3 relative mt-7">
