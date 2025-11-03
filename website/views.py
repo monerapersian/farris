@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from decimal import Decimal
-from .models import Category, Product, Article, Course, Order, OrderItem
+from .models import Category, Product, Article, Course, Order, OrderItem, AgencyRequest
 from django.core.paginator import Paginator
 
 # MERCHANT_ID = "34e4ca8c-11fe-4bb5-a897-9f73d78f4dac"
@@ -377,3 +377,25 @@ def zarinpal_verify(request, order_id):
     except Exception as e:
         messages.error(request, f"خطا در تایید پرداخت: {str(e)}")
         return redirect('checkout')
+
+
+def agency_request_view(request):
+    if request.method == "POST":
+        full_name = request.POST.get('full_name')
+        phone = request.POST.get('phone')
+        city = request.POST.get('city')
+
+        # اعتبارسنجی ساده
+        if not full_name or not phone or not city:
+            messages.error(request, "لطفاً همه‌ی فیلدها را پر کنید.")
+            return redirect(request.META.get('HTTP_REFERER', '/'))
+
+        AgencyRequest.objects.create(
+            full_name=full_name,
+            phone=phone,
+            city=city,
+        )
+        messages.success(request, "درخواست شما با موفقیت ثبت شد. در اسرع وقت با شما تماس خواهیم گرفت.")
+        return redirect(request.META.get('HTTP_REFERER', '/'))
+
+    return redirect('/')

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Product, Article, Course, Order, OrderItem
+from .models import Category, Product, Article, Course, Order, OrderItem, AgencyRequest
 
 
 # --------------------
@@ -63,8 +63,15 @@ class OrderItemInline(admin.TabularInline):
     extra = 0  # هیچ ردیف اضافی ایجاد نشه
     readonly_fields = ('product_title', 'quantity', 'price')  # فقط نمایش داده بشه
 
+
 # ثبت مدل Order و اتصال Inline
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
     list_display = ('full_name', 'tracking_code', 'total_price', 'created_at', 'phone')
     inlines = [OrderItemInline]
+
+
+@admin.register(AgencyRequest)
+class AgencyRequestAdmin(admin.ModelAdmin):
+    list_display = ('full_name', 'phone', 'city', 'created_at')
+    search_fields = ('full_name', 'phone', 'city')

@@ -20,4 +20,5 @@ urlpatterns = [
     path('payment/<int:order_id>/', views.zarinpal_payment, name='zarinpal_payment'),
     path('payment/verify/<int:order_id>/', views.zarinpal_verify, name='zarinpal_verify'),
     path('search/', views.search_view, name='search'),
+    path('agency-request/', views.agency_request_view, name='agency_request'),
 ]

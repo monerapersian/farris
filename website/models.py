@@ -82,7 +82,7 @@ class Course(models.Model):
     def __str__(self):
         return self.title
 
-        
+
 class Order(models.Model):
     full_name = models.CharField(max_length=100, verbose_name="نام و نام خانوادگی")
     phone = models.CharField(max_length=11, verbose_name="شماره تماس")
@@ -112,6 +112,17 @@ class OrderItem(models.Model):
     category = models.CharField(max_length=100, verbose_name="دسته‌بندی")
     price = models.DecimalField(max_digits=12, decimal_places=0, verbose_name="قیمت واحد")
     quantity = models.PositiveIntegerField(default=1, verbose_name="تعداد")
-    
+
     def __str__(self):
         return f"{self.product_title} (x{self.quantity})"
+
+
+
+class AgencyRequest(models.Model):
+    full_name = models.CharField(max_length=100, verbose_name="نام و نام خانوادگی")
+    phone = models.CharField(max_length=15, verbose_name="شماره تماس")
+    city = models.CharField(max_length=50, verbose_name="شهر")
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="تاریخ ارسال")
+
+    def __str__(self):
+        return f"{self.full_name} - {self.city}"
