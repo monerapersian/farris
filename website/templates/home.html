@@ -95,7 +95,7 @@
 		  </div>
 		</div>
 
-		<!-- پیغام موفقیت Toast DaisyUI -->
+		<!-- Toast DaisyUI -->
 		<div id="agencyToast" class="toast toast-top toast-center hidden z-[10000]">
 		  <div class="alert alert-success shadow-lg text-center">
 		    <span class="font-bold text-lg">
@@ -106,92 +106,92 @@
 		</div>
 
 		<script>
-			document.getElementById("agencyForm").addEventListener("submit", function(e) {
-			  e.preventDefault(); // جلوگیری از submit پیش‌فرض
-			  let valid = true;
+		document.getElementById("agencyForm").addEventListener("submit", function(e) {
+		  e.preventDefault(); // جلوگیری از submit پیش‌فرض
+		  let valid = true;
 
-			  const name = document.getElementById("full_name");
-			  const phone = document.getElementById("phone");
-			  const city = document.getElementById("city");
+		  const name = document.getElementById("full_name");
+		  const phone = document.getElementById("phone");
+		  const city = document.getElementById("city");
 
-			  const nameError = document.getElementById("nameError");
-			  const phoneError = document.getElementById("phoneError");
-			  const cityError = document.getElementById("cityError");
+		  const nameError = document.getElementById("nameError");
+		  const phoneError = document.getElementById("phoneError");
+		  const cityError = document.getElementById("cityError");
 
-			  // پاک کردن خطاهای قبلی
-			  nameError.classList.add("hidden");
-			  phoneError.classList.add("hidden");
-			  cityError.classList.add("hidden");
+		  // پاک کردن خطاهای قبلی
+		  nameError.classList.add("hidden");
+		  phoneError.classList.add("hidden");
+		  cityError.classList.add("hidden");
 
-			  // اعتبارسنجی نام
-			  if (name.value.trim() === "") {
-			    nameError.textContent = "لطفاً نام خود را وارد کنید.";
-			    nameError.classList.remove("hidden");
-			    valid = false;
-			  } else if (!/^[آ-یa-zA-Z\s]+$/.test(name.value)) {
-			    nameError.textContent = "فقط حروف مجاز هستند.";
-			    nameError.classList.remove("hidden");
-			    valid = false;
-			  } else if (name.value.length > 100) {
-			    nameError.textContent = "حداکثر ۱۰۰ کاراکتر مجاز است.";
-			    nameError.classList.remove("hidden");
-			    valid = false;
-			  }
+		  // اعتبارسنجی نام
+		  if (name.value.trim() === "") {
+		    nameError.textContent = "لطفاً نام خود را وارد کنید.";
+		    nameError.classList.remove("hidden");
+		    valid = false;
+		  } else if (!/^[آ-یa-zA-Z\s]+$/.test(name.value)) {
+		    nameError.textContent = "فقط حروف مجاز هستند.";
+		    nameError.classList.remove("hidden");
+		    valid = false;
+		  } else if (name.value.length > 100) {
+		    nameError.textContent = "حداکثر ۱۰۰ کاراکتر مجاز است.";
+		    nameError.classList.remove("hidden");
+		    valid = false;
+		  }
 
-			  // شماره تلفن
-			  if (!/^0\d{10}$/.test(phone.value)) {
-			    phoneError.textContent = "شماره تماس باید با ۰ شروع شده و ۱۱ رقم باشد.";
-			    phoneError.classList.remove("hidden");
-			    valid = false;
-			  }
+		  // شماره تلفن
+		  if (!/^0\d{10}$/.test(phone.value)) {
+		    phoneError.textContent = "شماره تماس باید با ۰ شروع شده و ۱۱ رقم باشد.";
+		    phoneError.classList.remove("hidden");
+		    valid = false;
+		  }
 
-			  // شهر
-			  if (city.value.trim() === "") {
-			    cityError.textContent = "نام شهر را وارد کنید.";
-			    cityError.classList.remove("hidden");
-			    valid = false;
-			  } else if (!/^[آ-یa-zA-Z\s]+$/.test(city.value)) {
-			    cityError.textContent = "فقط حروف مجاز هستند.";
-			    cityError.classList.remove("hidden");
-			    valid = false;
-			  } else if (city.value.length > 100) {
-			    cityError.textContent = "حداکثر ۱۰۰ کاراکتر مجاز است.";
-			    cityError.classList.remove("hidden");
-			    valid = false;
-			  }
+		  // شهر
+		  if (city.value.trim() === "") {
+		    cityError.textContent = "نام شهر را وارد کنید.";
+		    cityError.classList.remove("hidden");
+		    valid = false;
+		  } else if (!/^[آ-یa-zA-Z\s]+$/.test(city.value)) {
+		    cityError.textContent = "فقط حروف مجاز هستند.";
+		    cityError.classList.remove("hidden");
+		    valid = false;
+		  } else if (city.value.length > 100) {
+		    cityError.textContent = "حداکثر ۱۰۰ کاراکتر مجاز است.";
+		    cityError.classList.remove("hidden");
+		    valid = false;
+		  }
 
-			  if (!valid) return; // اگر خطا داشتیم، ارسال متوقف میشه
+		  if (!valid) return;
 
-			  // ارسال فرم با AJAX
-			  const formData = new FormData(this);
+		  // ارسال فرم با AJAX و CSRF
+		  const formData = new FormData(this);
+		  fetch(this.action, {
+		    method: "POST",
+		    body: formData,
+		    headers: {
+		      "X-Requested-With": "XMLHttpRequest",
+		      "X-CSRFToken": document.querySelector('[name=csrfmiddlewaretoken]').value
+		    },
+		  })
+		  .then(res => res.json())
+		  .then(data => {
+		    if (data.success) {
+		      // بستن مودال
+		      document.getElementById("agency_modal").checked = false;
+		      this.reset();
 
-			  fetch(this.action, {
-			    method: "POST",
-			    body: formData,
-			    headers: {
-			      "X-Requested-With": "XMLHttpRequest"
-			    },
-			  })
-			  .then(res => res.json())
-			  .then(data => {
-			    if (data.success) {
-			      // بستن مودال
-			      document.getElementById("agency_modal").checked = false;
-			      this.reset();
-
-			      // نمایش toast
-			      const toast = document.getElementById("agencyToast");
-			      toast.classList.remove("hidden");
-			      setTimeout(() => toast.classList.add("hidden"), 4000);
-			    } else {
-			      alert("خطایی رخ داده است. لطفاً دوباره تلاش کنید.");
-			    }
-			  })
-			  .catch(err => {
-			    console.error(err);
-			    alert("ارتباط با سرور برقرار نشد.");
-			  });
-			});
+		      // نمایش toast
+		      const toast = document.getElementById("agencyToast");
+		      toast.classList.remove("hidden");
+		      setTimeout(() => toast.classList.add("hidden"), 4000);
+		    } else {
+		      alert("خطایی رخ داده است. لطفاً دوباره تلاش کنید.");
+		    }
+		  })
+		  .catch(err => {
+		    console.error(err);
+		    alert("ارتباط با سرور برقرار نشد.");
+		  });
+		});
 		</script>
 
 		<!-- PopularProduct -->
