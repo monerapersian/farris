@@ -419,6 +419,11 @@ def load_dashboard_section(request, section):
         html = render(request, "dashboard/sections/articles.html", {"articles": articles}).content.decode("utf-8")
         return JsonResponse({"html": html})
 
+    elif section == "tutorials":
+        tutorials = Course.objects.all()
+        html = render(request, "dashboard/sections/articles.html", {"tutorials": tutorials}).content.decode("utf-8")
+        return JsonResponse({"html": html})
+
     elif section == "categories":
         categories = Category.objects.all()
         html = render(request, "dashboard/sections/categories.html", {"categories": categories}).content.decode("utf-8")
