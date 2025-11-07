@@ -107,7 +107,7 @@
                 <label for="sidebar-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
                 <ul class="menu p-4 w-72 min-h-full bg-[#1d5675] text-white text-lg">
                   <li class="mb-4 text-2xl font-bold text-center border-b border-white/20 pb-2">فریس</li>
-                  <li><a href="#" class="hover:bg-white/20 rounded-md">🏷️ محصولات</a></li>
+                  <li><button class="hover:bg-white/20 rounded-md" onclick="loadSection('products')">🏷️ محصولات</button></li>
                   <li><a href="#" class="hover:bg-white/20 rounded-md">📰 مقالات</a></li>
                   <li><a href="#" class="hover:bg-white/20 rounded-md">🎓 آموزش‌ها</a></li>
                   <li><a href="#" class="hover:bg-white/20 rounded-md">📂 دسته‌بندی‌ها</a></li>
@@ -119,6 +119,24 @@
             </div>
 
           </div>
+
+          <script>
+            async function loadSection(section) {
+              const content = document.getElementById("dashboard-content");
+              content.innerHTML = `
+                <div class="flex justify-center items-center h-64">
+                  <span class="loading loading-spinner loading-lg text-[#e66700]"></span>
+                </div>`;
+
+              try {
+                const res = await fetch(`/dashboard/load/${section}/`);
+                const data = await res.json();
+                content.innerHTML = data.html;
+              } catch (err) {
+                content.innerHTML = `<div class="alert alert-error">خطا در بارگذاری بخش.</div>`;
+              }
+            }
+          </script>
 
             <!-- <div class="flex min-h-screen bg-gray-50">
               
