@@ -121,6 +121,13 @@
 
         <script>
           async function loadSection(section) {
+            const res = await fetch(`/dashboard/load/${section}/`);
+            const data = await res.json();
+            document.getElementById("dashboard-content").innerHTML = data.html;
+          }
+        </script>
+        <!-- <script>
+          async function loadSection(section) {
             const content = document.getElementById("dashboard-content");
             content.innerHTML = `
               <div class="flex justify-center items-center h-64">
@@ -135,6 +142,6 @@
               content.innerHTML = `<div class="alert alert-error">خطا در بارگذاری بخش.</div>`;
             }
           }
-        </script>
+        </script> -->
     </body>
   </html>
