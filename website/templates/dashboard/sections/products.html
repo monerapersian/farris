@@ -6,7 +6,7 @@
 
 <!-- جدول محصولات -->
 <div class="overflow-x-auto bg-white rounded-lg shadow">
-  <table class="table">
+  <table class="table w-full">
     <thead class="bg-[#1d5675] text-white">
       <tr>
         <th>#</th>
@@ -45,11 +45,11 @@
 <div class="flex justify-center mt-6">
   <div class="join">
     {% if products.has_previous %}
-    <button class="join-item btn" onclick="loadPage({{ products.previous_page_number }})">«</button>
+      <button class="join-item btn" onclick="loadPage({{ products.previous_page_number }})">«</button>
     {% endif %}
     <button class="join-item btn btn-disabled">صفحه {{ products.number }} از {{ products.paginator.num_pages }}</button>
     {% if products.has_next %}
-    <button class="join-item btn" onclick="loadPage({{ products.next_page_number }})">»</button>
+      <button class="join-item btn" onclick="loadPage({{ products.next_page_number }})">»</button>
     {% endif %}
   </div>
 </div>
@@ -95,6 +95,24 @@
 </div>
 
 <script>
+  let editing = false;
+
+  function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+      const cookies = document.cookie.split(';');
+      for (let cookie of cookies) {
+        cookie = cookie.trim();
+        if (cookie.startsWith(name + '=')) {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+        }
+      }
+    }
+    return cookieValue;
+  }
+  const csrfToken = getCookie('csrftoken');
+
   window.openProductModal = function() {
     editing = false;
     document.getElementById("modalTitle").innerText = "افزودن محصول جدید";
@@ -122,7 +140,7 @@
           method: "POST",
           headers: {
             "X-Requested-With": "XMLHttpRequest",
-            "X-CSRFToken": "{{ csrf_token }}",
+            "X-CSRFToken": csrfToken
           },
         });
         const data = await res.json();
@@ -142,7 +160,6 @@
 
   document.getElementById("productForm").addEventListener("submit", async function(e) {
     e.preventDefault();
-
     const formData = new FormData(this);
     const url = editing ? "/dashboard/products/update/" : "/dashboard/products/create/";
 
@@ -150,9 +167,8 @@
       const res = await fetch(url, {
         method: "POST",
         body: formData,
-        headers: { "X-Requested-With": "XMLHttpRequest" },
+        headers: { "X-Requested-With": "XMLHttpRequest", "X-CSRFToken": csrfToken },
       });
-
       const data = await res.json();
       if (data.success) {
         document.getElementById("product_modal").checked = false;

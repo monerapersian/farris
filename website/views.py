@@ -456,7 +456,7 @@ def create_product(request):
         category = Category.objects.filter(id=category_id).first()
 
         Product.objects.create(title=title, price=price, category=category)
-        return JsonResponse({"success": True})
+        return JsonResponse({"success": True, "reload": True})
     return JsonResponse({"success": False})
 
 
@@ -472,7 +472,7 @@ def update_product(request):
         product.price = request.POST.get("price")
         product.category_id = request.POST.get("category")
         product.save()
-        return JsonResponse({"success": True})
+        return JsonResponse({"success": True, "reload": True})
     return JsonResponse({"success": False})
 
 
@@ -480,7 +480,7 @@ def update_product(request):
 def delete_product(request, pk):
     if request.method == "POST" and request.headers.get("x-requested-with") == "XMLHttpRequest":
         Product.objects.filter(id=pk).delete()
-        return JsonResponse({"success": True})
+        return JsonResponse({"success": True, "reload": True})
     return JsonResponse({"success": False})
 
 # @login_required
