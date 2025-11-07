@@ -401,14 +401,17 @@ def agency_request_view(request):
     return JsonResponse({"success": False})
 
 
+# تعداد محصولات در هر صفحه
+PRODUCTS_PER_PAGE = 10
+
 @login_required
 def dashboard(request):
     return render(request, "dashboard/dashboard.html")
 
+
 @login_required
 def load_dashboard_section(request, section):
-    """بارگذاری بخش‌ها با AJAX"""
-    page = request.GET.get("page", 1)
+    """بارگذاری AJAX برای بخش‌های داشبورد"""
     
     sections = {
         "products": {
@@ -437,30 +440,30 @@ def load_dashboard_section(request, section):
         return JsonResponse({"html": "<p>بخش مورد نظر پیدا نشد.</p>"})
 
     info = sections[section]
-    items = info["model"].objects.all().order_by("-id")
 
-    # pagination فقط برای products
+    # محصولات Pagination
     if section == "products":
-        paginator = Paginator(items, 10)  # 10 محصول در هر صفحه
-        items = paginator.get_page(page)
+        all_items = info["model"].objects.all().order_by("-id")
+        page_number = request.GET.get("page", 1)
+        paginator = Paginator(all_items, PRODUCTS_PER_PAGE)
+        page_obj = paginator.get_page(page_number)
+        context = {info["context_name"]: page_obj, "categories": Category.objects.all()}
+    else:
+        items = info["model"].objects.all()
+        context = {info["context_name"]: items}
 
-    html = render(
-        request,
-        info["template"],
-        {info["context_name"]: items, "categories": Category.objects.all()}
-    ).content.decode("utf-8")
-
+    html = render(request, info["template"], context).content.decode("utf-8")
     return JsonResponse({"html": html})
 
 
 @login_required
 def create_product(request):
+    """ایجاد محصول جدید از طریق AJAX"""
     if request.method == "POST" and request.headers.get("x-requested-with") == "XMLHttpRequest":
         title = request.POST.get("title")
         price = request.POST.get("price")
         category_id = request.POST.get("category")
-        category = get_object_or_404(Category, id=category_id)
-
+        category = Category.objects.filter(id=category_id).first()
         Product.objects.create(title=title, price=price, category=category)
         return JsonResponse({"success": True})
     return JsonResponse({"success": False})
@@ -468,26 +471,30 @@ def create_product(request):
 
 @login_required
 def update_product(request):
+    """ویرایش محصول از طریق AJAX"""
     if request.method == "POST" and request.headers.get("x-requested-with") == "XMLHttpRequest":
         pid = request.POST.get("product_id")
         product = get_object_or_404(Product, id=pid)
-
         product.title = request.POST.get("title")
         product.price = request.POST.get("price")
         category_id = request.POST.get("category")
-        product.category = get_object_or_404(Category, id=category_id)
+        if category_id:
+            product.category = Category.objects.get(id=category_id)
+        else:
+            product.category = None
         product.save()
-
         return JsonResponse({"success": True})
     return JsonResponse({"success": False})
 
 
 @login_required
 def delete_product(request, pk):
+    """حذف محصول از طریق AJAX"""
     if request.method == "POST" and request.headers.get("x-requested-with") == "XMLHttpRequest":
-        product = get_object_or_404(Product, id=pk)
-        product.delete()
-        return JsonResponse({"success": True})
+        product = Product.objects.filter(id=pk).first()
+        if product:
+            product.delete()
+            return JsonResponse({"success": True})
     return JsonResponse({"success": False})
 
 # @login_required
