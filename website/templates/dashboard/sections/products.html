@@ -95,9 +95,7 @@
 </div>
 
 <script>
-  let editing = false;
-
-  function openProductModal() {
+  window.openProductModal = function() {
     editing = false;
     document.getElementById("modalTitle").innerText = "افزودن محصول جدید";
     document.getElementById("productForm").reset();
@@ -105,7 +103,7 @@
     document.getElementById("product_modal").checked = true;
   }
 
-  function editProduct(id, title, price, categoryId) {
+  window.editProduct = function(id, title, price, categoryId) {
     editing = true;
     document.getElementById("modalTitle").innerText = "ویرایش محصول";
     document.getElementById("product_modal").checked = true;
@@ -115,31 +113,7 @@
     document.getElementById("productCategory").value = categoryId;
   }
 
-  document.getElementById("productForm").addEventListener("submit", async function (e) {
-    e.preventDefault();
-
-    const formData = new FormData(this);
-    const url = editing ? "/dashboard/products/update/" : "/dashboard/products/create/";
-
-    try {
-      const res = await fetch(url, {
-        method: "POST",
-        body: formData,
-        headers: { "X-Requested-With": "XMLHttpRequest" },
-      });
-
-      const data = await res.json();
-      if (data.success) {
-        loadSection("products");
-      } else {
-        alert("خطایی رخ داد.");
-      }
-    } catch (err) {
-      alert("ارتباط با سرور برقرار نشد.");
-    }
-  });
-
-  function confirmDeleteProduct(id, name) {
+  window.confirmDeleteProduct = function(id, name) {
     document.getElementById("delete_modal").checked = true;
     document.getElementById("deleteMessage").innerText = `آیا از حذف محصول "${name}" مطمئن هستید؟`;
     document.getElementById("confirmDeleteBtn").onclick = async () => {
@@ -160,9 +134,34 @@
     };
   }
 
-  async function loadPage(page) {
+  window.loadPage = async function(page) {
     const res = await fetch(`/dashboard/load/products/?page=${page}`);
     const data = await res.json();
     document.getElementById("dashboard-content").innerHTML = data.html;
   }
+
+  document.getElementById("productForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const formData = new FormData(this);
+    const url = editing ? "/dashboard/products/update/" : "/dashboard/products/create/";
+
+    try {
+      const res = await fetch(url, {
+        method: "POST",
+        body: formData,
+        headers: { "X-Requested-With": "XMLHttpRequest" },
+      });
+
+      const data = await res.json();
+      if (data.success) {
+        document.getElementById("product_modal").checked = false;
+        loadSection("products");
+      } else {
+        alert("خطایی رخ داد.");
+      }
+    } catch (err) {
+      alert("ارتباط با سرور برقرار نشد.");
+    }
+  });
 </script>
