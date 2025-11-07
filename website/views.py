@@ -405,11 +405,11 @@ def agency_request_view(request):
 def dashboard(request):
     return render(request, "dashboard/dashboard.html")
 
-
 @login_required
 def load_dashboard_section(request, section):
-    """AJAX loader for dashboard sections"""
-
+    """بارگذاری بخش‌ها با AJAX"""
+    page = request.GET.get("page", 1)
+    
     sections = {
         "products": {
             "model": Product,
@@ -438,10 +438,16 @@ def load_dashboard_section(request, section):
 
     info = sections[section]
     items = info["model"].objects.all().order_by("-id")
+
+    # pagination فقط برای products
+    if section == "products":
+        paginator = Paginator(items, 10)  # 10 محصول در هر صفحه
+        items = paginator.get_page(page)
+
     html = render(
         request,
         info["template"],
-        {info["context_name"]: items}
+        {info["context_name"]: items, "categories": Category.objects.all()}
     ).content.decode("utf-8")
 
     return JsonResponse({"html": html})
@@ -453,10 +459,10 @@ def create_product(request):
         title = request.POST.get("title")
         price = request.POST.get("price")
         category_id = request.POST.get("category")
-        category = Category.objects.filter(id=category_id).first()
+        category = get_object_or_404(Category, id=category_id)
 
         Product.objects.create(title=title, price=price, category=category)
-        return JsonResponse({"success": True, "reload": True})
+        return JsonResponse({"success": True})
     return JsonResponse({"success": False})
 
 
@@ -464,23 +470,24 @@ def create_product(request):
 def update_product(request):
     if request.method == "POST" and request.headers.get("x-requested-with") == "XMLHttpRequest":
         pid = request.POST.get("product_id")
-        product = Product.objects.filter(id=pid).first()
-        if not product:
-            return JsonResponse({"success": False})
+        product = get_object_or_404(Product, id=pid)
 
         product.title = request.POST.get("title")
         product.price = request.POST.get("price")
-        product.category_id = request.POST.get("category")
+        category_id = request.POST.get("category")
+        product.category = get_object_or_404(Category, id=category_id)
         product.save()
-        return JsonResponse({"success": True, "reload": True})
+
+        return JsonResponse({"success": True})
     return JsonResponse({"success": False})
 
 
 @login_required
 def delete_product(request, pk):
     if request.method == "POST" and request.headers.get("x-requested-with") == "XMLHttpRequest":
-        Product.objects.filter(id=pk).delete()
-        return JsonResponse({"success": True, "reload": True})
+        product = get_object_or_404(Product, id=pk)
+        product.delete()
+        return JsonResponse({"success": True})
     return JsonResponse({"success": False})
 
 # @login_required
