@@ -1,10 +1,11 @@
+<!-- محصولات -->
 <div class="flex justify-between items-center mb-6">
   <h2 class="text-2xl font-bold text-[#1d5675]">مدیریت محصولات</h2>
-  <button class="btn bg-[#e66700] border-0 hover:bg-[#b25204] text-white" onclick="openProductModal()">➕ محصول جدید</button>
+  <button id="addProductBtn" class="btn bg-[#e66700] border-0 hover:bg-[#b25204] text-white">➕ محصول جدید</button>
 </div>
 
 <div class="overflow-x-auto bg-white rounded-lg shadow">
-  <table class="table">
+  <table class="table w-full">
     <thead class="bg-[#1d5675] text-white">
       <tr>
         <th>#</th>
@@ -14,7 +15,7 @@
         <th>مدیریت</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody id="productsTableBody">
       {% for p in products %}
       <tr>
         <td>{{ forloop.counter }}</td>
@@ -22,10 +23,14 @@
         <td>{{ p.price|default:"-" }}</td>
         <td>{{ p.category.title|default:"-" }}</td>
         <td class="flex gap-2">
-          <button class="btn btn-xs bg-blue-500 text-white border-0 hover:bg-blue-600"
-                  onclick="editProduct({{ p.id }}, '{{ p.title }}', '{{ p.price }}', '{{ p.category.id|default:'' }}')">ویرایش</button>
-          <button class="btn btn-xs bg-red-500 text-white border-0 hover:bg-red-600"
-                  onclick="confirmDeleteProduct({{ p.id }}, '{{ p.title }}')">حذف</button>
+          <button class="btn btn-xs bg-blue-500 text-white border-0 hover:bg-blue-600 editBtn"
+                  data-id="{{ p.id }}" data-title="{{ p.title }}" data-price="{{ p.price }}" data-cat="{{ p.category.id|default:'' }}">
+            ویرایش
+          </button>
+          <button class="btn btn-xs bg-red-500 text-white border-0 hover:bg-red-600 deleteBtn"
+                  data-id="{{ p.id }}" data-title="{{ p.title }}">
+            حذف
+          </button>
         </td>
       </tr>
       {% empty %}
@@ -35,19 +40,33 @@
   </table>
 </div>
 
-<!-- Modal Form -->
+<!-- Pagination -->
+<div class="flex justify-center mt-6">
+  <div class="join">
+    {% if products.has_previous %}
+      <button class="join-item btn" onclick="loadSection('products', {{ products.previous_page_number }})">«</button>
+    {% endif %}
+    <button class="join-item btn btn-disabled">صفحه {{ products.number }} از {{ products.paginator.num_pages }}</button>
+    {% if products.has_next %}
+      <button class="join-item btn" onclick="loadSection('products', {{ products.next_page_number }})">»</button>
+    {% endif %}
+  </div>
+</div>
+
+<!-- Modal Add/Edit -->
 <input type="checkbox" id="product_modal" class="modal-toggle" />
 <div class="modal">
   <div class="modal-box max-w-md">
     <h3 id="modalTitle" class="font-bold text-lg text-[#e66700] mb-4">افزودن محصول جدید</h3>
-    <form id="productForm">
+    <form id="productForm" class="space-y-3">
+      {% csrf_token %}
       <input type="hidden" id="productId" name="product_id" />
-      <input type="text" id="productName" name="title" placeholder="نام محصول" class="input input-bordered w-full mb-2" required />
-      <input type="number" id="productPrice" name="price" placeholder="قیمت (تومان)" class="input input-bordered w-full mb-2" required />
-      <select id="productCategory" name="category" class="select select-bordered w-full mb-2" required>
+      <input type="text" id="productName" name="title" placeholder="نام محصول" class="input input-bordered w-full" required />
+      <input type="number" id="productPrice" name="price" placeholder="قیمت (تومان)" class="input input-bordered w-full" required />
+      <select id="productCategory" name="category" class="select select-bordered w-full" required>
         <option value="">دسته‌بندی</option>
         {% for cat in categories %}
-        <option value="{{ cat.id }}">{{ cat.title }}</option>
+          <option value="{{ cat.id }}">{{ cat.title }}</option>
         {% endfor %}
       </select>
       <div class="modal-action">
@@ -58,12 +77,12 @@
   </div>
 </div>
 
-<!-- Delete Modal -->
+<!-- Modal Delete -->
 <input type="checkbox" id="delete_modal" class="modal-toggle" />
 <div class="modal">
   <div class="modal-box">
     <h3 class="font-bold text-lg text-red-600">تأیید حذف</h3>
-    <p class="py-4" id="deleteMessage">آیا مطمئن هستید؟</p>
+    <p class="py-4" id="deleteMessage"></p>
     <div class="modal-action">
       <label for="delete_modal" class="btn">لغو</label>
       <button id="confirmDeleteBtn" class="btn bg-red-600 text-white hover:bg-red-700 border-0">حذف</button>
@@ -72,56 +91,75 @@
 </div>
 
 <script>
-let editing = false;
-const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+function initProductsJS(){
+    const form = document.getElementById("productForm");
+    let editing = false;
 
-function openProductModal() {
-  editing = false;
-  document.getElementById("modalTitle").innerText = "افزودن محصول جدید";
-  document.getElementById("productForm").reset();
-  document.getElementById("productId").value = "";
-  document.getElementById("product_modal").checked = true;
-}
-
-function editProduct(id, title, price, categoryId) {
-  editing = true;
-  document.getElementById("modalTitle").innerText = "ویرایش محصول";
-  document.getElementById("product_modal").checked = true;
-  document.getElementById("productId").value = id;
-  document.getElementById("productName").value = title;
-  document.getElementById("productPrice").value = price;
-  document.getElementById("productCategory").value = categoryId;
-}
-
-function confirmDeleteProduct(id, name) {
-  document.getElementById("delete_modal").checked = true;
-  document.getElementById("deleteMessage").innerText = `آیا از حذف محصول "${name}" مطمئن هستید؟`;
-  document.getElementById("confirmDeleteBtn").onclick = async () => {
-    const res = await fetch(`/dashboard/products/delete/${id}/`, {
-      method: "POST",
-      headers: { "X-Requested-With": "XMLHttpRequest", "X-CSRFToken": csrfToken }
+    // Add product
+    document.getElementById("addProductBtn").addEventListener("click", ()=>{
+        editing = false;
+        document.getElementById("modalTitle").innerText = "افزودن محصول جدید";
+        form.reset();
+        document.getElementById("productId").value = "";
+        document.getElementById("product_modal").checked = true;
     });
-    const data = await res.json();
-    if (data.success) loadSection('products');
-    else alert("حذف انجام نشد.");
-  };
-}
 
-document.getElementById("productForm").addEventListener("submit", async function(e) {
-  e.preventDefault();
-  const formData = new FormData(this);
-  const url = editing ? "/dashboard/products/update/" : "/dashboard/products/create/";
-  const res = await fetch(url, {
-    method: "POST",
-    body: formData,
-    headers: { "X-Requested-With": "XMLHttpRequest", "X-CSRFToken": csrfToken }
-  });
-  const data = await res.json();
-  if (data.success) {
-    document.getElementById("product_modal").checked = false;
-    loadSection('products');
-  } else {
-    alert("خطایی رخ داد.");
-  }
-});
+    // Edit buttons
+    document.querySelectorAll(".editBtn").forEach(btn=>{
+        btn.addEventListener("click", ()=>{
+            editing = true;
+            document.getElementById("modalTitle").innerText = "ویرایش محصول";
+            document.getElementById("product_modal").checked = true;
+            document.getElementById("productId").value = btn.dataset.id;
+            document.getElementById("productName").value = btn.dataset.title;
+            document.getElementById("productPrice").value = btn.dataset.price;
+            document.getElementById("productCategory").value = btn.dataset.cat;
+        });
+    });
+
+    // Delete buttons
+    document.querySelectorAll(".deleteBtn").forEach(btn=>{
+        btn.addEventListener("click", ()=>{
+            document.getElementById("delete_modal").checked = true;
+            document.getElementById("deleteMessage").innerText = `آیا از حذف محصول "${btn.dataset.title}" مطمئن هستید؟`;
+            document.getElementById("confirmDeleteBtn").onclick = async ()=>{
+                const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+                const res = await fetch(`/dashboard/products/delete/${btn.dataset.id}/`, {
+                    method: "POST",
+                    headers: {
+                        "X-Requested-With": "XMLHttpRequest",
+                        "X-CSRFToken": csrfToken
+                    }
+                });
+                const data = await res.json();
+                if(data.success){
+                    document.getElementById("delete_modal").checked = false;
+                    loadSection("products");
+                } else alert("حذف انجام نشد.");
+            }
+        });
+    });
+
+    // Submit form
+    form.addEventListener("submit", async (e)=>{
+        e.preventDefault();
+        const formData = new FormData(form);
+        const url = editing ? "/dashboard/products/update/" : "/dashboard/products/create/";
+        const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+        const res = await fetch(url, {
+            method: "POST",
+            body: formData,
+            headers: {
+                "X-Requested-With": "XMLHttpRequest",
+                "X-CSRFToken": csrfToken
+            }
+        });
+        const data = await res.json();
+        if(data.success){
+            document.getElementById("product_modal").checked = false;
+            loadSection("products");
+        } else alert("خطا در عملیات.");
+    });
+}
 </script>
