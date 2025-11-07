@@ -483,7 +483,6 @@ def delete_product(request, pk):
         return JsonResponse({"success": True})
     return JsonResponse({"success": False})
 
-
 # @login_required
 # def load_dashboard_section(request, section):
 #     """AJAX loader for dashboard sections"""
