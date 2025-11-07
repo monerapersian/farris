@@ -21,4 +21,6 @@ urlpatterns = [
     path('payment/verify/<int:order_id>/', views.zarinpal_verify, name='zarinpal_verify'),
     path('search/', views.search_view, name='search'),
     path('agency-request/', views.agency_request_view, name='agency_request'),
+    path("dashboard/", views.dashboard, name="dashboard"),
+    path("dashboard/load/<str:section>/", views.load_dashboard_section, name="load_dashboard_section"),
 ]

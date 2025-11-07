@@ -1,5 +1,6 @@
 from django.db.models import Q
 import requests
+from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_POST
@@ -398,3 +399,30 @@ def agency_request_view(request):
         return JsonResponse({"success": True})
 
     return JsonResponse({"success": False})
+
+
+@login_required
+def dashboard(request):
+    return render(request, "dashboard/dashboard.html")
+
+
+@login_required
+def load_dashboard_section(request, section):
+    """AJAX loader for dashboard sections"""
+    if section == "products":
+        products = Product.objects.all().order_by("-id")
+        html = render(request, "dashboard/sections/products.html", {"products": products}).content.decode("utf-8")
+        return JsonResponse({"html": html})
+
+    elif section == "articles":
+        articles = Article.objects.all()
+        html = render(request, "dashboard/sections/articles.html", {"articles": articles}).content.decode("utf-8")
+        return JsonResponse({"html": html})
+
+    elif section == "categories":
+        categories = Category.objects.all()
+        html = render(request, "dashboard/sections/categories.html", {"categories": categories}).content.decode("utf-8")
+        return JsonResponse({"html": html})
+
+    else:
+        return JsonResponse({"html": "<p>بخش مورد نظر پیدا نشد.</p>"})
