@@ -29,119 +29,99 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
         <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
       </head>
-      <body>
-        <div class="min-h-screen flex bg-gray-100">
+      <body class="bg-gray-100 min-h-screen flex">
 
-          <!-- سایدبار -->
-          <div class="drawer lg:drawer-open">
-            <input id="sidebar-drawer" type="checkbox" class="drawer-toggle" />
-            <div class="drawer-content flex flex-col">
+        <!-- سایدبار -->
+        <div class="drawer lg:drawer-open flex-1">
+          <input id="sidebar-drawer" type="checkbox" class="drawer-toggle" />
+          <div class="drawer-content flex flex-col">
 
-              <!-- نوار بالا -->
-              <div class="w-full navbar bg-[#1d5675] text-white">
-                <div class="flex-none lg:hidden">
-                  <label for="sidebar-drawer" class="btn btn-square btn-ghost">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                         viewBox="0 0 24 24" class="inline-block w-6 h-6 stroke-current">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
-                  </label>
+            <!-- نوار بالا -->
+            <div class="w-full navbar bg-[#1d5675] text-white">
+              <div class="flex-none lg:hidden">
+                <label for="sidebar-drawer" class="btn btn-square btn-ghost">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                       viewBox="0 0 24 24" class="w-6 h-6 stroke-current">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M4 6h16M4 12h16M4 18h16"/>
+                  </svg>
+                </label>
+              </div>
+              <div class="flex-1 px-2 mx-2 font-bold text-xl">پنل مدیریت فریس</div>
+            </div>
+
+            <!-- محتوای اصلی -->
+            <main id="dashboard-content" class="flex-1 p-6 overflow-y-auto">
+              <div class="text-2xl font-bold text-[#e66700] mb-4">به پنل خوش آمدید 🌟</div>
+              <p class="text-gray-700">از منوی سمت راست بخش مورد نظر خود را انتخاب کنید.</p>
+
+              <!-- کارت‌های دسترسی سریع -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+                <div class="card bg-base-100 shadow-md">
+                  <div class="card-body text-center">
+                    <h2 class="card-title text-[#1d5675]">محصولات</h2>
+                    <p>مدیریت، افزودن و ویرایش محصولات</p>
+                    <div class="card-actions justify-center">
+                      <button class="btn btn-sm bg-[#e66700] border-0 hover:bg-[#b25204] text-white"
+                              onclick="loadSection('products')">ورود</button>
+                    </div>
+                  </div>
                 </div>
-                <div class="flex-1 px-2 mx-2 font-bold text-xl">پنل مدیریت فریس</div>
+                <div class="card bg-base-100 shadow-md">
+                  <div class="card-body text-center">
+                    <h2 class="card-title text-[#1d5675]">مقالات</h2>
+                    <p>مدیریت و افزودن مقاله‌ها</p>
+                    <div class="card-actions justify-center">
+                      <button class="btn btn-sm bg-[#e66700] border-0 hover:bg-[#b25204] text-white"
+                              onclick="loadSection('articles')">ورود</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="card bg-base-100 shadow-md">
+                  <div class="card-body text-center">
+                    <h2 class="card-title text-[#1d5675]">آموزش‌ها</h2>
+                    <p>ایجاد و ویرایش آموزش‌ها</p>
+                    <div class="card-actions justify-center">
+                      <button class="btn btn-sm bg-[#e66700] border-0 hover:bg-[#b25204] text-white"
+                              onclick="loadSection('tutorials')">ورود</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="card bg-base-100 shadow-md">
+                  <div class="card-body text-center">
+                    <h2 class="card-title text-[#1d5675]">دسته‌بندی‌ها</h2>
+                    <p>مدیریت دسته‌بندی‌ها</p>
+                    <div class="card-actions justify-center">
+                      <button class="btn btn-sm bg-[#e66700] border-0 hover:bg-[#b25204] text-white"
+                              onclick="loadSection('categories')">ورود</button>
+                    </div>
+                  </div>
+                </div>
               </div>
 
-              <!-- محتوای اصلی -->
-              <main id="dashboard-content" class="flex-1 p-6 overflow-y-auto">
-                <div class="text-2xl font-bold text-[#e66700] mb-4">به پنل خوش آمدید 🌟</div>
-                <p class="text-gray-700">از منوی سمت راست، بخش مورد نظر خود را انتخاب کنید.</p>
-
-                <!-- نمونه کارت‌ها -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
-                  <div class="card bg-base-100 shadow-md">
-                    <div class="card-body text-center">
-                      <h2 class="card-title text-[#1d5675]">محصولات</h2>
-                      <p>مدیریت، افزودن و ویرایش محصولات.</p>
-                      <div class="card-actions justify-center">
-                        <button class="btn btn-sm bg-[#e66700] border-0 hover:bg-[#b25204] text-white" onclick="loadSection('products')">ورود</button>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="card bg-base-100 shadow-md">
-                    <div class="card-body text-center">
-                      <h2 class="card-title text-[#1d5675]">مقالات</h2>
-                      <p>مدیریت و افزودن مقاله‌ها.</p>
-                      <div class="card-actions justify-center">
-                        <button class="btn btn-sm bg-[#e66700] border-0 hover:bg-[#b25204] text-white" onclick="loadSection('articles')">ورود</button>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="card bg-base-100 shadow-md">
-                    <div class="card-body text-center">
-                      <h2 class="card-title text-[#1d5675]">آموزش‌ها</h2>
-                      <p>ایجاد و ویرایش آموزش‌های فریس.</p>
-                      <div class="card-actions justify-center">
-                        <button class="btn btn-sm bg-[#e66700] border-0 hover:bg-[#b25204] text-white" onclick="loadSection('tutorials')">ورود</button>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="card bg-base-100 shadow-md">
-                    <div class="card-body text-center">
-                      <h2 class="card-title text-[#1d5675]">دسته‌بندی‌ها</h2>
-                      <p>مدیریت دسته‌بندی محصولات.</p>
-                      <div class="card-actions justify-center">
-                        <button class="btn btn-sm bg-[#e66700] border-0 hover:bg-[#b25204] text-white" onclick="loadSection('categories')">ورود</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </main>
-            </div>
-
-            <!-- منوی کناری -->
-            <div class="drawer-side z-50">
-              <label for="sidebar-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
-              <ul class="menu p-4 w-72 min-h-full bg-[#1d5675] text-white text-lg">
-                <li class="mb-4 text-2xl font-bold text-center border-b border-white/20 pb-2">میز مدیریت</li>
-                <li><button class="hover:bg-white/20 rounded-md" onclick="loadSection('products')">🏷️ محصولات</button></li>
-                <li><button class="hover:bg-white/20 rounded-md" onclick="loadSection('articles')">📰 مقالات</button></li>
-                <li><button class="hover:bg-white/20 rounded-md" onclick="loadSection('tutorials')">🎓 آموزش‌ها</button></li>
-                <li><button class="hover:bg-white/20 rounded-md" onclick="loadSection('categories')">📂 دسته‌بندی‌ها</button></li>
-              </ul>
-            </div>
+            </main>
           </div>
 
+          <!-- منوی کناری -->
+          <div class="drawer-side z-50">
+            <label for="sidebar-drawer" class="drawer-overlay"></label>
+            <ul class="menu p-4 w-72 min-h-full bg-[#1d5675] text-white text-lg">
+              <li class="mb-4 text-2xl font-bold text-center border-b border-white/20 pb-2">میز مدیریت</li>
+              <li><button class="hover:bg-white/20 rounded-md" onclick="loadSection('products')">🏷️ محصولات</button></li>
+              <li><button class="hover:bg-white/20 rounded-md" onclick="loadSection('articles')">📰 مقالات</button></li>
+              <li><button class="hover:bg-white/20 rounded-md" onclick="loadSection('tutorials')">🎓 آموزش‌ها</button></li>
+              <li><button class="hover:bg-white/20 rounded-md" onclick="loadSection('categories')">📂 دسته‌بندی‌ها</button></li>
+            </ul>
+          </div>
         </div>
 
-        <script>
-          function getCookie(name) {
-            let cookieValue = null;
-            if (document.cookie && document.cookie !== '') {
-              const cookies = document.cookie.split(';');
-              for (let i = 0; i < cookies.length; i++) {
-                const cookie = cookies[i].trim();
-                if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                  cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                  break;
-                }
-              }
-            }
-            return cookieValue;
-          }
-
-          async function loadSection(section) {
-            const res = await fetch(`/dashboard/load/${section}/`);
-            const data = await res.json();
-            document.getElementById("dashboard-content").innerHTML = data.html;
-
-            // اگر بخش محصولات هست، event listenerهای محصول را فعال کن
-            if(section === "products" && window.initProductListeners){
-              window.initProductListeners(getCookie('csrftoken'));
-            }
-          }
-        </script>
-    </body>
-  </html>
+      <script>
+        const csrfToken = '{{ csrf_token }}';
+        async function loadSection(section) {
+          const res = await fetch(`/dashboard/load/${section}/`);
+          const data = await res.json();
+          document.getElementById("dashboard-content").innerHTML = data.html;
+        }
+      </script>
+      </body>
+    </html>
