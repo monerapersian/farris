@@ -1,10 +1,8 @@
-<!-- مدیریت محصولات -->
 <div class="flex justify-between items-center mb-6">
   <h2 class="text-2xl font-bold text-[#1d5675]">مدیریت محصولات</h2>
-  <button class="btn new-product-btn bg-[#e66700] border-0 hover:bg-[#b25204] text-white">➕ محصول جدید</button>
+  <button class="btn bg-[#e66700] border-0 hover:bg-[#b25204] text-white" onclick="openProductModal()">➕ محصول جدید</button>
 </div>
 
-<!-- جدول محصولات -->
 <div class="overflow-x-auto bg-white rounded-lg shadow">
   <table class="table">
     <thead class="bg-[#1d5675] text-white">
@@ -16,7 +14,7 @@
         <th>مدیریت</th>
       </tr>
     </thead>
-    <tbody id="productsTableBody">
+    <tbody>
       {% for p in products %}
       <tr>
         <td>{{ forloop.counter }}</td>
@@ -24,11 +22,10 @@
         <td>{{ p.price|default:"-" }}</td>
         <td>{{ p.category.title|default:"-" }}</td>
         <td class="flex gap-2">
-          <button class="btn btn-xs edit-btn bg-blue-500 text-white border-0 hover:bg-blue-600"
-                  data-id="{{ p.id }}" data-title="{{ p.title }}" data-price="{{ p.price }}"
-                  data-category="{{ p.category.id|default:'' }}">ویرایش</button>
-          <button class="btn btn-xs delete-btn bg-red-500 text-white border-0 hover:bg-red-600"
-                  data-id="{{ p.id }}" data-title="{{ p.title }}">حذف</button>
+          <button class="btn btn-xs bg-blue-500 text-white border-0 hover:bg-blue-600"
+                  onclick="editProduct({{ p.id }}, '{{ p.title }}', '{{ p.price }}', '{{ p.category.id|default:'' }}')">ویرایش</button>
+          <button class="btn btn-xs bg-red-500 text-white border-0 hover:bg-red-600"
+                  onclick="confirmDeleteProduct({{ p.id }}, '{{ p.title }}')">حذف</button>
         </td>
       </tr>
       {% empty %}
@@ -38,30 +35,16 @@
   </table>
 </div>
 
-<!-- Pagination -->
-<div class="flex justify-center mt-6">
-  <div class="join">
-    {% if products.has_previous %}
-    <button class="join-item btn" onclick="loadPage({{ products.previous_page_number }})">«</button>
-    {% endif %}
-    <button class="join-item btn btn-disabled">صفحه {{ products.number }} از {{ products.paginator.num_pages }}</button>
-    {% if products.has_next %}
-    <button class="join-item btn" onclick="loadPage({{ products.next_page_number }})">»</button>
-    {% endif %}
-  </div>
-</div>
-
-<!-- مودال افزودن/ویرایش محصول -->
+<!-- Modal Form -->
 <input type="checkbox" id="product_modal" class="modal-toggle" />
 <div class="modal">
   <div class="modal-box max-w-md">
     <h3 id="modalTitle" class="font-bold text-lg text-[#e66700] mb-4">افزودن محصول جدید</h3>
-    <form id="productForm" class="space-y-3">
-      {% csrf_token %}
+    <form id="productForm">
       <input type="hidden" id="productId" name="product_id" />
-      <input type="text" id="productName" name="title" placeholder="نام محصول" class="input input-bordered w-full" required />
-      <input type="number" id="productPrice" name="price" placeholder="قیمت (تومان)" class="input input-bordered w-full" required />
-      <select id="productCategory" name="category" class="select select-bordered w-full" required>
+      <input type="text" id="productName" name="title" placeholder="نام محصول" class="input input-bordered w-full mb-2" required />
+      <input type="number" id="productPrice" name="price" placeholder="قیمت (تومان)" class="input input-bordered w-full mb-2" required />
+      <select id="productCategory" name="category" class="select select-bordered w-full mb-2" required>
         <option value="">دسته‌بندی</option>
         {% for cat in categories %}
         <option value="{{ cat.id }}">{{ cat.title }}</option>
@@ -75,7 +58,7 @@
   </div>
 </div>
 
-<!-- مودال حذف -->
+<!-- Delete Modal -->
 <input type="checkbox" id="delete_modal" class="modal-toggle" />
 <div class="modal">
   <div class="modal-box">
@@ -89,82 +72,56 @@
 </div>
 
 <script>
-  let editing = false;
-  const dashboardContent = document.getElementById("dashboard-content");
+let editing = false;
+const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
-  // استفاده از event delegation برای تمام دکمه‌ها
-  dashboardContent.addEventListener("click", async function(e){
-    // محصول جدید
-    if(e.target.matches(".new-product-btn")){
-      editing = false;
-      document.getElementById("modalTitle").innerText = "افزودن محصول جدید";
-      document.getElementById("productForm").reset();
-      document.getElementById("productId").value = "";
-      document.getElementById("product_modal").checked = true;
-    }
+function openProductModal() {
+  editing = false;
+  document.getElementById("modalTitle").innerText = "افزودن محصول جدید";
+  document.getElementById("productForm").reset();
+  document.getElementById("productId").value = "";
+  document.getElementById("product_modal").checked = true;
+}
 
-    // ویرایش محصول
-    if(e.target.matches(".edit-btn")){
-      editing = true;
-      const btn = e.target;
-      document.getElementById("modalTitle").innerText = "ویرایش محصول";
-      document.getElementById("product_modal").checked = true;
-      document.getElementById("productId").value = btn.dataset.id;
-      document.getElementById("productName").value = btn.dataset.title;
-      document.getElementById("productPrice").value = btn.dataset.price;
-      document.getElementById("productCategory").value = btn.dataset.category;
-    }
+function editProduct(id, title, price, categoryId) {
+  editing = true;
+  document.getElementById("modalTitle").innerText = "ویرایش محصول";
+  document.getElementById("product_modal").checked = true;
+  document.getElementById("productId").value = id;
+  document.getElementById("productName").value = title;
+  document.getElementById("productPrice").value = price;
+  document.getElementById("productCategory").value = categoryId;
+}
 
-    // حذف محصول
-    if(e.target.matches(".delete-btn")){
-      const btn = e.target;
-      document.getElementById("delete_modal").checked = true;
-      document.getElementById("deleteMessage").innerText = `آیا از حذف محصول "${btn.dataset.title}" مطمئن هستید؟`;
-      document.getElementById("confirmDeleteBtn").onclick = async () => {
-        try{
-          const res = await fetch(`/dashboard/products/delete/${btn.dataset.id}/`, {
-            method: "POST",
-            headers: {
-              "X-Requested-With": "XMLHttpRequest",
-              "X-CSRFToken": csrfToken
-            }
-          });
-          const data = await res.json();
-          if(data.success){
-            document.getElementById("delete_modal").checked = false;
-            loadSection("products");
-          } else alert("حذف انجام نشد.");
-        } catch {
-          alert("ارتباط با سرور برقرار نشد.");
-        }
-      };
-    }
-  });
-
-  // ذخیره محصول جدید یا ویرایش
-  document.getElementById("productForm").addEventListener("submit", async function(e){
-    e.preventDefault();
-    const formData = new FormData(this);
-    const url = editing ? "/dashboard/products/update/" : "/dashboard/products/create/";
-    try{
-      const res = await fetch(url,{
-        method: "POST",
-        headers: {"X-Requested-With": "XMLHttpRequest","X-CSRFToken": csrfToken},
-        body: formData
-      });
-      const data = await res.json();
-      if(data.success){
-        document.getElementById("product_modal").checked = false;
-        loadSection("products");
-      } else alert("خطایی رخ داد.");
-    } catch {
-      alert("ارتباط با سرور برقرار نشد.");
-    }
-  });
-
-  async function loadPage(page){
-    const res = await fetch(`/dashboard/load/products/?page=${page}`);
+function confirmDeleteProduct(id, name) {
+  document.getElementById("delete_modal").checked = true;
+  document.getElementById("deleteMessage").innerText = `آیا از حذف محصول "${name}" مطمئن هستید؟`;
+  document.getElementById("confirmDeleteBtn").onclick = async () => {
+    const res = await fetch(`/dashboard/products/delete/${id}/`, {
+      method: "POST",
+      headers: { "X-Requested-With": "XMLHttpRequest", "X-CSRFToken": csrfToken }
+    });
     const data = await res.json();
-    document.getElementById("dashboard-content").innerHTML = data.html;
+    if (data.success) loadSection('products');
+    else alert("حذف انجام نشد.");
+  };
+}
+
+document.getElementById("productForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
+  const formData = new FormData(this);
+  const url = editing ? "/dashboard/products/update/" : "/dashboard/products/create/";
+  const res = await fetch(url, {
+    method: "POST",
+    body: formData,
+    headers: { "X-Requested-With": "XMLHttpRequest", "X-CSRFToken": csrfToken }
+  });
+  const data = await res.json();
+  if (data.success) {
+    document.getElementById("product_modal").checked = false;
+    loadSection('products');
+  } else {
+    alert("خطایی رخ داد.");
   }
+});
 </script>
