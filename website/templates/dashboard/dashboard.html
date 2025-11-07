@@ -31,8 +31,106 @@
           <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
         </head>
         <body>
-            <div class="flex min-h-screen bg-gray-50">
-              <!-- منو -->
+          <div class="flex min-h-screen bg-gray-100 text-gray-900">
+
+            <!-- Sidebar -->
+            <aside id="sidebar"
+                   class="bg-[#1d5675] text-white w-16 md:w-64 transition-all duration-300 flex flex-col">
+              <!-- لوگو و دکمه منو -->
+              <div class="flex items-center justify-between p-4 border-b border-white/20">
+                <h2 id="sidebar-title" class="text-xl font-bold hidden md:block">پنل مدیریت</h2>
+                <button id="menu-btn" class="p-2 rounded-md hover:bg-white/20">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+                       stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M4 6h16M4 12h16m-7 6h7"/>
+                  </svg>
+                </button>
+              </div>
+
+              <!-- منوی اصلی -->
+              <nav class="flex-1 mt-4 space-y-2">
+                <button onclick="loadSection('products')" class="sidebar-item">
+                  <i class="lucide lucide-package"></i>
+                  <span class="hidden md:inline">محصولات</span>
+                </button>
+                <button onclick="loadSection('articles')" class="sidebar-item">
+                  <i class="lucide lucide-newspaper"></i>
+                  <span class="hidden md:inline">مقالات</span>
+                </button>
+                <button onclick="loadSection('tutorials')" class="sidebar-item">
+                  <i class="lucide lucide-graduation-cap"></i>
+                  <span class="hidden md:inline">آموزش‌ها</span>
+                </button>
+                <button onclick="loadSection('categories')" class="sidebar-item">
+                  <i class="lucide lucide-tags"></i>
+                  <span class="hidden md:inline">دسته‌بندی‌ها</span>
+                </button>
+              </nav>
+
+              <!-- خروج -->
+              <div class="p-4 border-t border-white/20">
+                <a href="/accounts/logout/" class="sidebar-item bg-red-600 hover:bg-red-700">
+                  <i class="lucide lucide-log-out"></i>
+                  <span class="hidden md:inline">خروج</span>
+                </a>
+              </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="flex-1 p-6 transition-all duration-300" id="dashboard-content">
+              <h1 class="text-3xl font-bold text-[#e66700] mb-4">به پنل مدیریت خوش آمدید</h1>
+              <p class="text-gray-700">از منوی سمت راست یا بالا، بخش مورد نظر را انتخاب کنید.</p>
+            </main>
+
+          </div>
+
+          <!-- استایل‌های سفارشی -->
+          <style>
+            .sidebar-item {
+              @apply flex items-center gap-3 w-full text-right p-3 rounded-md hover:bg-white/20 transition;
+            }
+            #sidebar.collapsed {
+              width: 4rem !important;
+            }
+            #sidebar.collapsed span {
+              display: none !important;
+            }
+          </style>
+
+          <!-- اسکریپت‌ها -->
+          <script>
+            // باز و بسته شدن منو
+            const sidebar = document.getElementById("sidebar");
+            const menuBtn = document.getElementById("menu-btn");
+
+            menuBtn.addEventListener("click", () => {
+              sidebar.classList.toggle("collapsed");
+            });
+
+            // بارگذاری بخش‌ها
+            function loadSection(section) {
+              fetch(`/dashboard/load/${section}/`)
+                .then(res => res.text())
+                .then(html => {
+                  document.getElementById("dashboard-content").innerHTML = html;
+                })
+                .catch(err => {
+                  console.error(err);
+                  document.getElementById("dashboard-content").innerHTML = `
+                    <div class="text-red-600 font-bold">خطا در بارگذاری بخش ${section}</div>`;
+                });
+            }
+          </script>
+
+          <!-- بارگذاری آیکن‌ها -->
+          <script src="https://unpkg.com/lucide@latest"></script>
+          <script>
+            lucide.createIcons();
+          </script>
+
+            <!-- <div class="flex min-h-screen bg-gray-50">
+              
               <aside class="w-64 bg-white border-l border-gray-200 shadow-lg p-4">
                 <h2 class="text-xl font-bold text-[#e66700] mb-4">مدیریت سایت</h2>
                 <ul class="space-y-2">
@@ -42,7 +140,7 @@
                 </ul>
               </aside>
 
-              <!-- محتوای اصلی -->
+              
               <main id="dashboard-content" class="flex-1 p-6 overflow-y-auto">
                 <h1 class="text-2xl font-bold mb-4">به داشبورد خوش آمدید</h1>
                 <p>از منوی سمت راست یکی از بخش‌ها را انتخاب کنید.</p>
@@ -65,7 +163,7 @@
                 content.innerHTML = `<div class="alert alert-error">خطا در بارگذاری بخش.</div>`;
               }
             }
-            </script>
-    </body>
-  </html>
+            </script> -->
+      </body>
+    </html>
   {% endblock %}
