@@ -409,25 +409,103 @@ def dashboard(request):
 @login_required
 def load_dashboard_section(request, section):
     """AJAX loader for dashboard sections"""
-    if section == "products":
-        products = Product.objects.all().order_by("-id")
-        html = render(request, "dashboard/sections/products.html", {"products": products}).content.decode("utf-8")
-        return JsonResponse({"html": html})
 
-    elif section == "articles":
-        articles = Article.objects.all()
-        html = render(request, "dashboard/sections/articles.html", {"articles": articles}).content.decode("utf-8")
-        return JsonResponse({"html": html})
+    sections = {
+        "products": {
+            "model": Product,
+            "template": "dashboard/sections/products.html",
+            "context_name": "products",
+        },
+        "articles": {
+            "model": Article,
+            "template": "dashboard/sections/articles.html",
+            "context_name": "articles",
+        },
+        "tutorials": {
+            "model": Course,
+            "template": "dashboard/sections/tutorials.html",
+            "context_name": "tutorials",
+        },
+        "categories": {
+            "model": Category,
+            "template": "dashboard/sections/categories.html",
+            "context_name": "categories",
+        },
+    }
 
-    elif section == "tutorials":
-        tutorials = Course.objects.all()
-        html = render(request, "dashboard/sections/articles.html", {"tutorials": tutorials}).content.decode("utf-8")
-        return JsonResponse({"html": html})
-
-    elif section == "categories":
-        categories = Category.objects.all()
-        html = render(request, "dashboard/sections/categories.html", {"categories": categories}).content.decode("utf-8")
-        return JsonResponse({"html": html})
-
-    else:
+    if section not in sections:
         return JsonResponse({"html": "<p>بخش مورد نظر پیدا نشد.</p>"})
+
+    info = sections[section]
+    items = info["model"].objects.all().order_by("-id")
+    html = render(
+        request,
+        info["template"],
+        {info["context_name"]: items}
+    ).content.decode("utf-8")
+
+    return JsonResponse({"html": html})
+
+
+@login_required
+def create_product(request):
+    if request.method == "POST" and request.headers.get("x-requested-with") == "XMLHttpRequest":
+        title = request.POST.get("title")
+        price = request.POST.get("price")
+        category_id = request.POST.get("category")
+        category = Category.objects.filter(id=category_id).first()
+
+        Product.objects.create(title=title, price=price, category=category)
+        return JsonResponse({"success": True})
+    return JsonResponse({"success": False})
+
+
+@login_required
+def update_product(request):
+    if request.method == "POST" and request.headers.get("x-requested-with") == "XMLHttpRequest":
+        pid = request.POST.get("product_id")
+        product = Product.objects.filter(id=pid).first()
+        if not product:
+            return JsonResponse({"success": False})
+
+        product.title = request.POST.get("title")
+        product.price = request.POST.get("price")
+        product.category_id = request.POST.get("category")
+        product.save()
+        return JsonResponse({"success": True})
+    return JsonResponse({"success": False})
+
+
+@login_required
+def delete_product(request, pk):
+    if request.method == "POST" and request.headers.get("x-requested-with") == "XMLHttpRequest":
+        Product.objects.filter(id=pk).delete()
+        return JsonResponse({"success": True})
+    return JsonResponse({"success": False})
+
+
+# @login_required
+# def load_dashboard_section(request, section):
+#     """AJAX loader for dashboard sections"""
+#     if section == "products":
+#         products = Product.objects.all().order_by("-id")
+#         html = render(request, "dashboard/sections/products.html", {"products": products}).content.decode("utf-8")
+#         return JsonResponse({"html": html})
+
+#     elif section == "articles":
+#         articles = Article.objects.all()
+#         html = render(request, "dashboard/sections/articles.html", {"articles": articles}).content.decode("utf-8")
+#         return JsonResponse({"html": html})
+
+#     elif section == "tutorials":
+#         tutorials = Course.objects.all()
+#         html = render(request, "dashboard/sections/tutorials.html", {"tutorials": tutorials}).content.decode("utf-8")
+#         return JsonResponse({"html": html})
+
+#     elif section == "categories":
+#         categories = Category.objects.all()
+#         html = render(request, "dashboard/sections/categories.html", {"categories": categories}).content.decode("utf-8")
+#         return JsonResponse({"html": html})
+
+#     else:
+#         return JsonResponse({"html": "<p>بخش مورد نظر پیدا نشد.</p>"})

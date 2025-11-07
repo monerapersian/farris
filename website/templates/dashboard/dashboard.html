@@ -1,178 +1,140 @@
 {% load static %}
 {% load jalali_tags %}
-  {% block content %}
-    <!DOCTYPE html>
-      <html class="scroll-smooth">
-        <head>
-          <meta charset="utf-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1">
-          <meta name="theme-color" content="#014e50">
+  <!DOCTYPE html>
+    <html class="scroll-smooth">
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#014e50">
 
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-          <!-- StylsLinks -->
-            <link href="{% static 'css/daisyUI-5.0.49.css' %}" rel="stylesheet" type="text/css" />
-            <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" />
-          <!-- /StyleLinks -->
+        <!-- StylsLinks -->
+          <link href="{% static 'css/daisyUI-5.0.49.css' %}" rel="stylesheet" type="text/css" />
+          <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" />
+        <!-- /StyleLinks -->
 
-          <!-- DaisyUI-JS -->
-            <script src="{% static 'js/index.global.js' %}"></script>
-          <!-- /DaisyUI-JS -->
-          <!-- SwiperJS -->
-            <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-          <!-- /SwiperJS -->
+        <!-- DaisyUI-JS -->
+          <script src="{% static 'js/index.global.js' %}"></script>
+        <!-- /DaisyUI-JS -->
+        <!-- SwiperJS -->
+          <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+        <!-- /SwiperJS -->
 
-          <title> میز مدیریت فریس  </title>
-          <link rel="icon" href="{% static 'img/farris-icon-or.png' %}" type="image/x-icon">
+        <title> میز مدیریت فریس  </title>
+        <link rel="icon" href="{% static 'img/farris-icon-or.png' %}" type="image/x-icon">
 
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
-          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-          <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-        </head>
-        <body>
-          <div class="min-h-screen flex bg-gray-100">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+        <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+      </head>
+      <body>
+        <div class="min-h-screen flex bg-gray-100">
 
-            <!-- سایدبار -->
-            <div class="drawer lg:drawer-open">
-              <input id="sidebar-drawer" type="checkbox" class="drawer-toggle" />
-              <div class="drawer-content flex flex-col">
+          <!-- سایدبار -->
+          <div class="drawer lg:drawer-open">
+            <input id="sidebar-drawer" type="checkbox" class="drawer-toggle" />
+            <div class="drawer-content flex flex-col">
 
-                <!-- نوار بالا -->
-                <div class="w-full navbar bg-[#1d5675] text-white">
-                  <div class="flex-none lg:hidden">
-                    <label for="sidebar-drawer" class="btn btn-square btn-ghost">
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                           viewBox="0 0 24 24" class="inline-block w-6 h-6 stroke-current">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="M4 6h16M4 12h16M4 18h16" />
-                      </svg>
-                    </label>
-                  </div>
-                  <div class="flex-1 px-2 mx-2 font-bold text-xl">پنل مدیریت فریس</div>
+              <!-- نوار بالا -->
+              <div class="w-full navbar bg-[#1d5675] text-white">
+                <div class="flex-none lg:hidden">
+                  <label for="sidebar-drawer" class="btn btn-square btn-ghost">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                         viewBox="0 0 24 24" class="inline-block w-6 h-6 stroke-current">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                  </label>
                 </div>
+                <div class="flex-1 px-2 mx-2 font-bold text-xl">پنل مدیریت فریس</div>
+              </div>
 
-                <!-- محتوای اصلی -->
-                <main id="dashboard-content" class="flex-1 p-6 overflow-y-auto">
-                  <div class="text-2xl font-bold text-[#e66700] mb-4">به پنل خوش آمدید 🌟</div>
-                  <p class="text-gray-700">از منوی سمت راست، بخش مورد نظر خود را انتخاب کنید.</p>
+              <!-- محتوای اصلی -->
+              <main id="dashboard-content" class="flex-1 p-6 overflow-y-auto">
+                <div class="text-2xl font-bold text-[#e66700] mb-4">به پنل خوش آمدید 🌟</div>
+                <p class="text-gray-700">از منوی سمت راست، بخش مورد نظر خود را انتخاب کنید.</p>
 
-                  <!-- نمونه کارت‌ها -->
-                  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
-                    <div class="card bg-base-100 shadow-md">
-                      <div class="card-body text-center">
-                        <h2 class="card-title text-[#1d5675]">محصولات</h2>
-                        <p>مدیریت، افزودن و ویرایش محصولات.</p>
-                        <div class="card-actions justify-center">
-                          <button class="btn btn-sm bg-[#e66700] border-0 hover:bg-[#b25204] text-white" onclick="loadSection('products')">ورود</button>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="card bg-base-100 shadow-md">
-                      <div class="card-body text-center">
-                        <h2 class="card-title text-[#1d5675]">مقالات</h2>
-                        <p>مدیریت و افزودن مقاله‌ها.</p>
-                        <div class="card-actions justify-center">
-                          <button class="btn btn-sm bg-[#e66700] border-0 hover:bg-[#b25204] text-white" onclick="loadSection('articles')">ورود</button>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="card bg-base-100 shadow-md">
-                      <div class="card-body text-center">
-                        <h2 class="card-title text-[#1d5675]">آموزش‌ها</h2>
-                        <p>ایجاد و ویرایش آموزش‌های فریس.</p>
-                        <div class="card-actions justify-center">
-                          <button class="btn btn-sm bg-[#e66700] border-0 hover:bg-[#b25204] text-white" onclick="loadSection('tutorials')">ورود</button>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="card bg-base-100 shadow-md">
-                      <div class="card-body text-center">
-                        <h2 class="card-title text-[#1d5675]">دسته‌بندی‌ها</h2>
-                        <p>مدیریت دسته‌بندی محصولات.</p>
-                        <div class="card-actions justify-center">
-                          <button class="btn btn-sm bg-[#e66700] border-0 hover:bg-[#b25204] text-white" onclick="loadSection('categories')">ورود</button>
-                        </div>
+                <!-- نمونه کارت‌ها -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+                  <div class="card bg-base-100 shadow-md">
+                    <div class="card-body text-center">
+                      <h2 class="card-title text-[#1d5675]">محصولات</h2>
+                      <p>مدیریت، افزودن و ویرایش محصولات.</p>
+                      <div class="card-actions justify-center">
+                        <button class="btn btn-sm bg-[#e66700] border-0 hover:bg-[#b25204] text-white" onclick="loadSection('products')">ورود</button>
                       </div>
                     </div>
                   </div>
-                </main>
-              </div>
 
-              <!-- منوی کناری -->
-              <div class="drawer-side z-50">
-                <label for="sidebar-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
-                <ul class="menu p-4 w-72 min-h-full bg-[#1d5675] text-white text-lg">
-                  <li class="mb-4 text-2xl font-bold text-center border-b border-white/20 pb-2">میز مدیریت</li>
-                  <li><button class="hover:bg-white/20 rounded-md" onclick="loadSection('products')">🏷️ محصولات</button></li>
-                  <li><button class="hover:bg-white/20 rounded-md" onclick="loadSection('articles')">📰 مقالات</button></li>
-                  <li><button class="hover:bg-white/20 rounded-md" onclick="loadSection('tutorials')">🎓 آموزش‌ها</button></li>
-                  <li><button class="hover:bg-white/20 rounded-md" onclick="loadSection('categories')">📂 دسته‌بندی‌ها</button></li>
-                  <!-- <li class="mt-4 border-t border-white/20 pt-4">
-                    <a href="#" class="text-red-300 hover:text-red-500">🚪 خروج</a>
-                  </li> -->
-                </ul>
-              </div>
-            </div>
+                  <div class="card bg-base-100 shadow-md">
+                    <div class="card-body text-center">
+                      <h2 class="card-title text-[#1d5675]">مقالات</h2>
+                      <p>مدیریت و افزودن مقاله‌ها.</p>
+                      <div class="card-actions justify-center">
+                        <button class="btn btn-sm bg-[#e66700] border-0 hover:bg-[#b25204] text-white" onclick="loadSection('articles')">ورود</button>
+                      </div>
+                    </div>
+                  </div>
 
-          </div>
+                  <div class="card bg-base-100 shadow-md">
+                    <div class="card-body text-center">
+                      <h2 class="card-title text-[#1d5675]">آموزش‌ها</h2>
+                      <p>ایجاد و ویرایش آموزش‌های فریس.</p>
+                      <div class="card-actions justify-center">
+                        <button class="btn btn-sm bg-[#e66700] border-0 hover:bg-[#b25204] text-white" onclick="loadSection('tutorials')">ورود</button>
+                      </div>
+                    </div>
+                  </div>
 
-          <script>
-            async function loadSection(section) {
-              const content = document.getElementById("dashboard-content");
-              content.innerHTML = `
-                <div class="flex justify-center items-center h-64">
-                  <span class="loading loading-spinner loading-lg text-[#e66700]"></span>
-                </div>`;
-
-              try {
-                const res = await fetch(`/dashboard/load/${section}/`);
-                const data = await res.json();
-                content.innerHTML = data.html;
-              } catch (err) {
-                content.innerHTML = `<div class="alert alert-error">خطا در بارگذاری بخش.</div>`;
-              }
-            }
-          </script>
-
-            <!-- <div class="flex min-h-screen bg-gray-50">
-              
-              <aside class="w-64 bg-white border-l border-gray-200 shadow-lg p-4">
-                <h2 class="text-xl font-bold text-[#e66700] mb-4">مدیریت سایت</h2>
-                <ul class="space-y-2">
-                  <li><button class="btn w-full" onclick="loadSection('products')">محصولات</button></li>
-                  <li><button class="btn w-full" onclick="loadSection('articles')">مقالات</button></li>
-                  <li><button class="btn w-full" onclick="loadSection('categories')">دسته‌بندی‌ها</button></li>
-                </ul>
-              </aside>
-
-              
-              <main id="dashboard-content" class="flex-1 p-6 overflow-y-auto">
-                <h1 class="text-2xl font-bold mb-4">به داشبورد خوش آمدید</h1>
-                <p>از منوی سمت راست یکی از بخش‌ها را انتخاب کنید.</p>
+                  <div class="card bg-base-100 shadow-md">
+                    <div class="card-body text-center">
+                      <h2 class="card-title text-[#1d5675]">دسته‌بندی‌ها</h2>
+                      <p>مدیریت دسته‌بندی محصولات.</p>
+                      <div class="card-actions justify-center">
+                        <button class="btn btn-sm bg-[#e66700] border-0 hover:bg-[#b25204] text-white" onclick="loadSection('categories')">ورود</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </main>
             </div>
 
-            <script>
-            async function loadSection(section) {
-              const content = document.getElementById("dashboard-content");
-              content.innerHTML = `
-                <div class="flex justify-center items-center h-64">
-                  <span class="loading loading-spinner loading-lg text-[#e66700]"></span>
-                </div>`;
+            <!-- منوی کناری -->
+            <div class="drawer-side z-50">
+              <label for="sidebar-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
+              <ul class="menu p-4 w-72 min-h-full bg-[#1d5675] text-white text-lg">
+                <li class="mb-4 text-2xl font-bold text-center border-b border-white/20 pb-2">میز مدیریت</li>
+                <li><button class="hover:bg-white/20 rounded-md" onclick="loadSection('products')">🏷️ محصولات</button></li>
+                <li><button class="hover:bg-white/20 rounded-md" onclick="loadSection('articles')">📰 مقالات</button></li>
+                <li><button class="hover:bg-white/20 rounded-md" onclick="loadSection('tutorials')">🎓 آموزش‌ها</button></li>
+                <li><button class="hover:bg-white/20 rounded-md" onclick="loadSection('categories')">📂 دسته‌بندی‌ها</button></li>
+                <!-- <li class="mt-4 border-t border-white/20 pt-4">
+                  <a href="#" class="text-red-300 hover:text-red-500">🚪 خروج</a>
+                </li> -->
+              </ul>
+            </div>
+          </div>
 
-              try {
-                const res = await fetch(`/dashboard/load/${section}/`);
-                const data = await res.json();
-                content.innerHTML = data.html;
-              } catch (err) {
-                content.innerHTML = `<div class="alert alert-error">خطا در بارگذاری بخش.</div>`;
-              }
+        </div>
+
+        <script>
+          async function loadSection(section) {
+            const content = document.getElementById("dashboard-content");
+            content.innerHTML = `
+              <div class="flex justify-center items-center h-64">
+                <span class="loading loading-spinner loading-lg text-[#e66700]"></span>
+              </div>`;
+
+            try {
+              const res = await fetch(`/dashboard/load/${section}/`);
+              const data = await res.json();
+              content.innerHTML = data.html;
+            } catch (err) {
+              content.innerHTML = `<div class="alert alert-error">خطا در بارگذاری بخش.</div>`;
             }
-            </script> -->
-      </body>
-    </html>
-  {% endblock %}
+          }
+        </script>
+    </body>
+  </html>
