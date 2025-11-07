@@ -1,141 +1,113 @@
-<div class="flex justify-between items-center mb-6">
-  <h2 class="text-2xl font-bold text-[#1d5675]">مدیریت محصولات</h2>
-  <button class="btn bg-[#e66700] border-0 hover:bg-[#b25204] text-white" id="addProductBtn">➕ محصول جدید</button>
+<div class="flex justify-between items-center mb-4">
+  <h2 class="text-xl font-bold">مدیریت محصولات</h2>
+  <button class="btn btn-primary" onclick="openProductModal()">➕ محصول جدید</button>
 </div>
 
-<div class="overflow-x-auto bg-white rounded-lg shadow">
-  <table class="table w-full">
-    <thead class="bg-[#1d5675] text-white">
-      <tr>
-        <th>#</th>
-        <th>عنوان</th>
-        <th>قیمت</th>
-        <th>دسته‌بندی</th>
-        <th>مدیریت</th>
-      </tr>
-    </thead>
-    <tbody id="productsTableBody">
-      {% for p in products %}
-      <tr>
-        <td>{{ forloop.counter }}</td>
-        <td>{{ p.title }}</td>
-        <td>{{ p.price|default:"-" }}</td>
-        <td>{{ p.category.title|default:"-" }}</td>
-        <td class="flex gap-2">
-          <button class="btn btn-xs bg-blue-500 text-white border-0" onclick="editProduct({{ p.id }}, '{{ p.title }}', '{{ p.price }}', '{{ p.category.id }}')">ویرایش</button>
-          <button class="btn btn-xs bg-red-500 text-white border-0" onclick="deleteProduct({{ p.id }}, '{{ p.title }}')">حذف</button>
-        </td>
-      </tr>
-      {% empty %}
-      <tr><td colspan="5" class="text-center py-4 text-gray-500">هیچ محصولی یافت نشد</td></tr>
-      {% endfor %}
-    </tbody>
-  </table>
+<table class="table w-full">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>عنوان</th>
+      <th>قیمت</th>
+      <th>دسته‌بندی</th>
+      <th>تاریخ</th>
+      <th>عملیات</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for product in products %}
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>{{ product.title }}</td>
+      <td>{{ product.price|floatformat:0 }} تومان</td>
+      <td>{{ product.category.title }}</td>
+      <td>{{ product.created_at|date:"Y-m-d" }}</td>
+      <td>
+        <button class="btn btn-xs btn-info" onclick="editProduct({{ product.id }}, '{{ product.title }}', '{{ product.price }}')">ویرایش</button>
+        <button class="btn btn-xs btn-error" onclick="deleteProduct({{ product.id }}, '{{ product.title }}')">حذف</button>
+      </td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="6" class="text-center">هیچ محصولی یافت نشد.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<div class="mt-4 flex justify-center">
+  {% if page_obj.has_previous %}
+    <button class="btn btn-sm" onclick="loadSection('products?page={{ page_obj.previous_page_number }}')">قبلی</button>
+  {% endif %}
+  <span class="mx-2">صفحه {{ page_obj.number }} از {{ page_obj.paginator.num_pages }}</span>
+  {% if page_obj.has_next %}
+    <button class="btn btn-sm" onclick="loadSection('products?page={{ page_obj.next_page_number }}')">بعدی</button>
+  {% endif %}
 </div>
 
-<!-- Pagination -->
-<div class="flex justify-center mt-4">
-  <div class="join">
-    {% if products.has_previous %}
-      <button class="join-item btn" onclick="loadSection('products', {{ products.previous_page_number }})">«</button>
-    {% endif %}
-    <button class="join-item btn btn-disabled">صفحه {{ products.number }} از {{ products.paginator.num_pages }}</button>
-    {% if products.has_next %}
-      <button class="join-item btn" onclick="loadSection('products', {{ products.next_page_number }})">»</button>
-    {% endif %}
-  </div>
-</div>
+<!-- Modal -->
+<dialog id="productModal" class="modal">
+  <form method="dialog" class="modal-box">
+    <h3 id="modalTitle" class="font-bold text-lg">محصول جدید</h3>
+    <input type="hidden" id="productId">
+    <div class="py-2">
+      <input id="title" class="input input-bordered w-full" placeholder="عنوان محصول">
+    </div>
+    <div class="py-2">
+      <input id="slug" class="input input-bordered w-full" placeholder="slug محصول">
+    </div>
+    <div class="py-2">
+      <input id="price" class="input input-bordered w-full" placeholder="قیمت (تومان)">
+    </div>
+    <div class="py-2">
+      <textarea id="description" class="textarea textarea-bordered w-full" placeholder="توضیحات"></textarea>
+    </div>
+    <div class="modal-action">
+      <button type="button" class="btn" onclick="saveProduct()">💾 ذخیره</button>
+      <button class="btn">بستن</button>
+    </div>
+  </form>
+</dialog>
 
 <script>
-let editing=false;
-
-document.getElementById("addProductBtn").addEventListener("click",()=>{
-    editing=false;
-    openProductModal();
-});
-
-function openProductModal(){
-    const modalHTML = `
-      <input type="checkbox" id="product_modal" class="modal-toggle" checked/>
-      <div class="modal">
-        <div class="modal-box max-w-md">
-          <h3 class="font-bold text-lg text-[#e66700] mb-4">${editing ? "ویرایش محصول":"افزودن محصول جدید"}</h3>
-          <form id="productForm" class="space-y-3">
-            <input type="hidden" name="product_id" id="productId"/>
-            <input type="text" name="title" id="productName" placeholder="عنوان" class="input input-bordered w-full" required/>
-            <input type="text" name="slug" id="productSlug" placeholder="Slug" class="input input-bordered w-full" required/>
-            <input type="number" name="price" id="productPrice" placeholder="قیمت" class="input input-bordered w-full" required/>
-            <textarea name="description" id="productDesc" placeholder="توضیحات" class="textarea textarea-bordered w-full"></textarea>
-            <select name="category" id="productCategory" class="select select-bordered w-full" required>
-              <option value="">انتخاب دسته‌بندی</option>
-              {% for cat in categories %}
-              <option value="{{ cat.id }}">{{ cat.title }}</option>
-              {% endfor %}
-            </select>
-            <div class="modal-action">
-              <button type="button" class="btn" onclick="document.getElementById('product_modal').remove()">لغو</button>
-              <button type="submit" class="btn bg-[#e66700] border-0 hover:bg-[#b25204] text-white">ذخیره</button>
-            </div>
-          </form>
-        </div>
-      </div>`;
-    document.getElementById("dashboard-content").insertAdjacentHTML("beforeend",modalHTML);
-
-    document.getElementById("productForm").addEventListener("submit",async function(e){
-        e.preventDefault();
-        const formData=new FormData(this);
-        const url=editing ? "/dashboard/products/update/" : "/dashboard/products/create/";
-        const res=await fetch(url,{
-            method:"POST",
-            body:formData,
-            headers:{"X-Requested-With":"XMLHttpRequest"}
-        });
-        const data=await res.json();
-        if(data.success){
-            loadSection('products');
-            document.getElementById('product_modal').remove();
-        } else alert("خطا در ذخیره محصول");
-    });
+function openProductModal() {
+  document.getElementById("modalTitle").innerText = "محصول جدید";
+  document.getElementById("productId").value = "";
+  document.getElementById("title").value = "";
+  document.getElementById("slug").value = "";
+  document.getElementById("price").value = "";
+  document.getElementById("description").value = "";
+  document.getElementById("productModal").showModal();
 }
 
-function editProduct(id,title,price,categoryId){
-    editing=true;
-    openProductModal();
-    document.getElementById("productId").value=id;
-    document.getElementById("productName").value=title;
-    document.getElementById("productPrice").value=price;
-    document.getElementById("productSlug").value=title.replace(/\s+/g,'-').toLowerCase();
-    document.getElementById("productCategory").value=categoryId;
+function editProduct(id, title, price) {
+  document.getElementById("modalTitle").innerText = "ویرایش محصول";
+  document.getElementById("productId").value = id;
+  document.getElementById("title").value = title;
+  document.getElementById("price").value = price;
+  document.getElementById("productModal").showModal();
 }
 
-function deleteProduct(id,name){
-    const modalHTML = `
-      <input type="checkbox" id="delete_modal" class="modal-toggle" checked/>
-      <div class="modal">
-        <div class="modal-box">
-          <h3 class="font-bold text-lg text-red-600">تأیید حذف</h3>
-          <p class="py-4">آیا از حذف محصول "${name}" مطمئن هستید؟</p>
-          <div class="modal-action">
-            <button type="button" class="btn" onclick="document.getElementById('delete_modal').remove()">لغو</button>
-            <button class="btn bg-red-600 text-white border-0 hover:bg-red-700" onclick="confirmDelete(${id})">حذف</button>
-          </div>
-        </div>
-      </div>`;
-    document.getElementById("dashboard-content").insertAdjacentHTML("beforeend",modalHTML);
+function saveProduct() {
+  const id = document.getElementById("productId").value;
+  const url = id ? "/dashboard/products/update/" : "/dashboard/products/create/";
+  const formData = new FormData();
+  formData.append("product_id", id);
+  formData.append("title", document.getElementById("title").value);
+  formData.append("slug", document.getElementById("slug").value);
+  formData.append("price", document.getElementById("price").value);
+  formData.append("description", document.getElementById("description").value);
+
+  axios.post(url, formData).then(res => {
+    if (res.data.success) {
+      document.getElementById("productModal").close();
+      loadSection('products');
+    }
+  });
 }
 
-async function confirmDelete(id){
-    const res=await fetch(`/dashboard/products/delete/${id}/`,{
-        method:"POST",
-        headers:{
-            "X-Requested-With":"XMLHttpRequest",
-            "X-CSRFToken":"{{ csrf_token }}",
-        },
-    });
-    const data=await res.json();
-    if(data.success){
-        loadSection('products');
-        document.getElementById('delete_modal').remove();
-    }else alert("حذف انجام نشد");
+function deleteProduct(id, title) {
+  if (!confirm(`آیا از حذف "${title}" مطمئنی؟`)) return;
+  axios.post(`/dashboard/products/delete/${id}/`).then(res => {
+    if (res.data.success) loadSection('products');
+  });
 }
 </script>
