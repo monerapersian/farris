@@ -110,9 +110,6 @@
                 <li><button class="hover:bg-white/20 rounded-md" onclick="loadSection('articles')">📰 مقالات</button></li>
                 <li><button class="hover:bg-white/20 rounded-md" onclick="loadSection('tutorials')">🎓 آموزش‌ها</button></li>
                 <li><button class="hover:bg-white/20 rounded-md" onclick="loadSection('categories')">📂 دسته‌بندی‌ها</button></li>
-                <!-- <li class="mt-4 border-t border-white/20 pt-4">
-                  <a href="#" class="text-red-300 hover:text-red-500">🚪 خروج</a>
-                </li> -->
               </ul>
             </div>
           </div>
@@ -120,32 +117,31 @@
         </div>
 
         <script>
+          function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+              const cookies = document.cookie.split(';');
+              for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                  cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                  break;
+                }
+              }
+            }
+            return cookieValue;
+          }
+
           async function loadSection(section) {
             const res = await fetch(`/dashboard/load/${section}/`);
             const data = await res.json();
             document.getElementById("dashboard-content").innerHTML = data.html;
-            
+
+            // اگر بخش محصولات هست، event listenerهای محصول را فعال کن
             if(section === "products" && window.initProductListeners){
-              window.initProductListeners(); // فعال کردن event listenerها
+              window.initProductListeners(getCookie('csrftoken'));
             }
           }
         </script>
-        <!-- <script>
-          async function loadSection(section) {
-            const content = document.getElementById("dashboard-content");
-            content.innerHTML = `
-              <div class="flex justify-center items-center h-64">
-                <span class="loading loading-spinner loading-lg text-[#e66700]"></span>
-              </div>`;
-
-            try {
-              const res = await fetch(`/dashboard/load/${section}/`);
-              const data = await res.json();
-              content.innerHTML = data.html;
-            } catch (err) {
-              content.innerHTML = `<div class="alert alert-error">خطا در بارگذاری بخش.</div>`;
-            }
-          }
-        </script> -->
     </body>
   </html>
