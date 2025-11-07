@@ -401,101 +401,65 @@ def agency_request_view(request):
     return JsonResponse({"success": False})
 
 
-# تعداد محصولات در هر صفحه
-PRODUCTS_PER_PAGE = 10
-
 @login_required
 def dashboard(request):
     return render(request, "dashboard/dashboard.html")
 
-
 @login_required
 def load_dashboard_section(request, section):
-    """بارگذاری AJAX برای بخش‌های داشبورد"""
-    
-    sections = {
-        "products": {
-            "model": Product,
-            "template": "dashboard/sections/products.html",
-            "context_name": "products",
-        },
-        "articles": {
-            "model": Article,
-            "template": "dashboard/sections/articles.html",
-            "context_name": "articles",
-        },
-        "tutorials": {
-            "model": Course,
-            "template": "dashboard/sections/tutorials.html",
-            "context_name": "tutorials",
-        },
-        "categories": {
-            "model": Category,
-            "template": "dashboard/sections/categories.html",
-            "context_name": "categories",
-        },
-    }
-
-    if section not in sections:
-        return JsonResponse({"html": "<p>بخش مورد نظر پیدا نشد.</p>"})
-
-    info = sections[section]
-
-    # محصولات Pagination
+    """بارگذاری بخش‌های داشبورد به صورت AJAX"""
     if section == "products":
-        all_items = info["model"].objects.all().order_by("-id")
+        products_list = Product.objects.all()
+        paginator = Paginator(products_list, 10)
         page_number = request.GET.get("page", 1)
-        paginator = Paginator(all_items, PRODUCTS_PER_PAGE)
         page_obj = paginator.get_page(page_number)
-        context = {info["context_name"]: page_obj, "categories": Category.objects.all()}
-    else:
-        items = info["model"].objects.all()
-        context = {info["context_name"]: items}
+        html = render(
+            request,
+            "dashboard/sections/products.html",
+            {"products": page_obj, "categories": Category.objects.all()}
+        ).content.decode("utf-8")
+        return JsonResponse({"html": html})
 
-    html = render(request, info["template"], context).content.decode("utf-8")
-    return JsonResponse({"html": html})
-
+    # سایر بخش‌ها (articles, tutorials, categories) مشابه میشه
+    return JsonResponse({"html": "<p>بخش مورد نظر پیدا نشد.</p>"})
 
 @login_required
+@require_POST
 def create_product(request):
-    """ایجاد محصول جدید از طریق AJAX"""
-    if request.method == "POST" and request.headers.get("x-requested-with") == "XMLHttpRequest":
-        title = request.POST.get("title")
-        price = request.POST.get("price")
-        category_id = request.POST.get("category")
-        category = Category.objects.filter(id=category_id).first()
-        Product.objects.create(title=title, price=price, category=category)
-        return JsonResponse({"success": True})
-    return JsonResponse({"success": False})
-
+    title = request.POST.get("title")
+    slug = request.POST.get("slug")
+    price = request.POST.get("price")
+    description = request.POST.get("description")
+    category_id = request.POST.get("category")
+    category = get_object_or_404(Category, id=category_id)
+    Product.objects.create(
+        title=title,
+        slug=slug,
+        description=description,
+        price=price,
+        category=category
+    )
+    return JsonResponse({"success": True})
 
 @login_required
+@require_POST
 def update_product(request):
-    """ویرایش محصول از طریق AJAX"""
-    if request.method == "POST" and request.headers.get("x-requested-with") == "XMLHttpRequest":
-        pid = request.POST.get("product_id")
-        product = get_object_or_404(Product, id=pid)
-        product.title = request.POST.get("title")
-        product.price = request.POST.get("price")
-        category_id = request.POST.get("category")
-        if category_id:
-            product.category = Category.objects.get(id=category_id)
-        else:
-            product.category = None
-        product.save()
-        return JsonResponse({"success": True})
-    return JsonResponse({"success": False})
-
+    pid = request.POST.get("product_id")
+    product = get_object_or_404(Product, id=pid)
+    product.title = request.POST.get("title")
+    product.slug = request.POST.get("slug")
+    product.price = request.POST.get("price")
+    product.description = request.POST.get("description")
+    product.category_id = request.POST.get("category")
+    product.save()
+    return JsonResponse({"success": True})
 
 @login_required
+@require_POST
 def delete_product(request, pk):
-    """حذف محصول از طریق AJAX"""
-    if request.method == "POST" and request.headers.get("x-requested-with") == "XMLHttpRequest":
-        product = Product.objects.filter(id=pk).first()
-        if product:
-            product.delete()
-            return JsonResponse({"success": True})
-    return JsonResponse({"success": False})
+    product = get_object_or_404(Product, pk=pk)
+    product.delete()
+    return JsonResponse({"success": True})
 
 # @login_required
 # def load_dashboard_section(request, section):

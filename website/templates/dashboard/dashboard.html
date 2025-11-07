@@ -33,101 +33,48 @@
       <body class="bg-gray-100">
         <div class="min-h-screen flex">
 
-          <!-- Drawer / Sidebar -->
-          <div class="drawer lg:drawer-open w-full">
-            <input id="sidebar-drawer" type="checkbox" class="drawer-toggle" />
+          <!-- Sidebar -->
+          <div class="drawer lg:drawer-open">
+            <input id="sidebar-drawer" type="checkbox" class="drawer-toggle"/>
             <div class="drawer-content flex flex-col">
 
               <!-- Navbar -->
               <div class="w-full navbar bg-[#1d5675] text-white">
                 <div class="flex-none lg:hidden">
                   <label for="sidebar-drawer" class="btn btn-square btn-ghost">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                         viewBox="0 0 24 24" class="inline-block w-6 h-6 stroke-current">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16M4 18h16" />
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                     </svg>
                   </label>
                 </div>
                 <div class="flex-1 px-2 mx-2 font-bold text-xl">پنل مدیریت فریس</div>
               </div>
 
-              <!-- Dashboard Content -->
+              <!-- Content -->
               <main id="dashboard-content" class="flex-1 p-6 overflow-y-auto">
                 <div class="text-2xl font-bold text-[#e66700] mb-4">به پنل خوش آمدید 🌟</div>
-                <p class="text-gray-700">از منوی سمت راست، بخش مورد نظر خود را انتخاب کنید.</p>
-
-                <!-- Cards -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
-                  <div class="card bg-base-100 shadow-md">
-                    <div class="card-body text-center">
-                      <h2 class="card-title text-[#1d5675]">محصولات</h2>
-                      <p>مدیریت، افزودن و ویرایش محصولات.</p>
-                      <div class="card-actions justify-center">
-                        <button class="btn btn-sm bg-[#e66700] border-0 hover:bg-[#b25204] text-white" onclick="loadSection('products')">ورود</button>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="card bg-base-100 shadow-md">
-                    <div class="card-body text-center">
-                      <h2 class="card-title text-[#1d5675]">مقالات</h2>
-                      <p>مدیریت و افزودن مقاله‌ها.</p>
-                      <div class="card-actions justify-center">
-                        <button class="btn btn-sm bg-[#e66700] border-0 hover:bg-[#b25204] text-white" onclick="loadSection('articles')">ورود</button>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="card bg-base-100 shadow-md">
-                    <div class="card-body text-center">
-                      <h2 class="card-title text-[#1d5675]">آموزش‌ها</h2>
-                      <p>ایجاد و ویرایش آموزش‌های فریس.</p>
-                      <div class="card-actions justify-center">
-                        <button class="btn btn-sm bg-[#e66700] border-0 hover:bg-[#b25204] text-white" onclick="loadSection('tutorials')">ورود</button>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="card bg-base-100 shadow-md">
-                    <div class="card-body text-center">
-                      <h2 class="card-title text-[#1d5675]">دسته‌بندی‌ها</h2>
-                      <p>مدیریت دسته‌بندی محصولات.</p>
-                      <div class="card-actions justify-center">
-                        <button class="btn btn-sm bg-[#e66700] border-0 hover:bg-[#b25204] text-white" onclick="loadSection('categories')">ورود</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
+                <p class="text-gray-700">از منوی سمت راست بخش مورد نظر خود را انتخاب کنید.</p>
               </main>
             </div>
 
-            <!-- Sidebar -->
-            <div class="drawer-side">
+            <!-- Sidebar menu -->
+            <div class="drawer-side z-50">
               <label for="sidebar-drawer" class="drawer-overlay"></label>
-              <ul class="menu p-4 w-72 min-h-full bg-[#1d5675] text-white text-lg">
+              <ul class="menu p-4 w-72 bg-[#1d5675] text-white text-lg">
                 <li class="mb-4 text-2xl font-bold text-center border-b border-white/20 pb-2">میز مدیریت</li>
                 <li><button class="hover:bg-white/20 rounded-md" onclick="loadSection('products')">🏷️ محصولات</button></li>
                 <li><button class="hover:bg-white/20 rounded-md" onclick="loadSection('articles')">📰 مقالات</button></li>
-                <li><button class="hover:bg-white/20 rounded-md" onclick="loadSection('tutorials')">🎓 آموزش‌ها</button></li>
-                <li><button class="hover:bg-white/20 rounded-md" onclick="loadSection('categories')">📂 دسته‌بندی‌ها</button></li>
               </ul>
             </div>
           </div>
         </div>
 
         <script>
-        async function loadSection(section) {
-          const res = await fetch(`/dashboard/load/${section}/`);
-          const data = await res.json();
-          document.getElementById("dashboard-content").innerHTML = data.html;
-
-          // اگر section محصول باشد، JS محصولات را مقداردهی کن
-          if (section === 'products' && typeof initProductsJS === 'function') {
-            initProductsJS();
+          async function loadSection(section, page=1){
+              const res = await fetch(`/dashboard/load/${section}/?page=${page}`);
+              const data = await res.json();
+              document.getElementById("dashboard-content").innerHTML = data.html;
           }
-        }
         </script>
         </body>
     </html>
