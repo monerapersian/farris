@@ -45,11 +45,11 @@
 <div class="flex justify-center mt-6">
   <div class="join">
     {% if products.has_previous %}
-      <button class="join-item btn" onclick="loadPage({{ products.previous_page_number }})">«</button>
+    <button class="join-item btn" onclick="loadProductsPage({{ products.previous_page_number }})">«</button>
     {% endif %}
     <button class="join-item btn btn-disabled">صفحه {{ products.number }} از {{ products.paginator.num_pages }}</button>
     {% if products.has_next %}
-      <button class="join-item btn" onclick="loadPage({{ products.next_page_number }})">»</button>
+    <button class="join-item btn" onclick="loadProductsPage({{ products.next_page_number }})">»</button>
     {% endif %}
   </div>
 </div>
@@ -97,6 +97,7 @@
 <script>
   let editing = false;
 
+  // گرفتن CSRF token
   function getCookie(name) {
     let cookieValue = null;
     if (document.cookie && document.cookie !== '') {
@@ -113,7 +114,8 @@
   }
   const csrfToken = getCookie('csrftoken');
 
-  window.openProductModal = function() {
+  // باز کردن مودال محصول جدید
+  function openProductModal() {
     editing = false;
     document.getElementById("modalTitle").innerText = "افزودن محصول جدید";
     document.getElementById("productForm").reset();
@@ -121,7 +123,8 @@
     document.getElementById("product_modal").checked = true;
   }
 
-  window.editProduct = function(id, title, price, categoryId) {
+  // ویرایش محصول
+  function editProduct(id, title, price, categoryId) {
     editing = true;
     document.getElementById("modalTitle").innerText = "ویرایش محصول";
     document.getElementById("product_modal").checked = true;
@@ -131,7 +134,8 @@
     document.getElementById("productCategory").value = categoryId;
   }
 
-  window.confirmDeleteProduct = function(id, name) {
+  // حذف محصول
+  function confirmDeleteProduct(id, name) {
     document.getElementById("delete_modal").checked = true;
     document.getElementById("deleteMessage").innerText = `آیا از حذف محصول "${name}" مطمئن هستید؟`;
     document.getElementById("confirmDeleteBtn").onclick = async () => {
@@ -140,7 +144,7 @@
           method: "POST",
           headers: {
             "X-Requested-With": "XMLHttpRequest",
-            "X-CSRFToken": csrfToken
+            "X-CSRFToken": csrfToken,
           },
         });
         const data = await res.json();
@@ -152,32 +156,42 @@
     };
   }
 
-  window.loadPage = async function(page) {
+  // بارگذاری صفحات pagination
+  async function loadProductsPage(page) {
     const res = await fetch(`/dashboard/load/products/?page=${page}`);
     const data = await res.json();
     document.getElementById("dashboard-content").innerHTML = data.html;
+    initProductListeners(); // دوباره eventها رو bind کن
   }
 
-  document.getElementById("productForm").addEventListener("submit", async function(e) {
-    e.preventDefault();
-    const formData = new FormData(this);
-    const url = editing ? "/dashboard/products/update/" : "/dashboard/products/create/";
-
-    try {
-      const res = await fetch(url, {
-        method: "POST",
-        body: formData,
-        headers: { "X-Requested-With": "XMLHttpRequest", "X-CSRFToken": csrfToken },
+  // ثبت فرم محصول
+  function initProductListeners() {
+    const form = document.getElementById("productForm");
+    if(form) {
+      form.addEventListener("submit", async function(e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+        const url = editing ? "/dashboard/products/update/" : "/dashboard/products/create/";
+        try {
+          const res = await fetch(url, {
+            method: "POST",
+            body: formData,
+            headers: { "X-Requested-With": "XMLHttpRequest", "X-CSRFToken": csrfToken },
+          });
+          const data = await res.json();
+          if (data.success) {
+            document.getElementById("product_modal").checked = false;
+            loadSection("products");
+          } else {
+            alert("خطایی رخ داد.");
+          }
+        } catch (err) {
+          alert("ارتباط با سرور برقرار نشد.");
+        }
       });
-      const data = await res.json();
-      if (data.success) {
-        document.getElementById("product_modal").checked = false;
-        loadSection("products");
-      } else {
-        alert("خطایی رخ داد.");
-      }
-    } catch (err) {
-      alert("ارتباط با سرور برقرار نشد.");
     }
-  });
+  }
+
+  // فراخوانی init بعد از بارگذاری اولیه
+  initProductListeners();
 </script>

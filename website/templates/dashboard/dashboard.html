@@ -124,6 +124,10 @@
             const res = await fetch(`/dashboard/load/${section}/`);
             const data = await res.json();
             document.getElementById("dashboard-content").innerHTML = data.html;
+            
+            if(section === "products" && window.initProductListeners){
+              window.initProductListeners(); // فعال کردن event listenerها
+            }
           }
         </script>
         <!-- <script>
