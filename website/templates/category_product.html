@@ -15,7 +15,7 @@
               <div class="swiper relative" style="border-radius: 10px;">
                 <div class="swiper-wrapper">
                   <!-- Slide 1 -->
-                  {% for sp in products.special %}
+                  {% for sp in special_products %}
                     <div class="swiper-slide">
                       <a href="{% url 'product_detail' sp.slug %}" class="block relative rounded-lg overflow-hidden shadow-lg">
                         <img src="{{ sp.image.url }}" alt="{{ sp.title }}" class="w-full h-full object-cover">

@@ -38,9 +38,11 @@ def home(request):
 def category_product(request, slug):
     category = get_object_or_404(Category, slug=slug)
     products = category.products.all().order_by('-created_at')  # از related_name استفاده کردیم
+    special_products = Product.objects.filter(special=True).order_by('-created_at')[:7]
     context = {
         'category': category,
         'products': products,
+        'special_products': special_products,
     }
     return render(request, 'category_product.html', context)
 
