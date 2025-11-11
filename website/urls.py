@@ -28,9 +28,13 @@ urlpatterns = [
     # path("dashboard/products/update/", views.update_product, name="update_product"),
     # path("dashboard/products/delete/<int:pk>/", views.delete_product, name="delete_product"),
     # داشبورد اصلی
-    path('dashboard/', views.dashboard, name="dashboard"),
-    path('dashboard/load/<str:section>/', views.load_dashboard_section, name="load_dashboard_section"),
-    path('dashboard/products/create/', views.create_product, name="create_product"),
-    path('dashboard/products/update/', views.update_product, name="update_product"),
-    path('dashboard/products/delete/<int:pk>/', views.delete_product, name="delete_product"),
+    path('dashboard/login/', views.dashboard_login, name='dashboard_login'),
+    path('dashboard/logout/', views.dashboard_logout, name='dashboard_logout'),
+    path('dashboard/', views.dashboard_home, name='dashboard_home'),
+    
+    # path('dashboard/', views.dashboard, name="dashboard"),
+    # path('dashboard/load/<str:section>/', views.load_dashboard_section, name="load_dashboard_section"),
+    # path('dashboard/products/create/', views.create_product, name="create_product"),
+    # path('dashboard/products/update/', views.update_product, name="update_product"),
+    # path('dashboard/products/delete/<int:pk>/', views.delete_product, name="delete_product"),
 ]

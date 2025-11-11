@@ -1,0 +1,41 @@
+{% load static %}
+{% load jalali_tags %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>ورود به پنل مدیریت</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+</head>
+<body class="bg-base-200 min-h-screen flex items-center justify-center">
+
+    <div class="card w-96 bg-base-100 shadow-xl">
+        <div class="card-body">
+            <h2 class="text-center text-2xl font-bold mb-4">ورود به پنل مدیریت</h2>
+
+            {% if messages %}
+                {% for msg in messages %}
+                    <div class="alert alert-error text-sm mb-3">{{ msg }}</div>
+                {% endfor %}
+            {% endif %}
+
+            <form method="post" class="space-y-3">
+                {% csrf_token %}
+                <label class="form-control w-full">
+                    <div class="label"><span class="label-text">نام کاربری</span></div>
+                    <input type="text" name="username" placeholder="مثلاً admin" class="input input-bordered w-full" required />
+                </label>
+
+                <label class="form-control w-full">
+                    <div class="label"><span class="label-text">رمز عبور</span></div>
+                    <input type="password" name="password" placeholder="********" class="input input-bordered w-full" required />
+                </label>
+
+                <button type="submit" class="btn btn-primary w-full mt-3">ورود</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

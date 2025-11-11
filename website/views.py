@@ -1,5 +1,6 @@
 from django.db.models import Q
 import requests
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
@@ -403,88 +404,29 @@ def agency_request_view(request):
     return JsonResponse({"success": False})
 
 
-@login_required
-def dashboard(request):
-    return render(request, "dashboard/dashboard.html")
+def dashboard_login(request):
+    if request.user.is_authenticated:
+        return redirect('dashboard_home')
 
-@login_required
-def load_dashboard_section(request, section):
-    """بارگذاری بخش‌های داشبورد به صورت AJAX"""
-    if section == "products":
-        products_list = Product.objects.all()
-        paginator = Paginator(products_list, 10)
-        page_number = request.GET.get("page", 1)
-        page_obj = paginator.get_page(page_number)
-        html = render(
-            request,
-            "dashboard/sections/products.html",
-            {"products": page_obj, "categories": Category.objects.all()}
-        ).content.decode("utf-8")
-        return JsonResponse({"html": html})
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
 
-    # سایر بخش‌ها (articles, tutorials, categories) مشابه میشه
-    return JsonResponse({"html": "<p>بخش مورد نظر پیدا نشد.</p>"})
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('dashboard_home')
+        else:
+            messages.error(request, 'نام کاربری یا رمز عبور اشتباه است.')
 
-@login_required
-@require_POST
-def create_product(request):
-    title = request.POST.get("title")
-    slug = request.POST.get("slug")
-    price = request.POST.get("price")
-    description = request.POST.get("description")
-    category_id = request.POST.get("category")
-    category = get_object_or_404(Category, id=category_id)
-    Product.objects.create(
-        title=title,
-        slug=slug,
-        description=description,
-        price=price,
-        category=category
-    )
-    return JsonResponse({"success": True})
+    return render(request, 'dashboard/login.html')
 
-@login_required
-@require_POST
-def update_product(request):
-    pid = request.POST.get("product_id")
-    product = get_object_or_404(Product, id=pid)
-    product.title = request.POST.get("title")
-    product.slug = request.POST.get("slug")
-    product.price = request.POST.get("price")
-    product.description = request.POST.get("description")
-    product.category_id = request.POST.get("category")
-    product.save()
-    return JsonResponse({"success": True})
 
-@login_required
-@require_POST
-def delete_product(request, pk):
-    product = get_object_or_404(Product, pk=pk)
-    product.delete()
-    return JsonResponse({"success": True})
+@login_required(login_url='dashboard_login')
+def dashboard_home(request):
+    return render(request, 'dashboard/home.html')
 
-# @login_required
-# def load_dashboard_section(request, section):
-#     """AJAX loader for dashboard sections"""
-#     if section == "products":
-#         products = Product.objects.all().order_by("-id")
-#         html = render(request, "dashboard/sections/products.html", {"products": products}).content.decode("utf-8")
-#         return JsonResponse({"html": html})
 
-#     elif section == "articles":
-#         articles = Article.objects.all()
-#         html = render(request, "dashboard/sections/articles.html", {"articles": articles}).content.decode("utf-8")
-#         return JsonResponse({"html": html})
-
-#     elif section == "tutorials":
-#         tutorials = Course.objects.all()
-#         html = render(request, "dashboard/sections/tutorials.html", {"tutorials": tutorials}).content.decode("utf-8")
-#         return JsonResponse({"html": html})
-
-#     elif section == "categories":
-#         categories = Category.objects.all()
-#         html = render(request, "dashboard/sections/categories.html", {"categories": categories}).content.decode("utf-8")
-#         return JsonResponse({"html": html})
-
-#     else:
-#         return JsonResponse({"html": "<p>بخش مورد نظر پیدا نشد.</p>"})
+def dashboard_logout(request):
+    logout(request)
+    return redirect('dashboard_login')
