@@ -430,3 +430,19 @@ def dashboard_home(request):
 def dashboard_logout(request):
     logout(request)
     return redirect('dashboard_login')
+
+
+@login_required(login_url="dashboard_login")
+def dashboard_products(request):
+    products = Product.objects.select_related("category").order_by("-created_at")
+
+    # pagination: هر صفحه ۱۰ محصول
+    paginator = Paginator(products, 10)
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+
+    context = {
+        "products": page_obj,
+        "page_obj": page_obj,
+    }
+    return render(request, "dashboard/sections/products.html", context)

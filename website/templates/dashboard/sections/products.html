@@ -1,113 +1,53 @@
-<div class="flex justify-between items-center mb-4">
-  <h2 class="text-xl font-bold">مدیریت محصولات</h2>
-  <button class="btn btn-primary" onclick="openProductModal()">➕ محصول جدید</button>
+{% extends 'dashboard/base_dashboard.html' %}
+{% block title %}مدیریت محصولات{% endblock %}
+
+{% block content %}
+<div class="flex items-center justify-between mb-6">
+  <h1 class="text-2xl font-bold">📦 مدیریت محصولات</h1>
+  <a href="#" class="btn btn-primary">افزودن محصول جدید</a>
 </div>
 
-<table class="table w-full">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>عنوان</th>
-      <th>قیمت</th>
-      <th>دسته‌بندی</th>
-      <th>تاریخ</th>
-      <th>عملیات</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for product in products %}
-    <tr>
-      <td>{{ forloop.counter }}</td>
-      <td>{{ product.title }}</td>
-      <td>{{ product.price|floatformat:0 }} تومان</td>
-      <td>{{ product.category.title }}</td>
-      <td>{{ product.created_at|date:"Y-m-d" }}</td>
-      <td>
-        <button class="btn btn-xs btn-info" onclick="editProduct({{ product.id }}, '{{ product.title }}', '{{ product.price }}')">ویرایش</button>
-        <button class="btn btn-xs btn-error" onclick="deleteProduct({{ product.id }}, '{{ product.title }}')">حذف</button>
-      </td>
-    </tr>
-    {% empty %}
-    <tr><td colspan="6" class="text-center">هیچ محصولی یافت نشد.</td></tr>
-    {% endfor %}
-  </tbody>
-</table>
-
-<div class="mt-4 flex justify-center">
-  {% if page_obj.has_previous %}
-    <button class="btn btn-sm" onclick="loadSection('products?page={{ page_obj.previous_page_number }}')">قبلی</button>
-  {% endif %}
-  <span class="mx-2">صفحه {{ page_obj.number }} از {{ page_obj.paginator.num_pages }}</span>
-  {% if page_obj.has_next %}
-    <button class="btn btn-sm" onclick="loadSection('products?page={{ page_obj.next_page_number }}')">بعدی</button>
-  {% endif %}
+<div class="overflow-x-auto bg-base-100 shadow rounded-xl">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ردیف</th>
+        <th>نام محصول</th>
+        <th>قیمت</th>
+        <th>دسته‌بندی</th>
+        <th>عملیات</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for product in products %}
+      <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ product.title }}</td>
+        <td>{{ product.price|intcomma }} تومان</td>
+        <td>{{ product.category }}</td>
+        <td>
+          <a href="#" class="btn btn-sm btn-info">ویرایش</a>
+          <button onclick="confirmDelete('{{ product.title }}')" class="btn btn-sm btn-error">حذف</button>
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="5" class="text-center py-4 text-gray-500">محصولی یافت نشد.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 </div>
 
-<!-- Modal -->
-<dialog id="productModal" class="modal">
-  <form method="dialog" class="modal-box">
-    <h3 id="modalTitle" class="font-bold text-lg">محصول جدید</h3>
-    <input type="hidden" id="productId">
-    <div class="py-2">
-      <input id="title" class="input input-bordered w-full" placeholder="عنوان محصول">
-    </div>
-    <div class="py-2">
-      <input id="slug" class="input input-bordered w-full" placeholder="slug محصول">
-    </div>
-    <div class="py-2">
-      <input id="price" class="input input-bordered w-full" placeholder="قیمت (تومان)">
-    </div>
-    <div class="py-2">
-      <textarea id="description" class="textarea textarea-bordered w-full" placeholder="توضیحات"></textarea>
-    </div>
-    <div class="modal-action">
-      <button type="button" class="btn" onclick="saveProduct()">💾 ذخیره</button>
-      <button class="btn">بستن</button>
-    </div>
-  </form>
-</dialog>
+<div class="mt-6 flex justify-center">
+  {% include 'partials/pagination.html' %}
+</div>
 
 <script>
-function openProductModal() {
-  document.getElementById("modalTitle").innerText = "محصول جدید";
-  document.getElementById("productId").value = "";
-  document.getElementById("title").value = "";
-  document.getElementById("slug").value = "";
-  document.getElementById("price").value = "";
-  document.getElementById("description").value = "";
-  document.getElementById("productModal").showModal();
-}
-
-function editProduct(id, title, price) {
-  document.getElementById("modalTitle").innerText = "ویرایش محصول";
-  document.getElementById("productId").value = id;
-  document.getElementById("title").value = title;
-  document.getElementById("price").value = price;
-  document.getElementById("productModal").showModal();
-}
-
-function saveProduct() {
-  const id = document.getElementById("productId").value;
-  const url = id ? "/dashboard/products/update/" : "/dashboard/products/create/";
-  const formData = new FormData();
-  formData.append("product_id", id);
-  formData.append("title", document.getElementById("title").value);
-  formData.append("slug", document.getElementById("slug").value);
-  formData.append("price", document.getElementById("price").value);
-  formData.append("description", document.getElementById("description").value);
-
-  axios.post(url, formData).then(res => {
-    if (res.data.success) {
-      document.getElementById("productModal").close();
-      loadSection('products');
-    }
-  });
-}
-
-function deleteProduct(id, title) {
-  if (!confirm(`آیا از حذف "${title}" مطمئنی؟`)) return;
-  axios.post(`/dashboard/products/delete/${id}/`).then(res => {
-    if (res.data.success) loadSection('products');
-  });
+function confirmDelete(name) {
+  if (confirm(`شما در حال حذف ${name} هستید. آیا مطمئنید؟`)) {
+    // اینجا درخواست حذف ارسال میشه
+  }
 }
 </script>
+{% endblock %}
