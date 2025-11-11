@@ -424,7 +424,7 @@ def dashboard_login(request):
 
 @login_required(login_url='dashboard_login')
 def dashboard_home(request):
-    return render(request, 'dashboard/home.html')
+    return render(request, 'dashboard/dashboard.html')
 
 
 def dashboard_logout(request):
