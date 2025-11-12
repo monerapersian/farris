@@ -1,0 +1,76 @@
+{% extends "dashboard/base_dashboard.html" %}
+{% block content %}
+
+<div class="flex justify-between items-center mb-6">
+  <h2 class="text-2xl font-bold">🎬 آموزش‌ها</h2>
+  <a href="{% url 'dashboard_course_add' %}" class="btn btn-primary">➕ افزودن آموزش</a>
+</div>
+
+<table class="table w-full border">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>عنوان</th>
+      <th>ویژه</th>
+      <th>تاریخ ایجاد</th>
+      <th>عملیات</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for course in page_obj %}
+    <tr>
+      <td>{{ forloop.counter0|add:page_obj.start_index }}</td>
+      <td>{{ course.title }}</td>
+      <td>{% if course.special %}✅{% else %}❌{% endif %}</td>
+      <td>{{ course.created_at|date:"Y/m/d H:i" }}</td>
+      <td class="flex gap-2">
+        <a href="{% url 'dashboard_course_edit' course.id %}" class="btn btn-sm btn-warning">ویرایش</a>
+        <button onclick="openDeleteCourseModal('{{ course.id }}', '{{ course.title }}')" class="btn btn-sm btn-error">حذف</button>
+      </td>
+    </tr>
+    {% empty %}
+    <tr>
+      <td colspan="5" class="text-center text-gray-500">هیچ آموزشی ثبت نشده است.</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<!-- Pagination -->
+<div class="mt-4">
+  {% include "dashcoard/partials/pagination.html" with page_obj=page_obj %}
+</div>
+
+<!-- Modal حذف آموزش -->
+<dialog id="deleteCourseModal" class="modal">
+  <div class="modal-box">
+    <h3 class="font-bold text-lg text-error">⚠️ تأیید حذف</h3>
+    <p class="py-4" id="deleteCourseMessage">آیا از حذف این آموزش مطمئن هستید؟</p>
+
+    <div class="modal-action">
+      <form method="post" id="deleteCourseForm">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-error">بله، حذف شود</button>
+      </form>
+      <button type="button" class="btn" onclick="closeDeleteCourseModal()">انصراف</button>
+    </div>
+  </div>
+</dialog>
+
+<script>
+  function openDeleteCourseModal(id, title) {
+    const modal = document.getElementById("deleteCourseModal");
+    const form = document.getElementById("deleteCourseForm");
+    const msg = document.getElementById("deleteCourseMessage");
+
+    msg.innerHTML = `شما در حال حذف آموزش <b class="text-error">«${title}»</b> هستید. آیا مطمئن هستید؟`;
+    form.action = `/dashboard/courses/delete/${id}/`;
+    modal.showModal();
+  }
+
+  function closeDeleteCourseModal() {
+    document.getElementById("deleteCourseModal").close();
+  }
+</script>
+
+{% endblock %}

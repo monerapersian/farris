@@ -1,0 +1,50 @@
+{% extends "dashboard/base_dashboard.html" %}
+{% block content %}
+
+<div class="max-w-3xl mx-auto bg-base-100 shadow-lg rounded-2xl p-8 mt-10">
+  <h2 class="text-2xl font-bold mb-6">✏️ ویرایش آموزش</h2>
+
+  <form method="post" enctype="multipart/form-data" class="space-y-4">
+    {% csrf_token %}
+
+    <!-- عنوان -->
+    <div class="form-control">
+      <label class="label"><span class="label-text">عنوان آموزش</span></label>
+      <input type="text" name="title" class="input input-bordered w-full" value="{{ course.title }}">
+    </div>
+
+    <!-- نامک -->
+    <div class="form-control">
+      <label class="label"><span class="label-text">نامک (Slug)</span></label>
+      <input type="text" name="slug" class="input input-bordered w-full" value="{{ course.slug }}">
+      <label class="label"><span class="label-text-alt text-gray-400 text-sm">در صورت خالی، از عنوان ساخته می‌شود.</span></label>
+    </div>
+
+    <!-- ویژه -->
+    <div class="form-control">
+      <label class="cursor-pointer label">
+        <span class="label-text">آموزش ویژه</span> 
+        <input type="checkbox" name="special" class="checkbox checkbox-primary" {% if course.special %}checked{% endif %}>
+      </label>
+    </div>
+
+    <!-- ویدئو فعلی و جدید -->
+    <div class="form-control">
+      <label class="label"><span class="label-text">ویدئو</span></label>
+      <div class="flex items-center gap-4">
+        <video class="w-48 h-32 border rounded-lg" controls>
+          <source src="{{ course.video.url }}" type="video/mp4">
+          مرورگر شما ویدئو را پشتیبانی نمی‌کند.
+        </video>
+        <input type="file" name="video" class="file-input file-input-bordered w-full max-w-xs">
+      </div>
+    </div>
+
+    <div class="flex justify-end mt-6 gap-4">
+      <a href="{% url 'dashboard_courses' %}" class="btn">بازگشت</a>
+      <button type="submit" class="btn btn-primary">ذخیره تغییرات</button>
+    </div>
+  </form>
+</div>
+
+{% endblock %}

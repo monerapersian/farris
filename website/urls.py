@@ -40,6 +40,11 @@ urlpatterns = [
     path("dashboard/articles/edit/<int:article_id>/", views.dashboard_article_edit, name="dashboard_article_edit"),
     path("dashboard/articles/delete/<int:article_id>/", views.dashboard_article_delete, name="dashboard_article_delete"),
 
+    path("dashboard/courses/", views.dashboard_courses, name="dashboard_courses"),
+    path("dashboard/courses/add/", views.dashboard_course_add, name="dashboard_course_add"),
+    path("dashboard/courses/edit/<int:course_id>/", views.dashboard_course_edit, name="dashboard_course_edit"),
+    path("dashboard/courses/delete/<int:course_id>/", views.dashboard_course_delete, name="dashboard_course_delete"),
+
     # path('dashboard/', views.dashboard, name="dashboard"),
     # path('dashboard/load/<str:section>/', views.load_dashboard_section, name="load_dashboard_section"),
     # path('dashboard/products/create/', views.create_product, name="create_product"),

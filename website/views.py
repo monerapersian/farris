@@ -746,3 +746,94 @@ def dashboard_article_delete(request, article_id):
         messages.success(request, f"مقاله «{article.title}» با موفقیت حذف شد ✅")
     
     return redirect("dashboard_articles")
+
+
+@login_required(login_url="dashboard_login")
+def dashboard_courses(request):
+    courses_list = Course.objects.all().order_by("-created_at")
+    paginator = Paginator(courses_list, 10)  # هر صفحه ۱۰ آموزش
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, "dashboard/sections/courses.html", {"page_obj": page_obj})
+
+
+@login_required(login_url="dashboard_login")
+def dashboard_course_add(request):
+    if request.method == "POST":
+        title = request.POST.get("title", "").strip()
+        slug_input = request.POST.get("slug", "").strip()
+        slug = slugify(slug_input or title, allow_unicode=True)
+        special = bool(request.POST.get("special"))
+        video = request.FILES.get("video")
+
+        errors = []
+        if not title:
+            errors.append("عنوان آموزش الزامی است.")
+        if not video:
+            errors.append("انتخاب ویدئو الزامی است.")
+        if Course.objects.filter(slug=slug).exists():
+            errors.append("نامک (slug) وارد شده تکراری است.")
+
+        if errors:
+            for e in errors:
+                messages.error(request, e)
+            return render(request, "dashboard/sections/add_course.html")
+
+        Course.objects.create(
+            title=title,
+            slug=slug,
+            video=video,
+            special=special
+        )
+
+        messages.success(request, f"آموزش «{title}» با موفقیت اضافه شد ✅")
+        return redirect("dashboard_courses")
+
+    return render(request, "dashboard/sections/add_course.html")
+
+
+@login_required(login_url="dashboard_login")
+def dashboard_course_edit(request, course_id):
+    course = get_object_or_404(Course, id=course_id)
+
+    if request.method == "POST":
+        title = request.POST.get("title", "").strip()
+        slug_input = request.POST.get("slug", "").strip()
+        slug = slugify(slug_input or title, allow_unicode=True)
+        special = bool(request.POST.get("special"))
+        video = request.FILES.get("video")
+
+        errors = []
+        if not title:
+            errors.append("عنوان آموزش الزامی است.")
+        if Course.objects.filter(slug=slug).exclude(id=course.id).exists():
+            errors.append("نامک (slug) وارد شده تکراری است.")
+
+        if errors:
+            for e in errors:
+                messages.error(request, e)
+            return render(request, "dashboard/sections/edit_course.html", {"course": course})
+
+        course.title = title
+        course.slug = slug
+        course.special = special
+        if video:
+            course.video = video
+        course.save()
+
+        messages.success(request, f"آموزش «{course.title}» با موفقیت ویرایش شد ✅")
+        return redirect("dashboard_courses")
+
+    return render(request, "dashboard/sections/edit_course.html", {"course": course})
+
+
+@login_required(login_url="dashboard_login")
+def dashboard_course_delete(request, course_id):
+    course = get_object_or_404(Course, id=course_id)
+
+    if request.method == "POST":
+        course.delete()
+        messages.success(request, f"آموزش «{course.title}» با موفقیت حذف شد ✅")
+    
+    return redirect("dashboard_courses")
