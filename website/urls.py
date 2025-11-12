@@ -28,6 +28,7 @@ urlpatterns = [
     path("dashboard/products/", views.dashboard_products, name="dashboard_products"),
     path("dashboard/products/add/", views.dashboard_product_add, name="dashboard_product_add"),
     path("dashboard/products/delete/<int:product_id>/", views.dashboard_product_delete, name="dashboard_product_delete"),
+    path("dashboard/products/edit/<int:product_id>/", views.dashboard_product_edit, name="dashboard_product_edit"),
 
     # path('dashboard/', views.dashboard, name="dashboard"),
     # path('dashboard/load/<str:section>/', views.load_dashboard_section, name="load_dashboard_section"),

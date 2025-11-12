@@ -518,3 +518,57 @@ def dashboard_product_delete(request, product_id):
         messages.success(request, f"محصول «{product.title}» با موفقیت حذف شد ✅")
     
     return redirect("dashboard_products")
+
+
+@login_required(login_url="dashboard_login")
+def dashboard_product_edit(request, product_id):
+    """
+    ویرایش محصول موجود
+    """
+    product = get_object_or_404(Product, id=product_id)
+    categories = Category.objects.all()
+
+    if request.method == "POST":
+        title = request.POST.get("title", "").strip()
+        slug_input = request.POST.get("slug", "").strip()
+        slug = slugify(slug_input or title, allow_unicode=True)
+        category_id = request.POST.get("category")
+        description = request.POST.get("description", "").strip()
+        price = request.POST.get("price", "").strip()
+        features = request.POST.get("features", "").strip()
+        special = bool(request.POST.get("special"))
+        image = request.FILES.get("image")
+
+        errors = []
+        if not title:
+            errors.append("عنوان محصول الزامی است.")
+        if not price or not price.isdigit():
+            errors.append("قیمت باید عددی باشد.")
+        if not category_id:
+            errors.append("انتخاب دسته‌بندی الزامی است.")
+
+        # بررسی تکراری نبودن slug در محصولات دیگر
+        if Product.objects.filter(slug=slug).exclude(id=product.id).exists():
+            errors.append("نامک (slug) وارد شده تکراری است. لطفاً مقدار دیگری انتخاب کنید.")
+
+        if errors:
+            for e in errors:
+                messages.error(request, e)
+            return render(request, "dashboard/sections/edit_product.html", {"categories": categories, "product": product})
+
+        # به‌روزرسانی فیلدها
+        product.title = title
+        product.slug = slug
+        product.category = Category.objects.get(id=category_id)
+        product.description = description
+        product.price = price
+        product.features = features
+        product.special = special
+        if image:
+            product.image = image  # فقط اگر عکس جدید انتخاب شد
+        product.save()
+
+        messages.success(request, f"محصول «{product.title}» با موفقیت ویرایش شد ✅")
+        return redirect("dashboard_products")
+
+    return render(request, "dashboard/sections/edit_product.html", {"categories": categories, "product": product})

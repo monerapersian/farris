@@ -27,7 +27,7 @@
         <td>{{ product.price|intcomma }} تومان</td>
         <td>{{ product.category }}</td>
         <td>
-          <a href="#" class="btn btn-sm btn-info">ویرایش</a>
+          <a href="{% url 'dashboard_product_edit' product.id %}" class="btn btn-sm btn-info">ویرایش</a>
           <button onclick="openDeleteModal('{{ product.id }}', '{{ product.title }}')" class="btn btn-sm btn-error">حذف</button>
         </td>
       </tr>

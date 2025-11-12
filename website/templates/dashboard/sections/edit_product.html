@@ -1,0 +1,75 @@
+{% extends "dashboard/base_dashboard.html" %}
+{% block content %}
+
+<div class="max-w-3xl mx-auto bg-base-100 shadow-lg rounded-2xl p-8 mt-10">
+  <h2 class="text-2xl font-bold mb-6">✏️ ویرایش محصول</h2>
+
+  <form method="post" enctype="multipart/form-data" class="space-y-4">
+    {% csrf_token %}
+
+    <!-- عنوان -->
+    <div class="form-control">
+      <label class="label"><span class="label-text">عنوان محصول</span></label>
+      <input type="text" name="title" class="input input-bordered w-full" value="{{ product.title }}">
+    </div>
+
+    <!-- نامک -->
+    <div class="form-control">
+      <label class="label"><span class="label-text">نامک (Slug)</span></label>
+      <input type="text" name="slug" class="input input-bordered w-full" value="{{ product.slug }}">
+    </div>
+
+    <!-- دسته‌بندی -->
+    <div class="form-control">
+      <label class="label"><span class="label-text">دسته‌بندی</span></label>
+      <select name="category" class="select select-bordered w-full">
+        {% for cat in categories %}
+          <option value="{{ cat.id }}" {% if product.category.id == cat.id %}selected{% endif %}>{{ cat.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <!-- قیمت -->
+    <div class="form-control">
+      <label class="label"><span class="label-text">قیمت (تومان)</span></label>
+      <input type="text" name="price" class="input input-bordered w-full" value="{{ product.price }}">
+    </div>
+
+    <!-- ویژگی‌ها -->
+    <div class="form-control">
+      <label class="label"><span class="label-text">ویژگی‌ها</span></label>
+      <textarea name="features" class="textarea textarea-bordered w-full" rows="2">{{ product.features }}</textarea>
+      <label class="label"><span class="label-text-alt">ویژگی‌ها را با «|» جدا کنید (حداکثر ۹ عدد).</span></label>
+    </div>
+
+    <!-- توضیحات -->
+    <div class="form-control">
+      <label class="label"><span class="label-text">توضیحات</span></label>
+      <textarea name="description" class="textarea textarea-bordered w-full" rows="5">{{ product.description }}</textarea>
+    </div>
+
+    <!-- ویژه -->
+    <div class="form-control">
+      <label class="cursor-pointer label">
+        <span class="label-text">محصول ویژه</span> 
+        <input type="checkbox" name="special" class="checkbox checkbox-primary" {% if product.special %}checked{% endif %}>
+      </label>
+    </div>
+
+    <!-- تصویر فعلی و جدید -->
+    <div class="form-control">
+      <label class="label"><span class="label-text">تصویر محصول</span></label>
+      <div class="flex items-center gap-4">
+        <img src="{{ product.image.url }}" alt="{{ product.title }}" class="w-24 h-24 object-cover rounded-lg border">
+        <input type="file" name="image" class="file-input file-input-bordered w-full max-w-xs">
+      </div>
+    </div>
+
+    <div class="flex justify-end mt-6 gap-4">
+      <a href="{% url 'dashboard_products' %}" class="btn">بازگشت</a>
+      <button type="submit" class="btn btn-primary">ذخیره تغییرات</button>
+    </div>
+  </form>
+</div>
+
+{% endblock %}
