@@ -9,6 +9,7 @@ from django.contrib import messages
 from decimal import Decimal
 from .models import Category, Product, Article, Course, Order, OrderItem, AgencyRequest
 from django.core.paginator import Paginator
+from django.utils.text import slugify
 
 # MERCHANT_ID = "34e4ca8c-11fe-4bb5-a897-9f73d78f4dac"
 # ZARINPAL_REQUEST_URL = "https://sandbox.zarinpal.com/pg/v4/payment/request.json"
@@ -446,3 +447,52 @@ def dashboard_products(request):
         "page_obj": page_obj,
     }
     return render(request, "dashboard/sections/products.html", context)
+
+
+@login_required(login_url="dashboard_login")
+def dashboard_product_add(request):
+    categories = Category.objects.all()
+
+    if request.method == "POST":
+        title = request.POST.get("title", "").strip()
+        category_id = request.POST.get("category")
+        description = request.POST.get("description", "").strip()
+        price = request.POST.get("price", "").strip()
+        features = request.POST.get("features", "").strip()
+        special = bool(request.POST.get("special"))
+        image = request.FILES.get("image")
+
+        # اعتبارسنجی ساده
+        errors = []
+        if not title:
+            errors.append("عنوان محصول الزامی است.")
+        if not price or not price.isdigit():
+            errors.append("قیمت باید عددی باشد.")
+        if not category_id:
+            errors.append("انتخاب دسته‌بندی الزامی است.")
+        if not image:
+            errors.append("انتخاب تصویر الزامی است.")
+
+        if errors:
+            for e in errors:
+                messages.error(request, e)
+            return render(request, "dashboard/sections/add_product.html", {"categories": categories})
+
+        category = Category.objects.get(id=category_id)
+        slug = slugify(title, allow_unicode=True)
+
+        Product.objects.create(
+            title=title,
+            slug=slug,
+            category=category,
+            description=description,
+            price=price,
+            features=features,
+            special=special,
+            image=image,
+        )
+
+        messages.success(request, f"محصول «{title}» با موفقیت اضافه شد ✅")
+        return redirect("dashboard_products")
+
+    return render(request, "dashboard/sections/add_product.html", {"categories": categories})

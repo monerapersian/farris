@@ -1,0 +1,71 @@
+{% extends 'dashboard/base_dashboard.html' %}
+{% load static %}
+{% block title %}افزودن محصول جدید{% endblock %}
+
+{% block content %}
+  <h1 class="text-2xl font-bold mb-6">➕ افزودن محصول جدید</h1>
+
+  <form method="POST" enctype="multipart/form-data" class="space-y-4 bg-base-100 p-6 rounded-xl shadow">
+    {% csrf_token %}
+
+    {% if messages %}
+      <div class="space-y-2">
+        {% for message in messages %}
+          <div class="alert {% if message.tags == 'error' %}alert-error{% else %}alert-success{% endif %}">
+            {{ message }}
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <div class="form-control">
+      <label class="label"><span class="label-text">عنوان محصول</span></label>
+      <input type="text" name="title" class="input input-bordered w-full" required>
+    </div>
+
+    <div class="form-control">
+      <label class="label"><span class="label-text">دسته‌بندی</span></label>
+      <select name="category" class="select select-bordered w-full" required>
+        <option value="">انتخاب کنید...</option>
+        {% for c in categories %}
+          <option value="{{ c.id }}">{{ c.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="form-control">
+      <label class="label"><span class="label-text">قیمت (تومان)</span></label>
+      <input type="number" name="price" class="input input-bordered w-full" required>
+    </div>
+
+    <div class="form-control">
+      <label class="label"><span class="label-text">ویژگی‌ها (با | جدا کنید)</span></label>
+      <textarea name="features" class="textarea textarea-bordered w-full" rows="2"></textarea>
+    </div>
+
+    <div class="form-control">
+      <label class="label"><span class="label-text">توضیحات کامل</span></label>
+      <textarea name="description" class="textarea textarea-bordered w-full" rows="4" required></textarea>
+    </div>
+
+    <div class="form-control">
+      <label class="label"><span class="label-text">تصویر محصول</span></label>
+      <input type="file" name="image" accept="image/*" class="file-input file-input-bordered w-full" required>
+    </div>
+
+    <div class="form-control flex flex-row items-center gap-2">
+      <label class="cursor-pointer label">
+        <span class="label-text">محصول ویژه باشد؟</span>
+      </label>
+      <input type="checkbox" name="special" class="toggle toggle-primary" />
+    </div>
+
+    <div class="form-control mt-6">
+      <button type="submit" class="btn btn-primary w-full">ثبت محصول</button>
+    </div>
+  </form>
+
+  <div class="mt-6">
+    <a href="{% url 'dashboard_products' %}" class="btn btn-ghost">⬅ بازگشت به لیست محصولات</a>
+  </div>
+{% endblock %}
