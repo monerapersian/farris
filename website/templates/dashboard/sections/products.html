@@ -4,8 +4,14 @@
 
 {% block content %}
 <div class="flex items-center justify-between mb-6">
-  <h1 class="text-2xl font-bold">📦 مدیریت محصولات</h1>
-  <a href="{% url 'dashboard_product_add' %}" class="btn btn-primary">افزودن محصول جدید</a>
+  <h1 class="text-2xl font-bold">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M21 13V20C21 20.5523 20.5523 21 20 21H4C3.44772 21 3 20.5523 3 20V13H2V11L3 6H21L22 11V13H21ZM5 13V19H19V13H5ZM4.03961 11H19.9604L19.3604 8H4.63961L4.03961 11ZM6 14H14V17H6V14ZM3 3H21V5H3V3Z"></path></svg>
+   مدیریت محصولات
+  </h1>
+  <a href="{% url 'dashboard_product_add' %}" class="btn bg-[#e66700]">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M4 1V4H1V6H4V9H6V6H9V4H6V1H4ZM3 20.0066V11H5V19H13V14C13 13.45 13.45 13 14 13L19 12.999V5H11V3H20.0066C20.5552 3 21 3.45576 21 4.00247V15L15 20.996L4.00221 21C3.4487 21 3 20.5551 3 20.0066ZM18.171 14.999L15 15V18.169L18.171 14.999Z"></path></svg>
+    افزودن محصول جدید
+  </a>
 </div>
 
 <div class="overflow-x-auto bg-base-100 shadow rounded-xl">
@@ -14,8 +20,8 @@
       <tr>
         <th>ردیف</th>
         <th>نام محصول</th>
-        <th>قیمت</th>
-        <th>دسته‌بندی</th>
+        <th>قیمت (تومان)</th>
+        <!-- <th>دسته‌بندی</th> -->
         <th>عملیات</th>
       </tr>
     </thead>
@@ -24,8 +30,8 @@
       <tr>
         <td>{{ forloop.counter|add:page_obj.start_index|add:"-1" }}</td>
         <td>{{ product.title }}</td>
-        <td>{{ product.price|intcomma }} تومان</td>
-        <td>{{ product.category }}</td>
+        <td>{{ product.price|intcomma }}</td>
+        <!-- <td>{{ product.category }}</td> -->
         <td>
           <a href="{% url 'dashboard_product_edit' product.id %}" class="btn btn-sm btn-info">ویرایش</a>
           <button onclick="openDeleteModal('{{ product.id }}', '{{ product.title }}')" class="btn btn-sm btn-error">حذف</button>
