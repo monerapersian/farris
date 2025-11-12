@@ -507,3 +507,14 @@ def dashboard_product_add(request):
 
     # نمایش فرم افزودن محصول
     return render(request, "dashboard/sections/add_product.html", {"categories": categories})
+
+
+@login_required(login_url="dashboard_login")
+def dashboard_product_delete(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+
+    if request.method == "POST":
+        product.delete()
+        messages.success(request, f"محصول «{product.title}» با موفقیت حذف شد ✅")
+    
+    return redirect("dashboard_products")

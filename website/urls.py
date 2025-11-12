@@ -21,12 +21,13 @@ urlpatterns = [
     path('payment/verify/<int:order_id>/', views.zarinpal_verify, name='zarinpal_verify'),
     path('search/', views.search_view, name='search'),
     path('agency-request/', views.agency_request_view, name='agency_request'),
-    
+
     path('dashboard/login/', views.dashboard_login, name='dashboard_login'),
     path('dashboard/logout/', views.dashboard_logout, name='dashboard_logout'),
     path('dashboard/', views.dashboard_home, name='dashboard_home'),
     path("dashboard/products/", views.dashboard_products, name="dashboard_products"),
     path("dashboard/products/add/", views.dashboard_product_add, name="dashboard_product_add"),
+    path("dashboard/products/delete/<int:product_id>/", views.dashboard_product_delete, name="dashboard_product_delete"),
 
     # path('dashboard/', views.dashboard, name="dashboard"),
     # path('dashboard/load/<str:section>/', views.load_dashboard_section, name="load_dashboard_section"),

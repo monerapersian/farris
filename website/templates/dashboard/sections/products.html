@@ -28,7 +28,7 @@
         <td>{{ product.category }}</td>
         <td>
           <a href="#" class="btn btn-sm btn-info">ویرایش</a>
-          <button onclick="confirmDelete('{{ product.title }}')" class="btn btn-sm btn-error">حذف</button>
+          <button onclick="openDeleteModal('{{ product.id }}', '{{ product.title }}')" class="btn btn-sm btn-error">حذف</button>
         </td>
       </tr>
       {% empty %}
@@ -43,6 +43,43 @@
 <div class="mt-6 flex justify-center">
   {% include 'dashboard/partials/pagination.html' %}
 </div>
+
+<!-- Modal تأیید حذف -->
+<dialog id="deleteModal" class="modal">
+  <div class="modal-box">
+    <h3 class="font-bold text-lg text-error">⚠️ تأیید حذف</h3>
+    <p class="py-4" id="deleteMessage">آیا از حذف این مورد مطمئن هستید؟</p>
+
+    <div class="modal-action">
+      <form method="post" id="deleteForm">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-error">بله، حذف شود</button>
+      </form>
+      <button type="button" class="btn" onclick="closeDeleteModal()">انصراف</button>
+    </div>
+  </div>
+</dialog>
+
+<script>
+  function openDeleteModal(productId, productTitle) {
+    const modal = document.getElementById("deleteModal");
+    const form = document.getElementById("deleteForm");
+    const msg = document.getElementById("deleteMessage");
+
+    // تنظیم پیام داخل مودال
+    msg.innerHTML = `شما در حال حذف محصول <b class="text-error">«${productTitle}»</b> هستید. آیا مطمئنید؟`;
+
+    // تنظیم آدرس اکشن فرم
+    form.action = `/dashboard/products/delete/${productId}/`;
+
+    // باز کردن مودال
+    modal.showModal();
+  }
+
+  function closeDeleteModal() {
+    document.getElementById("deleteModal").close();
+  }
+</script>
 
 <script>
 function confirmDelete(name) {
