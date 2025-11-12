@@ -451,10 +451,16 @@ def dashboard_products(request):
 
 @login_required(login_url="dashboard_login")
 def dashboard_product_add(request):
+    """
+    افزودن محصول جدید در پنل ادمین سفارشی
+    """
     categories = Category.objects.all()
 
     if request.method == "POST":
+        # دریافت داده‌ها از فرم
         title = request.POST.get("title", "").strip()
+        slug_input = request.POST.get("slug", "").strip()
+        slug = slugify(slug_input or title, allow_unicode=True)
         category_id = request.POST.get("category")
         description = request.POST.get("description", "").strip()
         price = request.POST.get("price", "").strip()
@@ -462,7 +468,7 @@ def dashboard_product_add(request):
         special = bool(request.POST.get("special"))
         image = request.FILES.get("image")
 
-        # اعتبارسنجی ساده
+        # اعتبارسنجی داده‌ها
         errors = []
         if not title:
             errors.append("عنوان محصول الزامی است.")
@@ -473,14 +479,18 @@ def dashboard_product_add(request):
         if not image:
             errors.append("انتخاب تصویر الزامی است.")
 
+        # بررسی تکراری نبودن slug
+        if Product.objects.filter(slug=slug).exists():
+            errors.append("نامک (slug) وارد شده تکراری است. لطفاً مقدار دیگری انتخاب کنید.")
+
+        # در صورت وجود خطاها، نمایش مجدد فرم با پیام‌ها
         if errors:
             for e in errors:
                 messages.error(request, e)
             return render(request, "dashboard/sections/add_product.html", {"categories": categories})
 
+        # ذخیره در دیتابیس
         category = Category.objects.get(id=category_id)
-        slug = slugify(title, allow_unicode=True)
-
         Product.objects.create(
             title=title,
             slug=slug,
@@ -495,4 +505,5 @@ def dashboard_product_add(request):
         messages.success(request, f"محصول «{title}» با موفقیت اضافه شد ✅")
         return redirect("dashboard_products")
 
+    # نمایش فرم افزودن محصول
     return render(request, "dashboard/sections/add_product.html", {"categories": categories})
