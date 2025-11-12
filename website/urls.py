@@ -47,6 +47,8 @@ urlpatterns = [
 
     path("dashboard/orders/", views.dashboard_orders, name="dashboard_orders"),
 
+    path("dashboard/agency-requests/", views.dashboard_agency_requests, name="dashboard_agency_requests"),
+
     # path('dashboard/', views.dashboard, name="dashboard"),
     # path('dashboard/load/<str:section>/', views.load_dashboard_section, name="load_dashboard_section"),
     # path('dashboard/products/create/', views.create_product, name="create_product"),

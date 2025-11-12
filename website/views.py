@@ -847,3 +847,13 @@ def dashboard_orders(request):
     page_obj = paginator.get_page(page_number)
 
     return render(request, "dashboard/sections/orders.html", {"page_obj": page_obj})
+
+
+@login_required(login_url="dashboard_login")
+def dashboard_agency_requests(request):
+    requests_list = AgencyRequest.objects.all().order_by("-created_at")
+    paginator = Paginator(requests_list, 10)  # هر صفحه ۱۰ درخواست
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, "dashboard/sections/agency_requests.html", {"page_obj": page_obj})

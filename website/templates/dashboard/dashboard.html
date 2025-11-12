@@ -1,92 +1,62 @@
 {% load static %}
 {% load jalali_tags %}
 {% load humanize %}
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <title>پنل مدیریت</title>
-    <link rel="icon" href="{% static 'img/farris-blue-icon.png' %}" type="image/x-icon">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
-</head>
-<body class="bg-base-200 min-h-screen">
+{% extends "dashboard/base_dashboard.html" %}
+{% block content %}
 
-<div class="drawer lg:drawer-open">
-  <input id="dashboard-drawer" type="checkbox" class="drawer-toggle" />
-  <div class="drawer-content flex flex-col">
-    <!-- Navbar -->
-    <div class="w-full navbar bg-base-100 shadow-sm">
-      <div class="flex-none lg:hidden">
-        <label for="dashboard-drawer" aria-label="open sidebar" class="btn btn-square btn-ghost">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-               stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-               d="M4 6h16M4 12h16M4 18h16" /></svg>
-        </label>
-      </div>
-      <div class="flex-1 px-2 mx-2 font-bold text-lg">🎛️ داشبورد مدیریت</div>
-      <div class="flex-none hidden lg:flex items-center gap-3">
-        <span class="text-sm text-gray-600">{{ request.user.username }}</span>
-        <a href="{% url 'dashboard_logout' %}" class="btn btn-error btn-sm">خروج</a>
-      </div>
+<h2 class="text-3xl font-bold mb-6">سلام، {{ request.user.get_full_name }}</h2>
+<p class="mb-6 text-gray-600">این بخش مدیریت کل پنل شماست.</p>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+  <!-- محصولات -->
+  <a href="{% url 'dashboard_products' %}" class="dashboard-card bg-white shadow-lg rounded-2xl p-6 flex flex-col justify-between hover:scale-105 transition-transform">
+    <div>
+      <h3 class="font-bold text-xl mb-2">🛒 محصولات</h3>
+      <p>مدیریت محصولات، افزودن، ویرایش و حذف</p>
     </div>
+  </a>
 
-    <!-- Main Content -->
-    <main class="p-6">
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        <a href="{% url 'dashboard_products' %}" class="card bg-base-100 shadow hover:shadow-lg transition p-5 text-center">
-          <h3 class="text-lg font-semibold">📦 محصولات</h3>
-          <p class="text-sm text-gray-500 mt-2">مدیریت و افزودن محصولات</p>
-        </a>
+  <!-- دسته بندی ها -->
+  <a href="{% url 'dashboard_categories' %}" class="dashboard-card bg-white shadow-lg rounded-2xl p-6 flex flex-col justify-between hover:scale-105 transition-transform">
+    <div>
+      <h3 class="font-bold text-xl mb-2">📂 دسته‌بندی‌ها</h3>
+      <p>افزودن و مدیریت دسته‌بندی‌ها</p>
+    </div>
+  </a>
 
-        <a href="{% url 'dashboard_categories' %}" class="card bg-base-100 shadow hover:shadow-lg transition p-5 text-center">
-          <h3 class="text-lg font-semibold">🗂️ دسته‌بندی‌ها</h3>
-          <p class="text-sm text-gray-500 mt-2">مدیریت دسته‌بندی‌ها</p>
-        </a>
+  <!-- مقالات -->
+  <a href="{% url 'dashboard_articles' %}" class="dashboard-card bg-white shadow-lg rounded-2xl p-6 flex flex-col justify-between hover:scale-105 transition-transform">
+    <div>
+      <h3 class="font-bold text-xl mb-2">📰 مقالات</h3>
+      <p>مدیریت و افزودن مقالات آموزشی و خبری</p>
+    </div>
+  </a>
 
-        <a href="{% url 'dashboard_articles' %}" class="card bg-base-100 shadow hover:shadow-lg transition p-5 text-center">
-          <h3 class="text-lg font-semibold">📰 مقالات</h3>
-          <p class="text-sm text-gray-500 mt-2">مدیریت مقالات آموزشی</p>
-        </a>
+  <!-- آموزش ها -->
+  <a href="{% url 'dashboard_courses' %}" class="dashboard-card bg-white shadow-lg rounded-2xl p-6 flex flex-col justify-between hover:scale-105 transition-transform">
+    <div>
+      <h3 class="font-bold text-xl mb-2">🎬 آموزش‌ها</h3>
+      <p>مدیریت ویدئوها و آموزش‌ها</p>
+    </div>
+  </a>
 
-        <a href="{% url 'dashboard_courses' %}" class="card bg-base-100 shadow hover:shadow-lg transition p-5 text-center">
-          <h3 class="text-lg font-semibold">🎥 ویدیوهای آموزشی</h3>
-          <p class="text-sm text-gray-500 mt-2">افزودن و ویرایش آموزش‌ها</p>
-        </a>
+  <!-- سفارشات -->
+  <a href="{% url 'dashboard_orders' %}" class="dashboard-card bg-white shadow-lg rounded-2xl p-6 flex flex-col justify-between hover:scale-105 transition-transform">
+    <div>
+      <h3 class="font-bold text-xl mb-2">📦 سفارشات</h3>
+      <p>مشاهده جزئیات سفارش‌ها</p>
+    </div>
+  </a>
 
-        <a href="{% url 'dashboard_orders' %}" class="card bg-base-100 shadow hover:shadow-lg transition p-5 text-center">
-          <h3 class="text-lg font-semibold">📜 سفارش‌ها</h3>
-          <p class="text-sm text-gray-500 mt-2">مشاهده و بررسی سفارش‌ها</p>
-        </a>
+  <!-- درخواست های نمایندگی -->
+  <a href="{% url 'dashboard_agency_requests' %}" class="dashboard-card bg-white shadow-lg rounded-2xl p-6 flex flex-col justify-between hover:scale-105 transition-transform">
+    <div>
+      <h3 class="font-bold text-xl mb-2">📝 درخواست‌های نمایندگی</h3>
+      <p>مشاهده درخواست‌های نمایندگی</p>
+    </div>
+  </a>
 
-        <a href="#" class="card bg-base-100 shadow hover:shadow-lg transition p-5 text-center">
-          <h3 class="text-lg font-semibold">📞 درخواست‌های نمایندگی</h3>
-          <p class="text-sm text-gray-500 mt-2">بررسی درخواست‌ها</p>
-        </a>
-      </div>
-    </main>
-  </div>
-
-  <!-- Sidebar -->
-  <div class="drawer-side z-20">
-    <label for="dashboard-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
-    <aside class="menu p-4 w-72 min-h-full bg-base-100 text-base-content">
-      <div class="mb-4 text-center">
-        <h2 class="font-bold text-xl mb-2">فریس مدیریت</h2>
-        <p class="text-sm text-gray-500">{{ request.user.username }}</p>
-      </div>
-      <ul class="menu">
-        <li><a href="{% url 'dashboard_products' %}" class="active:bg-primary/10">📦 محصولات</a></li>
-        <li><a href="{% url 'dashboard_categories' %}">🗂️ دسته‌بندی‌ها</a></li>
-        <li><a href="{% url 'dashboard_articles' %}">📰 مقالات</a></li>
-        <li><a href="{% url 'dashboard_courses' %}">🎥 آموزش‌ها</a></li>
-        <li><a href="{% url 'dashboard_orders' %}">📜 سفارش‌ها</a></li>
-        <li><a href="#">📞 درخواست‌ها</a></li>
-        <li class="mt-4"><a href="{% url 'dashboard_logout' %}" class="text-error">🚪 خروج</a></li>
-      </ul>
-    </aside>
-  </div>
 </div>
 
-</body>
-</html>
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends "dashboard/base_dashboard.html" %}
+{% block content %}
+
+<h2 class="text-2xl font-bold mb-6">📝 درخواست‌های نمایندگی</h2>
+
+<table class="table w-full border">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>نام کامل</th>
+      <th>شهر</th>
+      <th>شماره تماس</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for request in page_obj %}
+    <tr class="cursor-pointer hover:bg-gray-100" onclick="openRequestModal({{ request.id }})">
+      <td>{{ forloop.counter0|add:page_obj.start_index }}</td>
+      <td>{{ request.full_name }}</td>
+      <td>{{ request.city }}</td>
+      <td>{{ request.phone }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+      <td colspan="4" class="text-center text-gray-500">هیچ درخواستی ثبت نشده است.</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<!-- Pagination -->
+<div class="mt-4">
+  {% include "dashboard/partials/pagination.html" with page_obj=page_obj %}
+</div>
+
+<!-- Modal جزئیات درخواست -->
+<dialog id="requestModal" class="modal w-full max-w-2xl">
+  <div class="modal-box relative">
+    <h3 class="text-lg font-bold mb-4">جزئیات درخواست</h3>
+    <p id="requestName" class="mb-1 font-semibold"></p>
+    <p id="requestCity" class="mb-1"></p>
+    <p id="requestPhone" class="mb-3"></p>
+    <p id="requestCreated" class="text-gray-500"></p>
+
+    <div class="modal-action">
+      <button type="button" class="btn" onclick="closeRequestModal()">بستن</button>
+    </div>
+  </div>
+</dialog>
+
+<script>
+  const requestsData = {
+    {% for request in page_obj %}
+    "{{ request.id }}": {
+      "full_name": "{{ request.full_name }}",
+      "city": "{{ request.city }}",
+      "phone": "{{ request.phone }}",
+      "created_at": "{{ request.created_at|date:'Y/m/d H:i' }}"
+    },
+    {% endfor %}
+  };
+
+  function openRequestModal(requestId) {
+    const data = requestsData[requestId];
+    document.getElementById("requestName").innerText = `نام کامل: ${data.full_name}`;
+    document.getElementById("requestCity").innerText = `شهر: ${data.city}`;
+    document.getElementById("requestPhone").innerText = `شماره تماس: ${data.phone}`;
+    document.getElementById("requestCreated").innerText = `تاریخ ثبت: ${data.created_at}`;
+
+    document.getElementById("requestModal").showModal();
+  }
+
+  function closeRequestModal() {
+    document.getElementById("requestModal").close();
+  }
+</script>
+
+{% endblock %}

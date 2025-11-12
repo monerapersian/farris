@@ -4,62 +4,72 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <title>{% block title %}پنل مدیریت{% endblock %}</title>
-    <link rel="icon" href="{% static 'img/farris-blue-icon.png' %}" type="image/x-icon">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>داشبورد مدیریت</title>
+  <link rel="icon" href="{% static 'img/farris-blue-icon.png' %}" type="image/x-icon">
+
+  <!-- Tailwind + DaisyUI -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@2.51.5/dist/full.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="{% static 'dashboard/custom.css' %}">
+  <script src="{% static 'dashboard/custom.js' %}"></script>
+
+  <style>
+    /* سایز کارت‌ها در موبایل بزرگ‌تر و واضح‌تر */
+    @media (max-width: 640px) {
+      .dashboard-card {
+        font-size: 1.25rem;
+        padding: 1.5rem;
+      }
+      .dashboard-card h3 {
+        font-size: 1.2rem;
+      }
+      .dashboard-card p {
+        font-size: 1rem;
+      }
+    }
+  </style>
 </head>
-<body class="bg-base-200 min-h-screen">
+<body class="bg-base-200 min-h-screen flex flex-col">
 
-<div class="drawer lg:drawer-open">
-  <input id="dashboard-drawer" type="checkbox" class="drawer-toggle" />
-  <div class="drawer-content flex flex-col">
-    <!-- Navbar -->
-    <div class="w-full navbar bg-base-100 shadow-sm">
-      <div class="flex-none lg:hidden">
-        <label for="dashboard-drawer" aria-label="open sidebar" class="btn btn-square btn-ghost">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-               stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-               d="M4 6h16M4 12h16M4 18h16" /></svg>
-        </label>
-      </div>
-      <div class="flex-1 px-2 mx-2 font-bold text-lg">🎛️ پنل مدیریت</div>
-      <div class="flex-none hidden lg:flex items-center gap-3">
-        <span class="text-sm text-gray-600">{{ request.user.username }}</span>
-        <a href="{% url 'dashboard_logout' %}" class="btn btn-error btn-sm">خروج</a>
-      </div>
-    </div>
+  <!-- هدر -->
+  <header class="bg-primary text-white p-4 shadow-md flex justify-between items-center">
+    <h1 class="text-xl font-bold">داشبورد مدیریت</h1>
+    <a href="{% url 'dashboard_logout' %}" class="btn btn-sm btn-ghost text-white">خروج</a>
+  </header>
 
-    <!-- Main Content -->
-    <main class="p-6">
-      {% block content %}
-      <!-- محتوای صفحات اینجا جایگزین می‌شود -->
-      {% endblock %}
+  <div class="flex flex-1 overflow-hidden">
+    <!-- سایدبار -->
+    <aside class="bg-base-100 w-64 p-4 hidden md:block shadow-inner">
+      <nav class="space-y-3">
+        <a href="{% url 'dashboard_products' %}" class="btn btn-block btn-outline w-full text-right">🛒 محصولات</a>
+        <a href="{% url 'dashboard_categories' %}" class="btn btn-block btn-outline w-full text-right">📂 دسته‌بندی‌ها</a>
+        <a href="{% url 'dashboard_articles' %}" class="btn btn-block btn-outline w-full text-right">📰 مقالات</a>
+        <a href="{% url 'dashboard_courses' %}" class="btn btn-block btn-outline w-full text-right">🎬 آموزش‌ها</a>
+        <a href="{% url 'dashboard_orders' %}" class="btn btn-block btn-outline w-full text-right">📦 سفارشات</a>
+        <a href="{% url 'dashboard_agency_requests' %}" class="btn btn-block btn-outline w-full text-right">📝 درخواست‌های نمایندگی</a>
+      </nav>
+    </aside>
+
+    <!-- محتوای اصلی -->
+    <main class="flex-1 p-6 overflow-auto">
+      {% block content %}{% endblock %}
     </main>
   </div>
 
-  <!-- Sidebar -->
-  <div class="drawer-side z-20">
-    <label for="dashboard-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
-    <aside class="menu p-4 w-72 min-h-full bg-base-100 text-base-content">
-      <div class="mb-4 text-center">
-        <h2 class="font-bold text-xl mb-2">فریس مدیریت</h2>
-        <p class="text-sm text-gray-500">{{ request.user.username }}</p>
-      </div>
-      <ul class="menu">
-        <li><a href="{% url 'dashboard_home' %}">🏠 صفحه اصلی</a></li>
-        <li><a href="{% url 'dashboard_products' %}">📦 محصولات</a></li>
-        <li><a href="#">🗂️ دسته‌بندی‌ها</a></li>
-        <li><a href="#">📰 مقالات</a></li>
-        <li><a href="#">🎥 آموزش‌ها</a></li>
-        <li><a href="#">📜 سفارش‌ها</a></li>
-        <li><a href="#">📞 درخواست‌ها</a></li>
-        <li class="mt-4"><a href="{% url 'dashboard_logout' %}" class="text-error">🚪 خروج</a></li>
-      </ul>
-    </aside>
+  <!-- سایدبار موبایل -->
+  <div class="fixed bottom-0 left-0 right-0 md:hidden bg-base-100 border-t shadow-inner">
+    <div class="flex justify-around p-2">
+      <a href="{% url 'dashboard_products' %}" class="btn btn-square btn-ghost">🛒</a>
+      <a href="{% url 'dashboard_categories' %}" class="btn btn-square btn-ghost">📂</a>
+      <a href="{% url 'dashboard_articles' %}" class="btn btn-square btn-ghost">📰</a>
+      <a href="{% url 'dashboard_courses' %}" class="btn btn-square btn-ghost">🎬</a>
+      <a href="{% url 'dashboard_orders' %}" class="btn btn-square btn-ghost">📦</a>
+      <a href="{% url 'dashboard_agency_requests' %}" class="btn btn-square btn-ghost">📝</a>
+    </div>
   </div>
-</div>
 
 </body>
 </html>
