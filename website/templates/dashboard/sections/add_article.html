@@ -1,0 +1,50 @@
+{% extends "dashboard/base_dashboard.html" %}
+{% block content %}
+
+<div class="max-w-3xl mx-auto bg-base-100 shadow-lg rounded-2xl p-8 mt-10">
+  <h2 class="text-2xl font-bold mb-6">➕ افزودن مقاله جدید</h2>
+
+  <form method="post" enctype="multipart/form-data" class="space-y-4">
+    {% csrf_token %}
+
+    <!-- عنوان -->
+    <div class="form-control">
+      <label class="label"><span class="label-text">عنوان مقاله</span></label>
+      <input type="text" name="title" class="input input-bordered w-full">
+    </div>
+
+    <!-- نامک -->
+    <div class="form-control">
+      <label class="label"><span class="label-text">نامک (Slug)</span></label>
+      <input type="text" name="slug" class="input input-bordered w-full">
+      <label class="label"><span class="label-text-alt text-gray-400 text-sm">در صورت خالی، از عنوان ساخته می‌شود.</span></label>
+    </div>
+
+    <!-- متن مقاله -->
+    <div class="form-control">
+      <label class="label"><span class="label-text">متن مقاله</span></label>
+      <textarea name="content" class="textarea textarea-bordered w-full" rows="6"></textarea>
+    </div>
+
+    <!-- ویژه -->
+    <div class="form-control">
+      <label class="cursor-pointer label">
+        <span class="label-text">مقاله ویژه</span> 
+        <input type="checkbox" name="special" class="checkbox checkbox-primary">
+      </label>
+    </div>
+
+    <!-- تصویر -->
+    <div class="form-control">
+      <label class="label"><span class="label-text">تصویر مقاله</span></label>
+      <input type="file" name="image" class="file-input file-input-bordered w-full">
+    </div>
+
+    <div class="flex justify-end mt-6 gap-4">
+      <a href="{% url 'dashboard_articles' %}" class="btn">بازگشت</a>
+      <button type="submit" class="btn btn-primary">افزودن مقاله</button>
+    </div>
+  </form>
+</div>
+
+{% endblock %}

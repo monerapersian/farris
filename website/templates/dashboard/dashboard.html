@@ -44,7 +44,7 @@
           <p class="text-sm text-gray-500 mt-2">مدیریت دسته‌بندی‌ها</p>
         </a>
 
-        <a href="#" class="card bg-base-100 shadow hover:shadow-lg transition p-5 text-center">
+        <a href="{% url 'dashboard_articles' %}" class="card bg-base-100 shadow hover:shadow-lg transition p-5 text-center">
           <h3 class="text-lg font-semibold">📰 مقالات</h3>
           <p class="text-sm text-gray-500 mt-2">مدیریت مقالات آموزشی</p>
         </a>
@@ -78,7 +78,7 @@
       <ul class="menu">
         <li><a href="{% url 'dashboard_products' %}" class="active:bg-primary/10">📦 محصولات</a></li>
         <li><a href="{% url 'dashboard_categories' %}">🗂️ دسته‌بندی‌ها</a></li>
-        <li><a href="#">📰 مقالات</a></li>
+        <li><a href="{% url 'dashboard_articles' %}">📰 مقالات</a></li>
         <li><a href="#">🎥 آموزش‌ها</a></li>
         <li><a href="#">📜 سفارش‌ها</a></li>
         <li><a href="#">📞 درخواست‌ها</a></li>
