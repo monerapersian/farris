@@ -2,58 +2,61 @@
 {% load static %}
 {% load jalali_tags %}
 {% load humanize %}
+
 {% block content %}
 
-<h2 class="text-3xl font-bold mb-6">سلام، {{ request.user.get_full_name }}</h2>
-<p class="mb-6 text-gray-600">این بخش مدیریت کل پنل شماست.</p>
+<div class="mb-6">
+  <h2 class="text-3xl font-bold mb-2">سلام، {{ request.user.get_full_name }}</h2>
+  <p class="text-gray-600">این بخش مدیریت کل پنل شماست.</p>
+</div>
 
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
-  <!-- محصولات -->
-  <a href="{% url 'dashboard_products' %}" class="dashboard-card bg-white shadow-lg rounded-2xl p-6 flex flex-col justify-between hover:scale-105 transition-transform">
+  <!-- کارت محصولات -->
+  <a href="{% url 'dashboard_products' %}" class="dashboard-card bg-white shadow-lg rounded-2xl p-6 flex flex-col justify-between">
     <div>
       <h3 class="font-bold text-xl mb-2">🛒 محصولات</h3>
-      <p>مدیریت محصولات، افزودن، ویرایش و حذف</p>
+      <p>مدیریت، افزودن، ویرایش و حذف محصولات</p>
     </div>
   </a>
 
-  <!-- دسته بندی ها -->
-  <a href="{% url 'dashboard_categories' %}" class="dashboard-card bg-white shadow-lg rounded-2xl p-6 flex flex-col justify-between hover:scale-105 transition-transform">
+  <!-- کارت دسته‌بندی‌ها -->
+  <a href="{% url 'dashboard_categories' %}" class="dashboard-card bg-white shadow-lg rounded-2xl p-6 flex flex-col justify-between">
     <div>
       <h3 class="font-bold text-xl mb-2">📂 دسته‌بندی‌ها</h3>
-      <p>افزودن و مدیریت دسته‌بندی‌ها</p>
+      <p>مدیریت و افزودن دسته‌بندی‌ها</p>
     </div>
   </a>
 
-  <!-- مقالات -->
-  <a href="{% url 'dashboard_articles' %}" class="dashboard-card bg-white shadow-lg rounded-2xl p-6 flex flex-col justify-between hover:scale-105 transition-transform">
+  <!-- کارت مقالات -->
+  <a href="{% url 'dashboard_articles' %}" class="dashboard-card bg-white shadow-lg rounded-2xl p-6 flex flex-col justify-between">
     <div>
       <h3 class="font-bold text-xl mb-2">📰 مقالات</h3>
-      <p>مدیریت و افزودن مقالات آموزشی و خبری</p>
+      <p>افزودن و مدیریت مقالات</p>
     </div>
   </a>
 
-  <!-- آموزش ها -->
-  <a href="{% url 'dashboard_courses' %}" class="dashboard-card bg-white shadow-lg rounded-2xl p-6 flex flex-col justify-between hover:scale-105 transition-transform">
+  <!-- کارت آموزش‌ها -->
+  <a href="{% url 'dashboard_courses' %}" class="dashboard-card bg-white shadow-lg rounded-2xl p-6 flex flex-col justify-between">
     <div>
       <h3 class="font-bold text-xl mb-2">🎬 آموزش‌ها</h3>
       <p>مدیریت ویدئوها و آموزش‌ها</p>
     </div>
   </a>
 
-  <!-- سفارشات -->
-  <a href="{% url 'dashboard_orders' %}" class="dashboard-card bg-white shadow-lg rounded-2xl p-6 flex flex-col justify-between hover:scale-105 transition-transform">
+  <!-- کارت سفارشات -->
+  <a href="{% url 'dashboard_orders' %}" class="dashboard-card bg-white shadow-lg rounded-2xl p-6 flex flex-col justify-between">
     <div>
       <h3 class="font-bold text-xl mb-2">📦 سفارشات</h3>
       <p>مشاهده جزئیات سفارش‌ها</p>
     </div>
   </a>
 
-  <!-- درخواست های نمایندگی -->
-  <a href="{% url 'dashboard_agency_requests' %}" class="dashboard-card bg-white shadow-lg rounded-2xl p-6 flex flex-col justify-between hover:scale-105 transition-transform">
+  <!-- کارت درخواست‌ها -->
+  <a href="{% url 'dashboard_agency_requests' %}" class="dashboard-card bg-white shadow-lg rounded-2xl p-6 flex flex-col justify-between">
     <div>
       <h3 class="font-bold text-xl mb-2">📝 درخواست‌های نمایندگی</h3>
-      <p>مشاهده درخواست‌های نمایندگی</p>
+      <p>مشاهده درخواست‌ها</p>
     </div>
   </a>
 

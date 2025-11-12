@@ -7,28 +7,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>داشبورد مدیریت</title>
-  <link rel="icon" href="{% static 'img/farris-blue-icon.png' %}" type="image/x-icon">
 
   <!-- Tailwind + DaisyUI -->
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/daisyui@2.51.5/dist/full.css" rel="stylesheet">
 
+  {% load static %}
   <link rel="stylesheet" href="{% static 'dashboard/custom.css' %}">
   <script src="{% static 'dashboard/custom.js' %}"></script>
 
   <style>
-    /* سایز کارت‌ها در موبایل بزرگ‌تر و واضح‌تر */
+    /* کارت‌ها و سایدبار */
+    .dashboard-card { transition: all 0.2s; cursor: pointer; }
+    .dashboard-card:hover { transform: scale(1.05); }
+
+    /* فونت و spacing موبایل */
     @media (max-width: 640px) {
-      .dashboard-card {
-        font-size: 1.25rem;
-        padding: 1.5rem;
-      }
-      .dashboard-card h3 {
-        font-size: 1.2rem;
-      }
-      .dashboard-card p {
-        font-size: 1rem;
-      }
+      body { font-size: 1rem; }
+      .dashboard-card { padding: 1.5rem; font-size: 1rem; }
+      .dashboard-card h3 { font-size: 1.25rem; }
+      .dashboard-card p { font-size: 1rem; }
     }
   </style>
 </head>
@@ -41,15 +39,16 @@
   </header>
 
   <div class="flex flex-1 overflow-hidden">
-    <!-- سایدبار -->
-    <aside class="bg-base-100 w-64 p-4 hidden md:block shadow-inner">
+
+    <!-- سایدبار دسکتاپ -->
+    <aside class="bg-base-100 w-64 p-4 hidden md:flex flex-col shadow-inner">
       <nav class="space-y-3">
         <a href="{% url 'dashboard_products' %}" class="btn btn-block btn-outline w-full text-right">🛒 محصولات</a>
         <a href="{% url 'dashboard_categories' %}" class="btn btn-block btn-outline w-full text-right">📂 دسته‌بندی‌ها</a>
         <a href="{% url 'dashboard_articles' %}" class="btn btn-block btn-outline w-full text-right">📰 مقالات</a>
         <a href="{% url 'dashboard_courses' %}" class="btn btn-block btn-outline w-full text-right">🎬 آموزش‌ها</a>
         <a href="{% url 'dashboard_orders' %}" class="btn btn-block btn-outline w-full text-right">📦 سفارشات</a>
-        <a href="{% url 'dashboard_agency_requests' %}" class="btn btn-block btn-outline w-full text-right">📝 درخواست‌های نمایندگی</a>
+        <a href="{% url 'dashboard_agency_requests' %}" class="btn btn-block btn-outline w-full text-right">📝 درخواست‌ها</a>
       </nav>
     </aside>
 
@@ -59,15 +58,15 @@
     </main>
   </div>
 
-  <!-- سایدبار موبایل -->
-  <div class="fixed bottom-0 left-0 right-0 md:hidden bg-base-100 border-t shadow-inner">
+  <!-- سایدبار موبایل (Bottom Nav) -->
+  <div class="fixed bottom-0 left-0 right-0 md:hidden bg-base-100 border-t shadow-inner z-50">
     <div class="flex justify-around p-2">
-      <a href="{% url 'dashboard_products' %}" class="btn btn-square btn-ghost">🛒</a>
-      <a href="{% url 'dashboard_categories' %}" class="btn btn-square btn-ghost">📂</a>
-      <a href="{% url 'dashboard_articles' %}" class="btn btn-square btn-ghost">📰</a>
-      <a href="{% url 'dashboard_courses' %}" class="btn btn-square btn-ghost">🎬</a>
-      <a href="{% url 'dashboard_orders' %}" class="btn btn-square btn-ghost">📦</a>
-      <a href="{% url 'dashboard_agency_requests' %}" class="btn btn-square btn-ghost">📝</a>
+      <a href="{% url 'dashboard_products' %}" class="btn btn-square btn-ghost text-lg">🛒</a>
+      <a href="{% url 'dashboard_categories' %}" class="btn btn-square btn-ghost text-lg">📂</a>
+      <a href="{% url 'dashboard_articles' %}" class="btn btn-square btn-ghost text-lg">📰</a>
+      <a href="{% url 'dashboard_courses' %}" class="btn btn-square btn-ghost text-lg">🎬</a>
+      <a href="{% url 'dashboard_orders' %}" class="btn btn-square btn-ghost text-lg">📦</a>
+      <a href="{% url 'dashboard_agency_requests' %}" class="btn btn-square btn-ghost text-lg">📝</a>
     </div>
   </div>
 
