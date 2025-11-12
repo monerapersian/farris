@@ -30,6 +30,11 @@ urlpatterns = [
     path("dashboard/products/delete/<int:product_id>/", views.dashboard_product_delete, name="dashboard_product_delete"),
     path("dashboard/products/edit/<int:product_id>/", views.dashboard_product_edit, name="dashboard_product_edit"),
 
+    path("dashboard/categories/", views.dashboard_categories, name="dashboard_categories"),
+    path("dashboard/categories/add/", views.dashboard_category_add, name="dashboard_category_add"),
+    path("dashboard/categories/edit/<int:category_id>/", views.dashboard_category_edit, name="dashboard_category_edit"),
+    path("dashboard/categories/delete/<int:category_id>/", views.dashboard_category_delete, name="dashboard_category_delete"),
+
     # path('dashboard/', views.dashboard, name="dashboard"),
     # path('dashboard/load/<str:section>/', views.load_dashboard_section, name="load_dashboard_section"),
     # path('dashboard/products/create/', views.create_product, name="create_product"),

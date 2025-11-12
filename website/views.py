@@ -572,3 +572,78 @@ def dashboard_product_edit(request, product_id):
         return redirect("dashboard_products")
 
     return render(request, "dashboard/sections/edit_product.html", {"categories": categories, "product": product})
+
+
+@login_required(login_url="dashboard_login")
+def dashboard_categories(request):
+    categories_list = Category.objects.all().order_by("name")
+    paginator = Paginator(categories_list, 10)  # هر صفحه ۱۰ دسته‌بندی
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, "dashboard/sections/categories.html", {"page_obj": page_obj})
+
+
+@login_required(login_url="dashboard_login")
+def dashboard_category_add(request):
+    if request.method == "POST":
+        name = request.POST.get("name", "").strip()
+        slug_input = request.POST.get("slug", "").strip()
+        slug = slugify(slug_input or name, allow_unicode=True)
+
+        errors = []
+        if not name:
+            errors.append("نام دسته‌بندی الزامی است.")
+        if Category.objects.filter(slug=slug).exists():
+            errors.append("نامک (slug) وارد شده تکراری است.")
+
+        if errors:
+            for e in errors:
+                messages.error(request, e)
+            return render(request, "dashboard/sections/add_category.html")
+
+        Category.objects.create(name=name, slug=slug)
+        messages.success(request, f"دسته‌بندی «{name}» با موفقیت اضافه شد ✅")
+        return redirect("dashboard_categories")
+
+    return render(request, "dashboard/sections/add_category.html")
+
+
+@login_required(login_url="dashboard_login")
+def dashboard_category_edit(request, category_id):
+    category = get_object_or_404(Category, id=category_id)
+
+    if request.method == "POST":
+        name = request.POST.get("name", "").strip()
+        slug_input = request.POST.get("slug", "").strip()
+        slug = slugify(slug_input or name, allow_unicode=True)
+
+        errors = []
+        if not name:
+            errors.append("نام دسته‌بندی الزامی است.")
+        if Category.objects.filter(slug=slug).exclude(id=category.id).exists():
+            errors.append("نامک (slug) وارد شده تکراری است.")
+
+        if errors:
+            for e in errors:
+                messages.error(request, e)
+            return render(request, "dashboard/sections/edit_category.html", {"category": category})
+
+        category.name = name
+        category.slug = slug
+        category.save()
+        messages.success(request, f"دسته‌بندی «{name}» با موفقیت ویرایش شد ✅")
+        return redirect("dashboard_categories")
+
+    return render(request, "dashboard/sections/edit_category.html", {"category": category})
+
+
+@login_required(login_url="dashboard_login")
+def dashboard_category_delete(request, category_id):
+    category = get_object_or_404(Category, id=category_id)
+
+    if request.method == "POST":
+        category.delete()
+        messages.success(request, f"دسته‌بندی «{category.name}» با موفقیت حذف شد ✅")
+    
+    return redirect("dashboard_categories")
