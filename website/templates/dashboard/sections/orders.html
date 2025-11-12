@@ -1,0 +1,124 @@
+{% extends "dashboard/base_dashboard.html" %}
+{% block content %}
+
+<h2 class="text-2xl font-bold mb-6">📦 سفارشات</h2>
+
+<table class="table w-full border">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>نام مشتری</th>
+      <th>تاریخ ثبت سفارش</th>
+      <th>مبلغ کل فاکتور</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for order in page_obj %}
+    <tr class="cursor-pointer hover:bg-gray-100" onclick="openOrderModal({{ order.id }})">
+      <td>{{ forloop.counter0|add:page_obj.start_index }}</td>
+      <td>{{ order.full_name }}</td>
+      <td>{{ order.created_at|date:"Y/m/d H:i" }}</td>
+      <td>{{ order.total_price|intcomma }} تومان</td>
+    </tr>
+    {% empty %}
+    <tr>
+      <td colspan="4" class="text-center text-gray-500">هیچ سفارشی ثبت نشده است.</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<!-- Pagination -->
+<div class="mt-4">
+  {% include "dashboard/partials/pagination.html" with page_obj=page_obj %}
+</div>
+
+<!-- Modal جزئیات سفارش -->
+<dialog id="orderModal" class="modal w-full max-w-3xl">
+  <div class="modal-box relative">
+    <h3 class="text-lg font-bold mb-4">جزئیات سفارش</h3>
+    <p id="orderTracking" class="font-semibold mb-2"></p>
+    <p id="orderCustomer" class="mb-1"></p>
+    <p id="orderAddress" class="mb-3"></p>
+    <p id="orderTotal" class="mb-3 font-semibold"></p>
+
+    <div class="overflow-x-auto">
+      <table class="table w-full border">
+        <thead>
+          <tr>
+            <th>محصول</th>
+            <th>دسته‌بندی</th>
+            <th>قیمت واحد</th>
+            <th>تعداد</th>
+            <th>جمع</th>
+          </tr>
+        </thead>
+        <tbody id="orderItems">
+          <!-- لیست محصولات با JS پر می‌شود -->
+        </tbody>
+      </table>
+    </div>
+
+    <p class="text-center font-bold mt-4" id="orderPayment"></p>
+
+    <div class="modal-action">
+      <button type="button" class="btn" onclick="closeOrderModal()">بستن</button>
+    </div>
+  </div>
+</dialog>
+
+<script>
+  const ordersData = {
+    {% for order in page_obj %}
+    "{{ order.id }}": {
+      "tracking": "{{ order.tracking_code }}",
+      "full_name": "{{ order.full_name }}",
+      "address": "{{ order.address|linebreaksbr }}",
+      "total": "{{ order.total_price|intcomma }}",
+      "is_paid": "{{ order.is_paid }}",
+      "items": [
+        {% for item in order.items.all %}
+        {
+          "title": "{{ item.product_title }}",
+          "category": "{{ item.category }}",
+          "price": "{{ item.price|intcomma }}",
+          "quantity": "{{ item.quantity }}",
+          "subtotal": "{{ item.price|mul:item.quantity|intcomma }}"
+        },
+        {% endfor %}
+      ]
+    },
+    {% endfor %}
+  };
+
+  function openOrderModal(orderId) {
+    const data = ordersData[orderId];
+    document.getElementById("orderTracking").innerHTML = `کد پیگیری: <b>${data.tracking}</b>`;
+    document.getElementById("orderCustomer").innerText = `نام مشتری: ${data.full_name}`;
+    document.getElementById("orderAddress").innerHTML = `آدرس: ${data.address}`;
+    document.getElementById("orderTotal").innerText = `مبلغ کل: ${data.total} تومان`;
+    document.getElementById("orderPayment").innerText = data.is_paid === "True" ? "پرداخت موفق ✅" : "پرداخت ناموفق ❌";
+
+    const tbody = document.getElementById("orderItems");
+    tbody.innerHTML = "";
+    data.items.forEach(item => {
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td>${item.title}</td>
+        <td>${item.category}</td>
+        <td>${item.price} تومان</td>
+        <td>${item.quantity}</td>
+        <td>${item.subtotal} تومان</td>
+      `;
+      tbody.appendChild(tr);
+    });
+
+    document.getElementById("orderModal").showModal();
+  }
+
+  function closeOrderModal() {
+    document.getElementById("orderModal").close();
+  }
+</script>
+
+{% endblock %}

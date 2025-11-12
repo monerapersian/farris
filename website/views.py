@@ -837,3 +837,13 @@ def dashboard_course_delete(request, course_id):
         messages.success(request, f"آموزش «{course.title}» با موفقیت حذف شد ✅")
     
     return redirect("dashboard_courses")
+
+
+@login_required(login_url="dashboard_login")
+def dashboard_orders(request):
+    orders_list = Order.objects.all().order_by("-created_at")
+    paginator = Paginator(orders_list, 10)  # هر صفحه ۱۰ سفارش
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, "dashboard/sections/orders.html", {"page_obj": page_obj})
