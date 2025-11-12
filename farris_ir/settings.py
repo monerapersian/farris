@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'website',
     'jalali_date',
+    'django.contrib.humanize',
 ]
 
 MIDDLEWARE = [
