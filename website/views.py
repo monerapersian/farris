@@ -10,6 +10,9 @@ from decimal import Decimal
 from .models import Category, Product, Article, Course, Order, OrderItem, AgencyRequest
 from django.core.paginator import Paginator
 from django.utils.text import slugify
+from PIL import Image
+import io
+from django.core.files.base import ContentFile
 
 # MERCHANT_ID = "34e4ca8c-11fe-4bb5-a897-9f73d78f4dac"
 # ZARINPAL_REQUEST_URL = "https://sandbox.zarinpal.com/pg/v4/payment/request.json"
@@ -433,15 +436,172 @@ def dashboard_logout(request):
     return redirect('dashboard_login')
 
 
+# @login_required(login_url="dashboard_login")
+# def dashboard_products(request):
+#     products = Product.objects.select_related("category").order_by("-created_at")
+
+#     # pagination: هر صفحه ۱۰ محصول
+#     paginator = Paginator(products, 10)
+#     page_number = request.GET.get("page")
+#     page_obj = paginator.get_page(page_number)
+
+#     context = {
+#         "products": page_obj,
+#         "page_obj": page_obj,
+#     }
+#     return render(request, "dashboard/sections/products.html", context)
+
+
+# @login_required(login_url="dashboard_login")
+# def dashboard_product_add(request):
+#     """
+#     افزودن محصول جدید در پنل ادمین سفارشی
+#     """
+#     categories = Category.objects.all()
+
+#     if request.method == "POST":
+#         # دریافت داده‌ها از فرم
+#         title = request.POST.get("title", "").strip()
+#         slug_input = request.POST.get("slug", "").strip()
+#         slug = slugify(slug_input or title, allow_unicode=True)
+#         category_id = request.POST.get("category")
+#         description = request.POST.get("description", "").strip()
+#         price = request.POST.get("price", "").strip()
+#         features = request.POST.get("features", "").strip()
+#         special = bool(request.POST.get("special"))
+#         image = request.FILES.get("image")
+
+#         # اعتبارسنجی داده‌ها
+#         errors = []
+#         if not title:
+#             errors.append("عنوان محصول الزامی است.")
+#         if not price or not price.isdigit():
+#             errors.append("قیمت باید عددی باشد.")
+#         if not category_id:
+#             errors.append("انتخاب دسته‌بندی الزامی است.")
+#         if not image:
+#             errors.append("انتخاب تصویر الزامی است.")
+
+#         # بررسی تکراری نبودن slug
+#         if Product.objects.filter(slug=slug).exists():
+#             errors.append("نامک (slug) وارد شده تکراری است. لطفاً مقدار دیگری انتخاب کنید.")
+
+#         # در صورت وجود خطاها، نمایش مجدد فرم با پیام‌ها
+#         if errors:
+#             for e in errors:
+#                 messages.error(request, e)
+#             return render(request, "dashboard/sections/add_product.html", {"categories": categories})
+
+#         # ذخیره در دیتابیس
+#         category = Category.objects.get(id=category_id)
+#         Product.objects.create(
+#             title=title,
+#             slug=slug,
+#             category=category,
+#             description=description,
+#             price=price,
+#             features=features,
+#             special=special,
+#             image=image,
+#         )
+
+#         messages.success(request, f"محصول «{title}» با موفقیت اضافه شد ✅")
+#         return redirect("dashboard_products")
+
+#     # نمایش فرم افزودن محصول
+#     return render(request, "dashboard/sections/add_product.html", {"categories": categories})
+
+
+# @login_required(login_url="dashboard_login")
+# def dashboard_product_delete(request, product_id):
+#     product = get_object_or_404(Product, id=product_id)
+
+#     if request.method == "POST":
+#         product.delete()
+#         messages.success(request, f"محصول «{product.title}» با موفقیت حذف شد ✅")
+    
+#     return redirect("dashboard_products")
+
+
+# @login_required(login_url="dashboard_login")
+# def dashboard_product_edit(request, product_id):
+#     """
+#     ویرایش محصول موجود
+#     """
+#     product = get_object_or_404(Product, id=product_id)
+#     categories = Category.objects.all()
+
+#     if request.method == "POST":
+#         title = request.POST.get("title", "").strip()
+#         slug_input = request.POST.get("slug", "").strip()
+#         slug = slugify(slug_input or title, allow_unicode=True)
+#         category_id = request.POST.get("category")
+#         description = request.POST.get("description", "").strip()
+#         price = request.POST.get("price", "").strip()
+#         features = request.POST.get("features", "").strip()
+#         special = bool(request.POST.get("special"))
+#         image = request.FILES.get("image")
+
+#         errors = []
+#         if not title:
+#             errors.append("عنوان محصول الزامی است.")
+#         if not price or not price.isdigit():
+#             errors.append("قیمت باید عددی باشد.")
+#         if not category_id:
+#             errors.append("انتخاب دسته‌بندی الزامی است.")
+
+#         # بررسی تکراری نبودن slug در محصولات دیگر
+#         if Product.objects.filter(slug=slug).exclude(id=product.id).exists():
+#             errors.append("نامک (slug) وارد شده تکراری است. لطفاً مقدار دیگری انتخاب کنید.")
+
+#         if errors:
+#             for e in errors:
+#                 messages.error(request, e)
+#             return render(request, "dashboard/sections/edit_product.html", {"categories": categories, "product": product})
+
+#         # به‌روزرسانی فیلدها
+#         product.title = title
+#         product.slug = slug
+#         product.category = Category.objects.get(id=category_id)
+#         product.description = description
+#         product.price = price
+#         product.features = features
+#         product.special = special
+#         if image:
+#             product.image = image  # فقط اگر عکس جدید انتخاب شد
+#         product.save()
+
+#         messages.success(request, f"محصول «{product.title}» با موفقیت ویرایش شد ✅")
+#         return redirect("dashboard_products")
+
+#     return render(request, "dashboard/sections/edit_product.html", {"categories": categories, "product": product})
+
+
+
+# 🔹 تابع کمکی برای فشرده‌سازی و تبدیل WebP
+def compress_and_convert_image(image_file, max_size=(1080, 1080), quality=80):
+    img = Image.open(image_file)
+
+    if img.mode in ("RGBA", "P"):
+        img = img.convert("RGB")
+
+    img.thumbnail(max_size, Image.LANCZOS)
+
+    buffer = io.BytesIO()
+    img.save(buffer, format="WEBP", quality=quality, optimize=True)
+    buffer.seek(0)
+
+    new_name = image_file.name.rsplit(".", 1)[0] + ".webp"
+    return ContentFile(buffer.read(), name=new_name)
+
+
+# -----------------------------
 @login_required(login_url="dashboard_login")
 def dashboard_products(request):
     products = Product.objects.select_related("category").order_by("-created_at")
-
-    # pagination: هر صفحه ۱۰ محصول
     paginator = Paginator(products, 10)
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
-
     context = {
         "products": page_obj,
         "page_obj": page_obj,
@@ -451,13 +611,9 @@ def dashboard_products(request):
 
 @login_required(login_url="dashboard_login")
 def dashboard_product_add(request):
-    """
-    افزودن محصول جدید در پنل ادمین سفارشی
-    """
     categories = Category.objects.all()
 
     if request.method == "POST":
-        # دریافت داده‌ها از فرم
         title = request.POST.get("title", "").strip()
         slug_input = request.POST.get("slug", "").strip()
         slug = slugify(slug_input or title, allow_unicode=True)
@@ -468,7 +624,6 @@ def dashboard_product_add(request):
         special = bool(request.POST.get("special"))
         image = request.FILES.get("image")
 
-        # اعتبارسنجی داده‌ها
         errors = []
         if not title:
             errors.append("عنوان محصول الزامی است.")
@@ -479,18 +634,20 @@ def dashboard_product_add(request):
         if not image:
             errors.append("انتخاب تصویر الزامی است.")
 
-        # بررسی تکراری نبودن slug
         if Product.objects.filter(slug=slug).exists():
             errors.append("نامک (slug) وارد شده تکراری است. لطفاً مقدار دیگری انتخاب کنید.")
 
-        # در صورت وجود خطاها، نمایش مجدد فرم با پیام‌ها
         if errors:
             for e in errors:
                 messages.error(request, e)
             return render(request, "dashboard/sections/add_product.html", {"categories": categories})
 
-        # ذخیره در دیتابیس
         category = Category.objects.get(id=category_id)
+
+        # 🔹 فشرده‌سازی و تبدیل WebP قبل از ذخیره
+        if image:
+            image = compress_and_convert_image(image)
+
         Product.objects.create(
             title=title,
             slug=slug,
@@ -505,26 +662,20 @@ def dashboard_product_add(request):
         messages.success(request, f"محصول «{title}» با موفقیت اضافه شد ✅")
         return redirect("dashboard_products")
 
-    # نمایش فرم افزودن محصول
     return render(request, "dashboard/sections/add_product.html", {"categories": categories})
 
 
 @login_required(login_url="dashboard_login")
 def dashboard_product_delete(request, product_id):
     product = get_object_or_404(Product, id=product_id)
-
     if request.method == "POST":
         product.delete()
         messages.success(request, f"محصول «{product.title}» با موفقیت حذف شد ✅")
-    
     return redirect("dashboard_products")
 
 
 @login_required(login_url="dashboard_login")
 def dashboard_product_edit(request, product_id):
-    """
-    ویرایش محصول موجود
-    """
     product = get_object_or_404(Product, id=product_id)
     categories = Category.objects.all()
 
@@ -546,8 +697,6 @@ def dashboard_product_edit(request, product_id):
             errors.append("قیمت باید عددی باشد.")
         if not category_id:
             errors.append("انتخاب دسته‌بندی الزامی است.")
-
-        # بررسی تکراری نبودن slug در محصولات دیگر
         if Product.objects.filter(slug=slug).exclude(id=product.id).exists():
             errors.append("نامک (slug) وارد شده تکراری است. لطفاً مقدار دیگری انتخاب کنید.")
 
@@ -556,7 +705,6 @@ def dashboard_product_edit(request, product_id):
                 messages.error(request, e)
             return render(request, "dashboard/sections/edit_product.html", {"categories": categories, "product": product})
 
-        # به‌روزرسانی فیلدها
         product.title = title
         product.slug = slug
         product.category = Category.objects.get(id=category_id)
@@ -564,14 +712,19 @@ def dashboard_product_edit(request, product_id):
         product.price = price
         product.features = features
         product.special = special
+
+        # 🔹 اگر تصویر جدید آپلود شد، فشرده و WebP کن
         if image:
-            product.image = image  # فقط اگر عکس جدید انتخاب شد
+            product.image = compress_and_convert_image(image)
+
         product.save()
 
         messages.success(request, f"محصول «{product.title}» با موفقیت ویرایش شد ✅")
         return redirect("dashboard_products")
 
     return render(request, "dashboard/sections/edit_product.html", {"categories": categories, "product": product})
+
+
 
 
 @login_required(login_url="dashboard_login")
