@@ -27,7 +27,7 @@
       {% for article in page_obj %}
       <tr>
         <td>{{ forloop.counter0|add:page_obj.start_index }}</td>
-        <td>{{ article.title }}</td>
+        <td class="whitespace-nowrap">{{ article.title }}</td>
         <td>{% if article.special %}✅{% else %}❌{% endif %}</td>
         <!-- <td>{{ article.created_at|date:"Y/m/d H:i" }}</td> -->
         <td class="flex gap-2">
