@@ -2,39 +2,47 @@
 {% block content %}
 
 <div class="flex justify-between items-center mb-6">
-  <h2 class="text-2xl font-bold">📰 مقالات</h2>
-  <a href="{% url 'dashboard_article_add' %}" class="btn btn-primary">➕ افزودن مقاله</a>
+  <h2 class="flex gap-2 text-2xl font-bold">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M2 4C2 3.44772 2.44772 3 3 3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4ZM4 5V19H20V5H4ZM6 7H12V13H6V7ZM8 9V11H10V9H8ZM14 9H18V7H14V9ZM18 13H14V11H18V13ZM6 15V17L18 17V15L6 15Z"></path></svg>
+   مقالات
+  </h2>
+  <a href="{% url 'dashboard_article_add' %}" class="btn bg-[#e66700] text-[#fff]">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M4 1V4H1V6H4V9H6V6H9V4H6V1H4ZM3 20.0066V11H5V19H13V14C13 13.45 13.45 13 14 13L19 12.999V5H11V3H20.0066C20.5552 3 21 3.45576 21 4.00247V15L15 20.996L4.00221 21C3.4487 21 3 20.5551 3 20.0066ZM18.171 14.999L15 15V18.169L18.171 14.999Z"></path></svg>
+   افزودن مقاله
+  </a>
 </div>
 
-<table class="table w-full border">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>عنوان</th>
-      <th>ویژه</th>
-      <th>تاریخ ایجاد</th>
-      <th>عملیات</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for article in page_obj %}
-    <tr>
-      <td>{{ forloop.counter0|add:page_obj.start_index }}</td>
-      <td>{{ article.title }}</td>
-      <td>{% if article.special %}✅{% else %}❌{% endif %}</td>
-      <td>{{ article.created_at|date:"Y/m/d H:i" }}</td>
-      <td class="flex gap-2">
-        <a href="{% url 'dashboard_article_edit' article.id %}" class="btn btn-sm btn-warning">ویرایش</a>
-        <button onclick="openDeleteArticleModal('{{ article.id }}', '{{ article.title }}')" class="btn btn-sm btn-error">حذف</button>
-      </td>
-    </tr>
-    {% empty %}
-    <tr>
-      <td colspan="5" class="text-center text-gray-500">هیچ مقاله‌ای ثبت نشده است.</td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
+<div class="overflow-x-auto bg-base-100 shadow rounded-xl">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ردیف</th>
+        <th>عنوان</th>
+        <th>ویژه</th>
+        <!-- <th>تاریخ ایجاد</th> -->
+        <th>عملیات</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for article in page_obj %}
+      <tr>
+        <td>{{ forloop.counter0|add:page_obj.start_index }}</td>
+        <td>{{ article.title }}</td>
+        <td>{% if article.special %}✅{% else %}❌{% endif %}</td>
+        <td>{{ article.created_at|date:"Y/m/d H:i" }}</td>
+        <td class="flex gap-2">
+          <a href="{% url 'dashboard_article_edit' article.id %}" class="btn btn-sm btn-warning">ویرایش</a>
+          <button onclick="openDeleteArticleModal('{{ article.id }}', '{{ article.title }}')" class="btn btn-sm btn-error">حذف</button>
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="4" class="text-center text-gray-500">هیچ مقاله‌ای ثبت نشده است.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
 
 <!-- Pagination -->
 <div class="mt-4">
