@@ -20,7 +20,10 @@
 
     <div class="card w-full max-w-sm sm:max-w-md bg-base-100 shadow-xl">
         <div class="card-body">
-            <h2 class="text-center text-2xl sm:text-3xl font-bold mb-6">ورود به پنل مدیریت</h2>
+            <h2 class="text-center text-2xl sm:text-3xl font-bold mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M2.99805 21V19H4.99805V4C4.99805 3.44772 5.44576 3 5.99805 3H17.998C18.5503 3 18.998 3.44772 18.998 4V19H20.998V21H2.99805ZM16.998 5H6.99805V19H16.998V5ZM14.998 11V13H12.998V11H14.998Z"></path></svg>
+            ورود به پنل مدیریت
+            </h2>
 
             {% if messages %}
                 {% for msg in messages %}
@@ -33,7 +36,7 @@
                 
                 <div class="form-control w-full">
                     <label class="label">
-                        <span class="label-text text-base sm:text-lg">نام کاربری</span>
+                        <span class="label-text text-base sm:text-lg pb-1">نام کاربری</span>
                     </label>
                     <input type="text" name="username" placeholder="مثلاً admin"
                            class="input input-bordered w-full text-base sm:text-lg" required>
@@ -41,13 +44,13 @@
 
                 <div class="form-control w-full">
                     <label class="label">
-                        <span class="label-text text-base sm:text-lg">رمز عبور</span>
+                        <span class="label-text text-base sm:text-lg pb-1">رمز عبور</span>
                     </label>
                     <input type="password" name="password" placeholder="********"
                            class="input input-bordered w-full text-base sm:text-lg" required>
                 </div>
 
-                <button type="submit" class="btn btn-primary w-full mt-3 text-base sm:text-lg">
+                <button type="submit" class="btn btn-primary bg-[#1d5675] w-full mt-3 text-base sm:text-lg">
                     ورود
                 </button>
             </form>
