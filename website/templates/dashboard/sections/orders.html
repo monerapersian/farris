@@ -42,9 +42,10 @@
   {% include "dashboard/partials/pagination.html" with page_obj=page_obj %}
 </div>
 
+
 <!-- Modal جزئیات سفارش -->
-<dialog id="orderModal" class="modal w-full max-w-3xl">
-  <div class="modal-box relative">
+<dialog id="orderModal" class="modal">
+  <div class="modal-box">
     <h3 class="text-lg font-bold mb-4">جزئیات سفارش</h3>
     <p id="orderTracking" class="font-semibold mb-2"></p>
     <p id="orderCustomer" class="mb-1"></p>
