@@ -24,9 +24,9 @@
       {% for order in page_obj %}
       <tr class="cursor-pointer hover:bg-gray-100" onclick="openOrderModal({{ order.id }})">
         <td>{{ forloop.counter0|add:page_obj.start_index }}</td>
-        <td>{{ order.full_name }}</td>
-        <td>{{ order.created_at|to_jalali:"%Y/%m/%d %H:%M" }}</td>
-        <td>{{ order.total_price|intcomma }} تومان</td>
+        <td class="whitespace-nowrap">{{ order.full_name }}</td>
+        <td class="whitespace-nowrap">{{ order.created_at|to_jalali:"%Y/%m/%d %H:%M" }}</td>
+        <td class="whitespace-nowrap">{{ order.total_price|intcomma }} تومان</td>
       </tr>
       {% empty %}
       <tr>
@@ -117,11 +117,11 @@
       const subtotal = priceNum * parseInt(item.quantity);
       const tr = document.createElement("tr");
       tr.innerHTML = `
-        <td>${item.title}</td>
+        <td class="whitespace-nowrap">${item.title}</td>
         <td>${item.category}</td>
-        <td>${item.price} تومان</td>
+        <td class="whitespace-nowrap">${item.price} تومان</td>
         <td>${item.quantity}</td>
-        <td>${subtotal.toLocaleString()} تومان</td>
+        <td class="whitespace-nowrap">${subtotal.toLocaleString()} تومان</td>
       `;
       tbody.appendChild(tr);
     });

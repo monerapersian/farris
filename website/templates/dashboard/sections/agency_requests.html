@@ -22,8 +22,8 @@
       {% for request in page_obj %}
       <tr class="cursor-pointer hover:bg-gray-100" onclick="openRequestModal({{ request.id }})">
         <td>{{ forloop.counter0|add:page_obj.start_index }}</td>
-        <td>{{ request.full_name }}</td>
-        <td>{{ request.city }}</td>
+        <td class="whitespace-nowrap">{{ request.full_name }}</td>
+        <td class="whitespace-nowrap">{{ request.city }}</td>
         <td>{{ request.phone }}</td>
       </tr>
       {% empty %}
