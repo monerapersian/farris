@@ -29,7 +29,7 @@
         <td>{{ forloop.counter0|add:page_obj.start_index }}</td>
         <td>{{ article.title }}</td>
         <td>{% if article.special %}✅{% else %}❌{% endif %}</td>
-        <td>{{ article.created_at|date:"Y/m/d H:i" }}</td>
+        <!-- <td>{{ article.created_at|date:"Y/m/d H:i" }}</td> -->
         <td class="flex gap-2">
           <a href="{% url 'dashboard_article_edit' article.id %}" class="btn btn-sm btn-warning">ویرایش</a>
           <button onclick="openDeleteArticleModal('{{ article.id }}', '{{ article.title }}')" class="btn btn-sm btn-error">حذف</button>
