@@ -2,6 +2,7 @@
 {% load static %}
 {% block title %} سبد خرید | {% endblock %}
 {% load jalali_tags %}
+{% load humanize %}
 
 
 	{% block content %}
@@ -35,7 +36,7 @@
 								    <div class="flex-1">
 								      <h2 class="font-bold text-lg mb-1">{{ item.title }}</h2>
 								      <p class="text-sm text-gray-500 mb-2">{{ item.category }}</p>
-								      <p class="text-primary font-bold text-lg mb-4">{{ item.price }} تومان</p>
+								      <p class="text-primary font-bold text-lg mb-4">{{ item.price|intcomma }} تومان</p>
 
 								      <!-- تعداد -->
 								      <div class="flex items-center gap-2">
@@ -62,7 +63,7 @@
 
 						<div class="flex justify-between">
 						  <span>جمع جزء</span>
-						  <span>{{ total }} تومان</span>
+						  <span>{{ total|intcomma }} تومان</span>
 						</div>
 						<div class="flex justify-between">
 						  <span>مالیات (سهم شما)</span>
@@ -71,7 +72,7 @@
 						<div class="divider my-2"></div>
 						<div class="flex justify-between font-bold text-lg">
 						  <span>مبلغ کل</span>
-						  <span>{{ total }} تومان</span>
+						  <span>{{ total|intcomma }} تومان</span>
 						</div>
 
 						<a href="{% url 'checkout' %}" class="btn btn-primary w-full mt-6 text-lg">ادامه به پرداخت 💳</a>

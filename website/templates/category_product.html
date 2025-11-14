@@ -1,6 +1,12 @@
 {% extends 'master.html' %}
 {% load static %}
 {% block title %}دسته‌بندی: {{ category.name }}{% endblock %}
+{% block description %}
+  {% for cat in categories %}
+    {{ cat.name }},
+  {% endfor %}
+{% endblock %}
+{% block metaimg %}{% static 'img/farris-icon-or.png' %}{% endblock %}
 {% load humanize %}
 {% load jalali_tags %}
 
@@ -62,8 +68,8 @@
                     </summary>
                     <ul class="bg-base-100 rounded-t-none p-2 grid grid-cols-3 gap-2">
                         {% for cat in categories %}
-                    <li><a href="{% url 'category_product' cat.slug %}">{{ cat.name }}</a></li>
-                  {% endfor %}
+                          <li><a href="{% url 'category_product' cat.slug %}">{{ cat.name }}</a></li>
+                        {% endfor %}
                     </ul>
                   </details>
               </li>

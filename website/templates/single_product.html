@@ -1,6 +1,15 @@
 {% extends 'master.html' %}
 {% load static %}
 {% block title %} {{ product.title }} | {% endblock %}
+
+{% block description %}
+	{{ product.description }}
+{% endblock %}
+
+{% block metaimg %}
+	{{ product.image.url }}
+{% endblock %}
+
 {% load humanize %}
 {% load jalali_tags %}
 

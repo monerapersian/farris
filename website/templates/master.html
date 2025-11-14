@@ -6,12 +6,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="theme-color" content="#014e50">
 
-	<meta name="description" content="فروشگاه فریس، مرجع تخصصی فروش انواع پلوس و سرپلوس خودرو در ایران با ضمانت کالا، قیمت مناسب، ارسال سریع و پشتیبانی تلفنی برای خرید تکی و عمده.">
+	<meta name="description" content="{% block description %}{% endblock %}">
 	<meta name="keywords" content="پلوس, سرپلوس, پلوس خودرو, خرید پلوس, فروش پلوس, فریس, قطعات خودرو, پلوس پراید, پلوس سمند, فریس, سرپلوس, سر پلوس, پژو">
 
-	<meta property="og:title" content="{{ title }}">
-	<meta property="og:description" content="فروشگاه فریس، مرجع تخصصی فروش انواع پلوس و سرپلوس خودرو در ایران با ضمانت کالا، قیمت مناسب، ارسال سریع و پشتیبانی تلفنی برای خرید تکی و عمده.">
-	<meta property="og:image" content="{% static 'img/farris-icon-or.png' %}">
+	<meta property="og:title" content="{% block title %}{% endblock %}">
+	<meta property="og:description" content="{% block description %}{% endblock %}">
+	<meta property="og:image" content="{% block metaimg %}{% endblock %}">
 	<meta property="og:url" content="{{ request.build_absolute_uri }}">
 	<meta property="og:type" content="website">
 
