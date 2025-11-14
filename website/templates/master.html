@@ -9,7 +9,7 @@
 	<meta name="description" content="{% block description %}{% endblock %}">
 	<meta name="keywords" content="پلوس, سرپلوس, پلوس خودرو, خرید پلوس, فروش پلوس, فریس, قطعات خودرو, پلوس پراید, پلوس سمند, فریس, سرپلوس, سر پلوس, پژو">
 
-	<meta property="og:title" content="{% block title %}{% endblock %}">
+	<meta property="og:title" content="{% block og_title %}{{ block.super }}{% endblock %}">
 	<meta property="og:description" content="{% block og_description %}{{ block.super }}{% endblock %}">
 	<meta property="og:image" content="{% block metaimg %}{% endblock %}">
 	<meta property="og:url" content="{{ request.build_absolute_uri }}">
