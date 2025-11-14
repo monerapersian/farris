@@ -1,6 +1,7 @@
 {% extends 'master.html' %}
 {% load static %}
 {% block title %} فرم خرید | {% endblock %}
+{% load humanize %}
 {% load jalali_tags %}
 
 	{% block content %}
@@ -77,14 +78,14 @@
 				    <div class="bg-base-200 rounded-xl p-4">
 				    	<div class="flex justify-between mb-2">
 				    		<span>جمع کل محصولات</span>
-				    		<span class="font-semibold text-primary">{{ total }} تومان</span>
+				    		<span class="font-semibold text-primary">{{ total|intcomma }} تومان</span>
 				    	</div>
 				    	<div class="flex justify-between mb-2">
 				    		<span>مالیات (سهم شما)</span>
 				    		<span class="font-semibold">۰ تومان</span>
 				    	</div>
 				    	<div class="flex justify-between font-bold text-lg mt-2 border-t pt-3">
-				    		<span>مبلغ قابل پرداخت</span> <span class="text-success">{{ total }} تومان</span>
+				    		<span>مبلغ قابل پرداخت</span> <span class="text-success">{{ total|intcomma }} تومان</span>
 				    	</div>
 				    </div>
 

@@ -1,6 +1,7 @@
 {% extends 'master.html' %}
 {% load static %}
 {% block title %}محصولات | {% endblock %}
+{% load humanize %}
 {% load jalali_tags %}
 
 
@@ -112,7 +113,7 @@
 						      <div class="card-body text-center p-1">
 						        <h3 class="card-title">{{ product.title }}</h3>
 						        <div class="flex gap-1 mt-2">
-						        	<p class="text-lg text-neutral font-semibold flex">تومان  {{ product.price }}</p>
+						        	<p class="text-lg text-neutral font-semibold flex">تومان  {{ product.price|intcomma }}</p>
 						        </div>
 						        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 card-actions justify-center mt-2">
 						          <a href="{% url 'product_detail' product.slug %}" class="btn btn-md btn-warning border-[#e66700] bg-[#e66700] text-[#542600]">نمایش محصول</a>
@@ -147,8 +148,7 @@
 						    	{% if page_obj.has_next %}
 							      <a href="?page={{ page_obj.next_page_number }}" class="join-item btn hover-pagination">بعدی<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M13.9142 12L18.7071 7.20712L17.2929 5.79291L11.0858 12L17.2929 18.2071L18.7071 16.7929L13.9142 12ZM7 18V6.00001H9V18H7Z"></path></svg></a>
 							    {% endif %}
-						      
-						      <button class="join-item btn hover-pagination">بعدی<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M13.9142 12L18.7071 7.20712L17.2929 5.79291L11.0858 12L17.2929 18.2071L18.7071 16.7929L13.9142 12ZM7 18V6.00001H9V18H7Z"></path></svg></button>
+
 						    </div>
 						  </div>
 						</div>

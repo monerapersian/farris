@@ -1,6 +1,7 @@
 {% extends 'master.html' %}
 {% load static %}
 {% block title %} پرداخت موفق | {% endblock %}
+{% load humanize %}
 {% load jalali_tags %}
 
 
@@ -27,7 +28,7 @@
 
 			    <div class="flex justify-between text-sm text-gray-700 mb-4">
 			      <span>مبلغ کل:</span>
-			      <span>{{ order.total_price }} تومان</span>
+			      <span>{{ order.total_price|intcomma }} تومان</span>
 			    </div>
 
 			    <a href="/" class="btn bg-[#e66700] border-none text-white hover:bg-[#cc5800] w-full">بازگشت به صفحه اصلی</a>

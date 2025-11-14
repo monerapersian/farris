@@ -1,6 +1,7 @@
 {% extends 'master.html' %}
 {% load static %}
 {% block title %}دسته‌بندی: {{ category.name }}{% endblock %}
+{% load humanize %}
 {% load jalali_tags %}
 
 {% block content %}
@@ -88,7 +89,7 @@
                   <div class="card-body text-center p-1">
                     <h3 class="card-title">{{ p.title }}</h3>
                     <div class="flex gap-1 mt-2">
-                      <p class="text-lg text-neutral font-semibold flex">تومان  {{ p.price }}</p>
+                      <p class="text-lg text-neutral font-semibold flex">تومان  {{ p.price|intcomma }}</p>
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 card-actions justify-center mt-2">
                       <a href="{% url 'product_detail' p.slug %}" class="btn btn-md btn-warning border-[#e66700] bg-[#e66700] text-[#542600]">نمایش محصول</a>
