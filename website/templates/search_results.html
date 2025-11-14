@@ -1,6 +1,7 @@
 {% extends 'master.html' %}
 {% load static %}
 {% block title %}محصولات | {% endblock %}
+{% load humanize %}
 {% load jalali_tags %}
 
 
@@ -24,11 +25,11 @@
 							      <div class="card-body text-center p-1">
 							        <h3 class="card-title">{{ product.title }}</h3>
 							        <div class="flex gap-1 mt-2">
-							        	<p class="text-lg text-neutral font-semibold flex">تومان  {{ product.price }}</p>
+							        	<p class="text-lg text-neutral font-semibold flex">تومان  {{ product.price|intcomma }}</p>
 							        </div>
 							        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 card-actions justify-center mt-2">
 							          <a href="{% url 'product_detail' product.slug %}" class="btn btn-md btn-warning border-[#e66700] bg-[#e66700] text-[#542600]">نمایش محصول</a>
-							          <a href="" class="btn btn-md btn-success">خرید</a>
+							          <a href="{% url 'add_to_cart' product.id %}" class="btn btn-md btn-success">خرید</a>
 							        </div>
 							      </div>
 							    </div>
