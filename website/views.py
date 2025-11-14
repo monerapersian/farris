@@ -812,6 +812,45 @@ def dashboard_articles(request):
     return render(request, "dashboard/sections/articles.html", {"page_obj": page_obj})
 
 
+# @login_required(login_url="dashboard_login")
+# def dashboard_article_add(request):
+#     if request.method == "POST":
+#         title = request.POST.get("title", "").strip()
+#         slug_input = request.POST.get("slug", "").strip()
+#         slug = slugify(slug_input or title, allow_unicode=True)
+#         content = request.POST.get("content", "").strip()
+#         special = bool(request.POST.get("special"))
+#         image = request.FILES.get("image")
+
+#         errors = []
+#         if not title:
+#             errors.append("عنوان مقاله الزامی است.")
+#         if not content:
+#             errors.append("متن مقاله الزامی است.")
+#         if not image:
+#             errors.append("انتخاب تصویر الزامی است.")
+#         if Article.objects.filter(slug=slug).exists():
+#             errors.append("نامک (slug) وارد شده تکراری است.")
+
+#         if errors:
+#             for e in errors:
+#                 messages.error(request, e)
+#             return render(request, "dashboard/sections/add_article.html")
+
+#         Article.objects.create(
+#             title=title,
+#             slug=slug,
+#             content=content,
+#             image=image,
+#             special=special
+#         )
+
+#         messages.success(request, f"مقاله «{title}» با موفقیت اضافه شد ✅")
+#         return redirect("dashboard_articles")
+
+#     return render(request, "dashboard/sections/add_article.html")
+
+
 @login_required(login_url="dashboard_login")
 def dashboard_article_add(request):
     if request.method == "POST":
@@ -829,6 +868,7 @@ def dashboard_article_add(request):
             errors.append("متن مقاله الزامی است.")
         if not image:
             errors.append("انتخاب تصویر الزامی است.")
+
         if Article.objects.filter(slug=slug).exists():
             errors.append("نامک (slug) وارد شده تکراری است.")
 
@@ -836,6 +876,10 @@ def dashboard_article_add(request):
             for e in errors:
                 messages.error(request, e)
             return render(request, "dashboard/sections/add_article.html")
+
+        # 🔹 فشرده‌سازی + تبدیل WebP ← مثل محصولات
+        if image:
+            image = compress_and_convert_image(image)
 
         Article.objects.create(
             title=title,
