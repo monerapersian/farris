@@ -1,11 +1,19 @@
 {% extends 'master.html' %}
 {% load static %}
 {% block title %}دسته‌بندی: {{ category.name }}{% endblock %}
+{% block og_title %}دسته‌بندی: {{ category.name }}{% endblock %}
+
 {% block description %}
   {% for cat in categories %}
     {{ cat.name }},
   {% endfor %}
 {% endblock %}
+{% block og_description %}
+  {% for cat in categories %}
+    {{ cat.name }},
+  {% endfor %}
+{% endblock %}
+
 {% block metaimg %}{% static 'img/farris-icon-or.png' %}{% endblock %}
 {% load humanize %}
 {% load jalali_tags %}

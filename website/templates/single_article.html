@@ -1,8 +1,12 @@
 {% extends 'master.html' %}
 {% load static %}
 {% block title %} {{ article.title }} | {% endblock %}
+{% block og_title %} {{ article.title }} | {% endblock %}
 
 {% block description %}
+	{{ article.title }}
+{% endblock %}
+{% block og_description %}
 	{{ article.title }}
 {% endblock %}
 
