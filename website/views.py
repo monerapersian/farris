@@ -895,6 +895,45 @@ def dashboard_article_add(request):
     return render(request, "dashboard/sections/add_article.html")
 
 
+# @login_required(login_url="dashboard_login")
+# def dashboard_article_edit(request, article_id):
+#     article = get_object_or_404(Article, id=article_id)
+
+#     if request.method == "POST":
+#         title = request.POST.get("title", "").strip()
+#         slug_input = request.POST.get("slug", "").strip()
+#         slug = slugify(slug_input or title, allow_unicode=True)
+#         content = request.POST.get("content", "").strip()
+#         special = bool(request.POST.get("special"))
+#         image = request.FILES.get("image")
+
+#         errors = []
+#         if not title:
+#             errors.append("عنوان مقاله الزامی است.")
+#         if not content:
+#             errors.append("متن مقاله الزامی است.")
+#         if Article.objects.filter(slug=slug).exclude(id=article.id).exists():
+#             errors.append("نامک (slug) وارد شده تکراری است.")
+
+#         if errors:
+#             for e in errors:
+#                 messages.error(request, e)
+#             return render(request, "dashboard/sections/edit_article.html", {"article": article})
+
+#         article.title = title
+#         article.slug = slug
+#         article.content = content
+#         article.special = special
+#         if image:
+#             article.image = image
+#         article.save()
+
+#         messages.success(request, f"مقاله «{article.title}» با موفقیت ویرایش شد ✅")
+#         return redirect("dashboard_articles")
+
+#     return render(request, "dashboard/sections/edit_article.html", {"article": article})
+
+
 @login_required(login_url="dashboard_login")
 def dashboard_article_edit(request, article_id):
     article = get_object_or_404(Article, id=article_id)
@@ -920,12 +959,17 @@ def dashboard_article_edit(request, article_id):
                 messages.error(request, e)
             return render(request, "dashboard/sections/edit_article.html", {"article": article})
 
+        # 🔥 اعمال تغییرات
         article.title = title
         article.slug = slug
         article.content = content
         article.special = special
+
+        # 🔥 اگر عکس جدید انتخاب شده → تبدیل به WebP + فشرده‌سازی
         if image:
-            article.image = image
+            compressed_image = compress_and_convert_image(image)
+            article.image = compressed_image
+
         article.save()
 
         messages.success(request, f"مقاله «{article.title}» با موفقیت ویرایش شد ✅")
