@@ -3,16 +3,10 @@
 {% block title %} {{ product.title }} | {% endblock %}
 {% block og_title %} {{ product.title }} | {% endblock %}
 
-{% block description %}
-	{{ product.description }}
-{% endblock %}
-{% block og_description %}
-	{{ product.description }}
-{% endblock %}
+{% block description %}{{ product.description }}{% endblock %}
+{% block og_description %}{{ product.description }}{% endblock %}
 
-{% block metaimg %}
-	{{ product.image.url }}
-{% endblock %}
+{% block metaimg %}{{ product.image.url }}{% endblock %}
 
 {% load humanize %}
 {% load jalali_tags %}
