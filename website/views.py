@@ -1202,6 +1202,9 @@ def llm_json(request):
 
 
 def robots_safe(request):
+    from django.http import HttpResponse
+    import traceback
+
     base = "https://www.farris.ir"
 
     # صفحات ثابت که همیشه موجودن
@@ -1210,13 +1213,14 @@ def robots_safe(request):
         "/llm.json", "/llm.txt"
     ]
 
-    # به صورت پیش‌فرض خالی میذاریم تا اگر دیتابیس در دسترس نبود سایت نخوابه
+    # پیش‌فرض خالی در صورت عدم دسترسی DB
     category_paths = []
     product_paths = []
 
     # تلاش برای گرفتن دیتابیس اما بدون هیچ خطایی!
     try:
         from .models import Category, Product
+
         try:
             category_paths = [f"/category/{c.slug}/" for c in Category.objects.all()]
         except Exception as e:
@@ -1230,7 +1234,6 @@ def robots_safe(request):
             print(traceback.format_exc())
 
     except Exception as e:
-        # اگر import models هم خطا داد → باز ادامه میدهیم
         print("Models import failed:", e)
         print(traceback.format_exc())
 
@@ -1250,5 +1253,8 @@ def robots_safe(request):
     content += "\n# Restricted URLs\n"
     for p in disallow_paths:
         content += f"Disallow: {p}\n"
+
+    # ✨ افزودن لینک سایت‌مپ
+    content += "\nSitemap: https://www.farris.ir/sitemap.xml\n"
 
     return HttpResponse(content, content_type="text/plain")
