@@ -14,6 +14,7 @@ import io
 from django.core.files.base import ContentFile
 from django.urls import reverse
 from django.views.decorators.cache import cache_page
+import traceback
 from .models import Category, Product, Article, Course, Order, OrderItem, AgencyRequest
 
 # MERCHANT_ID = "34e4ca8c-11fe-4bb5-a897-9f73d78f4dac"
@@ -1200,30 +1201,46 @@ def llm_json(request):
     return JsonResponse(data, json_dumps_params={'ensure_ascii': False, 'indent': 2})
 
 
-def dynamic_robots(request):
+def robots_safe(request):
     base = "https://www.farris.ir"
 
+    # صفحات ثابت که همیشه موجودن
     static_paths = [
         "/", "/products/", "/articles/", "/tutorial/", "/call_us/",
-        "/llm.json", "/llm.txt",
+        "/llm.json", "/llm.txt"
     ]
 
-    # اگر دیتابیس در دسترس نبود → لیست خالی برگردان
-    try:
-        category_paths = [f"/category/{c.slug}/" for c in Category.objects.all()]
-    except:
-        category_paths = []
+    # به صورت پیش‌فرض خالی میذاریم تا اگر دیتابیس در دسترس نبود سایت نخوابه
+    category_paths = []
+    product_paths = []
 
+    # تلاش برای گرفتن دیتابیس اما بدون هیچ خطایی!
     try:
-        product_paths = [f"/products/{p.slug}/" for p in Product.objects.all()]
-    except:
-        product_paths = []
+        from .models import Category, Product
+        try:
+            category_paths = [f"/category/{c.slug}/" for c in Category.objects.all()]
+        except Exception as e:
+            print("Category fetch failed:", e)
+            print(traceback.format_exc())
 
+        try:
+            product_paths = [f"/products/{p.slug}/" for p in Product.objects.all()]
+        except Exception as e:
+            print("Product fetch failed:", e)
+            print(traceback.format_exc())
+
+    except Exception as e:
+        # اگر import models هم خطا داد → باز ادامه میدهیم
+        print("Models import failed:", e)
+        print(traceback.format_exc())
+
+    # صفحات ممنوعه
     disallow_paths = [
         "/dashboard/", "/cart/", "/checkout/", "/payment/",
         "/search/", "/admin/"
     ]
 
+    # ساخت robots.txt
     content = "User-agent: *\n\n"
 
     content += "# Allowed URLs\n"

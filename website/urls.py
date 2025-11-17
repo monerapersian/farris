@@ -57,5 +57,5 @@ urlpatterns = [
 
     path('llm.txt', views.llm_txt, name='llm_txt'),
     path('llm.json', views.llm_json, name='llm_json'),
-    path("robots.txt", dynamic_robots, name="robots"),
+    path("robots.txt", views.robots_safe, name="robots"),
 ]
