@@ -1100,7 +1100,7 @@ def dashboard_agency_requests(request):
     page_obj = paginator.get_page(page_number)
 
     return render(request, "dashboard/sections/agency_requests.html", {"page_obj": page_obj})
-    
+
 
 CACHE_TIME = 60 * 30  # 30 دقیقه
 
@@ -1198,3 +1198,47 @@ def llm_json(request):
         })
 
     return JsonResponse(data, json_dumps_params={'ensure_ascii': False, 'indent': 2})
+
+
+def dynamic_robots(request):
+    base_url = "https://www.farris.ir"
+
+    # صفحات اصلی سایت
+    static_paths = [
+        "/",
+        "/products/",
+        "/articles/",
+        "/tutorial/",
+        "/call_us/",
+        "/llm.json",
+        "/llm.txt",
+    ]
+
+    # ساخت مسیرهای دسته‌بندی‌ها
+    category_paths = [f"/category/{c.slug}/" for c in Category.objects.all()]
+
+    # مسیر محصولات
+    product_paths = [f"/products/{p.slug}/" for p in Product.objects.all()]
+
+    # مسیرهای بلاک‌شده
+    disallow_paths = [
+        "/dashboard/",
+        "/cart/",
+        "/checkout/",
+        "/payment/",
+        "/search/",
+        "/admin/",
+    ]
+
+    content = "User-agent: *\n\n"
+
+    # Allow
+    content += "# Allowed URLs\n"
+    for path in static_paths + category_paths + product_paths:
+        content += f"Allow: {path}\n"
+
+    content += "\n# Restricted\n"
+    for path in disallow_paths:
+        content += f"Disallow: {path}\n"
+
+    return HttpResponse(content, content_type="text/plain")
