@@ -22,16 +22,16 @@ from django.contrib import admin
 from django.conf import settings
 from django.urls import path, re_path, include
 from django.views.static import serve
-from django.contrib.sitemaps.views import sitemap_safe
-from website.sitemaps import StaticViewSitemap, CategorySitemap, ProductSitemap, ArticleSitemap
+from website.sitemaps import sitemap_safe
+# from website.sitemaps import StaticViewSitemap, CategorySitemap, ProductSitemap, ArticleSitemap
 
 
-sitemaps = {
-    "static": StaticViewSitemap,
-    "categories": CategorySitemap,
-    "products": ProductSitemap,
-    "articles": ArticleSitemap,
-}
+# sitemaps = {
+#     "static": StaticViewSitemap,
+#     "categories": CategorySitemap,
+#     "products": ProductSitemap,
+#     "articles": ArticleSitemap,
+# }
 
 urlpatterns = [
     path('admin/', admin.site.urls),
