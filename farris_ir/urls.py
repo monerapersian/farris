@@ -22,30 +22,26 @@ from django.contrib import admin
 from django.conf import settings
 from django.urls import path, re_path, include
 from django.views.static import serve
-from django.contrib.sitemaps.views import sitemap
+from django.contrib.sitemaps.views import sitemap_safe
 from website.sitemaps import StaticViewSitemap, CategorySitemap, ProductSitemap, ArticleSitemap
-from .sitemap import (
-    SafeStaticViewSitemap,
-    SafeCategorySitemap,
-    SafeProductSitemap,
-    SafeArticleSitemap,
-)
 
-sitemaps = {
-    "static": SafeStaticViewSitemap,
-    "categories": SafeCategorySitemap,
-    "products": SafeProductSitemap,
-    "articles": SafeArticleSitemap,
-}
+
+# sitemaps = {
+#     "static": StaticViewSitemap,
+#     "categories": CategorySitemap,
+#     "products": ProductSitemap,
+#     "articles": ArticleSitemap,
+# }
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('website.urls')),
 
-    # main index sitemap
-    path("sitemap.xml", sitemap, {"sitemaps": sitemaps}, name="django_sitemap"),
+    path('sitemap.xml', sitemap_safe, name='sitemap-safe'),
 
-    # sub-sitemaps
+    # main index sitemap
+    # path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
+
     # path('sitemap-pages.xml', sitemap, {'sitemaps': {"pages": StaticViewSitemap}}, name='sitemap-pages'),
     # path('sitemap-categories.xml', sitemap, {'sitemaps': {"categories": CategorySitemap}}, name='sitemap-categories'),
     # path('sitemap-products.xml', sitemap, {'sitemaps': {"products": ProductSitemap}}, name='sitemap-products'),

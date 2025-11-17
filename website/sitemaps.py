@@ -1,70 +1,64 @@
-from django.contrib.sitemaps import Sitemap
+from django.http import HttpResponse
 from django.urls import reverse
+from django.views.decorators.cache import cache_page
 import traceback
 
-# ---------------------
-# Safe Static Sitemap
-# ---------------------
-class SafeStaticViewSitemap(Sitemap):
-    priority = 0.8
-    changefreq = "monthly"
+CACHE_TIME = 60 * 30  # 30 دقیقه
 
-    def items(self):
-        return ["home", "products_list", "articles_list", "tutorial", "call_us"]
+@cache_page(CACHE_TIME)
+def sitemap_safe(request):
+    """
+    نسخه امن و پویا sitemap.xml
+    بدون نیاز به تغییر مدل‌ها یا ارور 500
+    """
+    urls = []
 
-    def location(self, item):
+    # صفحات ثابت
+    static_pages = ['home', 'products_list', 'articles_list', 'tutorial', 'call_us']
+    for page_name in static_pages:
         try:
-            return reverse(item)
+            url = request.build_absolute_uri(reverse(page_name))
         except:
-            return "/"  # جلوگیری از ارور 500
+            url = request.build_absolute_uri('/')
+        urls.append(url)
 
+    # دسته‌ها
+    try:
+        from .models import Category
+        for category in Category.objects.all():
+            try:
+                url = request.build_absolute_uri(reverse('category_product', args=[category.slug]))
+            except:
+                url = "# URL not defined"
+            urls.append(url)
+    except Exception as e:
+        print("Category fetch error:", e)
+        print(traceback.format_exc())
 
-# ---------------------
-# Safe Category Sitemap
-# ---------------------
-class SafeCategorySitemap(Sitemap):
-    priority = 0.7
-    changefreq = "weekly"
+    # محصولات
+    try:
+        from .models import Product
+        for product in Product.objects.all():
+            try:
+                url = request.build_absolute_uri(reverse('product_detail', args=[product.slug]))
+            except:
+                url = "# URL not defined"
+            urls.append(url)
+    except Exception as e:
+        print("Product fetch error:", e)
+        print(traceback.format_exc())
 
-    def items(self):
-        try:
-            from .models import Category
-            return Category.objects.all()
-        except Exception as e:
-            print("Category Sitemap Error:", e)
-            print(traceback.format_exc())
-            return []  # اگر DB مشکل داشت → خروجی خالی
+    # ساخت XML
+    xml_content = '<?xml version="1.0" encoding="UTF-8"?>\n'
+    xml_content += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
 
+    for url in urls:
+        xml_content += f"  <url>\n"
+        xml_content += f"    <loc>{url}</loc>\n"
+        xml_content += f"    <changefreq>weekly</changefreq>\n"
+        xml_content += f"    <priority>0.8</priority>\n"
+        xml_content += f"  </url>\n"
 
-# ---------------------
-# Safe Product Sitemap
-# ---------------------
-class SafeProductSitemap(Sitemap):
-    priority = 1.0
-    changefreq = "weekly"
+    xml_content += '</urlset>'
 
-    def items(self):
-        try:
-            from .models import Product
-            return Product.objects.all()
-        except Exception as e:
-            print("Product Sitemap Error:", e)
-            print(traceback.format_exc())
-            return []
-
-
-# ---------------------
-# Safe Article Sitemap
-# ---------------------
-class SafeArticleSitemap(Sitemap):
-    priority = 0.6
-    changefreq = "weekly"
-
-    def items(self):
-        try:
-            from .models import Article
-            return Article.objects.all()
-        except Exception as e:
-            print("Article Sitemap Error:", e)
-            print(traceback.format_exc())
-            return []
+    return HttpResponse(xml_content, content_type="application/xml")
