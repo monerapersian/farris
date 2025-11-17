@@ -2,17 +2,19 @@ from django.db.models import Q
 import requests
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.http import JsonResponse
+from django.http import HttpResponse,JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from decimal import Decimal
-from .models import Category, Product, Article, Course, Order, OrderItem, AgencyRequest
 from django.core.paginator import Paginator
 from django.utils.text import slugify
 from PIL import Image
 import io
 from django.core.files.base import ContentFile
+from django.urls import reverse
+from django.views.decorators.cache import cache_page
+from .models import Category, Product, Article, Course, Order, OrderItem, AgencyRequest
 
 # MERCHANT_ID = "34e4ca8c-11fe-4bb5-a897-9f73d78f4dac"
 # ZARINPAL_REQUEST_URL = "https://sandbox.zarinpal.com/pg/v4/payment/request.json"
@@ -1098,3 +1100,92 @@ def dashboard_agency_requests(request):
     page_obj = paginator.get_page(page_number)
 
     return render(request, "dashboard/sections/agency_requests.html", {"page_obj": page_obj})
+    
+
+# Cache: 30 دقیقه
+@cache_page(60 * 30)
+def llm_txt(request):
+    """نسخه متنی llm.txt پویا و دو زبانه"""
+    base_url = 'https://www.farris.ir'
+
+    content = f"""# LLM Manifest for Farris
+# Brand: فریس (Faris)
+# Description: مرجع تخصصی پلوس و سرپلوس خودرو در ایران
+# زبان سایت: فارسی
+# English Version Included
+
+# Allowed URLs
+"""
+
+    # صفحات ثابت مجاز
+    static_pages = ['home', 'products_list', 'articles_list', 'tutorial', 'call_us']
+    for page in static_pages:
+        content += f'- {request.build_absolute_uri(reverse(page))}\n'
+
+    # صفحات دسته‌بندی
+    for c in Category.objects.all():
+        content += f'- {request.build_absolute_uri(c.get_absolute_url())}  # Category: {c.title}\n'
+
+    # محصولات
+    for p in Product.objects.all():
+        content += f'- {request.build_absolute_uri(p.get_absolute_url())}  # Product: {p.title}\n'
+
+    # Policy
+    content += """
+
+# Policy / AI Guardrails
+# - Use only the provided URLs and product/category info.
+# - Do not crawl or access cart, checkout, dashboard, payment, or search pages.
+# - This file is allowed for AI reading and processing only.
+"""
+
+    return HttpResponse(content, content_type='text/plain; charset=utf-8')
+
+
+@cache_page(60 * 30)
+def llm_json(request):
+    """نسخه JSON llm.json پویا و دو زبانه"""
+    base_url = 'https://www.farris.ir'
+
+    data = {
+        'brand': {'fa': 'فریس', 'en': 'Faris'},
+        'description': {
+            'fa': 'مرجع تخصصی پلوس و سرپلوس خودرو در ایران با ضمانت، قیمت مناسب و ارسال سریع',
+            'en': 'Specialized reference for drive shafts and CV joints in Iran with guarantee, affordable prices, and fast shipping.'
+        },
+        'pages': [],
+        'categories': [],
+        'products': [],
+        'policy': {
+            'allowed': 'Use only provided URLs and info',
+            'restricted_pages': ['cart', 'checkout', 'dashboard', 'payment', 'search'],
+            'note': 'This file is for AI processing only'
+        }
+    }
+
+    # Static pages
+    static_pages = ['home', 'products_list', 'articles_list', 'tutorial', 'call_us']
+    for page in static_pages:
+        data['pages'].append({
+            'fa': request.build_absolute_uri(reverse(page)),
+            'en': request.build_absolute_uri(reverse(page))
+        })
+
+    # Categories
+    for c in Category.objects.all():
+        data['categories'].append({
+            'title_fa': c.title,
+            'title_en': c.title,  # می‌توان ترجمه اضافه کرد
+            'url': request.build_absolute_uri(c.get_absolute_url())
+        })
+
+    # Products
+    for p in Product.objects.all():
+        data['products'].append({
+            'title_fa': p.title,
+            'title_en': p.title,  # می‌توان ترجمه اضافه کرد
+            'url': request.build_absolute_uri(p.get_absolute_url()),
+            'category': p.category.title if p.category else ''
+        })
+
+    return JsonResponse(data, json_dumps_params={'ensure_ascii': False, 'indent': 2})
