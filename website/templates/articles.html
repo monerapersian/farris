@@ -108,30 +108,49 @@
 						  <!-- pagination -->
 					    	<div class="w-full bg-base-200 py-4 mt-10 rounded-2xl">
 								  <div class="flex justify-center">
-								    <div class="join">
-								    	{% if page_obj.has_previous %}
-									      	<a href="?page={{ page_obj.previous_page_number }}" class="join-item btn hover-pagination"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M10.0858 12L5.29289 16.7929L6.70711 18.2071L12.9142 12L6.70711 5.79291L5.29289 7.20712L10.0858 12ZM17 6.00002L17 18H15L15 6.00002L17 6.00002Z"></path></svg>قبلی</a>
+								    <div class="join flex flex-wrap justify-center gap-1">
+									    {% if page_obj.has_previous %}
+									        <a href="?page={{ page_obj.previous_page_number }}" 
+									           class="join-item btn btn-xs px-2 min-w-0 hover-pagination">قبلی</a>
+									    {% else %}
+									        <span class="join-item btn btn-xs px-2 min-w-0 btn-disabled">قبلی</span>
 									    {% endif %}
-									    
-								    	{% for num in page_obj.paginator.page_range %}
-									      {% if num == page_obj.number %}
-									      	<a class="join-item btn hover-pagination active-pagination">{{ num }}</a>
-									      {% else %}
-									        <a href="?page={{ num }}" class="join-item btn hover-pagination">{{ num }}</a>
-									      {% endif %}
-									      <button class="join-item btn btn-disabled">...</button>
+
+									    {% for num in page_obj.paginator.page_range %}
+									        
+									        {% if num == 1 or num == 2 %}
+									            <a href="?page={{ num }}"
+									               class="join-item btn btn-xs px-2 min-w-0 hover-pagination {% if num == page_obj.number %}active-pagination{% endif %}">
+									               {{ num }}
+									            </a>
+
+									        {% elif num >= page_obj.number|add:-1 and num <= page_obj.number|add:1 %}
+									            <a href="?page={{ num }}"
+									               class="join-item btn btn-xs px-2 min-w-0 hover-pagination {% if num == page_obj.number %}active-pagination{% endif %}">
+									               {{ num }}
+									            </a>
+
+									        {% elif num == page_obj.paginator.num_pages or num == page_obj.paginator.num_pages|add:-1 %}
+									            <a href="?page={{ num }}"
+									               class="join-item btn btn-xs px-2 min-w-0 hover-pagination {% if num == page_obj.number %}active-pagination{% endif %}">
+									               {{ num }}
+									            </a>
+
+									        {% else %}
+									            {% if num == 3 or num == page_obj.number|add:-2 or num == page_obj.paginator.num_pages|add:-2 %}
+									                <span class="join-item btn btn-xs px-2 min-w-0 btn-disabled">...</span>
+									            {% endif %}
+									        {% endif %}
+
 									    {% endfor %}
-								      	
-								      
-								      <!-- <button class="join-item btn hover-pagination">3</button>
-								      
-								      <button class="join-item btn hover-pagination">9</button>
-								      <button class="join-item btn hover-pagination">10</button> -->
-								    	{% if page_obj.has_next %}
-									      <a href="?page={{ page_obj.next_page_number }}" class="join-item btn hover-pagination">بعدی<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M13.9142 12L18.7071 7.20712L17.2929 5.79291L11.0858 12L17.2929 18.2071L18.7071 16.7929L13.9142 12ZM7 18V6.00001H9V18H7Z"></path></svg></a>
+
+									    {% if page_obj.has_next %}
+									        <a href="?page={{ page_obj.next_page_number }}" 
+									           class="join-item btn btn-xs px-2 min-w-0 hover-pagination">بعدی</a>
+									    {% else %}
+									        <span class="join-item btn btn-xs px-2 min-w-0 btn-disabled">بعدی</span>
 									    {% endif %}
-								      <button class="join-item btn hover-pagination">بعدی<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M13.9142 12L18.7071 7.20712L17.2929 5.79291L11.0858 12L17.2929 18.2071L18.7071 16.7929L13.9142 12ZM7 18V6.00001H9V18H7Z"></path></svg></button>
-								    </div>
+									</div>
 								  </div>
 								</div>
 					    <!-- /pagination -->
