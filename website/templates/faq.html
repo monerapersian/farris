@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+{% block title %}سوالات متداول | فریس{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-12">
+
+    <!-- Title -->
+    <h1 class="text-3xl font-bold text-center mb-4">سوالات متداول (FAQ)</h1>
+    <p class="text-center text-gray-600 mb-10">
+        در این بخش به رایج‌ترین سوالات کاربران درباره پلوس، سرپلوس، سفارش، ارسال و سایر خدمات پاسخ داده‌ایم.
+    </p>
+
+    <!-- Categories -->
+    <div class="space-y-10">
+
+        <!-- 1- سوالات عمومی -->
+        <section>
+            <h2 class="text-xl font-semibold mb-3 border-b pb-2">سوالات عمومی</h2>
+
+            <div class="space-y-3">
+
+                <div class="collapse collapse-arrow bg-base-200 rounded-xl">
+                    <input type="checkbox" />
+                    <div class="collapse-title text-lg font-medium">
+                        سایت فِریس چه محصولاتی ارائه می‌دهد؟
+                    </div>
+                    <div class="collapse-content">
+                        <p>
+                            فروشگاه فریس تامین‌کننده انواع قطعات پلوس، سرپلوس، مشعلی پلوس و… برای انواع خودروهای داخلی و خارجی است.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="collapse collapse-arrow bg-base-200 rounded-xl">
+                    <input type="checkbox" />
+                    <div class="collapse-title text-lg font-medium">
+                        آیا محصولات اصل و دارای ضمانت هستند؟
+                    </div>
+                    <div class="collapse-content">
+                        <p>
+                            بله، تمامی محصولات اصل بوده و دارای ضمانت اصالت کالا هستند.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- 2- سوالات مربوط به سفارش -->
+        <section>
+            <h2 class="text-xl font-semibold mb-3 border-b pb-2">سفارش و خرید</h2>
+
+            <div class="space-y-3">
+
+                <div class="collapse collapse-arrow bg-base-200 rounded-xl">
+                    <input type="checkbox" />
+                    <div class="collapse-title text-lg font-medium">
+                        چطور می‌توانم سفارش ثبت کنم؟
+                    </div>
+                    <div class="collapse-content">
+                        <p>
+                            از طریق صفحه محصول مورد نظر، روی دکمه «افزودن به سبد خرید» بزنید و مراحل پرداخت را انجام دهید.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="collapse collapse-arrow bg-base-200 rounded-xl">
+                    <input type="checkbox" />
+                    <div class="collapse-title text-lg font-medium">
+                        آیا امکان پرداخت در محل وجود دارد؟
+                    </div>
+                    <div class="collapse-content">
+                        <p>
+                            بله، در تهران پرداخت در محل فعال است. برای شهرهای دیگر پرداخت آنلاین انجام می‌شود.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- 3- سوالات ارسال کالا -->
+        <section>
+            <h2 class="text-xl font-semibold mb-3 border-b pb-2">ارسال و تحویل کالا</h2>
+
+            <div class="space-y-3">
+
+                <div class="collapse collapse-arrow bg-base-200 rounded-xl">
+                    <input type="checkbox" />
+                    <div class="collapse-title text-lg font-medium">
+                        ارسال سفارش چند روز طول می‌کشد؟
+                    </div>
+                    <div class="collapse-content">
+                        <p>
+                            سفارشات تهران همان‌روز یا ۲۴ ساعته، و شهرستان‌ها ۲ تا ۴ روز کاری زمان می‌برد.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- 4- سوالات تخصصی پلوس -->
+        <section>
+            <h2 class="text-xl font-semibold mb-3 border-b pb-2">سوالات تخصصی پلوس و سرپلوس</h2>
+
+            <div class="space-y-3">
+
+                <div class="collapse collapse-arrow bg-base-200 rounded-xl">
+                    <input type="checkbox" />
+                    <div class="collapse-title text-lg font-medium">
+                        از کجا بفهمم پلوس خودرو نیاز به تعویض دارد؟
+                    </div>
+                    <div class="collapse-content">
+                        <p>
+                            لرزش هنگام شتاب‌گیری، صدا هنگام پیچیدن یا نشتی گریس از سرپلوس اشاره به خرابی پلوس دارد.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+</div>
+{% endblock %}

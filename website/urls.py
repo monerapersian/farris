@@ -55,6 +55,8 @@ urlpatterns = [
     # path('dashboard/products/update/', views.update_product, name="update_product"),
     # path('dashboard/products/delete/<int:pk>/', views.delete_product, name="delete_product"),
 
+    path('faq/', views.faq_page, name='faq'),
+
     path('llm.txt', views.llm_txt, name='llm_txt'),
     path('llm.json', views.llm_json, name='llm_json'),
     path("robots.txt", views.robots_safe, name="robots"),

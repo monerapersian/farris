@@ -1258,3 +1258,8 @@ def robots_safe(request):
     content += "\nSitemap: https://www.farris.ir/sitemap.xml\n"
 
     return HttpResponse(content, content_type="text/plain")
+
+
+# FAQ VIEW
+def faq_page(request):
+    return render(request, "faq.html")
