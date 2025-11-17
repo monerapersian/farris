@@ -26,12 +26,12 @@ from django.contrib.sitemaps.views import sitemap_safe
 from website.sitemaps import StaticViewSitemap, CategorySitemap, ProductSitemap, ArticleSitemap
 
 
-# sitemaps = {
-#     "static": StaticViewSitemap,
-#     "categories": CategorySitemap,
-#     "products": ProductSitemap,
-#     "articles": ArticleSitemap,
-# }
+sitemaps = {
+    "static": StaticViewSitemap,
+    "categories": CategorySitemap,
+    "products": ProductSitemap,
+    "articles": ArticleSitemap,
+}
 
 urlpatterns = [
     path('admin/', admin.site.urls),
