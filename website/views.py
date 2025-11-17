@@ -1201,44 +1201,37 @@ def llm_json(request):
 
 
 def dynamic_robots(request):
-    base_url = "https://www.farris.ir"
+    base = "https://www.farris.ir"
 
-    # صفحات اصلی سایت
     static_paths = [
-        "/",
-        "/products/",
-        "/articles/",
-        "/tutorial/",
-        "/call_us/",
-        "/llm.json",
-        "/llm.txt",
+        "/", "/products/", "/articles/", "/tutorial/", "/call_us/",
+        "/llm.json", "/llm.txt",
     ]
 
-    # ساخت مسیرهای دسته‌بندی‌ها
-    category_paths = [f"/category/{c.slug}/" for c in Category.objects.all()]
+    # اگر دیتابیس در دسترس نبود → لیست خالی برگردان
+    try:
+        category_paths = [f"/category/{c.slug}/" for c in Category.objects.all()]
+    except:
+        category_paths = []
 
-    # مسیر محصولات
-    product_paths = [f"/products/{p.slug}/" for p in Product.objects.all()]
+    try:
+        product_paths = [f"/products/{p.slug}/" for p in Product.objects.all()]
+    except:
+        product_paths = []
 
-    # مسیرهای بلاک‌شده
     disallow_paths = [
-        "/dashboard/",
-        "/cart/",
-        "/checkout/",
-        "/payment/",
-        "/search/",
-        "/admin/",
+        "/dashboard/", "/cart/", "/checkout/", "/payment/",
+        "/search/", "/admin/"
     ]
 
     content = "User-agent: *\n\n"
 
-    # Allow
     content += "# Allowed URLs\n"
-    for path in static_paths + category_paths + product_paths:
-        content += f"Allow: {path}\n"
+    for p in static_paths + category_paths + product_paths:
+        content += f"Allow: {p}\n"
 
-    content += "\n# Restricted\n"
-    for path in disallow_paths:
-        content += f"Disallow: {path}\n"
+    content += "\n# Restricted URLs\n"
+    for p in disallow_paths:
+        content += f"Disallow: {p}\n"
 
     return HttpResponse(content, content_type="text/plain")
