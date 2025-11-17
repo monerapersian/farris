@@ -134,56 +134,49 @@
 				    <!-- pagination -->
 				    	<div class="w-full bg-base-200 py-4">
 							<div class="flex justify-center">
-								<div class="join">
-								    {# Previous Button #}
+								<div class="join flex flex-wrap justify-center gap-1">
+
 								    {% if page_obj.has_previous %}
-								        <a href="?page={{ page_obj.previous_page_number }}" class="join-item btn hover-pagination">قبلی</a>
+								        <a href="?page={{ page_obj.previous_page_number }}" 
+								           class="join-item btn btn-xs px-2 min-w-0 hover-pagination">قبلی</a>
 								    {% else %}
-								        <span class="join-item btn btn-disabled">قبلی</span>
+								        <span class="join-item btn btn-xs px-2 min-w-0 btn-disabled">قبلی</span>
 								    {% endif %}
 
-								    {# Page Numbers #}
 								    {% for num in page_obj.paginator.page_range %}
 								        
-								        {# نمایش صفحه‌های اول و دوم #}
 								        {% if num == 1 or num == 2 %}
-
-								            <a href="?page={{ num }}" 
-								               class="join-item btn hover-pagination {% if num == page_obj.number %}active-pagination{% endif %}">
+								            <a href="?page={{ num }}"
+								               class="join-item btn btn-xs px-2 min-w-0 hover-pagination {% if num == page_obj.number %}active-pagination{% endif %}">
 								               {{ num }}
 								            </a>
 
-								        {# نمایش صفحه فعلی و یک صفحه قبل و بعد #}
 								        {% elif num >= page_obj.number|add:-1 and num <= page_obj.number|add:1 %}
-
-								            <a href="?page={{ num }}" 
-								               class="join-item btn hover-pagination {% if num == page_obj.number %}active-pagination{% endif %}">
+								            <a href="?page={{ num }}"
+								               class="join-item btn btn-xs px-2 min-w-0 hover-pagination {% if num == page_obj.number %}active-pagination{% endif %}">
 								               {{ num }}
 								            </a>
 
-								        {# نمایش آخرین صفحه و قبل آخر #}
 								        {% elif num == page_obj.paginator.num_pages or num == page_obj.paginator.num_pages|add:-1 %}
-
-								            <a href="?page={{ num }}" 
-								               class="join-item btn hover-pagination {% if num == page_obj.number %}active-pagination{% endif %}">
+								            <a href="?page={{ num }}"
+								               class="join-item btn btn-xs px-2 min-w-0 hover-pagination {% if num == page_obj.number %}active-pagination{% endif %}">
 								               {{ num }}
 								            </a>
 
-								        {# نمایش ... در جاهای مناسب #}
 								        {% else %}
 								            {% if num == 3 or num == page_obj.number|add:-2 or num == page_obj.paginator.num_pages|add:-2 %}
-								                <span class="join-item btn btn-disabled">...</span>
+								                <span class="join-item btn btn-xs px-2 min-w-0 btn-disabled">...</span>
 								            {% endif %}
 								        {% endif %}
+
 								    {% endfor %}
 
-								    {# Next Button #}
 								    {% if page_obj.has_next %}
-								        <a href="?page={{ page_obj.next_page_number }}" class="join-item btn hover-pagination">بعدی</a>
+								        <a href="?page={{ page_obj.next_page_number }}" 
+								           class="join-item btn btn-xs px-2 min-w-0 hover-pagination">بعدی</a>
 								    {% else %}
-								        <span class="join-item btn btn-disabled">بعدی</span>
+								        <span class="join-item btn btn-xs px-2 min-w-0 btn-disabled">بعدی</span>
 								    {% endif %}
-
 								</div>
 							    <!-- <div class="join">
 									{% if page_obj.has_previous %}
