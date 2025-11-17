@@ -1102,51 +1102,54 @@ def dashboard_agency_requests(request):
     return render(request, "dashboard/sections/agency_requests.html", {"page_obj": page_obj})
     
 
-# Cache: 30 دقیقه
-@cache_page(60 * 30)
+CACHE_TIME = 60 * 30  # 30 دقیقه
+
+@cache_page(CACHE_TIME)
 def llm_txt(request):
-    """نسخه متنی llm.txt پویا و دو زبانه"""
-    base_url = 'https://www.farris.ir'
-
-    content = f"""# LLM Manifest for Farris
-# Brand: فریس (Faris)
-# Description: مرجع تخصصی پلوس و سرپلوس خودرو در ایران
-# زبان سایت: فارسی
-# English Version Included
-
-# Allowed URLs
-"""
+    """
+    نسخه متنی llm.txt امن و پویا
+    بدون نیاز به تغییر مدل‌ها
+    """
+    content = "# LLM Manifest for Farris\n# دو زبانه فارسی و انگلیسی\n# AI Guardrails Enabled\n\n# Allowed URLs\n"
 
     # صفحات ثابت مجاز
-    static_pages = ['home', 'products_list', 'articles_list', 'tutorial', 'call_us']
-    for page in static_pages:
-        content += f'- {request.build_absolute_uri(reverse(page))}\n'
+    pages = ['home', 'products_list', 'articles_list', 'tutorial', 'call_us']
+    for page_name in pages:
+        try:
+            url = request.build_absolute_uri(reverse(page_name))
+        except:
+            url = "# URL not defined"
+        content += f"- {url}\n"
 
-    # صفحات دسته‌بندی
-    for c in Category.objects.all():
-        content += f'- {request.build_absolute_uri(c.get_absolute_url())}  # Category: {c.title}\n'
+    # دسته‌ها
+    for category in Category.objects.all():
+        try:
+            url = request.build_absolute_uri(reverse('category_product', args=[category.slug]))
+        except:
+            url = "# URL not defined"
+        content += f"- {url}  # Category: {category.name}\n"
 
     # محصولات
-    for p in Product.objects.all():
-        content += f'- {request.build_absolute_uri(p.get_absolute_url())}  # Product: {p.title}\n'
+    for product in Product.objects.all():
+        try:
+            url = request.build_absolute_uri(reverse('product_detail', args=[product.slug]))
+        except:
+            url = "# URL not defined"
+        category_name = product.category.name if product.category else "Unknown"
+        content += f"- {url}  # Product: {product.title} | Category: {category_name}\n"
 
     # Policy
-    content += """
-
-# Policy / AI Guardrails
-# - Use only the provided URLs and product/category info.
-# - Do not crawl or access cart, checkout, dashboard, payment, or search pages.
-# - This file is allowed for AI reading and processing only.
-"""
+    content += "\n# Restricted pages: cart, checkout, dashboard, payment, search\n# AI should only use provided URLs and info\n"
 
     return HttpResponse(content, content_type='text/plain; charset=utf-8')
 
 
-@cache_page(60 * 30)
+@cache_page(CACHE_TIME)
 def llm_json(request):
-    """نسخه JSON llm.json پویا و دو زبانه"""
-    base_url = 'https://www.farris.ir'
-
+    """
+    نسخه JSON llm.json امن و پویا
+    بدون نیاز به تغییر مدل‌ها
+    """
     data = {
         'brand': {'fa': 'فریس', 'en': 'Faris'},
         'description': {
@@ -1159,33 +1162,39 @@ def llm_json(request):
         'policy': {
             'allowed': 'Use only provided URLs and info',
             'restricted_pages': ['cart', 'checkout', 'dashboard', 'payment', 'search'],
-            'note': 'This file is for AI processing only'
+            'note': 'For AI processing only'
         }
     }
 
-    # Static pages
-    static_pages = ['home', 'products_list', 'articles_list', 'tutorial', 'call_us']
-    for page in static_pages:
-        data['pages'].append({
-            'fa': request.build_absolute_uri(reverse(page)),
-            'en': request.build_absolute_uri(reverse(page))
-        })
+    # صفحات ثابت
+    pages = ['home', 'products_list', 'articles_list', 'tutorial', 'call_us']
+    for page_name in pages:
+        try:
+            url = request.build_absolute_uri(reverse(page_name))
+        except:
+            url = "# URL not defined"
+        data['pages'].append({'fa': url, 'en': url})
 
-    # Categories
-    for c in Category.objects.all():
-        data['categories'].append({
-            'title_fa': c.title,
-            'title_en': c.title,  # می‌توان ترجمه اضافه کرد
-            'url': request.build_absolute_uri(c.get_absolute_url())
-        })
+    # دسته‌ها
+    for category in Category.objects.all():
+        try:
+            url = request.build_absolute_uri(reverse('category_product', args=[category.slug]))
+        except:
+            url = "# URL not defined"
+        data['categories'].append({'title_fa': category.name, 'title_en': category.name, 'url': url})
 
-    # Products
-    for p in Product.objects.all():
+    # محصولات
+    for product in Product.objects.all():
+        try:
+            url = request.build_absolute_uri(reverse('product_detail', args=[product.slug]))
+        except:
+            url = "# URL not defined"
+        category_name = product.category.name if product.category else "Unknown"
         data['products'].append({
-            'title_fa': p.title,
-            'title_en': p.title,  # می‌توان ترجمه اضافه کرد
-            'url': request.build_absolute_uri(p.get_absolute_url()),
-            'category': p.category.title if p.category else ''
+            'title_fa': product.title,
+            'title_en': product.title,
+            'url': url,
+            'category': category_name
         })
 
     return JsonResponse(data, json_dumps_params={'ensure_ascii': False, 'indent': 2})

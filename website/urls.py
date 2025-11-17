@@ -54,7 +54,7 @@ urlpatterns = [
     # path('dashboard/products/create/', views.create_product, name="create_product"),
     # path('dashboard/products/update/', views.update_product, name="update_product"),
     # path('dashboard/products/delete/<int:pk>/', views.delete_product, name="delete_product"),
-    
+
     path('llm.txt', views.llm_txt, name='llm_txt'),
     path('llm.json', views.llm_json, name='llm_json'),
 ]
