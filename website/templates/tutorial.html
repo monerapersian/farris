@@ -80,14 +80,28 @@
 				    <!-- محصولات -->
 				    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 				    	{% for tutorial in page_obj %}
-					    	<div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-all">
-						      <figure class="aspect-[9/16] overflow-hidden rounded-t-2xl">
-						        <video 
-						          class="w-full h-full object-cover"
-						          src="{{ tutorial.video.url }}"
-						          controls
-						          playsinline
-						        ></video>
+						    <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-all">
+						      <figure class="aspect-[9/16] overflow-hidden rounded-t-2xl relative">
+						        <div class="video-wrapper relative w-full h-full">
+						          <video 
+						            class="w-full h-full object-cover"
+						            {% if tutorial.thumbnail %}poster="{{ tutorial.thumbnail.url }}"{% endif %}
+						            playsinline
+						            preload="none"
+						          >
+						            <source data-src="{{ tutorial.video.url }}" type="video/mp4">
+						          </video>
+
+						          {% if tutorial.thumbnail %}
+						          <button onclick="playCourseVideo(this)" class="absolute inset-0 flex items-center justify-center bg-black/20 hover:bg-black/30 transition-colors">
+						            <div class="btn btn-circle btn-lg bg-white/90 border-none hover:bg-white">
+						              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="currentColor" class="text-gray-800 ml-1">
+						                <path d="M8 5v14l11-7z"></path>
+						              </svg>
+						            </div>
+						          </button>
+						          {% endif %}
+						        </div>
 						      </figure>
 						      <div class="card-body text-center">
 						        <h2 class="card-title text-lg font-semibold">{{ tutorial.title }}</h2>
