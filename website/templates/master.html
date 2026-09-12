@@ -208,9 +208,9 @@
 	        <div class="">
 	          <!-- <div class="font-semibold mb-1">آدرس:</div> -->
 	          <p class="text-base-content/80">
-	          	تهران بازار چراغ برق خیابان امیرکبیر خیابان ملت پاساژ شیرین طبقه دوم پلاک 114 فروشگاه فریس
+	          	تهران بازار چراغ برق خیابان امیرکبیر رو به روی مسجد سراج پلاک 28 فروشگاه فریس
 	          </p>
-	          <p class="text-base-content/80">روزهای کاری از ساعت 9 الی 18 پاسخگوی شما عزیزان هستیم</p>
+	          <p class="text-base-content/80">روزهای کاری از ساعت 9:30 الی 19 پاسخگوی شما عزیزان هستیم</p>
 	        </div>
 	      </div>
 	    </div>
@@ -285,8 +285,31 @@
 	  	<span>© کلیه حقوق این سایت  متعلق به <a href="/" class="text-orange-500">فریس </a>میباشد.</span>
 	  </div>
 	</footer>
+	<script>
+	  // نمایش فریم اول به عنوان کاور، بدون پخش واقعی
+	  document.querySelectorAll('.course-video').forEach(function (video) {
+	    video.addEventListener('loadedmetadata', function () {
+	      video.play().then(function () {
+	        video.pause();
+	      }).catch(function () {
+	        // اگه مرورگر اجازه نداد، مشکلی نیست، فقط کاور خالی می‌مونه
+	      });
+	    });
+	  });
 
+	  function playCourseVideo(btn) {
+	    const wrapper = btn.parentElement;
+	    const video = wrapper.querySelector('video');
 
+	    video.setAttribute('controls', 'controls');
+	    video.muted = false;
+	    video.currentTime = 0;
+	    video.play().catch(function (err) {
+	      console.error('خطا در پخش ویدئو:', err);
+	    });
 
+	    btn.remove();
+	  }
+	</script>
 </body>
 </html>

@@ -25,7 +25,7 @@
 
 				    <!-- توضیح کوتاه -->
 				    <p class="mb-6 text-center text-lg md:text-l leading-relaxed animate__animated animate__lightSpeedInLeft animate__delay-1s justify-center" style="text-align:center !important;">
-				    	برای اخذ نمایندگی در سراسر ایران تماس بگیرید 
+				    	برای خرید عمده در سراسر ایران تماس بگیرید
 				    </p>
 				    <p class="mb-6 text-center text-xl md:text-xl leading-relaxed animate__animated animate__lightSpeedInLeft animate__delay-1s justify-center text-[#e66700]" style="text-align:center !important;">
 				    	<a href="tel:02133900705" class="text-[#e66700] text-xl">021-33900705</a>
@@ -40,7 +40,7 @@
 							اخذ نمایندگی
 						</a> -->
 
-						<label for="agency_modal" class="btn border-0 bg-[#e66700] text-white hover:bg-[#b25204]">اخذ نمایندگی</label>
+						<label for="agency_modal" class="btn border-0 bg-[#e66700] text-white hover:bg-[#b25204]">خرید عمده</label>
 
 						<a href="tel:02133900705" class="btn btn-outline border-white text-white hover:bg-white hover:text-[#116c56]">
 							مشاوره تلفنی
@@ -58,7 +58,7 @@
 			  </div>
 			  <div class="absolute bottom-0 w-full overflow-hidden bg-black/50 py-2">
 			    <div class="marquee whitespace-nowrap animate-marquee text-white text-sm">
-			      🚗 تهران بازار چراغ برق خیابان امیرکبیر خیابان ملت پاساژ شیرین طبقه دوم پلاک 114 فروشگاه فریس  ---- 02133900705🚗
+			    	🚗 تهران بازار چراغ برق خیابان امیرکبیر رو به روی مسجد سراج پلاک 28 فروشگاه فریس ---- 02133900705🚗
 			    </div>
 			  </div>
 			</section>
@@ -68,7 +68,7 @@
 		<input type="checkbox" id="agency_modal" class="modal-toggle" />
 		<div class="modal fixed inset-0 z-[9999] flex items-center justify-center bg-black/50 backdrop-blur-sm">
 		  <div class="modal-box max-w-md w-[90%]">
-		    <h3 class="font-bold text-lg text-[#e66700] mb-4">درخواست اخذ نمایندگی</h3>
+		    <h3 class="font-bold text-lg text-[#e66700] mb-4">درخواست مشاوره خرید عمده</h3>
 
 		    <form id="agencyForm" method="post" action="{% url 'agency_request' %}" novalidate>
 		      {% csrf_token %}
@@ -307,10 +307,18 @@
 			    {% for course in special_courses %}
 				    <div class="bg-white shadow rounded-lg overflow-hidden">
 				      <div class="relative w-full pt-[177.77%]"> <!-- نسبت 9:16 -->
-				        <video controls class="absolute top-0 left-0 w-full h-full object-cover rounded-lg">
+				        <video class="course-video absolute top-0 left-0 w-full h-full object-cover rounded-lg"
+				               preload="metadata" muted playsinline>
 				          <source src="{{ course.video.url }}" type="video/mp4">
 				          مرورگر شما از ویدئو پشتیبانی نمی‌کند.
 				        </video>
+				        <button type="button"
+				                class="play-overlay absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/40 transition cursor-pointer"
+				                onclick="playCourseVideo(this)">
+				          <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 24 24">
+				            <path d="M8 5v14l11-7z"/>
+				          </svg>
+				        </button>
 				      </div>
 				      <div class="p-3">
 				        <h3 class="text-base font-semibold text-gray-800">{{ course.title }}</h3>
@@ -361,4 +369,5 @@
 			  </div>
 			</section>
 		<!-- /blog -->
+	
 	{% endblock %}
