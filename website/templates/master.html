@@ -286,20 +286,15 @@
 	  </div>
 	</footer>
 	<script>
-	  // نمایش فریم اول به عنوان کاور، بدون پخش واقعی
-	  document.querySelectorAll('.course-video').forEach(function (video) {
-	    video.addEventListener('loadedmetadata', function () {
-	      video.play().then(function () {
-	        video.pause();
-	      }).catch(function () {
-	        // اگه مرورگر اجازه نداد، مشکلی نیست، فقط کاور خالی می‌مونه
-	      });
-	    });
-	  });
-
 	  function playCourseVideo(btn) {
 	    const wrapper = btn.parentElement;
 	    const video = wrapper.querySelector('video');
+	    const source = video.querySelector('source');
+
+	    if (source.dataset.src) {
+	      source.src = source.dataset.src;
+	      video.load();
+	    }
 
 	    video.setAttribute('controls', 'controls');
 	    video.muted = false;

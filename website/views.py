@@ -1010,6 +1010,7 @@ def dashboard_course_add(request):
         slug = slugify(slug_input or title, allow_unicode=True)
         special = bool(request.POST.get("special"))
         video = request.FILES.get("video")
+        thumbnail = request.FILES.get("thumbnail")
 
         errors = []
         if not title:
@@ -1028,6 +1029,7 @@ def dashboard_course_add(request):
             title=title,
             slug=slug,
             video=video,
+            thumbnail=thumbnail,
             special=special
         )
 
@@ -1047,6 +1049,7 @@ def dashboard_course_edit(request, course_id):
         slug = slugify(slug_input or title, allow_unicode=True)
         special = bool(request.POST.get("special"))
         video = request.FILES.get("video")
+        thumbnail = request.FILES.get("thumbnail")
 
         errors = []
         if not title:
@@ -1064,6 +1067,8 @@ def dashboard_course_edit(request, course_id):
         course.special = special
         if video:
             course.video = video
+        if thumbnail:
+            course.thumbnail = thumbnail
         course.save()
 
         messages.success(request, f"آموزش «{course.title}» با موفقیت ویرایش شد ✅")

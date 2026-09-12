@@ -305,25 +305,27 @@
 			    
 			    <!-- کارت آموزش ۱ -->
 			    {% for course in special_courses %}
-				    <div class="bg-white shadow rounded-lg overflow-hidden">
-				      <div class="relative w-full pt-[177.77%]"> <!-- نسبت 9:16 -->
-				        <video class="course-video absolute top-0 left-0 w-full h-full object-cover rounded-lg"
-				               preload="metadata" muted playsinline>
-				          <source src="{{ course.video.url }}" type="video/mp4">
-				          مرورگر شما از ویدئو پشتیبانی نمی‌کند.
-				        </video>
-				        <button type="button"
-				                class="play-overlay absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/40 transition cursor-pointer"
-				                onclick="playCourseVideo(this)">
-				          <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 24 24">
-				            <path d="M8 5v14l11-7z"/>
-				          </svg>
-				        </button>
-				      </div>
-				      <div class="p-3">
-				        <h3 class="text-base font-semibold text-gray-800">{{ course.title }}</h3>
-				      </div>
-				    </div>
+					<div class="bg-white shadow rounded-lg overflow-hidden">
+					  <div class="relative w-full pt-[177.77%]">
+					    <video class="course-video absolute top-0 left-0 w-full h-full object-cover rounded-lg"
+					           preload="none"
+					           {% if course.thumbnail %}poster="{{ course.thumbnail.url }}"{% endif %}
+					           muted playsinline>
+					      <source data-src="{{ course.video.url }}" type="video/mp4">
+					      مرورگر شما از ویدئو پشتیبانی نمی‌کند.
+					    </video>
+					    <button type="button"
+					            class="play-overlay absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/40 transition cursor-pointer"
+					            onclick="playCourseVideo(this)">
+					      <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 24 24">
+					        <path d="M8 5v14l11-7z"/>
+					      </svg>
+					    </button>
+					  </div>
+					  <div class="p-3">
+					    <h3 class="text-base font-semibold text-gray-800">{{ course.title }}</h3>
+					  </div>
+					</div>
 				{% endfor %}
 
 
@@ -369,5 +371,5 @@
 			  </div>
 			</section>
 		<!-- /blog -->
-	
+
 	{% endblock %}

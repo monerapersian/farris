@@ -31,7 +31,14 @@
     <!-- ویدئو -->
     <div class="form-control">
       <label class="label"><span class="label-text">ویدئو</span></label>
-      <input type="file" name="video" class="file-input file-input-bordered w-full">
+      <input type="file" name="video" accept="video/*" class="file-input file-input-bordered w-full">
+    </div>
+
+    <!-- تصویر کاور -->
+    <div class="form-control">
+      <label class="label"><span class="label-text">تصویر کاور (Thumbnail)</span></label>
+      <input type="file" name="thumbnail" accept="image/*" class="file-input file-input-bordered w-full">
+      <label class="label"><span class="label-text-alt text-gray-400 text-sm">پیشنهادی: نسبت عمودی (9:16) برای نمایش بهتر.</span></label>
     </div>
 
     <div class="flex justify-end mt-6 gap-4">

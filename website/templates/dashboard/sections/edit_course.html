@@ -36,7 +36,22 @@
           <source src="{{ course.video.url }}" type="video/mp4">
           مرورگر شما ویدئو را پشتیبانی نمی‌کند.
         </video>
-        <input type="file" name="video" class="file-input file-input-bordered w-full max-w-xs">
+        <input type="file" name="video" accept="video/*" class="file-input file-input-bordered w-full max-w-xs">
+      </div>
+    </div>
+
+    <!-- تصویر کاور فعلی و جدید -->
+    <div class="form-control">
+      <label class="label"><span class="label-text">تصویر کاور (Thumbnail)</span></label>
+      <div class="flex items-center gap-4">
+        {% if course.thumbnail %}
+          <img src="{{ course.thumbnail.url }}" class="w-24 h-32 object-cover border rounded-lg">
+        {% else %}
+          <div class="w-24 h-32 border rounded-lg flex items-center justify-center text-xs text-gray-400">
+            بدون تصویر
+          </div>
+        {% endif %}
+        <input type="file" name="thumbnail" accept="image/*" class="file-input file-input-bordered w-full max-w-xs">
       </div>
     </div>
 

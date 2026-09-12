@@ -71,6 +71,12 @@ class Course(models.Model):
     title = models.CharField(max_length=200, verbose_name="عنوان آموزش")
     slug = models.SlugField(unique=True, verbose_name="نامک (Slug)")
     video = models.FileField(upload_to="courses/videos/", verbose_name="ویدئو")
+    thumbnail = models.ImageField(
+        upload_to="courses/thumbnails/",
+        verbose_name="تصویر کاور",
+        blank=True,
+        null=True,
+    )
     special = models.BooleanField(default=False, verbose_name="ویژه")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="تاریخ انتشار")
 
