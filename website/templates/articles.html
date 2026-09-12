@@ -23,31 +23,37 @@
 					  </p>
 
 					  <!-- اسلایدر -->
-					  <div class="swiper mySwiper-efe rounded-lg bg-white p-6">
-					    <div class="swiper-wrapper">
-							{% for article in special_articles %}
-								<div class="px-4 py-1 overflow-hidden swiper-slide flex justify-center items-center h-full" style="display: flex;">
-									<div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 group">
-									  <div class="overflow-hidden p-5 pb-2">
-									    <img src="{{ article.image.url }}" alt="{{ article.title }}" class="w-full h-48 object-cover rounded-xl transform group-hover:scale-105 transition-transform duration-500">
-									  </div>
-									  <div class="p-2">
-									    <h3 class="text-lg font-semibold text-gray-800 mb-2 pr-5">{{ article.title }}</h3>
-									    <a href="{% url 'article_detail' article.slug %}" class="w-full text-center py-2 px-4 btn-outline rounded-lg btn flex items-center gap-2" style="text-align: center;">
-									      ادامه مطلب
-									    	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M4.83582 12L11.0429 18.2071L12.4571 16.7929L7.66424 12L12.4571 7.20712L11.0429 5.79291L4.83582 12ZM10.4857 12L16.6928 18.2071L18.107 16.7929L13.3141 12L18.107 7.20712L16.6928 5.79291L10.4857 12Z"></path></svg>
-									    </a>
-									  </div>
-									</div>
-								</div>
-							{% endfor %}
+					    <div class="swiper mySwiper-efe rounded-2xl bg-white p-6 shadow-sm relative">
+						    <div class="swiper-wrapper">
+						        {% for article in special_articles %}
+						            <div class="px-3 py-2 swiper-slide h-auto flex">
+						                <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 group border border-gray-100 flex flex-col w-full">
+						                    <div class="overflow-hidden">
+						                        <img src="{{ article.image.url }}" alt="{{ article.title }}" class="w-full h-48 object-cover transform group-hover:scale-105 transition-transform duration-500">
+						                    </div>
+						                    <div class="p-4 flex flex-col flex-1">
+						                        <h3 class="text-base font-semibold text-gray-800 mb-3 line-clamp-2 min-h-[3rem] leading-6">
+						                            {{ article.title }}
+						                        </h3>
+						                        <a href="{% url 'article_detail' article.slug %}" class="mt-auto w-full text-center py-2 px-4 btn-outline btn-sm rounded-lg btn flex items-center justify-center gap-2">
+						                            ادامه مطلب
+						                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M4.83582 12L11.0429 18.2071L12.4571 16.7929L7.66424 12L12.4571 7.20712L11.0429 5.79291L4.83582 12ZM10.4857 12L16.6928 18.2071L18.107 16.7929L13.3141 12L18.107 7.20712L16.6928 5.79291L10.4857 12Z"></path></svg>
+						                        </a>
+						                    </div>
+						                </div>
+						            </div>
+						        {% endfor %}
+						    </div>
 
+						    <!-- دکمه‌های قبلی و بعدی -->
+						    <div class="btn btn-circle btn-sm bg-white shadow-md border-none absolute top-1/2 -translate-y-1/2 right-2 z-10 next-btn-brands hover:bg-gray-100">
+						        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path></svg>
+						    </div>
+						    <div class="btn btn-circle btn-sm bg-white shadow-md border-none absolute top-1/2 -translate-y-1/2 left-2 z-10 prev-btn-brands hover:bg-gray-100">
+						        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M7.82843 10.9999H20V12.9999H7.82843L13.1924 18.3638L11.7782 19.778L4 11.9999L11.7782 4.22168L13.1924 5.63589L7.82843 10.9999Z"></path></svg>
+						    </div>
 						</div>
 
-					    <!-- دکمه‌های قبلی و بعدی -->
-					    <div class="btn btn-circle absolute text-gray-800 hover:text-gray-600 z-10 next-btn-brands">>></div>
-					    <div class="btn btn-circle absolute text-gray-800 hover:text-gray-600 z-10 prev-btn-brands"><<</div>
-					  </div>
 					</div>
 
 					<script>
