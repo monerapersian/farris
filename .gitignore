@@ -1,0 +1,8 @@
+db.sqlite3
+farris_ir/settings.py
+farris_ir/wsgi.py
+passenger_wsgi.py
+static/
+media/
+.github/
+push.bat
